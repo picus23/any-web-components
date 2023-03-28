@@ -5,7 +5,7 @@ interface ButtonProps {
     children?: ReactNode,
     icon?: ReactNode,
     counter?: number,
-    // style?: string
+    style?: string
 
 }
 
