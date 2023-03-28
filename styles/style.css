@@ -1,4 +1,53 @@
 body {
   padding: 10%;
   background: #fff;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
+
+
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+
+  width: 256px;
+  height: 52px;
+
+  background: #0085FF;
+  color: white;
+
+  border-radius: 8px;
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  /* identical to box height, or 140% */
+
+  text-align: center;
+}
+
+.btn-counter {
+  font-weight: bold;
+  width: 190px;
+  height: 52px;
+  font-size: 20px;
+  margin: auto;
+  border: 1px solid #E8E8E8;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+}
+
+.counter {
+  margin-left: 10px;
+  font-size: 14px;
+  background: #E8E8E8;
+  border-radius: 12px;
+  padding: 0 4px;
+}
