@@ -1,6 +1,14 @@
-
 body {
     padding: 10%;
     background: #fff;
     padding: 2px;
 }
+
+$theme-colors: (
+    "primary": #0085FF,
+    "success": #f00,
+    ) !default;
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
