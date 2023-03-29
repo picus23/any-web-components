@@ -8,6 +8,8 @@ export default function Index() {
       <Link href="/buttons">Кнопочки</Link>
       <br />
       <Link href="/navbar">Шапка</Link>
+      <br />
+      <Link href="/cartItem">Карта товара</Link>
     </>
 }
 
