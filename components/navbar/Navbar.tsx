@@ -57,7 +57,7 @@ const Navbar: FC<NavbarProps> = ({ children, type_navbar }) => {
             </div>
             <div>
                 <div className="d-flex align-items-center justify-content-end">
-                    <div className="mx-4 font-size-my"><span>+7 (495) 984-41-06</span></div>
+                    <div className="mx-4 font-size-16"><span>+7 (495) 984-41-06</span></div>
                     <Button type_btn={"small-gray"}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="20" height="20" rx="2" fill="white" />
@@ -70,7 +70,7 @@ const Navbar: FC<NavbarProps> = ({ children, type_navbar }) => {
                             </g>
                         </svg>
 
-                        RU
+                        <span className="font-size-16 m-1">RU</span>
                         <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M4.78409 0.325883L7.66969 3.21148C8.37159 3.91338 7.88137 5.11664 6.88979 5.11664H1.1186C0.127024 5.11664 -0.374334 3.91338 0.327568 3.21148L3.21316 0.325883C3.64768 -0.108628 4.34958 -0.108628 4.78409 0.325883ZM3.21591 13.4334L0.330314 10.5478C-0.371588 9.84588 0.118629 8.64262 1.11021 8.64262H6.8814C7.87298 8.64262 8.37433 9.84588 7.67243 10.5478L4.78684 13.4334C4.35232 13.8679 3.65042 13.8679 3.21591 13.4334Z" fill="#969696" />
                         </svg>
