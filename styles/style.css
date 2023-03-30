@@ -25,7 +25,6 @@
   background: #FFFF;
   color: #1C1C1C;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
-  font-size: 1rem;
 }
 
 .my-btn-small-gray {
@@ -40,33 +39,27 @@
 .my-btn-find-blue {
   min-width: 52px;
   min-height: 52px;
-  margin: auto;
   padding: 0 0.625rem;
   background: #0085FF;
   border: 1px solid #0085FF;
   border-radius: 8px;
   color: white;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
-  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .my-btn-catalog-blue {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0.625rem 0.75rem;
+  justify-content: start;
   gap: 8px;
   min-width: 256px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.08);
 }
 
 .my-btn-find-blue {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 124px;
   border-radius: 0 8px 8px 0;
 }
 
