@@ -4,6 +4,7 @@ import { MdGrading } from 'react-icons/md';
 import { MdFiberManualRecord } from 'react-icons/md';
 import { MdShoppingCart } from 'react-icons/md';
 import { MdHeartBroken } from 'react-icons/md';
+import { MdRemove } from 'react-icons/md';
 
 
 interface NavbarProps {

@@ -1,8 +1,9 @@
 import { FC, ReactNode } from "react";
 import Button from '@/components/buttons/Button';
-import Describe from '@/components/cartItem/Describe';
-import { MdOutlineRecycling } from 'react-icons/md';
-import { MdMinimize } from 'react-icons/md';
+import { MdRemove } from 'react-icons/md';
+import { MdAdd } from 'react-icons/md';
+import { Md3DRotation } from 'react-icons/md';
+import { MdPictureAsPdf } from 'react-icons/md';
 
 
 interface CartItemProps {
@@ -41,16 +42,16 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
                 </div>
                 <div className="action-panel">
                     <div className="action-group">
-                        <Button icon={<MdOutlineRecycling />} type_btn="small-gray"></Button>
-                        <Button icon={<MdOutlineRecycling />} type_btn="small-gray"></Button>
+                        <Button icon={<Md3DRotation />} type_btn="small-gray"></Button>
+                        <Button icon={<MdAdd />} type_btn="small-gray"></Button>
                     </div>
                     <div className="action-group">
-                        <Button icon={<MdOutlineRecycling />} type_btn="small-gray"></Button>
-                        <Button icon={<MdOutlineRecycling />} type_btn="small-gray"></Button>
+                        <Button icon={<Md3DRotation />} type_btn="small-gray"></Button>
+                        <Button icon={<MdPictureAsPdf />} type_btn="small-gray"></Button>
                     </div>
                     <div className="action-group">
-                        <Button icon={<MdMinimize />} type_btn="gray">1</Button>
-                        <Button icon={<MdOutlineRecycling />} type_btn="small-gray"></Button>
+                        <Button icon={<MdRemove />} icon2={<MdAdd />} counter={1} type_btn="gray"></Button>
+                        <Button icon={<MdAdd />} type_btn="small-gray"></Button>
                     </div>
                 </div>
 

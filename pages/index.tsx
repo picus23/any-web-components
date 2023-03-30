@@ -10,6 +10,8 @@ export default function Index() {
       <Link href="/navbar">Шапка</Link>
       <br />
       <Link href="/cartItem">Карта товара</Link>
+      <br />
+      <Link href="/tableCell">Ячейки таблицы</Link>
     </>
 }
 
