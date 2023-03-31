@@ -1,9 +1,9 @@
 import { FC, ReactNode } from "react";
 import Button from '@/components/buttons/Button';
 import { MdGrading } from 'react-icons/md';
-import { MdFiberManualRecord } from 'react-icons/md';
+import { MdPerson } from 'react-icons/md';
 import { MdShoppingCart } from 'react-icons/md';
-import { MdHeartBroken } from 'react-icons/md';
+import { MdFavorite } from 'react-icons/md';
 import { MdRemove } from 'react-icons/md';
 
 
@@ -45,7 +45,7 @@ const Navbar: FC<NavbarProps> = ({ children, type_navbar }) => {
             </div>
             <div>
                 <ul className="navbar mx-3 mr-auto">
-                    <li className="nav-item-my mx-3 active"><a className="nav-link" href="$">Главная</a></li>
+                    <li className="nav-item-my mx-3 active"><a className="nav-link" href="">Главная</a></li>
                     <li className="nav-item-my mx-3"><a className="nav-link" href="">О Компании</a></li>
                     <li className="nav-item-my mx-3"><a className="nav-link" href="">Контакты</a></li>
                     <li className="nav-item-my mx-3"><a className="nav-link" href="">Доставка и оплата</a></li>
@@ -80,10 +80,10 @@ const Navbar: FC<NavbarProps> = ({ children, type_navbar }) => {
                 </div>
                 <div className="d-flex justify-content-end align-items-end mt-2">
                     <div className="mx-1">
-                        <Button icon={<MdFiberManualRecord />} type_btn={"gray"}>Войти</Button>
+                        <Button icon={<MdPerson />} type_btn={"gray"}>Войти</Button>
                     </div>
                     <div className="mx-1">
-                        <Button icon={<MdHeartBroken />} type_btn={"small-gray"}></Button>
+                        <Button icon={<MdFavorite />} type_btn={"small-gray"}></Button>
                     </div>
                     <div className="mx-1">
                         <Button icon={<MdShoppingCart />} type_btn={"gray"} counter={0} type_counter={"up"}>Корзина</Button>

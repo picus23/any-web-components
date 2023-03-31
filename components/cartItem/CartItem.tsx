@@ -4,6 +4,9 @@ import { MdRemove } from 'react-icons/md';
 import { MdAdd } from 'react-icons/md';
 import { Md3DRotation } from 'react-icons/md';
 import { MdPictureAsPdf } from 'react-icons/md';
+import { MdCheckCircle } from 'react-icons/md';
+import { MdAddComment } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
 
 
 interface CartItemProps {
@@ -42,8 +45,8 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
                 </div>
                 <div className="action-panel">
                     <div className="action-group">
-                        <Button icon={<Md3DRotation />} type_btn="small-gray"></Button>
-                        <Button icon={<MdAdd />} type_btn="small-gray"></Button>
+                        <Button icon={<MdCheckCircle />} type_btn="small-gray"></Button>
+                        <Button icon={<MdAddComment />} type_btn="small-gray"></Button>
                     </div>
                     <div className="action-group">
                         <Button icon={<Md3DRotation />} type_btn="small-gray"></Button>
@@ -51,7 +54,7 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
                     </div>
                     <div className="action-group">
                         <Button icon={<MdRemove />} icon2={<MdAdd />} counter={1} type_btn="gray"></Button>
-                        <Button icon={<MdAdd />} type_btn="small-gray"></Button>
+                        <Button icon={<MdDelete />} type_btn="small-gray"></Button>
                     </div>
                 </div>
 
