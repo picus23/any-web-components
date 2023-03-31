@@ -13,7 +13,8 @@ export default function () {
         </h1>
         <Link href='/'>Back</Link>
         <hr />
-        {/* <Navbar type_navbar="my"></Navbar> */}
+        <Navbar type_navbar="my"></Navbar>
+        <Header></Header>
     </>
 
 }

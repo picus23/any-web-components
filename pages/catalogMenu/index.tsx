@@ -3,7 +3,7 @@ import Link from "next/link";
 
 
 
-var categories = ['q','w','e','r'];
+var categories = ['Трубные','Резьбовые','Под приварку','Под шланги'];
 export default function () {
 
     return <>

@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
-import { MdArrowForwardIos } from 'react-icons/md';
+import { MdArrowForward } from 'react-icons/md';
 import { MdChevronRight } from 'react-icons/md';
+import SearchField from "../searchElement/SearchField";
 
 
 interface CatalogMenuProps {
@@ -9,7 +10,7 @@ interface CatalogMenuProps {
     img_path?: string,
     title?: string,
     series?: string,
-    categories?: string[],
+    categories: string[],
 }
 
 const CatalogMenu: FC<CatalogMenuProps> = ({ children, icon, img_path, series, title, categories }) => {
@@ -22,33 +23,19 @@ const CatalogMenu: FC<CatalogMenuProps> = ({ children, icon, img_path, series, t
                 <span className="font-size-16 series">{series}</span>
             </div>
             <div>
-                <button className="catalog-menu-item-button rounded-circle"><MdArrowForwardIos /></button>
+                <button className="catalog-menu-item-button rounded-circle"><MdArrowForward /></button>
             </div>
         </div>
         <div className="catalog-menu-categories-list">
-            <div className="catalog-menu-categories-item">
-                <span>Трубные</span>
-                <button className="catalog-menu-categories-item-button"><MdChevronRight /></button>
-            </div>
-            <div className="catalog-menu-categories-item">
-                <span>Резьбовые</span>
-                <button className="catalog-menu-categories-item-button"><MdChevronRight /></button>
-            </div>
-            <div className="catalog-menu-categories-item">
-                <span>Под приварку</span>
-                <button className="catalog-menu-categories-item-button"><MdChevronRight /></button>
-            </div>
-            <div className="catalog-menu-categories-item">
-                <span>Под шланги</span>
-                <button className="catalog-menu-categories-item-button"><MdChevronRight /></button>
-            </div>
-            <div className="catalog-menu-categories-item">
-                <span>Под шлангишлангишлангишлангишлангишланги</span>
-                <button className="catalog-menu-categories-item-button"><MdChevronRight /></button>
-            </div>
+            {
+                categories.map(category => {
+                    return <div className="catalog-menu-categories-item">
+                        <span>{category}</span>
+                        <button className="catalog-menu-categories-item-button"><MdChevronRight /></button>
+                    </div>
+                })
+            }
         </div>
-
-
     </div>
 }
 

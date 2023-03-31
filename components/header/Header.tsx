@@ -1,4 +1,7 @@
 import { FC, ReactNode } from "react";
+import SearchHint from "../searchElement/SearchHint";
+import { Input } from "../inputs/Input";
+import { MdChevronRight } from "react-icons/md";
 
 
 interface HeaderProps {
@@ -11,9 +14,18 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ children, icon, icon2, counter, type_btn, type_counter }) => {
-    return <div>
+    return <div className="d-flex">
+        <div className="d-flex flex-column align-items-start py-3 px-4 side-menu">
+            <Input button_style={'button-active'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+            <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+            <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+            <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+            <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+            <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+            <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
+        </div>
+        <SearchHint></SearchHint>
 
-        
     </div>
 }
 

@@ -16,6 +16,8 @@ export default function Index() {
       <Link href="/catalogMenu">Каталог Меню</Link>
       <br />
       <Link href="/header">Шапка с поиском</Link>
+      <br />
+      <Link href="/footer">Футер</Link>
     </>
 }
 
