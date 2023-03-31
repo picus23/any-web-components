@@ -6,8 +6,8 @@ interface FooterProps {
 }
 
 function Footer(props: FooterProps) {
-    return <div className='d-flex flex-column align-items-center py-4 bg-white w-100'>
-        <div className='d-flex align-items-start px-4 gap-3'>
+    return <div className='py-4 bg-white'>
+        <div className='d-flex align-items-start justify-content-around px-4'>
             <div className='d-flex flex-column'>
                 {props.logo}
                 <span className='font-size-16-gray'>Компания «Флюид-Лайн» является <br /> изготовителем и эксклюзивным <br /> дистрибьютором продукции A-flow, Hy-Lok, <br /> Drastar и HIFLUX в России и СНГ.</span>
@@ -28,36 +28,36 @@ function Footer(props: FooterProps) {
                     </svg>
                 </div>
             </div>
-            <div className='d-flex gap-3 justify-space-between'>
-                <ul className='list-unstyled lh-2 mx-3'>
+            {/* <div className='d-flex gap-3 justify-space-between'> */}
+                <ul className='list-unstyled lh-2'>
                     <li className='font-size-16-black fw-500'><strong>О Компании</strong></li>
                     <li className='font-size-16-gray'>Сертификаты</li>
                     <li className='font-size-16-gray'>Реквизиты</li>
                     <li className='font-size-16-gray'>Региональные <br />представительства</li>
                     <li className='font-size-16-gray'>Производители</li>
                 </ul>
-                <ul className='list-unstyled lh-2 mx-3'>
+                <ul className='list-unstyled lh-2'>
                     <li className='font-size-16-black fw-500'><strong>Title</strong></li>
                     <li className='font-size-16-gray'>First Link</li>
                     <li className='font-size-16-gray'>Second Link</li>
                     <li className='font-size-16-gray'>Third Link</li>
                 </ul>
-                <ul className='list-unstyled lh-2 mx-3'>
+                <ul className='list-unstyled lh-2'>
                     <li className='font-size-16-black fw-500'><strong>Title</strong></li>
                     <li className='font-size-16-gray'>First Link</li>
                     <li className='font-size-16-gray'>Second Link</li>
                 </ul>
-                <ul className='list-unstyled lh-2 mx-3'>
+                <ul className='list-unstyled lh-2'>
                     <li className='font-size-16-black fw-500'><strong>Title</strong></li>
                     <li className='font-size-16-gray'>First Link</li>
                     <li className='font-size-16-gray'>Second Link</li>
                     <li className='font-size-16-gray'>Third Link</li>
                 </ul>
-            </div>
+            {/* </div> */}
         </div>
         <div className='footer-hr'></div>
 
-        <div className='d-flex align-items-start justify-content-around mt-4 w-75'>
+        <div className='d-flex align-items-start justify-content-around mt-4'>
             <span className='font-size-13'>© ООО Fluid-line (Флюид-Лайн) Все права защищены 2023</span>
             <span className='font-size-13'>Сайт спроектирован Insaim</span>
         </div>
