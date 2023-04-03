@@ -10312,9 +10312,11 @@ textarea.form-control-lg {
 .my-btn-gray,
 .my-btn-small-gray,
 .item-button-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 52px;
-  min-height: 52px;
-  /* margin: auto; */
+  min-height: 40px;
   padding: 0.5rem 0.625rem;
   border-radius: 12px;
   gap: 8px;
@@ -10325,7 +10327,6 @@ textarea.form-control-lg {
 }
 
 .my-btn-small-gray {
-  align-items: center;
   gap: 0;
   border-radius: 8px;
 }
@@ -10381,6 +10382,7 @@ textarea.form-control-lg {
 .counter-up {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: -4px;
   right: -4px;
@@ -10388,7 +10390,7 @@ textarea.form-control-lg {
   height: 20px;
   font-size: 0.5rem;
   background: #0085FF;
-  border-radius: 50%;
+  border-radius: 90%;
   text-align: center;
   color: white;
   padding: 0 8px;
