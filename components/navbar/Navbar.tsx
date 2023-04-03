@@ -29,11 +29,11 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 <li className="nav-item-my"><a className="nav-link" href="">Доставка и оплата</a></li>
                 <li className="nav-item-my"><a className="nav-link" href="">Как заказать</a></li>
             </ul>
-            <div className="d-flex align-items-center justify-content-end col-3">
-                <div className="font-size-16-gray mx-3"><span>+7 (495) 984-41-06</span></div>
+            <div className="d-flex align-items-center justify-content-end col-3 gap-3">
+                <div className="font-size-16-gray "><span>+7 (495) 984-41-06</span></div>
                 <Button type_btn={"small-gray"}>
                     <img src="/img/ru.svg" alt="" />
-                    <span className="font-size-16-gray">RU</span>
+                    <span className="font-size-16-gray mx-1">RU</span>
                     <MdOutlineUnfoldMore />
                 </Button>
             </div>
@@ -47,7 +47,9 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
             <div className="d-flex gap-2">
                 <Button icon={<MdPerson fill={'gray'} />} type_btn={"gray"}><span className="fw-500">Войти</span></Button>
                 <Button icon={<MdFavorite fill={'gray'} />} type_btn={"small-gray"}></Button>
+                <div className="position-relative">
                 <Button icon={<MdShoppingCart fill={'gray'} />} type_btn={"gray"} counter={0} type_counter={"up"}><span className="fw-500">Корзина</span></Button>
+                </div>
             </div>
         </div>
     </div>
