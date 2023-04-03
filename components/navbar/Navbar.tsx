@@ -38,13 +38,13 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 </Button>
             </div>
         </div>
-        <div className="d-flex justify-content-between align-items-end">
+        <div className="d-flex align-items-end justify-content-between gap-3">
             <Button icon={<MdOutlineMenuOpen />} type_btn="catalog-blue">Каталог</Button>
-            <form className=" d-flex mx-3">
+            <form className=" d-flex">
                 <input className="input-find" type="search" placeholder="Поиск" aria-label="Search" />
                 <Button type_btn="find-blue">Найти</Button>
             </form>
-            <div className="d-flex gap-2">
+            <div className="d-flex justify-content-end gap-2">
                 <Button icon={<MdPerson fill={'gray'} />} type_btn={"gray"}><span className="fw-500">Войти</span></Button>
                 <Button icon={<MdFavorite fill={'gray'} />} type_btn={"small-gray"}></Button>
                 <div className="position-relative">
