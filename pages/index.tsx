@@ -1,13 +1,20 @@
+import Image from "next/image"
 import Link from "next/link"
+import ImgLink from "./ImgLink"
 
 
 export default function Index() {
   return <>
       components galery
       <hr/>
+      
       <Link href="/buttons">Кнопочки</Link>
+
       <br />
-      <Link href="/navbar">Шапка</Link>
+      
+      {/* <Link href="/navbar">Шапка</Link>
+       */}
+       <ImgLink link="/navbar"/>
       <br />
       <Link href="/cartItem">Карта товара</Link>
       <br />
