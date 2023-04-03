@@ -28,7 +28,6 @@ function Footer(props: FooterProps) {
                     </svg>
                 </div>
             </div>
-            {/* <div className='d-flex gap-3 justify-space-between'> */}
                 <ul className='list-unstyled lh-2'>
                     <li className='font-size-16-black fw-500'><strong>О Компании</strong></li>
                     <li className='font-size-16-gray'>Сертификаты</li>
@@ -53,7 +52,6 @@ function Footer(props: FooterProps) {
                     <li className='font-size-16-gray'>Second Link</li>
                     <li className='font-size-16-gray'>Third Link</li>
                 </ul>
-            {/* </div> */}
         </div>
         <div className='footer-hr'></div>
 

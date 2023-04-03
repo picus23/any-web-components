@@ -18,6 +18,8 @@ export default function Index() {
       <Link href="/header">Шапка с поиском</Link>
       <br />
       <Link href="/footer">Футер</Link>
+      <br />
+      <Link href="/tableRow">TableRow</Link>
     </>
 }
 

@@ -13,12 +13,11 @@
 
 
 
-.F
 .my-btn-gray,
 .my-btn-small-gray {
   /* min-width: 52px;
   min-height: 52px; */
-  margin: auto;
+  /* margin: auto; */
   padding: 0.5rem;
   border-radius: 12px;
   border: 1px solid #E8E8E8;
@@ -184,11 +183,15 @@ nav-item-my:hover {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 192px;
+  max-width: 192px;
   gap: 8px;
   padding: 0.8rem;
   background: #FFFFFF;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
+  /* position: absolute;
+  right: 0; */
+  height: 100%;
+
 }
 
 .table-cell-img-right {
@@ -206,11 +209,11 @@ nav-item-my:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: max-content
+  /* width: max-content */
 }
 
 .table-cell-two-buttons-horizont {
-  width: max-content
+  /* width: max-content */
 }
 
 .catalog-menu-item {
@@ -323,6 +326,7 @@ nav-item-my:hover {
   border-bottom: 1px solid gray;
   width: inherit;
 }
+
 .search-hint-categories {
   display: flex;
   flex-direction: column;
@@ -330,18 +334,20 @@ nav-item-my:hover {
   padding: 16px;
   gap: 16px;
 }
+
 .input-button-unactive,
 .input-button-active {
   display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 4px;
-background: #0085FF;
-border-radius: 8px;
-color: #FFFFFF;
-font-size: 0.8rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  background: #0085FF;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 0.8rem;
 }
+
 .input-button-unactive {
   background: #FFFFFF;
   color: black;
@@ -362,6 +368,32 @@ font-size: 0.8rem;
 .footer-hr {
   width: 100%;
   border: 1px solid #E8E8E8;
+}
+
+.card-active {
+  width: 160px;
+  background: #FFFFFF;
+  font-size: 0.8rem;
+}
+
+.card-unactive {
+  width: 160px;
+  background: #F7F7F7;
+  font-size: 0.8rem;
+
+}
+
+.input-active,
+.input-unactive {
+  background: #FFFFFF;
+  color: #1C1C1C;
+  width: 20px;
+  height: 20px;
+}
+
+.input-unactive {
+  background: #F7F7F7;
+  color: #585757;
 }
 
 
@@ -5037,6 +5069,10 @@ fieldset:disabled .btn {
   margin-left: calc(-0.5 * var(--bs-card-cap-padding-x));
 }
 
+.right-0 {
+  right: 0;
+}
+
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -8829,6 +8865,7 @@ fieldset:disabled .btn {
 .fw-normal {
   font-weight: 400 !important;
 }
+
 .fw-500 {
   font-weight: 500;
 }
@@ -8848,6 +8885,7 @@ fieldset:disabled .btn {
 .lh-1 {
   line-height: 1 !important;
 }
+
 .lh-2 {
   line-height: 2;
 }
