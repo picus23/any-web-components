@@ -20,6 +20,8 @@ $container-max-widths: (
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "./button/button";
+@import "./navbar/navbar";
+@import "./input/input";
 
 
 
@@ -51,16 +53,16 @@ $container-max-widths: (
   margin: auto;
 }
 
-.navbar-my {
-  box-sizing: border-box;
-  display: flex;
-  /* justify-content: center; */
-  padding: 0.75rem 1.5rem;
-  gap: 1rem;
-  position: relative;
-  background: #FFFFFF;
-  border-bottom: 1px solid #E8E8E8;
-}
+// .navbar-my {
+//   box-sizing: border-box;
+//   display: flex;
+//   /* justify-content: center; */
+//   padding: 0.75rem 1.5rem;
+//   gap: 1rem;
+//   position: relative;
+//   background: #FFFFFF;
+//   border-bottom: 1px solid #E8E8E8;
+// }
 
 .action-panel {
   display: flex;
@@ -88,24 +90,24 @@ nav-item-my:hover {
   color: #1C1C1C;
 }
 
-.input-find {
-  display: block;
-  width: 100%;
-  min-height: 2.625rem;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #0085FF;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 8px 0 0 8px;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+// .input-find {
+//   display: block;
+//   width: 100%;
+//   min-height: 2.625rem;
+//   padding: 0.375rem 0.75rem;
+//   font-size: 1rem;
+//   font-weight: 400;
+//   line-height: 1.5;
+//   color: #212529;
+//   background-color: #fff;
+//   background-clip: padding-box;
+//   border: 1px solid #0085FF;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//   border-radius: 8px 0 0 8px;
+//   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+// }
 
 .font-size-20 {
   font-size: 1rem;
@@ -129,6 +131,10 @@ nav-item-my:hover {
 
 .font-size-10 {
   font-size: 0.5rem;
+}
+
+.fw-500 {
+  font-weight: 500;
 }
 
 .width-100 {

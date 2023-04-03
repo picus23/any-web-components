@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import { Button } from "react-bootstrap";
 import { MdArrowForward } from 'react-icons/md';
 import { MdChevronRight } from 'react-icons/md';
 import SearchField from "../searchElement/SearchField";
@@ -24,6 +25,8 @@ const CatalogMenu: FC<CatalogMenuProps> = ({ children, icon, img_path, series, t
             </div>
             <div>
                 <button className="catalog-menu-item-button rounded-circle"><MdArrowForward /></button>
+                {/* <Button type_btn={'item-button-circle'}><MdArrowForward /></Button> */}
+                {/* <button className="catalog-menu-item-button rounded-circle"><MdArrowForward /></button> */}
             </div>
         </div>
         <div className="catalog-menu-categories-list">

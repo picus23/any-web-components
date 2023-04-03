@@ -1,15 +1,10 @@
-
-$theme-colors: (
-    "info": tomato,
-    "danger": teal
-);
-
 .my-btn-gray,
-.my-btn-small-gray {
-  /* min-width: 52px;
-  min-height: 52px; */
+.my-btn-small-gray,
+.item-button-circle {
+  min-width: 52px;
+  min-height: 52px;
   /* margin: auto; */
-  padding: 0.5rem;
+  padding: 0.5rem 0.625rem;
   border-radius: 12px;
   border: 1px solid #E8E8E8;
   background: #FFFF;
@@ -19,7 +14,7 @@ $theme-colors: (
 
 .my-btn-small-gray {
   align-items: center;
-  gap: 8px;
+  gap: 0;
   border-radius: 8px;
 }
 
@@ -29,7 +24,7 @@ $theme-colors: (
 .my-btn-find-blue {
   min-width: 52px;
   min-height: 52px;
-  padding: 0 0.625rem;
+  padding: 0.5rem 0.625rem;
   background: #0085FF;
   border: 1px solid #0085FF;
   border-radius: 8px;
@@ -45,10 +40,16 @@ $theme-colors: (
   align-items: center;
   justify-content: start;
   gap: 8px;
-  min-width: 256px;
+  width: 256px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.08);
 }
 
 .my-btn-find-blue {
   border-radius: 0 8px 8px 0;
+  width: 124px;
+  padding: 0 32px;
+}
+
+.item-button-circle {
+  border-radius: 50%;
 }
