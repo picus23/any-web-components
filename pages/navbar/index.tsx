@@ -1,5 +1,10 @@
 import Navbar from "@/components/navbar/Navbar";
+import Image from "next/image";
 import Link from "next/link";
+
+
+import reference from "./reference.png"
+
 
 export default function () {
 
@@ -9,6 +14,13 @@ export default function () {
         </h1>
         <Link href='/'>Back</Link>
         <hr />
+
+        <div className="container-xxl p-0 outline">
+            <Image src={reference} alt="" />
+        </div>
+        <hr />
+
+    <div className="container-xxl outline">
 
         <Navbar logo={<svg width="144" height="48" viewBox="0 0 144 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M51.0085 21H52.8537V17.3949H56.4034V15.8736H52.8537V13.7941H56.7869V12.2727H51.0085V21Z" fill="#1C1C1C" />
@@ -33,6 +45,7 @@ export default function () {
         </svg>}
             type_navbar="my">
         </Navbar>
+    </div>
 
     </>
 
