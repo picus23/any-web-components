@@ -1,21 +1,26 @@
-import Image from "next/image"
-import Link from "next/link"
-import ImgLink from "./ImgLink"
+import Link from "next/link";
+import CartComponent from "./CartComponent";
+
 
 
 export default function Index() {
-  return <>
+  return <div className="p-2">
       components galery
       <hr/>
       
+
+
+
+      
+      <CartComponent link="/navbar" title="навигатор" description=""/>
+
+
+
       <Link href="/buttons">Кнопочки</Link>
 
       <br />
-      
-      {/* <Link href="/navbar">Шапка</Link>
-       */}
-       <ImgLink link="/navbar"/>
-      <br />
+
+
       <Link href="/cartItem">Карта товара</Link>
       <br />
       <Link href="/tableCell">Ячейки таблицы</Link>
@@ -27,7 +32,7 @@ export default function Index() {
       <Link href="/footer">Футер</Link>
       <br />
       <Link href="/tableRow">TableRow</Link>
-    </>
+    </div>
 }
 
 
