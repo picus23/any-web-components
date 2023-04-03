@@ -20,6 +20,7 @@ $container-max-widths: (
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "./button/button";
+@import "./navbar/navbar";
 
 
 
@@ -51,16 +52,14 @@ $container-max-widths: (
   margin: auto;
 }
 
-.navbar-my {
-  box-sizing: border-box;
-  display: flex;
-  /* justify-content: center; */
-  padding: 0.75rem 1.5rem;
-  gap: 1rem;
-  position: relative;
-  background: #FFFFFF;
-  border-bottom: 1px solid #E8E8E8;
-}
+// .navbar-my {
+//   display: flex;
+//   /* justify-content: center; */
+//   padding: 0.75rem 1.5rem;
+//   position: relative;
+//   background: #FFFFFF;
+//   border-bottom: 1px solid #E8E8E8;
+// }
 
 .action-panel {
   display: flex;
