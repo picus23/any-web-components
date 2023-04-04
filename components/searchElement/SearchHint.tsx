@@ -37,7 +37,7 @@ const SearchHint: FC<SearchHintProps> = ({ children, icon, title }) => {
             <SearchField title={'Шаровые краны'} icon={<MdSearch />}></SearchField>
             <SearchField title={'Микронные фильтры'} icon={<MdSearch />}></SearchField>
         </div>
-        <div className="search-hint-categories">
+        <div className="search-hint-search-often"> 
             <span className="font-size-16-gray">Популярные категории</span>
             <SearchField title={'Фитинги для труб'} category={'45 серия'} icon={<svg width="64" height="64" viewBox="0 0  64" fill="#585757" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20H20V13.3334H0V20Z" fill="#E53B35" /></svg>}></SearchField>
