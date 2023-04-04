@@ -14,6 +14,7 @@ export default function () {
         <hr />
         <Button counter={0} type_btn='gray' type_counter="gray">Button</Button>
         <Button type_btn='catalog-blue'>Button</Button>
+        <Button type_btn='catalog-blue'>Button</Button>
     </>
 
 }

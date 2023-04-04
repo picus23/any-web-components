@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 52px;
+  min-width: 40px;
   min-height: 40px;
   padding: 0.5rem 0.625rem;
   border-radius: 12px;
@@ -83,4 +83,16 @@
   text-align: center;
   color: white;
   padding: 0 8px;
+}
+
+.my-btn-with-imgs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  width: 108px;
+  height: 40px;  
+  background: #FFFFFF;  
+  border: 1px solid #E8E8E8;
+  border-radius: 8px;
 }

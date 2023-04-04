@@ -17,7 +17,6 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
     return <div className={`${type_navbar ? 'navbar-' + type_navbar : 'nav'}`}>
-
         <div className="row justify-content-between">
             <div className="col-2">
                 <img src="/img/logo.png" alt="" />
@@ -48,7 +47,7 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 <Button icon={<MdPerson fill={'gray'} />} type_btn={"gray"}><span className="fw-500">Войти</span></Button>
                 <Button icon={<MdFavorite fill={'gray'} />} type_btn={"small-gray"}></Button>
                 <div className="position-relative">
-                <Button icon={<MdShoppingCart fill={'gray'} />} type_btn={"gray"} counter={0} type_counter={"up"}><span className="fw-500">Корзина</span></Button>
+                    <Button icon={<MdShoppingCart fill={'gray'} />} type_btn={"gray"} counter={0} type_counter={"up"}><span className="fw-500">Корзина</span></Button>
                 </div>
             </div>
         </div>

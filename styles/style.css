@@ -10315,7 +10315,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 52px;
+  min-width: 40px;
   min-height: 40px;
   padding: 0.5rem 0.625rem;
   border-radius: 12px;
@@ -10396,6 +10396,18 @@ textarea.form-control-lg {
   padding: 0 8px;
 }
 
+.my-btn-with-imgs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  width: 108px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 8px;
+}
+
 .navbar-my {
   box-sizing: border-box;
   display: flex;
@@ -10424,14 +10436,12 @@ textarea.form-control-lg {
 
 .action-panel {
   display: flex;
-  align-items: center;
   gap: 24px;
-  padding: 0.5rem 0;
 }
 
 .action-group {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 4px;
 }
 
@@ -10465,7 +10475,7 @@ nav-item-my:hover {
 
 .font-size-13 {
   font-size: 0.625rem;
-  color: #585757;
+  color: #969696;
 }
 
 .font-size-10 {
@@ -10478,47 +10488,6 @@ nav-item-my:hover {
 
 .width-100 {
   width: 100%;
-}
-
-.table-cell-row,
-.table-cell-column,
-.table-cell-img-right,
-.table-cell-img-center,
-.table-cell-two-buttons-horizont,
-.table-cell-two-buttons-vertical {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  max-width: 192px;
-  gap: 8px;
-  padding: 0.8rem;
-  background: #FFFFFF;
-  /* border: 1px solid gray; */
-  /* position: absolute;
-  right: 0; */
-  height: 100%;
-}
-
-.table-cell-img-right {
-  min-width: 192px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.table-cell-img-center {
-  justify-content: center;
-  align-items: center;
-}
-
-.table-cell-two-buttons-vertical {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* width: max-content */
-}
-
-.table-cell-two-buttons-horizont {
-  /* width: max-content */
 }
 
 .catalog-menu-item {
@@ -10604,7 +10573,6 @@ nav-item-my:hover {
   flex-direction: column;
   align-items: flex-start;
   gap: 1px;
-  /* position: absolute; */
   background: #FFFFFF;
   box-shadow: 0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04);
   border-radius: 8px;

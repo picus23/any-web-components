@@ -20,6 +20,7 @@ export default function Index() {
 
       <br />
 
+      <CartComponent link="/cartItem" title="Карта товара" description=""/>
 
       <Link href="/cartItem">Карта товара</Link>
       <br />

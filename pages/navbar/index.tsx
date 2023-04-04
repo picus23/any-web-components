@@ -17,9 +17,10 @@ export default function () {
 
         <div className="container-xxl p-0" style={{ outline: '1px solid #000' }}>
             <Image src={reference} alt="" />
-
         </div>
+
         <hr />
+        
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
             <Navbar type_navbar="my"></Navbar>
         </div>
