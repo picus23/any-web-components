@@ -32,7 +32,7 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
         <img src="/img/cart_item.png" alt="" />
 
         <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
-            <div className="d-flex">
+            <div className="row">
                 <div className="col-4">
                     <span className="font-size-13">Продукция /</span>
                     <span className="font-size-13"> Клапаны /</span>
@@ -69,9 +69,8 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
                     <span className="font-size-13">Давление</span> <br />
                     <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
                 </div>
-                <div className="col-2">
-                {/* <div className="d-flex flex-column col-2 justify-content-end align-items-end me-2"> */}
-                    <span className="font-size-13 mb-1">Итого</span> <br />
+                <div className="d-flex flex-column col-2 justify-content-end align-items-end mr-2">
+                    <span className="font-size-13 mb-1">Итого</span>
                     <span className="font-size-16-black fw-500">$214</span>
                 </div>
             </div>
