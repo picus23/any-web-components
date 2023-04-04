@@ -254,6 +254,10 @@ body {
   gap: 16px;
 }
 
+.footer-text {
+  width: 360px;
+}
+
 .nav-item-my {
   list-style: none;
   font-size: 0.8rem;
