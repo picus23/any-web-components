@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
+import CollapseAntd from "@/components/collapse/CollapseAntd";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,10 +21,16 @@ export default function () {
         </div>
 
         <hr />
-        
+
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
             <Navbar type_navbar="my"></Navbar>
         </div>
+
+        <hr />
+
+
+        <CollapseAntd title={'Nav Bar'} text={''}></CollapseAntd>
+
     </>
 
 }

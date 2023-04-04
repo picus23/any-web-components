@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Footer from "@/components/footer/Footer";
+import CollapseAntd from "@/components/collapse/CollapseAntd";
+
 import reference from "./ref.png";
 import Image from "next/image";
 
@@ -20,6 +22,11 @@ export default function () {
 
             <Footer></Footer>
         </div>
+
+        <hr />
+
+        <CollapseAntd title={'Footer'} text={''}></CollapseAntd>
+
     </>
 
 }

@@ -13,10 +13,8 @@ export default function Index() {
 
 
     <CartComponent link="/navbar" title="навигатор" description="" />
-    <CartComponent link="/searchHints" title="Подсказки для поиска" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
-
-
-
+    <CartComponent link="/search" title="Подсказки для поиска" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
+    <CartComponent link="/footer" title="Footer" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
 
     <br />
 
@@ -31,8 +29,6 @@ export default function Index() {
     <Link href="/catalogMenu">Каталог Меню</Link>
     <br />
     <Link href="/header">Шапка с поиском</Link>
-    <br />
-    <Link href="/footer">Футер</Link>
     <br />
     <Link href="/tableRow">TableRow</Link>
   </div>

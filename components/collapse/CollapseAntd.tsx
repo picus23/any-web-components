@@ -10,15 +10,16 @@ interface CollapseProps {
     children?: ReactNode,
 }
 
-const CollapseAntd: React.FC<CollapseProps> = ({ title, children, text }) => {
+const CollapseAntd: React.FC<CollapseProps> = ({ title, text,children }) => {
     const onChange = (key: string | string[]) => {
         console.log(key);
     };
 
     return (
         <Collapse accordion>
-            <Panel header={'Find'} key="1">
-                
+            <Panel header={title} key="1">
+                {children}
+                {/* <p>{text}</p> */}
             </Panel>
         </Collapse>
     );

@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import { MdFacebook } from 'react-icons/md'
 
 interface FooterProps {
-    logo: ReactNode,
 }
 
 function Footer(props: FooterProps) {
