@@ -29,9 +29,12 @@ export default function () {
             <span className="font-size-16-gray fw-500">Часто ищут</span>
             <SearchOftenField title="Hy-Lok 3мм"></SearchOftenField>
         </div>
-        <div>
+    </>
+}
 
-            {/* 'import {MdSearch} from 'react-icons/md'
+{/* <div> */ }
+
+{/* 'import {MdSearch} from 'react-icons/md'
             import ButtonGrayArrow from '../buttons/ButtonGrayArrow'
 
             interface SearchOftenFieldProps {
@@ -55,6 +58,5 @@ export default function () {
 
             export default SearchOftenField;
         </div>
-    </>
 
 }' */}
