@@ -1,12 +1,12 @@
 import { MdSearch } from 'react-icons/md'
 import ButtonGrayArrow from '../buttons/ButtonGrayArrow'
 
-interface SearchOftenFieldProps {
+interface SearchCategoryProps {
     title: string,
 }
 
 
-function SearchOftenField(props: SearchOftenFieldProps) {
+function SearchCategory(props: SearchCategoryProps) {
     return (
         <div className="search-field px-2">
             <div className="me-2">
@@ -18,12 +18,12 @@ function SearchOftenField(props: SearchOftenFieldProps) {
     )
 }
 
-export default SearchOftenField;
+export default SearchCategory;
 
 
 {/* <div className="search-hint-search-often">
     <span className="font-size-16-gray fw-500">Часто ищут</span>
-    <SearchOftenField title="Hy-Lok 3мм"></SearchOftenField>
-    <SearchOftenField title="Hy-Lok 3мм"></SearchOftenField>
-    <SearchOftenField title="Hy-Lok 3мм"></SearchOftenField>
+    <SearchCategory title="Hy-Lok 3мм"></SearchCategory>
+    <SearchCategory title="Hy-Lok 3мм"></SearchCategory>
+    <SearchCategory title="Hy-Lok 3мм"></SearchCategory>
 </div> */}

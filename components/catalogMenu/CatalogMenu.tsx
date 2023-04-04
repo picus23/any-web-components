@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { Button } from "react-bootstrap";
 import { MdArrowForward } from 'react-icons/md';
 import { MdChevronRight } from 'react-icons/md';
-import SearchField from "../searchElement/SearchField";
+import SearchSeries from "../searchElement/SearchSeries";
 import ButtonGrayArrow from "../buttons/ButtonGrayArrow";
 
 
@@ -18,7 +18,7 @@ interface CatalogMenuProps {
 const CatalogMenu: FC<CatalogMenuProps> = ({ children, icon, img_path, series, title, categories }) => {
     return <div className="catalog-menu-item mx-auto">
         <div className="w-100">
-            <SearchField title={'Фитинги для труб'} category={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchField>
+            <SearchSeries title={'Фитинги для труб'} category={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchSeries>
         </div>
 
         {/* <div className="catalog-menu-item-header">

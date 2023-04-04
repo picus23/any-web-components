@@ -19,49 +19,40 @@ const TableRow: FC<TableRowProps> = ({ }) => {
     return (
         <div className="d-flex">
             <div className="d-flex position-relative ">
-
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+            
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'active'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
-                <Card icon={<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="128" height="128" fill="url(#pattern0)" /></svg>}
+                <Card icon={<img src="/kit/image_table_row.png" alt="" />}
                     title={'Проходной 2-х ходовой'}
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
