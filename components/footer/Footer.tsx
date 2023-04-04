@@ -7,9 +7,11 @@ interface FooterProps {
 
 function Footer(props: FooterProps) {
     return <div className='py-4 bg-white'>
-        <div className='d-flex align-items-start justify-content-around px-4'>
+        <div className='d-flex align-items-start justify-content-around'>
             <div className='d-flex flex-column'>
-                {props.logo}
+                <div>
+                    <img src="/kit/footer_logo.png" alt="" />
+                </div>
                 <span className='font-size-16-gray my-3'>Компания «Флюид-Лайн» является <br /> изготовителем и эксклюзивным <br /> дистрибьютором продукции A-flow, Hy-Lok, <br /> Drastar и HIFLUX в России и СНГ.</span>
                 <div className='d-flex gap-3'>
                     {/* Facebook */}
