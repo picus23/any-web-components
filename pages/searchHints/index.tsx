@@ -1,4 +1,7 @@
 import Navbar from "@/components/navbar/Navbar";
+import React from 'react';
+import CollapseAntd from "@/components/collapse/CollapseAntd";
+
 import Image from "next/image";
 import Link from "next/link";
 import SearchOftenField from "@/components/searchElement/SearchOftenField";
@@ -26,37 +29,9 @@ export default function () {
 
         <hr />
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
+            <CollapseAntd title={'Поле для часто ищут'} text={'<SearchOftenField title="Hy-Lok 3мм"></SearchOftenField>'}></CollapseAntd>
             <span className="font-size-16-gray fw-500">Часто ищут</span>
             <SearchOftenField title="Hy-Lok 3мм"></SearchOftenField>
         </div>
     </>
 }
-
-{/* <div> */ }
-
-{/* 'import {MdSearch} from 'react-icons/md'
-            import ButtonGrayArrow from '../buttons/ButtonGrayArrow'
-
-            interface SearchOftenFieldProps {
-                title: string,
-}
-
-
-            function SearchOftenField(props: SearchOftenFieldProps) {
-    return (
-            <div className="search-field p-2">
-                <div className="mx-2">
-                    <MdSearch size={24} fill={'gray'} />
-                    <span className="font-size-20 ms-3 fw-500">{props.title}</span>
-                </div>
-                <div>
-                    <ButtonGrayArrow />
-                </div>
-            </div>
-            )
-}
-
-            export default SearchOftenField;
-        </div>
-
-}' */}
