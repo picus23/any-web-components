@@ -7,6 +7,9 @@ import { MdPictureAsPdf } from 'react-icons/md';
 import { MdCheckCircle } from 'react-icons/md';
 import { MdAddComment } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
+import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import Button_with_imgs from "../buttons/Button_with_imgs";
 
 
 interface CartItemProps {
@@ -19,66 +22,62 @@ interface CartItemProps {
 }
 
 const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, count, name_item }) => {
-    return <div className="d-flex border border-dark width-100">
-        <div className="d-flex flex-column mx-2 justify-content-evenly">
-            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.11997 6.70998L5.99997 2.82998L9.87997 6.70998C10.27 7.09998 10.9 7.09998 11.29 6.70998C11.68 6.31998 11.68 5.68998 11.29 5.29998L6.69997 0.70998C6.30997 0.31998 5.67997 0.31998 5.28997 0.70998L0.699971 5.29998C0.309971 5.68998 0.309971 6.31998 0.699971 6.70998C1.08997 7.08998 1.72997 7.09998 2.11997 6.70998Z" fill="#969696" />
-            </svg>
+    return <div className="d-flex border border-dark">
 
-            <span className="font-size-16">{count}</span>
-            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.11997 1.29006L5.99997 5.17006L9.87997 1.29006C10.27 0.900059 10.9 0.900059 11.29 1.29006C11.68 1.68006 11.68 2.31006 11.29 2.70006L6.69997 7.29006C6.30997 7.68006 5.67997 7.68006 5.28997 7.29006L0.699971 2.70006C0.309971 2.31006 0.309971 1.68006 0.699971 1.29006C1.08997 0.910059 1.72997 0.900059 2.11997 1.29006Z" fill="#969696" />
-            </svg>
+        <div className="d-flex flex-column mx-1 justify-content-evenly me-2">
+            <MdOutlineKeyboardArrowUp />
+            <span className="mx-1">{count}</span>
+            <MdKeyboardArrowDown />
         </div>
-        <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.5" y="0.5" width="127" height="127" rx="7.5" fill="url(#pattern0)" />
-            <rect x="0.5" y="0.5" width="127" height="127" rx="7.5" stroke="#E8E8E8" />
-        </svg>
-        <div className="ms-3">
-            <div className="d-flex justify-content-between">
-                <div className="">
+        <img src="/img/cart_item.png" alt="" />
+
+        <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
+            <div className="d-flex">
+                <div className="col-4">
                     <span className="font-size-13">Продукция /</span>
                     <span className="font-size-13"> Клапаны /</span>
                     <span className="font-size-13"> Шаровые краны</span>
                     <br />
-                    <span className="font-size-20">{name_item}</span>
+                    <span className="font-size-20 fw-500">{name_item}</span>
                 </div>
-                <div className="action-panel">
+                <div className="d-flex col-4 gap-3">
                     <div className="action-group">
-                        <Button icon={<MdCheckCircle />} type_btn="small-gray"></Button>
-                        <Button icon={<MdAddComment />} type_btn="small-gray"></Button>
+                        <Button icon={<MdCheckCircle size={20} fill={'gray'}/>} type_btn="small-gray"></Button>
+                        <Button icon={<MdAddComment size={20} fill={'gray'} />} type_btn="small-gray"></Button>
                     </div>
                     <div className="action-group">
-                        <Button icon={<Md3DRotation />} type_btn="small-gray"></Button>
-                        <Button icon={<MdPictureAsPdf />} type_btn="small-gray"></Button>
+                        <Button icon={<Md3DRotation size={20} fill={'gray'} />} type_btn="small-gray"></Button>
+                        <Button icon={<MdPictureAsPdf size={20} fill={'gray'} />} type_btn="small-gray"></Button>
                     </div>
                     <div className="action-group">
-                        <Button icon={<MdRemove />} icon2={<MdAdd />} counter={1} type_btn="gray"></Button>
-                        <Button icon={<MdDelete />} type_btn="small-gray"></Button>
+                        <Button_with_imgs icon={<MdRemove  size={20} fill={'gray'}/>} icon2={<MdAdd size={20} fill={'gray'} />} class_name={'font-size-16-gray'} counter={1} type_btn="with-imgs"></Button_with_imgs>
+                        <Button_with_imgs icon={<MdDelete size={20} fill={'gray'} />} type_btn="small-gray"></Button_with_imgs>
                     </div>
                 </div>
+            </div>
 
+            <div className="row">
+                <div className="col-2">
+                    <span className="font-size-13">Давление</span> <br />
+                    <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
+                </div>
+                <div className="col-2">
+                    <span className="font-size-13">Давление</span> <br />
+                    <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
+                </div>
+                <div className="col-2">
+                    <span className="font-size-13">Давление</span> <br />
+                    <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
+                </div>
+                <div className="col-2">
+                {/* <div className="d-flex flex-column col-2 justify-content-end align-items-end me-2"> */}
+                    <span className="font-size-13 mb-1">Итого</span> <br />
+                    <span className="font-size-16-black fw-500">$214</span>
+                </div>
             </div>
-            <div className="d-flex">
-                <div className="me-3">
-                    <span className="font-size-13">Давление</span> <br />
-                    <span className="font-size-16">до 207 бар при 21°C</span>
-                </div>
-                <div className="mx-3">
-                    <span className="font-size-13">Давление</span> <br />
-                    <span className="font-size-16">до 207 бар при 21°C</span>
-                </div>
-                <div className="mx-3">
-                    <span className="font-size-13">Давление</span> <br />
-                    <span className="font-size-16">до 207 бар при 21°C</span>
-                </div>
-                <div className="ms-3">
-                    <span className="font-size-13">Итого</span> <br />
-                    <span className="font-size-16">$214</span>
-                </div>
-            </div>
-        </div>
-    </div >
+
+        </div >
+    </div>
 
 }
 

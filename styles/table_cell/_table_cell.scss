@@ -1,0 +1,42 @@
+
+.table-cell-row,
+.table-cell-column,
+.table-cell-img-right,
+.table-cell-img-center,
+.table-cell-two-buttons-horizont,
+.table-cell-two-buttons-vertical {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 192px;
+  gap: 8px;
+  padding: 0.8rem;
+  background: #FFFFFF;
+  /* border: 1px solid gray; */
+  /* position: absolute;
+  right: 0; */
+  height: 100%;
+
+}
+
+.table-cell-img-right {
+  min-width: 192px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-cell-img-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.table-cell-two-buttons-vertical {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: max-content */
+}
+
+.table-cell-two-buttons-horizont {
+  width: max-content 
+}

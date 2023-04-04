@@ -1,28 +1,31 @@
-import CartItem from "@/components/cartItem/CartItem";
+import Navbar from "@/components/navbar/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 
-import reference from "./ref.png";
 
+import reference from "./ref.png";
 
 export default function () {
 
     return <>
         <h1>
-            CartItem
+            Navbar
         </h1>
         <Link href='/'>Back</Link>
+        <hr />
+
 
         <div className="container-xxl p-0" style={{ outline: '1px solid #000' }}>
             <Image src={reference} alt="" />
+
         </div>
+
+
 
         <hr />
-
-        <div className="container-xxl p-0" style={{ outline: '1px solid #000' }}>
-            <CartItem count={3} name_item={"H1B-H-6M"}></CartItem>
+        <div className="container-xxl" style={{ outline: '1px solid #000' }}>
+            component
         </div>
-
     </>
 
 }
