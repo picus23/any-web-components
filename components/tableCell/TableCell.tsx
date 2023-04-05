@@ -5,8 +5,8 @@ import Button from "../buttons/Button";
 interface TableCellProps {
     children?: ReactNode,
     icon?: ReactNode,
-    type_btn?: string,
-    type_counter?: string,
+    btn_style?: string,
+    counter_style?: string,
     direction?: string,
     title?: string,
     describe?: string,
@@ -17,7 +17,7 @@ interface TableCellProps {
     imgCenter?: ReactNode,
 }
 
-const TableCell: FC<TableCellProps> = ({ children, icon, direction, type_btn, type_counter, title, describe, chevron, oneButton, twoButton, imgRight, imgCenter }) => {
+const TableCell: FC<TableCellProps> = ({ children, icon, direction, btn_style, counter_style, title, describe, chevron, oneButton, twoButton, imgRight, imgCenter }) => {
     return <div className={`${direction ? 'table-cell-' + direction : 'table-cell-row'}`}>
         {oneButton ?? false}
         {twoButton ?? false}

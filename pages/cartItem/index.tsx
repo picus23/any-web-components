@@ -1,4 +1,4 @@
-import CartItem from "@/components/cartItem/CartItem";
+import CartItem from "../../components/cartItem/CartItem";
 import Image from "next/image";
 import Link from "next/link";
 

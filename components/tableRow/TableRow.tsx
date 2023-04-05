@@ -11,7 +11,7 @@ interface TableRowProps {
     icon?: ReactNode,
     icon2?: ReactNode
     counter?: number,
-    type_btn?: string,
+    btn_style?: string,
     type_counter?: string,
 }
 
@@ -57,8 +57,8 @@ const TableRow: FC<TableRowProps> = ({ }) => {
                     type_input={'unactive'} input_name={'card'}>
                 </Card>
                 <div className="position-absolute right-0 h-100">
-                    <TableCell direction={'two-buttons-vertical'} oneButton={<Button type_btn="small-gray" icon={<MdChevronLeft />}></Button>}
-                        twoButton={<Button type_btn="small-gray" icon={<MdChevronRight />}></Button>}></TableCell>
+                    <TableCell direction={'two-buttons-vertical'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
+                        twoButton={<Button btn_style="small-gray" icon={<MdChevronRight />}></Button>}></TableCell>
                 </div>
             </div>
         </div>
@@ -69,4 +69,4 @@ const TableRow: FC<TableRowProps> = ({ }) => {
 export default TableRow;
 
 
-// {`${type_btn ? 'my-btn-' + type_btn : 'btn-primary'}`} 
+// {`${btn_style ? 'my-btn-' + btn_style : 'btn-primary'}`} 

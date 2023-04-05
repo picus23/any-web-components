@@ -1,4 +1,4 @@
-import CatalogMenu from "@/components/catalogMenu/CatalogMenu";
+import CatalogMenu from "../../components/catalogMenu/CatalogMenu";
 import Link from "next/link";
 
 

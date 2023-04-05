@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import SearchHint from "../searchElement/SearchHintold";
+import SearchBar from "../searchElement/SearchBar/SearchBar";
 import { Input } from "../inputs/Input";
 import { MdChevronRight } from "react-icons/md";
 
@@ -24,7 +24,7 @@ const Header: FC<HeaderProps> = ({ children, icon, icon2, counter, type_btn, typ
             <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
             <Input button_style={'button-unactive'} type_input={'square'} title={'Продукция'} icon={<MdChevronRight />} title_style={'font-size-16 '}></Input>
         </div>
-        <SearchHint></SearchHint>
+        <SearchBar></SearchBar>
 
     </div>
 }

@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar/Navbar";
-import CollapseAntd from "@/components/collapse/CollapseAntd";
+import Navbar from "../../components/navbar/Navbar";
+import CollapseAntd from "../../components/collapse/CollapseAntd";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,7 +29,7 @@ export default function () {
         <hr />
 
 
-        <CollapseAntd title={'Nav Bar'} text={''}></CollapseAntd>
+        <CollapseAntd title={'Nav Bar'} text={'<Navbar type_navbar="my"></Navbar>'}></CollapseAntd>
 
     </>
 

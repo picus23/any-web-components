@@ -1,4 +1,4 @@
-import Button from "@/components/buttons/Button";
+import Button from "../../components/buttons/Button";
 import Link from "next/link";
 
 
@@ -12,9 +12,9 @@ export default function () {
         </h1>
         <Link href='/'>Back</Link>
         <hr />
-        <Button counter={0} type_btn='gray' type_counter="gray">Button</Button>
-        <Button type_btn='catalog-blue'>Button</Button>
-        <Button type_btn='catalog-blue'>Button</Button>
+        <Button counter={0} btn_style='gray' counter_style="gray">Button</Button>
+        <Button btn_style='catalog-blue'>Button</Button>
+        <Button btn_style='catalog-blue'>Button</Button>
     </>
 
 }

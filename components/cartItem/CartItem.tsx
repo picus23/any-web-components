@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import Button from '@/components/buttons/Button';
+import Button from '../../components/buttons/Button';
 import { MdRemove } from 'react-icons/md';
 import { MdAdd } from 'react-icons/md';
 import { Md3DRotation } from 'react-icons/md';
@@ -9,19 +9,19 @@ import { MdAddComment } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import Button_with_imgs from "../buttons/Button_with_imgs";
+import ButtonCounter from "../buttons/ButtonCounter";
 
 
 interface CartItemProps {
     children?: ReactNode,
     icon?: ReactNode,
-    type_btn?: string,
+    btn_style?: string,
     type_counter?: string,
     count?: number,
     name_item: string,
 }
 
-const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, count, name_item }) => {
+const CartItem: FC<CartItemProps> = ({ children, icon, btn_style, type_counter, count, name_item }) => {
     return <div className="d-flex border border-dark">
 
         <div className="d-flex flex-column mx-1 justify-content-evenly me-2">
@@ -29,7 +29,7 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
             <span className="mx-1">{count}</span>
             <MdKeyboardArrowDown />
         </div>
-        <img src="/img/cart_item.png" alt="" />
+        <img src="/kit/cart_item.png" alt="" />
 
         <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
             <div className="row">
@@ -42,16 +42,16 @@ const CartItem: FC<CartItemProps> = ({ children, icon, type_btn, type_counter, c
                 </div>
                 <div className="d-flex col-4 gap-3">
                     <div className="action-group">
-                        <Button icon={<MdCheckCircle size={20} fill={'gray'}/>} type_btn="small-gray"></Button>
-                        <Button icon={<MdAddComment size={20} fill={'gray'} />} type_btn="small-gray"></Button>
+                        <Button icon={<MdCheckCircle size={20} fill={'gray'} />} btn_style="small-gray"></Button>
+                        <Button icon={<MdAddComment size={20} fill={'gray'} />} btn_style="small-gray"></Button>
                     </div>
                     <div className="action-group">
-                        <Button icon={<Md3DRotation size={20} fill={'gray'} />} type_btn="small-gray"></Button>
-                        <Button icon={<MdPictureAsPdf size={20} fill={'gray'} />} type_btn="small-gray"></Button>
+                        <Button icon={<Md3DRotation size={20} fill={'gray'} />} btn_style="small-gray"></Button>
+                        <Button icon={<MdPictureAsPdf size={20} fill={'gray'} />} btn_style="small-gray"></Button>
                     </div>
                     <div className="action-group">
-                        <Button_with_imgs icon={<MdRemove  size={20} fill={'gray'}/>} icon2={<MdAdd size={20} fill={'gray'} />} class_name={'font-size-16-gray'} counter={1} type_btn="with-imgs"></Button_with_imgs>
-                        <Button_with_imgs icon={<MdDelete size={20} fill={'gray'} />} type_btn="small-gray"></Button_with_imgs>
+                        <ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="with-imgs"></ButtonCounter>
+                        <Button icon={<MdDelete size={20} fill={'gray'} />} btn_style="small-gray"></Button>
                     </div>
                 </div>
             </div>

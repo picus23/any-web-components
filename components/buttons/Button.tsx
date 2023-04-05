@@ -6,18 +6,19 @@ interface ButtonProps {
     icon?: ReactNode,
     icon2?: ReactNode
     counter?: number,
-    type_btn?: string,
-    type_counter?: string,
+    btn_style: string,
+    counter_style?: string,
+    text_style?: string,
     class_name?: string,
 }
 
-const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, type_btn, type_counter,class_name }) => {
-    return <button className={`${type_btn ? 'my-btn-' + type_btn : 'btn-primary'}`}>
+const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, btn_style,text_style,counter_style }) => {
+    return <button className={'my-btn-' + btn_style}>
 
         {icon ?? false}
         {children}
 
-        <span className={`${class_name} ${type_counter ? ' counter-' + type_counter : false}`}>{counter}</span>
+        <span className={'counter-' + counter_style}>{counter}</span>
         {icon2 ?? false}
     </button>
 }
@@ -25,4 +26,4 @@ const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, type_btn, typ
 export default Button;
 
 
-// {`${type_btn ? 'my-btn-' + type_btn : 'btn-primary'}`} 
+// {`${btn_style ? 'my-btn-' + btn_style : 'btn-primary'}`} 

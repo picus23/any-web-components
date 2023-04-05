@@ -1,11 +1,15 @@
 import React from 'react';
 import {ReactNode} from 'react';
 import { Collapse } from 'antd';
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
+// import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+
 
 const { Panel } = Collapse;
 
 interface CollapseProps {
-    title?: string,
+    title: string,
     text?: string
     children?: ReactNode,
 }
@@ -18,8 +22,15 @@ const CollapseAntd: React.FC<CollapseProps> = ({ title, text,children }) => {
     return (
         <Collapse accordion>
             <Panel header={title} key="1">
-                {children}
-                {/* <p>{text}</p> */}
+                {/* {children} */}
+
+
+
+                {/* <SyntaxHighlighter children={'text'} language="typescript"  /> */}
+                <pre>
+                    <code>{text}</code>
+                </pre>
+
             </Panel>
         </Collapse>
     );

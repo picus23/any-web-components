@@ -18,7 +18,7 @@ interface CatalogMenuProps {
 const CatalogMenu: FC<CatalogMenuProps> = ({ children, icon, img_path, series, title, categories }) => {
     return <div className="catalog-menu-item mx-auto">
         <div className="w-100">
-            <SearchSeries title={'Фитинги для труб'} category={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchSeries>
+            <SearchSeries title={'Фитинги для труб'} subtitle={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchSeries>
         </div>
 
         {/* <div className="catalog-menu-item-header">
@@ -45,4 +45,4 @@ const CatalogMenu: FC<CatalogMenuProps> = ({ children, icon, img_path, series, t
 export default CatalogMenu;
 
 
-// {`${type_btn ? 'my-btn-' + type_btn : 'btn-primary'}`} 
+// {`${btn_style ? 'my-btn-' + btn_style : 'btn-primary'}`} 

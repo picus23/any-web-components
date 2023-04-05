@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Footer from "@/components/footer/Footer";
-import CollapseAntd from "@/components/collapse/CollapseAntd";
+import Footer from "../../components/footer/Footer";
+import CollapseAntd from "../../components/collapse/CollapseAntd";
 
 import reference from "./ref.png";
 import Image from "next/image";

@@ -1,16 +1,20 @@
-import Navbar from "@/components/navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 import React from 'react';
-import CollapseAntd from "@/components/collapse/CollapseAntd";
-import SearchSeries from "@/components/searchElement/fields/FieldSeries";
-import Button from "@/components/buttons/Button";
-import SearchBar from "@/components/searchElement/SearchBar";
+import CollapseAntd from "../../components/collapse/CollapseAntd";
+import SearchSeries from "../../components/searchElement/fields/FieldSeries";
+import Button from "../../components/buttons/Button";
+import SearchBarEncodings from "../../components/searchElement/SearchBarEncodings";
 import Image from "next/image";
 import Link from "next/link";
-import SearchCategory from "@/components/searchElement/fields/FieldSeries";
+import SearchCategory from "../../components/searchElement/fields/FieldSeries";
 import { MdSearch } from "react-icons/md";
-
-
 import reference from "./ref.png";
+import reference1 from "./ref1.png";
+import SearchInput from "@/components/searchElement/SearchInput";
+import SearchBar from "@/components/searchElement/SearchBar/SearchBar";
+import SearchTitle from "@/components/searchElement/SearchBar/SearchTitle";
+import FieldCategory from "@/components/searchElement/fields/FieldCategory";
+import FieldSeries from "../../components/searchElement/fields/FieldSeries";
 
 
 let arraySearchOften = ['Hy-Lok- 3мм', 'Шаровые краны', 'Микронные фильтры'];
@@ -26,18 +30,73 @@ export default function () {
 
 
         <div className="container-xxl p-0" style={{ outline: '1px solid #000' }}>
+            <h1>Образец</h1>
             <Image src={reference} alt="" />
+        </div>
+        <hr />
+        <div className="container-xxl p-0 d-flex p-5 justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
+            {/* Обычно окно поиска */}
+            <h1>Мой</h1>
+            <div className="d-flex flex-column my-3">
+                <SearchInput />
+                <SearchBar>
+                    <SearchTitle>Часто ищут</SearchTitle>
+                    {
+                        ['Hy-Lok 3мм', 'Шаровые краны', 'Микронные фильтры'].map(title => (
+                            <FieldCategory title={title} />
+                        ))
+                    }
 
+                    <hr />
+
+                    <SearchTitle>Популярные категории</SearchTitle>
+                    {
+                        [
+                            ['Фитинги для труб', '45 серия', '/kit/empty_square.png'],
+                            ['Шаровые краны', '45 серия', '/kit/empty_square.png'],
+                            ['Микронные фильтры', '45 серия', '/kit/empty_square.png'],
+                        ].map(item => (
+                            <FieldSeries title={item[0]} subtitle={item[1]} icon={<img src={item[2]} alt="" />}></FieldSeries>
+                        ))
+                    }
+                </SearchBar>
+
+                {/* <hr />
+            <SearchBarEncodings></SearchBarEncodings> */}
+            </div>
         </div>
 
+        <CollapseAntd title={'Search Bar'} text={`
+        
+        <div className="d-flex flex-column my-3">
+        <SearchInput />
+        <SearchBar>
+            <SearchTitle>Часто ищут</SearchTitle>
+            {
+                ['Hy-Lok 3мм', 'Шаровые краны', 'Микронные фильтры'].map(title => (
+                    <FieldCategory title={title} />
+                ))
+            }
 
-        <hr />
+            <hr />
+
+            <SearchTitle>Популярные категории</SearchTitle>
+            {
+                [
+                    ['Фитинги для труб', '45 серия','/kit/empty_square.png'],
+                    ['Шаровые краны', '45 серия','/kit/empty_square.png'],
+                    ['Микронные фильтры', '45 серия','/kit/empty_square.png'],
+                ].map(item => (
+                    <FieldSeries title={item[0]} subtitle={item[1]} icon={<img src={item[2]} alt="" />}></FieldSeries>
+                ))
+            }
+        </SearchBar>
+        
+        `}></CollapseAntd>
 
         <div className="container-xxl p-0" style={{ outline: '1px solid #000' }}>
-            {/* Обычно окно поиска */}
-            <SearchBar></SearchBar>
+            <Image src={reference1} alt="" />
         </div>
-        <CollapseAntd title={'Search Bar'} text={''}></CollapseAntd>
 
     </>
 }
