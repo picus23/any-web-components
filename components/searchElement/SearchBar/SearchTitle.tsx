@@ -5,7 +5,7 @@ interface SeatchTitleProps {
 }
  
 const SearchTitle: FC<SeatchTitleProps> = ({children}) => {
-    return <span className="font-size-16-gray fw-500">{children}</span>;
+    return <span className="font-size-16-gray fw-500 my-2">{children}</span>;
 }
  
 export default SearchTitle;
