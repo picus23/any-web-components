@@ -1,7 +1,8 @@
 import React from 'react';
-import SearchSeries from "@/components/searchElement/SearchSeries";
+import FieldSeries from "@/components/searchElement/fields/FieldSeries";
 import Button from "@/components/buttons/Button";
-import SearchCategory from "@/components/searchElement/SearchSeries";
+import FieldCategory from "@/components/searchElement/fields/FieldCategory";
+import {MdSearch} from "react-icons/md";
 
 export default function SearchBar() {
 
@@ -14,18 +15,36 @@ export default function SearchBar() {
                 <Button type_btn="find-blue">Найти</Button>
             </form>
 
+            <div className="search-hint-history">
+                <span className="font-size-16-gray fw-500">Вы искали</span>
+                <div className="row gap-3">
+                    <div className="col search-hint-img-text">
+                        <MdSearch />
+                        <span className="font-size-20 fw-500 mx-2">Hy-Lok- 3мм</span>
+                    </div>
+                    <div className="col search-hint-img-text">
+                        <MdSearch />
+                        <span className="font-size-20 fw-500 mx-2">Hy-Lok- 3мм</span>
+                    </div>
+                    <div className="col search-hint-img-text">
+                        <MdSearch />
+                        <span className="font-size-20 fw-500 mx-2">Hy-Lok- 3мм</span>
+                    </div>
+                </div>
+            </div>
+
             <div className="search-hint-search-often">
                 <span className="font-size-16-gray fw-500">Часто ищут</span>
-                <SearchCategory title={'Hy-Lok- 3мм'}></SearchCategory>
-                <SearchCategory title={'Шаровые краны'}></SearchCategory>
-                <SearchCategory title={'Микронные фильтры'}></SearchCategory>
+                <FieldCategory title={'Hy-Lok- 3мм'}></FieldCategory>
+                <FieldCategory title={'Шаровые краны'}></FieldCategory>
+                <FieldCategory title={'Микронные фильтры'}></FieldCategory>
             </div>
 
             <div className="search-hint-search-often">
                 <span className="font-size-16-gray fw-500">Популярные категории</span>
-                <SearchSeries title={'Фитинги для труб'} category={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchSeries>
-                <SearchSeries title={'Шаровые краны'} category={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchSeries>
-                <SearchSeries title={'Микронные фильтры'} category={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></SearchSeries>
+                <FieldSeries title={'Фитинги для труб'} subtitle={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></FieldSeries>
+                <FieldSeries title={'Шаровые краны'} subtitle={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></FieldSeries>
+                <FieldSeries title={'Микронные фильтры'} subtitle={'45 серия'} icon={<img src="/kit/empty_square.png" alt="" />}></FieldSeries>
             </div>
 
         </div>

@@ -4,8 +4,10 @@ import ButtonGrayArrow from '@/components/buttons/ButtonGrayArrow'
 
 interface SearchSeriesProps {
     title: string,
-    category?: string,
-    icon?: ReactNode
+    subtitle?: string,
+    icon?: ReactNode,
+    button?: ReactNode,
+    button2?: ReactNode
 }
 
 
@@ -16,10 +18,12 @@ function SearchSeries(props: SearchSeriesProps) {
                 {props.icon ?? false}
                 <div className="d-flex flex-column mx-2 justify-content-start">
                     <span className="font-size-20 fw-500">{props.title}</span>
-                    {props.category ? <span className="font-size-16-gray fw-500">{props.category}</span> : false}
+                    {props.subtitle ? <span className="font-size-16-gray fw-500">{props.subtitle}</span> : false}
                 </div>
+                {props.button ?? false}
+                {props.button2 ?? false}
             </div>
-                <ButtonGrayArrow />
+            <ButtonGrayArrow />
         </div>
     )
 }

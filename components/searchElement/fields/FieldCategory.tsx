@@ -1,5 +1,6 @@
 import { MdSearch } from 'react-icons/md'
-import ButtonGrayArrow from '../buttons/ButtonGrayArrow'
+import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
+import { ReactNode } from 'react'
 
 interface SearchCategoryProps {
     title: string,
@@ -13,7 +14,7 @@ function SearchCategory(props: SearchCategoryProps) {
                 <MdSearch size={24} fill={'gray'} />
                 <span className="font-size-20 ms-3 fw-500">{props.title}</span>
             </div>
-                <ButtonGrayArrow />
+            <ButtonGrayArrow />
         </div>
     )
 }

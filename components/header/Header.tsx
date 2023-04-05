@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import SearchHint from "../searchElement/SearchHint";
+import SearchHint from "../searchElement/SearchHintold";
 import { Input } from "../inputs/Input";
 import { MdChevronRight } from "react-icons/md";
 

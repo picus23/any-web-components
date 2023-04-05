@@ -1,12 +1,12 @@
 import Navbar from "@/components/navbar/Navbar";
 import React from 'react';
 import CollapseAntd from "@/components/collapse/CollapseAntd";
-import SearchSeries from "@/components/searchElement/SearchSeries";
+import SearchSeries from "@/components/searchElement/fields/FieldSeries";
 import Button from "@/components/buttons/Button";
 import SearchBar from "@/components/searchElement/SearchBar";
 import Image from "next/image";
 import Link from "next/link";
-import SearchCategory from "@/components/searchElement/SearchSeries";
+import SearchCategory from "@/components/searchElement/fields/FieldSeries";
 import { MdSearch } from "react-icons/md";
 
 
