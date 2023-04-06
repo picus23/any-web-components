@@ -18,7 +18,7 @@ const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, btn_style,tex
         {icon ?? false}
         {children}
 
-        <span className={'counter-' + counter_style}>{counter}</span>
+        {counter_style ? <span className={'counter-' + counter_style}>{counter}</span> : false}
         {icon2 ?? false}
     </button>
 }

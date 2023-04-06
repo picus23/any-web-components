@@ -164,7 +164,7 @@ export default function () {
                 <SearchBarEncoding>
                     <div className="search-hint-history">
                         <SearchTitle>Кодировки</SearchTitle>
-                        <div className="row w-100 ">
+                        <div className="row w-100">
                             {
                                 [
                                     ['H1B-H-6M', 156, 5],
@@ -176,7 +176,7 @@ export default function () {
                                         title={item[0]}
                                         price={item[1]}
                                         amount={item[2]}
-                                        button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h52"></ButtonCounter>}
+                                        button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
                                         button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}>
                                     </FieldEncoding>
                                 )

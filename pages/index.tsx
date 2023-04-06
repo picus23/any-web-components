@@ -15,6 +15,7 @@ export default function Index() {
     <CartComponent link="/navbar" title="навигатор" description="" />
     <CartComponent link="/search" title="Подсказки для поиска" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
     <CartComponent link="/footer" title="Footer" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
+    <CartComponent link="/basket" title="Корзина" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
 
     <br />
 

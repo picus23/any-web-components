@@ -8,7 +8,8 @@ interface FieldEncodingProps {
     amount?: number,
     icon?: ReactNode,
     button?: ReactNode,
-    button2?: ReactNode
+    button2?: ReactNode,
+    btnGrayArrow: boolean,
 }
 
 
@@ -32,7 +33,7 @@ function FieldEncoding(props: FieldEncodingProps) {
                 </div>
             </div>
             <div className=''>
-                <ButtonGrayArrow />
+                { props.btnGrayArrow ? <ButtonGrayArrow /> : false}
             </div>
         </div>
         // <div className="search-field px-2">
