@@ -7,7 +7,7 @@ import SearchBarEncodings from "../../components/searchElement/SearchBarEncoding
 import Image from "next/image";
 import Link from "next/link";
 import SearchCategory from "../../components/searchElement/fields/FieldSeries";
-import { MdSearch, MdShoppingCart } from "react-icons/md";
+import { MdFilterAlt, MdPictureAsPdf, MdSearch, MdShoppingCart } from "react-icons/md";
 import reference from "./ref.png";
 import reference1 from "./ref1.png";
 import SearchInput from "@/components/searchElement/SearchInput";
@@ -19,11 +19,31 @@ import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonCounter from "@/components/buttons/ButtonCounter";
 import SearchBarEncoding from "../../components/searchElement/SearchBarEncodings";
 import ButtonShow from "@/components/buttons/ButtonShow";
+import FieldCharacteristic from "../../components/searchElement/fields/FieldCharacteristic";
+import FieldText from "@/components/searchElement/fields/FieldText";
 
-
-let arraySearchOften = ['Hy-Lok- 3мм', 'Шаровые краны', 'Микронные фильтры'];
 
 export default function () {
+    var character = [
+        {
+            title: 'Краны шаровые HY-LOK 112 серии',
+            subtitle: '115 кодировок',
+            characteristics: [
+                {
+                    title: 'Давление',
+                    subtitle: 'до 207 бар при 21°C',
+                },
+                {
+                    title: 'ДУ',
+                    subtitle: 'от 1.3мм до 10.3мм',
+                },
+                {
+                    title: 'Диапазон температур',
+                    subtitle: 'от +10°C до +65°C',
+                },
+            ],
+        },
+    ];
 
     return <>
         <h1>
@@ -38,7 +58,7 @@ export default function () {
             <Image src={reference} alt="" />
         </div>
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
-            {/* Обычно окно поиска */}
+
             <h1>Мой</h1>
             <div className="d-flex flex-column my-3">
                 <SearchInput />
@@ -101,7 +121,6 @@ export default function () {
             <Image src={reference1} alt="" />
         </div>
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
-            {/* Обычно окно поиска */}
 
             <h1>Мой</h1>
             <div className="d-flex flex-column my-3">
@@ -109,7 +128,7 @@ export default function () {
                 <SearchBarEncoding>
                     <div className="search-hint-history">
                         <SearchTitle>Кодировки</SearchTitle>
-                        <div className="row w-100 px-2">
+                        <div className="row w-100 ">
                             {
                                 [
                                     ['H1B-H-6M', 156, 5],
@@ -118,42 +137,106 @@ export default function () {
                                 ].map(item => (
 
                                     <FieldEncoding icon={<img src={'/kit/empty_square.png'} alt='' />}
-                                        titletle={item[0]}
-                                        pricece={item[1]}
-                                        amountnt={item[2]}
+                                        title={item[0]}
+                                        price={item[1]}
+                                        amount={item[2]}
                                         button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h52"></ButtonCounter>}
                                         button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}>
                                     </FieldEncoding>
                                 )
-
                                 )
                             }
-                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'}></ButtonShow>
-                            <hr className="w-100 my-3"/>
+                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
+                        </div>
 
-                            <SearchTitle>Часто ищут</SearchTitle>
+                        <hr className="w-100" />
+
+                        <SearchTitle>Серии</SearchTitle>
+
+                        <div className="row w-100  gap-2">
                             {
-                                ['Hy-Lok 3мм', 'Шаровые краны', 'Микронные фильтры'].map(title => (
-                                    <FieldCategory title={title} />
+                                character.map(item => (
+
+
+                                    <div>
+                                        <FieldSeries title={item.title} subtitle={item.subtitle} icon={<img src="/kit/empty_square.png" alt="" />}></FieldSeries>
+
+                                        <div className="d-flex justify-content-between">
+                                            {
+                                                item.characteristics.map(temp => (
+                                                    <FieldCharacteristic title={temp.title} subtitle={temp.subtitle}></FieldCharacteristic>
+
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
                                 ))
                             }
-                            <hr />
-                            <SearchTitle>Популярные категории</SearchTitle>
+
+
+                        </div>
+
+                        {/* <div className="row w-100  gap-2">
                             {
                                 [
-                                    ['Фитинги для труб', '45 серия', '/kit/empty_square.png'],
-                                    ['Шаровые краны', '45 серия', '/kit/empty_square.png'],
-                                    ['Микронные фильтры', '45 серия', '/kit/empty_square.png'],
+                                    ['Краны шаровые HY-LOK 112 серии', '115 кодировок', [['Давление', 'до 207 бар при 21°C'], ['ДУ', 'от 1.3мм до 10.3мм'], ['Диапазон температур', 'от +10°C до +65°C']]],
+                                    ['Краны шаровые HY-LOK 105 серии', '115 кодировок', [['Давление', 'до 207 бар при 21°C'], ['ДУ', 'от 1.3мм до 10.3мм'], ['Диапазон температур', 'от +10°C до +65°C']]],
+                                    ['Краны шаровые HY-LOK 108 серии', '115 кодировок', [['Давление', 'до 207 бар при 21°C'], ['ДУ', 'от 1.3мм до 10.3мм'], ['Диапазон температур', 'от +10°C до +65°C']]],
+
                                 ].map(item => (
-                                    <FieldSeries title={item[0]} subtitle={item[1]} icon={<img src={item[2]} alt="" />}></FieldSeries>
+                                    <div>
+                                        <FieldSeries title={item[0]} subtitle={item[1]} icon={<img src="/kit/empty_square.png" alt="" />}></FieldSeries>
+
+                                        <div className="d-flex justify-content-between">
+                                            <FieldCharacteristic title={item[2][0][0]} subtitle={item[2][0][1]}></FieldCharacteristic>
+                                        </div>
+                                    </div>
+
+                                ))
+                            }
+                        </div> */}
+
+                        <hr className="w-100" />
+                        <SearchTitle>PDF документы</SearchTitle>
+                        <div className="row w-100 ">
+                            {
+                                [
+                                    ['H1B-H-6M', 'Найдено 15 совпадений', 'Пожаробезопасная конструкция Все краны Hy - Lok имеют дополнительное металлическое седло, которое обеспечивает уплотнение металл по металлу, для случаев если упругое седло будет разрушено или выгорит.Для подтверждения огнестойкости, шаровые краны Hy - Lok протестированы в соответствии с BS6755 часть 2, API 607 & 6FA.шаровые краны'],
+                                    ['H1B-H-6M', 'Найдено 15 совпадений', 'Пожаробезопасная конструкция Все краны Hy - Lok имеют дополнительное металлическое седло, которое обеспечивает уплотнение металл по металлу, для случаев если упругое седло будет разрушено или выгорит.Для подтверждения огнестойкости, шаровые краны Hy - Lok протестированы в соответствии с BS6755 часть 2, API 607 & 6FA.шаровые краны'],
+                                    ['H1B-H-6M', 'Найдено 15 совпадений', 'Пожаробезопасная конструкция Все краны Hy - Lok имеют дополнительное металлическое седло, которое обеспечивает уплотнение металл по металлу, для случаев если упругое седло будет разрушено или выгорит.Для подтверждения огнестойкости, шаровые краны Hy - Lok протестированы в соответствии с BS6755 часть 2, API 607 & 6FA.шаровые краны'],
+
+                                ].map(item => (
+                                    <div>
+                                        <FieldSeries title={item[0]} subtitle={item[1]} icon={<MdPictureAsPdf size={24} fill={'gray'} />}></FieldSeries>
+                                        <FieldText>{item[2]}</FieldText>
+                                    </div>
+                                )
+                                )
+                            }
+                            <ButtonShow btn_style='show my-2' text={'Показать все документы'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
+                        </div>
+
+                        <hr className="w-100" />
+
+                        <SearchTitle>Фильтры</SearchTitle>
+                        <span className="font-size-13">Используйте <img src="/kit/chips.png" alt="" />для выбора нескольких фильтров.</span>
+                        <div className="row w-100 ">
+                            {
+                                [
+                                    ['Hy-Lok 3мм', 'Найдено 156 товаров'],
+                                    ['Hy-Lok 3мм', 'Найдено 156 товаров'],
+                                    ['Hy-Lok 3мм', 'Найдено 156 товаров'],
+                                ].map(item => (
+                                    <FieldSeries icon={<MdFilterAlt size={24} fill={'gray'} />} title={item[0]} subtitle={item[1]}></FieldSeries>
                                 ))
                             }
                         </div>
+
                     </div>
                 </SearchBarEncoding>
-            </div>
+            </div >
 
-        </div>
+        </div >
 
     </>
 }
