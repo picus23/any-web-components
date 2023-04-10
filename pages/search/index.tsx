@@ -251,7 +251,8 @@ export default function () {
                 </SearchBarEncoding>
             </div >
 
-        </div ><CollapseAntd title={'Search Bar'} text={`
+        </div >
+        <CollapseAntd title={'Search Bar'} text={`
         
         <div className="d-flex flex-column my-3">
                 <SearchInput></SearchInput>

@@ -16,7 +16,7 @@ interface FieldEncodingProps {
 function FieldEncoding(props: FieldEncodingProps) {
     return (
         <div className="search-field my-2">
-            <div className='d-flex gap-2'>
+            <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
                 <div className='d-flex gap-2'>
                     {props.icon ?? false}
                     <div className="d-flex flex-column">
