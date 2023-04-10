@@ -1,18 +1,19 @@
 import { ReactNode } from "react"
 
 
-interface InputProps {
+interface InputSwitchProps {
     title_style?: string,
     icon?: ReactNode,
     children?: ReactNode,
-    style: string,
+    style?: string,
 
 }
 
-export function Input(props: InputProps) {
-    return <>
-        <input className={props.style} type="checkbox" />
-    </>
+export function InputSwitch(props: InputSwitchProps) {
+    return <label className="switch">
+    <input type="checkbox" />
+    <span className="slider round"></span>
+  </label>
     // return (
     //     <div className="d-flex justify-content-center align-items-center p-1">
     //         <div className={'input-' + props.button_style +" text-light " + props.title_style}>

@@ -1,7 +1,7 @@
 import TableCell from "../../components/tableCell/TableCell";
 import Button from "../../components/buttons/Button";
 import Link from "next/link";
-import { MdChevronLeft } from 'react-icons/md';
+import { MdChevronLeft, MdInfo, MdUnfoldMore } from 'react-icons/md';
 import { MdChevronRight } from 'react-icons/md';
 import { MdRemoveRedEye } from 'react-icons/md';
 import { MdRemove } from 'react-icons/md';
@@ -23,27 +23,28 @@ export default function () {
         <hr />
         <div className="d-flex flex-column">
 
-            <TableCell direction={'row'} title={'Кодировка'} chevron></TableCell>
+            <TableCell style={'table-cell-row'} title={'Кодировка'} icon={<MdUnfoldMore />}></TableCell>
 
-            <TableCell direction={'row'} title={'Кодировка'} describe={'Кодировка'} chevron></TableCell>
+            <TableCell style={'table-cell-row'} title={'Кодировка'} describe={'Кодировка'} icon={<MdUnfoldMore />}></TableCell>
 
-            <TableCell direction={'two-buttons-vertical'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
+            <TableCell style={'table-cell-two-buttons-vertical'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
                 twoButton={<Button btn_style="small-gray" icon={<MdChevronRight />}></Button>}></TableCell>
 
-            <TableCell direction={'two-buttons-horizont'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
+            <TableCell style={'table-cell-two-buttons-horizont'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
                 twoButton={<Button btn_style="small-gray" icon={<MdChevronRight />}></Button>}></TableCell>
 
-            <TableCell direction={'row'} title={'Ячейка'}></TableCell>
+            <TableCell style={'row'} title={'Ячейка'}></TableCell>
 
-            <TableCell direction={'img-right'} title={'Кодировка'} imgRight></TableCell>
+            <TableCell style={'table-cell-img-right'} title={'Кодировка'} icon={<MdInfo fill="#0085FF" />}></TableCell>
+            <TableCell style={'table-cell-img-right'} title={'Кодировка'} icon={<MdInfo fill="#0085FF" />}></TableCell>
 
-            <TableCell direction={'two-buttons-horizont'} oneButton={<Button btn_style="gray" counter={0} icon={<MdRemove />} icon2={<MdAdd />}></Button>}
+            <TableCell style={'table-cell-two-buttons-horizont'} oneButton={<Button btn_style="gray" counter={0} icon={<MdRemove />} icon2={<MdAdd />}></Button>}
                 twoButton={<Button btn_style="blue" icon={<MdOutlineShoppingCart />}></Button>}></TableCell>
 
-            <TableCell direction={'two-buttons-horizont'} oneButton={<Button btn_style="gray" icon={<MdPictureAsPdf />}></Button>}
+            <TableCell style={'table-cell-two-buttons-horizont'} oneButton={<Button btn_style="gray" icon={<MdPictureAsPdf />}></Button>}
                 twoButton={<Button btn_style="gray" icon={<Md3DRotation />}></Button>}></TableCell>
 
-            <TableCell direction={'img-center'} imgCenter></TableCell>
+            <TableCell style={'table-cell-img-center'} imgCenter></TableCell>
 
 
 

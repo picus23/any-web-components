@@ -25,6 +25,8 @@ $container-max-widths: (
 @import "./table_cell/table_cell";
 @import "./search/search";
 @import "./basket/basket";
+@import "./table_row/table_row";
+@import "./filter/filter";
 
 
 .footer-text {
@@ -219,4 +221,10 @@ min-height: 40px;
 .input-unactive {
   background: #F7F7F7;
   color: #585757;
+}
+
+.btn-upper {
+  position:absolute;
+  height: 100%;
+  right: 0;
 }

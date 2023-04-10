@@ -1,0 +1,72 @@
+.filter-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 216px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.filter-chips {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 32px;
+    max-width: 150px;
+    padding: 4px;
+    background: #F7F7F7;
+    border: 1px solid #E8E8E8;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 40px;
+}
+
+.filter-marker {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    gap: 10px;
+    min-height: 32px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+}
+
+.text-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.filter-field-white {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 256px;
+    height: 48px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.filter-field-blue {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 256px;
+    height: 48px;
+    background: #0085FF;
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+}

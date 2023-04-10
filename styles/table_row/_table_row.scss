@@ -1,0 +1,32 @@
+.show-more {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+	position: relative;
+    padding: 8px 4px 8px 12px;
+    gap: 4px;
+    height: 40px;
+    min-width: 62px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    font-size: 16px;
+    appearance: none;
+    background: none;
+}
+
+.show-more select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: inherit;
+    height: inherit;
+    background: none;
+    border: none;
+}
+
+.show-more MdArrowDropDown {
+	position: absolute;
+}
