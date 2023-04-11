@@ -4,7 +4,7 @@ import { MdCancel, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
 interface FilterHeadProps {
     children?: ReactNode,
     img?: string,
-    title?: string,
+    title?: string | ReactNode,
     filter_style?: string,
 }
 

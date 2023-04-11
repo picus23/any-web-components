@@ -3,9 +3,9 @@ import { MdCancel, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
 
 interface FilterChipsProps {
     children?: ReactNode,
-    title?: string,
+    title?: string | ReactNode,
     filter_style?: string,
-    onClick: () => {},
+    onClick: () => void,
 
 }
 

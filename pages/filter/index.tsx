@@ -3,6 +3,7 @@ import Footer from "../../components/footer/Footer";
 import CollapseAntd from "../../components/collapse/CollapseAntd";
 
 import reference from "./ref.png";
+import search_input from "./search_input.png";
 import Image from "next/image";
 import Filter from "@/components/filter/Filter";
 import FilterCategory from "@/components/filter/FilterCategory";
@@ -13,6 +14,7 @@ import FilterHead from "@/components/filter/FilterHead";
 import { Input } from "@/components/inputs/Input";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
 import FilterField from "@/components/filter/FilterField";
+import FilterSearchInput from "@/components/filter/FilterSearchInput";
 
 export default function () {
 
@@ -24,8 +26,16 @@ export default function () {
         <Link href='/'>Back</Link>
         <hr />
 
-        <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+        {/* <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
             <Image src={reference} alt="" />
+        </div> */}
+        <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+            <h1>Образец</h1>
+            <Image src={search_input} alt="" />
+        </div>
+        <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+            <h1>Мой</h1>
+            <FilterSearchInput></FilterSearchInput>
         </div>
 
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
@@ -58,14 +68,19 @@ export default function () {
                     <FilterHead title="BSPP Наружная" />  //Можно передать img (<img src={img} alt="" />)
         `}></CollapseAntd>
 
-                    <FilterField isActive title="Тип иглы" onClick={() => alert(111)} />
-                    <CollapseAntd title={'FilterFieldWhite'} text={`
-         <FilterField isActive title="Тип иглы" onClick={() => alert(111)} />
+                    <FilterField isActive title="Подсоединение" onClick={() => alert(111)} />
+                    <CollapseAntd title={'FilterField Active'} text={`
+         <FilterField isActive title="Подсоединение" onClick={() => alert(111)} />  ё           
          `}></CollapseAntd>
 
-                    <FilterField title="Подсоединение" onClick={() => alert('Click')} />
-                    <CollapseAntd title={'FilterFieldBlue'} text={`
-         <FilterField title="Подсоединение" onClick={() => alert('Click')} />
+                    <FilterField title="Тип иглыТип иглыТип иглы" onClick={() => alert('Click')} />
+                    <CollapseAntd title={'FilterField'} text={`
+         <FilterField title="Тип иглы" onClick={() => alert('Click')} />
+        `}></CollapseAntd>
+
+                    <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
+                    <CollapseAntd title={'FilterField Selected'} text={`
+         <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
         `}></CollapseAntd>
 
 

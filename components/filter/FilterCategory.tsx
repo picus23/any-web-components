@@ -5,7 +5,7 @@ interface FilterCategoryProps {
     children?: ReactNode,
     title?: string,
     filter_style?: string,
-    onClick: () => {},
+    onClick: () => void,
     // handleSearch: FormEventHandler<HTMLFormElement>,
 
 }
