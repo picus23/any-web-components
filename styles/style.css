@@ -669,6 +669,54 @@ input:checked + .slider:before {
   border-radius: 8px;
 }
 
+.filter-btn-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 8px 12px;
+  gap: 8px;
+  width: 163px;
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+}
+
+.filter-counter-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 4px;
+  width: 20px;
+  height: 20px;
+  background: #F7F7F7;
+  border: 1px solid #E8E8E8;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.filter-counter-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  background: red;
+  border-radius: 50%;
+  border: 1px solid #E8E8E8;
+  text-align: center;
+  color: white;
+  padding: 0 8px;
+}
+
 .footer-text {
   width: 360px;
 }

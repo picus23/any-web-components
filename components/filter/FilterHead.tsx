@@ -9,9 +9,9 @@ interface FilterHeadProps {
 }
 
 const FilterHead: FC<FilterHeadProps> = ({ children, title, img }) => {
-    return <div className="d-flex align-items-center">
+    return <div className="d-flex align-items-center mb-1 mt-2">
         {img ? <img src={img} alt="" /> : <img src="/kit/filter_head_img.png" alt="" />}
-        <span className="font-size-16-black fw-500 ms-2">{title}</span>
+        <strong className="font-size-16-black fw-500 ms-2">{title}</strong>
     </div>
 }
 

@@ -182,8 +182,8 @@ export default function () {
                                 )
                                 )
                             }
-                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
                         </div>
+                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
 
                         <hr className="w-100" />
 
