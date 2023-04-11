@@ -29,13 +29,13 @@ export default function () {
         {/* <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
             <Image src={reference} alt="" />
         </div> */}
+        <h1>Образец</h1>
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
-            <h1>Образец</h1>
             <Image src={search_input} alt="" />
         </div>
+        <h1>Мой</h1>
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
-            <h1>Мой</h1>
-            <FilterSearchInput></FilterSearchInput>
+            <FilterSearchInput title="Все фильтры" />
         </div>
 
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>

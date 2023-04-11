@@ -543,8 +543,12 @@ input:checked + .slider:before {
   text-align: start;
 }
 
+.filter-search-title {
+  font-size: 32px;
+}
+
 .filter-field.selected {
-  border: 2px solid #0085FF;
+  border: 1px solid #0085FF;
   box-shadow: 0px 0px 2px 4px rgba(0, 133, 255, 0.16);
 }
 
