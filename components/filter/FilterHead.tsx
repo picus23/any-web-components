@@ -8,9 +8,9 @@ interface FilterHeadProps {
 }
 
 const FilterHead: FC<FilterHeadProps> = ({ children, title, filter_style }) => {
-    return <>
+    return <div className="d-flex">
         {children}
-    </>
+    </div>
 }
 
 export default FilterHead;

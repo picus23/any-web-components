@@ -480,9 +480,10 @@ input:checked + .slider:before {
 
 .filter-category {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  min-width: 216px;
+  width: 216px;
   height: 40px;
   background: #FFFFFF;
   border: 1px solid #E8E8E8;
@@ -512,6 +513,8 @@ input:checked + .slider:before {
   justify-content: center;
   padding: 4px 8px;
   gap: 10px;
+  width: -moz-max-content;
+  width: max-content;
   min-height: 32px;
   background: #FFFFFF;
   border: 1px solid #E8E8E8;

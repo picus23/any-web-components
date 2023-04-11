@@ -30,14 +30,34 @@ export default function () {
 
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
 
-            <Filter>
-                <div className="col-2 gap-2">
+            <div className="d-flex flex-column gap-2">
+                <Filter>
+
                     <FilterCategory><span className="font-size-16-gray">Шаровые краны</span></FilterCategory>
+                    <CollapseAntd title={'FilterCategory'} text={`
+         <FilterCategory><span className="font-size-16-gray">Шаровые краны</span></FilterCategory>
+         `}></CollapseAntd>
+
                     <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм</span></FilterChips>
+                    <CollapseAntd title={'FilterChips'} text={`
+                    <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм</span></FilterChips>
+        `}></CollapseAntd>
+
                     <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3мм</span></FilterChips>
-                    <FilterMarker><span className="font-size-16-gray text-overflow">1/4’’</span></FilterMarker>
+                    <CollapseAntd title={'FilterChips'} text={`
+         <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3мм</span></FilterChips>
+        `}></CollapseAntd>
+
+                    <FilterMarker><Input style="square-gray" /><span className="font-size-16-gray text-overflow">1/4’’</span></FilterMarker>
+                    <CollapseAntd title={'FilterMarker'} text={`
+         <FilterMarker><Input style="square-gray" /><span className="font-size-16-gray text-overflow">1/4’’</span></FilterMarker>
+        `}></CollapseAntd>
+
                     <FilterHead><img src="/kit/filter_head_img.png" alt="" /><span className="font-size-16-black fw-500 ms-2">BSPP Наружная</span></FilterHead>
-                    
+                    <CollapseAntd title={'FilterHead'} text={`
+         <FilterHead><img src="/kit/filter_head_img.png" alt="" /><span className="font-size-16-black fw-500 ms-2">BSPP Наружная</span></FilterHead>
+        `}></CollapseAntd>
+
                     <FilterField field_style="filter-field-blue justify-content-between">
                         <div className="d-flex align-items-center">
                             <Input style="square-white" />
@@ -45,86 +65,47 @@ export default function () {
                         </div>
                         <MdChevronRight size={24} fill="white" />
                     </FilterField>
-                    
+                    <CollapseAntd title={'FilterField'} text={`
+         <FilterField field_style="filter-field-blue justify-content-between">
+                        <div className="d-flex align-items-center">
+                            <Input style="square-white" />
+                            <span className="fw-500 ms-2">Подсоединение</span>
+                        </div>
+                        <MdChevronRight size={24} fill="white" />
+                    </FilterField>
+        `}></CollapseAntd>
+
                     <FilterField field_style="filter-field-white justify-content-between">
                         <div className="d-flex align-items-center">
                             <Input style="square-gray" />
                             <span className="fw-500 ms-2">Тип иглы</span>
                         </div>
-                        <MdChevronRight size={24} fill="gray" />                   
+                        <MdChevronRight size={24} fill="gray" />
                     </FilterField>
+                    <CollapseAntd title={'FilterField'} text={`
+         <FilterField field_style="filter-field-white justify-content-between">
+         <div className="d-flex align-items-center">
+             <Input style="square-gray" />
+             <span className="fw-500 ms-2">Тип иглы</span>
+         </div>
+         <MdChevronRight size={24} fill="gray" />                   
+     </FilterField>
+         `}></CollapseAntd>
 
-<InputSwitch></InputSwitch>
+                    <InputSwitch></InputSwitch>
+                    <CollapseAntd title={'InputSwitch'} text={`
+         <InputSwitch></InputSwitch>
+        `}></CollapseAntd>
 
-                </div>
-            </Filter>
+                </Filter>
+            </div>
 
         </div >
 
         <hr />
 
         <CollapseAntd title={'Filter'} text={`
-         <Footer>
-         <div className='py-4 bg-white'>
-             <div className='d-flex align-items-start px-4'>
-
-                 <div className='col footer-text'>
-                     <div>
-                         <img src="/kit/footer_logo.png" alt="" />
-                     </div>
-                     <div className='my-3 lh-1'>
-                         <span className='font-size-16-gray'>Компания «Флюид-Лайн» является <br /> изготовителем и эксклюзивным <br /> дистрибьютором продукции A-flow, Hy-Lok, <br /> Drastar и HIFLUX в России и СНГ.</span>
-                     </div>
-                     <div className='d-flex gap-3'>
-                         {/* Facebook */}
-                         <img src="/kit/Facebook.png" alt="" />
-                         {/* Twitter */}
-                         <img src="/kit/Twitter.png" alt="" />
-                         {/* YouTube */}
-                         <img src="/kit/Youtube.png" alt="" />
-                     </div>
-                 </div>
-
-                 <div className='row flex-grow-1 gap-4'>
-                     <ul className='col list-unstyled lh-lg'>
-                         <li className='font-size-16-black fw-500'><strong>О Компании</strong></li>
-                         <li className='font-size-16-gray'>Сертификаты</li>
-                         <li className='font-size-16-gray'>Реквизиты</li>
-                         <li className='font-size-16-gray'>Региональные <br />представительства</li>
-                         <li className='font-size-16-gray'>Производители</li>
-                     </ul>
-                     <ul className='col list-unstyled lh-lg'>
-                         <li className='font-size-16-black fw-500'><strong>Title</strong></li>
-                         <li className='font-size-16-gray'>First Link</li>
-                         <li className='font-size-16-gray'>Second Link</li>
-                         <li className='font-size-16-gray'>Third Link</li>
-                     </ul>
-                     <ul className='col list-unstyled lh-lg'>
-                         <li className='font-size-16-black fw-500'><strong>Title</strong></li>
-                         <li className='font-size-16-gray'>First Link</li>
-                         <li className='font-size-16-gray'>Second Link</li>
-                     </ul>
-                     <ul className='col list-unstyled lh-lg'>
-                         <li className='font-size-16-black fw-500'><strong>Контакты</strong></li>
-                         <li className='font-size-16-gray'>First Link</li>
-                         <li className='font-size-16-gray'>Second Link</li>
-                         <li className='font-size-16-gray'>Third Link</li>
-                     </ul>
-                 </div>
-             </div>
-             
-             <div className="my-4 footer-hr"></div>
-
-             <div className='d-flex justify-content-between px-4'>
-                 <div>
-                     <span className='font-size-13'>© ООО Fluid-line (Флюид-Лайн) Все права защищены 2023</span>
-                 </div>
-                 <div>
-                     <span className='font-size-13'>Сайт спроектирован Insaim</span>
-                 </div>
-             </div>
-         </div>
-     </Footer>
+         
         `}></CollapseAntd>
 
     </>
