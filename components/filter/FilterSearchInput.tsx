@@ -15,10 +15,10 @@ const FilterSearchInput: FC<FilterSearchInputProps> = ({ handleSearch, handleUse
                 onInput={handleUserType}
                 className="filter-search-field"
                 type="search"
-                placeholder="Поиск"
+                placeholder="Поиск фильтров"
                 aria-label="Search"
             />
-            <Button btn_style="filter-search-btn-find">Найти</Button>
+            <button className="filter-search-btn-find">Найти</button>
         </form>
     </div>
 }
