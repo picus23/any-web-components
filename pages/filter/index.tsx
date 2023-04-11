@@ -18,6 +18,8 @@ import FilterField from "@/components/filter/FilterField";
 import FilterSearchInput from "@/components/filter/FilterSearchInput";
 import FilterFieldWrapper from "@/components/filter/FilterFieldWrapper";
 import FilterButtonShow from "@/components/filter/FilterButtonShow";
+import FilterMarkerWrapper from "@/components/filter/FilterMarkerWrapper";
+import FilterTitle from "@/components/filter/FilterTitle";
 
 export default function () {
     let FilterFields = ['1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’'];
@@ -50,81 +52,67 @@ export default function () {
 
         <h1>Мой</h1>
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
-            <div className="d-flex flex-column">
-                <div className="filter-base">
-                    <span className="font-size-20 fw-500 bg-white mb-2">Подсоединения</span>
-                    <div className="d-flex flex-column">
-                        <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
-                        <div className="filter-chips-block">
-                            {
-                                FilterFields.map(item => (
-                                    <FilterMarker title={item} />
-                                ))
-                            }
-                        </div>
-                    </div>
-                    <div className="d-flex flex-column">
-                        <div className="my-2"><FilterHead title="BSPP Внутреняя" /></div>
-                        <div className="filter-chips-block">
-                            {
-                                FilterFields.map(item => (
-                                    <FilterMarker title={item} />
-                                ))
-                            }
-                        </div>
-                    </div>
-                    <FilterButtonShow title="Показать ещё"></FilterButtonShow>
-                    <div className="d-flex flex-column">
-                        <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
-                        <div className="filter-chips-block">
-                            {
-                                FilterFields.map(item => (
-                                    <FilterMarker title={item} />
-                                ))
-                            }
-                        </div>
-                    </div>
-                </div>
+
+            <div className="filter-base">
+                <FilterTitle title="Подсоединения" />
+                <FilterHead title="BSPP Наружная" />
+                <FilterMarkerWrapper>
+                    {
+                        FilterFields.map(item => (
+                            <FilterMarker title={item} />
+                        ))
+                    }
+                </FilterMarkerWrapper>
+                <FilterHead title="BSPP Внутреняя" />
+                <FilterMarkerWrapper>
+                    {
+                        FilterFields.map(item => (
+                            <FilterMarker title={item} />
+                        ))
+                    }
+                </FilterMarkerWrapper>
+                <FilterButtonShow title="Показать ещё"></FilterButtonShow>
+                <FilterHead title="BSPP Наружная" />
+                <FilterMarkerWrapper>
+                    {
+                        FilterFields.map(item => (
+                            <FilterMarker title={item} />
+                        ))
+                    }
+                </FilterMarkerWrapper>
             </div>
+
         </div>
 
         <CollapseAntd title={'Filter'} text={`
-         <div className="d-flex flex-column">
-         <div className="filter-base">
-             <span className="font-size-20 fw-500 bg-white mb-2">Подсоединения</span>
-             <div className="d-flex flex-column">
-                 <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
-                 <div className="filter-chips-block">
-                     {
-                         FilterFields.map(item => (
-                             <FilterMarker title={item} />
-                         ))
-                     }
-                 </div>
-             </div>
-             <div className="d-flex flex-column">
-                 <div className="my-2"><FilterHead title="BSPP Внутреняя" /></div>
-                 <div className="filter-chips-block">
-                     {
-                         FilterFields.map(item => (
-                             <FilterMarker title={item} />
-                         ))
-                     }
-                 </div>
-             </div>
-             <FilterButtonShow title="Показать ещё"></FilterButtonShow>
-             <div className="d-flex flex-column">
-                 <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
-                 <div className="filter-chips-block">
-                     {
-                         FilterFields.map(item => (
-                             <FilterMarker title={item} />
-                         ))
-                     }
-                 </div>
-             </div>
-         </div>
-     </div>
+        <div className="filter-base">
+                <FilterTitle title="Подсоединения" />
+                <FilterHead title="BSPP Наружная" />
+                <FilterMarkerWrapper>
+                    {
+                        FilterFields.map(item => (
+                            <FilterMarker title={item} />
+                        ))
+                    }
+                </FilterMarkerWrapper>
+                <FilterHead title="BSPP Внутреняя" />
+                <FilterMarkerWrapper>
+                    {
+                        FilterFields.map(item => (
+                            <FilterMarker title={item} />
+                        ))
+                    }
+                </FilterMarkerWrapper>
+                <FilterButtonShow title="Показать ещё"></FilterButtonShow>
+                <FilterHead title="BSPP Наружная" />
+                <FilterMarkerWrapper>
+                    {
+                        FilterFields.map(item => (
+                            <FilterMarker title={item} />
+                        ))
+                    }
+                </FilterMarkerWrapper>
+            </div>
          `}></CollapseAntd>
 
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
