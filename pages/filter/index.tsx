@@ -15,6 +15,7 @@ import { Input } from "@/components/inputs/Input";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
 import FilterField from "@/components/filter/FilterField";
 import FilterSearchInput from "@/components/filter/FilterSearchInput";
+import FilterFieldWrapper from "@/components/filter/FilterFieldWrapper";
 
 export default function () {
 
@@ -88,6 +89,11 @@ export default function () {
                     <CollapseAntd title={'InputSwitch'} text={`
          <InputSwitch></InputSwitch>
         `}></CollapseAntd>
+
+                    <FilterFieldWrapper>
+                        <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
+                        <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
+                    </FilterFieldWrapper>
 
                 </Filter>
             </div>

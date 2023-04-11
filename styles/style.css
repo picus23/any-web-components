@@ -490,6 +490,7 @@ input:checked + .slider:before {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   padding: 8px;
+  cursor: pointer;
 }
 
 .filter-chips {
@@ -503,6 +504,7 @@ input:checked + .slider:before {
   background: #F7F7F7;
   border: 1px solid #E8E8E8;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
   border-radius: 40px;
 }
 
@@ -519,6 +521,7 @@ input:checked + .slider:before {
   background: #FFFFFF;
   border: 1px solid #E8E8E8;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .text-overflow {
@@ -544,7 +547,8 @@ input:checked + .slider:before {
 }
 
 .filter-search-title {
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .filter-field.selected {
@@ -575,7 +579,6 @@ input:checked + .slider:before {
   width: 896px;
   height: 120px;
   padding: 16px 24px;
-  gap: 16px;
 }
 
 .filter-search-field {

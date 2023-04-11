@@ -10,6 +10,7 @@
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
     padding: 8px;
+    cursor: pointer;
 }
 
 .filter-chips {
@@ -24,6 +25,7 @@
     background: #F7F7F7;
     border: 1px solid #E8E8E8;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
     border-radius: 40px;
 }
 
@@ -39,6 +41,7 @@
     background: #FFFFFF;
     border: 1px solid #E8E8E8;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .text-overflow {
@@ -58,6 +61,7 @@
     border-radius: 8px;
     padding: 6px 10px;
     border: none;
+    // cursor: pointer;
 
     span {
         text-align: start;
@@ -65,7 +69,8 @@
 }
 
 .filter-search-title {
-    font-size: 32px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .filter-field.selected {
@@ -96,7 +101,6 @@
     width: 896px;
     height: 120px;
     padding: 16px 24px;
-    gap: 16px;
 }
 
 .filter-search-field {

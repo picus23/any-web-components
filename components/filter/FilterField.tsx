@@ -14,13 +14,13 @@ interface FilterFieldProps {
 }
 
 const FilterField: FC<FilterFieldProps> = ({ children, title, onClick, isActive = false, isSelected = false, flag }) => {
-    return <button className={'filter-field my-2 justify-content-between ' + (isSelected ? 'selected ' : '') + (isActive ? 'active' : '')} onClick={onClick}>
+    return <li role='button' className={'filter-field my-2 justify-content-between ' + (isSelected ? 'selected ' : '') + (isActive ? 'active' : '')} onClick={onClick}>
         <div className="d-flex align-items-center">
             {isActive ? <img src="/kit/white_square.png" alt="" /> : <img src="/kit/gray_square.png" alt="" />}
             <span className="fw-500 ms-2 d-flex text-left">{title}</span>
         </div>
         {isActive ? <MdChevronRight size={24} fill="white" /> : <MdChevronRight size={24} fill="gray" />}
-    </button >
+    </li >
 }
 
 export default FilterField;
