@@ -303,6 +303,14 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.filter-input-active {
+  border: 1px solid #0085FF !important;
+}
+
+.input-bg-gray {
+  background: #F7F7F7 !important;
+}
+
 .action-panel {
   display: flex;
   gap: 24px;
@@ -510,7 +518,6 @@ input:checked + .slider:before {
 
 .filter-marker {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 4px 8px;
@@ -533,7 +540,7 @@ input:checked + .slider:before {
 .filter-field {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 256px;
   min-height: 48px;
@@ -609,6 +616,57 @@ input:checked + .slider:before {
   border: none;
   color: #FFFFFF;
   font-size: 16px;
+}
+
+.filter-field-child {
+  justify-self: flex-end !important;
+  width: 200px;
+}
+
+.filter-base {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 48px 16px 16px;
+  isolation: isolate;
+  width: 623px;
+  height: 574px;
+  background: #FFFFFF;
+}
+
+.filter-language-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 28px;
+  height: 376px;
+  right: 12px;
+  top: 24px;
+}
+
+.filter-chips-block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0px;
+  gap: 12px;
+  width: 559px;
+}
+
+.filter-chips-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 4px 8px;
+  gap: 10px;
+  width: 74px;
+  height: 32px;
+  /* Light/Grayscale/Background Primary */
+  background: #FFFFFF;
+  /* Light/Grayscale/Border */
+  border: 1px solid #E8E8E8;
+  border-radius: 8px;
 }
 
 .footer-text {

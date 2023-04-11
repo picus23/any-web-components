@@ -3,6 +3,7 @@ import Footer from "../../components/footer/Footer";
 import CollapseAntd from "../../components/collapse/CollapseAntd";
 
 import reference from "./ref.png";
+import filter_base from "./filter-base.png";
 import search_input from "./search_input.png";
 import Image from "next/image";
 import Filter from "@/components/filter/Filter";
@@ -11,7 +12,7 @@ import { MdChevronRight, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
 import FilterChips from "@/components/filter/FilterChips";
 import FilterMarker from "@/components/filter/FilterMarker";
 import FilterHead from "@/components/filter/FilterHead";
-import { Input } from "@/components/inputs/Input";
+import Input from "@/components/inputs/Input";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
 import FilterField from "@/components/filter/FilterField";
 import FilterSearchInput from "@/components/filter/FilterSearchInput";
@@ -39,6 +40,60 @@ export default function () {
             <FilterSearchInput title="Все фильтры" />
         </div>
 
+        <h1>Образец</h1>
+        <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+            <Image src={filter_base} alt="" />
+        </div>
+
+
+        <h1>Мой</h1>
+        <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+            <div className="d-flex flex-column">
+                <div className="filter-base">
+                    <span className="font-size-20 fw-500 bg-white mb-3">Подсоединения</span>
+                    <div className="d-flex flex-column">
+                        <FilterHead title="BSPP Наружная" />
+                        <div className="filter-chips-block my-2">
+                            {/* <div className="filter-chips-item"> */}
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                            <div className="">
+                                <FilterMarker title="1/4’’" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
 
             <div className="d-flex flex-column gap-2">
@@ -59,7 +114,10 @@ export default function () {
          <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
         `}></CollapseAntd>
 
-                    <FilterMarker title="1/4’’" />
+                    <FilterMarker title="1/4’’" onClick={()=>alert('Click')}/>
+                    <FilterMarker title="Option" />
+                    <FilterMarker title="Option" isGray />
+                    <FilterMarker title="Option" isActive />
                     <CollapseAntd title={'FilterMarker'} text={`
          <FilterMarker title="1/4’’" />
         `}></CollapseAntd>
@@ -93,6 +151,7 @@ export default function () {
                     <FilterFieldWrapper>
                         <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
                         <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
+                        <FilterField isSelected isOpen title="Категория" onClick={() => alert('Click')} />
                     </FilterFieldWrapper>
 
                 </Filter>

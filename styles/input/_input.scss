@@ -92,3 +92,11 @@ input:checked+.slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.filter-input-active {
+  border: 1px solid #0085FF !important;
+}
+
+.input-bg-gray {
+  background: #F7F7F7 !important;
+}

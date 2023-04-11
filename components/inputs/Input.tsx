@@ -1,17 +1,18 @@
-import { ReactNode } from "react"
+import { FC, ReactNode } from "react"
 
 
 interface InputProps {
     title_style?: string,
     icon?: ReactNode,
     children?: ReactNode,
-    style: string,
-
+    style?: string,
+    isActive?: boolean,
+    isGray?: boolean,
 }
 
-export function Input(props: InputProps) {
+const Input: FC<InputProps> = ({ children, isActive = false, isGray = false }) => {
     return <>
-        <input className={props.style} type="checkbox" />
+        <input className={'square-gray ' + (isActive ? 'input-active' : '') + (isGray ? ' bg-gray' : '')} type="checkbox" />
     </>
     // return (
     //     <div className="d-flex justify-content-center align-items-center p-1">
@@ -23,3 +24,5 @@ export function Input(props: InputProps) {
     //     </div>
     // )
 }
+
+export default Input;

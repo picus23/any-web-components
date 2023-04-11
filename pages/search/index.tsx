@@ -176,7 +176,7 @@ export default function () {
                                         title={item[0]}
                                         price={item[1]}
                                         amount={item[2]}
-                                        button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
+                                        button={<ButtonCounter text_style={'font-size-16-gray '} counter={1} btn_style="counter-h52"></ButtonCounter>}
                                         button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}>
                                     </FieldEncoding>
                                 )
