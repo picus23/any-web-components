@@ -84,9 +84,45 @@ export default function () {
                     </div>
                 </div>
             </div>
-
-
         </div>
+        
+        <CollapseAntd title={'Filter'} text={`
+         <div className="d-flex flex-column">
+         <div className="filter-base">
+             <span className="font-size-20 fw-500 bg-white mb-3">Подсоединения</span>
+             <div className="d-flex flex-column">
+                 <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
+                 <div className="filter-chips-block my-2">
+                     {
+                         FilterFields.map(item => (
+                             <FilterMarker title={item} />
+                         ))
+                     }
+                 </div>
+             </div>
+             <div className="d-flex flex-column">
+                 <div className="my-2"><FilterHead title="BSPP Внутреняя" /></div>
+                 <div className="filter-chips-block my-2">
+                     {
+                         FilterFields.map(item => (
+                             <FilterMarker title={item} />
+                         ))
+                     }
+                 </div>
+             </div>
+             <div className="d-flex flex-column">
+                 <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
+                 <div className="filter-chips-block my-2">
+                     {
+                         FilterFields.map(item => (
+                             <FilterMarker title={item} />
+                         ))
+                     }
+                 </div>
+             </div>
+         </div>
+     </div>
+         `}></CollapseAntd>
 
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
 
