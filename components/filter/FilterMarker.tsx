@@ -9,8 +9,9 @@ interface FilterMarkerProps {
 }
 
 const FilterMarker: FC<FilterMarkerProps> = ({ children, title, filter_style }) => {
-    return <div className={filter_style ? filter_style : 'filter-marker'}>
-        {children}
+    return <div className='filter-marker'>
+        <Input style="square-gray" />
+        <span className="font-size-16-gray text-overflow">1/4’’</span>
     </div>;
 }
 

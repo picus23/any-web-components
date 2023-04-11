@@ -9,7 +9,7 @@ interface FilterChipsProps {
 
 const FilterChips: FC<FilterChipsProps> = ({ children,title,filter_style }) => {
     return <div className={filter_style ? filter_style : 'filter-chips'}>
-            {children}
+            <span className="font-size-16-gray text-overflow">{title}</span>
         <MdCancel size={20} fill="gray" />
     </div>;
 }

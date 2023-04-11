@@ -10,9 +10,11 @@ import { MdChevronRight, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
 import FilterChips from "@/components/filter/FilterChips";
 import FilterMarker from "@/components/filter/FilterMarker";
 import FilterHead from "@/components/filter/FilterHead";
-import FilterField from "@/components/filter/FilterField";
+import FilterField from "@/components/filter/FilterFieldBlue";
 import { Input } from "@/components/inputs/Input";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
+import FilterFieldWhite from "@/components/filter/FilterFieldWhite";
+import FilterFieldBlue from "@/components/filter/FilterFieldBlue";
 
 export default function () {
 
@@ -33,63 +35,39 @@ export default function () {
             <div className="d-flex flex-column gap-2">
                 <Filter>
 
-                    <FilterCategory><span className="font-size-16-gray">Шаровые краны</span></FilterCategory>
+                    <FilterCategory title="Шаровые краны" />
                     <CollapseAntd title={'FilterCategory'} text={`
-         <FilterCategory><span className="font-size-16-gray">Шаровые краны</span></FilterCategory>
+         <FilterCategory title="Шаровые краны" />
          `}></CollapseAntd>
 
-                    <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм</span></FilterChips>
+                    <FilterChips title="Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм" />
                     <CollapseAntd title={'FilterChips'} text={`
-                    <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм</span></FilterChips>
+                    <FilterChips title="Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм" />
         `}></CollapseAntd>
 
-                    <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3мм</span></FilterChips>
+                    <FilterChips title="Hy-Lok 3мм" />
                     <CollapseAntd title={'FilterChips'} text={`
-         <FilterChips><span className="font-size-16-gray text-overflow">Hy-Lok 3мм</span></FilterChips>
+         <FilterChips title="Hy-Lok 3мм" />
         `}></CollapseAntd>
 
-                    <FilterMarker><Input style="square-gray" /><span className="font-size-16-gray text-overflow">1/4’’</span></FilterMarker>
+                    <FilterMarker title="1/4’’" />
                     <CollapseAntd title={'FilterMarker'} text={`
-         <FilterMarker><Input style="square-gray" /><span className="font-size-16-gray text-overflow">1/4’’</span></FilterMarker>
+         <FilterMarker title="1/4’’" />
         `}></CollapseAntd>
 
-                    <FilterHead><img src="/kit/filter_head_img.png" alt="" /><span className="font-size-16-black fw-500 ms-2">BSPP Наружная</span></FilterHead>
+                    <FilterHead title="BSPP Наружная" />
                     <CollapseAntd title={'FilterHead'} text={`
-         <FilterHead><img src="/kit/filter_head_img.png" alt="" /><span className="font-size-16-black fw-500 ms-2">BSPP Наружная</span></FilterHead>
+                    <FilterHead title="BSPP Наружная" />
         `}></CollapseAntd>
 
-                    <FilterField field_style="filter-field-blue justify-content-between">
-                        <div className="d-flex align-items-center">
-                            <Input style="square-white" />
-                            <span className="fw-500 ms-2">Подсоединение</span>
-                        </div>
-                        <MdChevronRight size={24} fill="white" />
-                    </FilterField>
-                    <CollapseAntd title={'FilterField'} text={`
-         <FilterField field_style="filter-field-blue justify-content-between">
-                        <div className="d-flex align-items-center">
-                            <Input style="square-white" />
-                            <span className="fw-500 ms-2">Подсоединение</span>
-                        </div>
-                        <MdChevronRight size={24} fill="white" />
-                    </FilterField>
+                    <FilterFieldBlue title="Подсоединение" />
+                    <CollapseAntd title={'FilterFieldBlue'} text={`
+         <FilterField title="Подсоединение" />
         `}></CollapseAntd>
 
-                    <FilterField field_style="filter-field-white justify-content-between">
-                        <div className="d-flex align-items-center">
-                            <Input style="square-gray" />
-                            <span className="fw-500 ms-2">Тип иглы</span>
-                        </div>
-                        <MdChevronRight size={24} fill="gray" />
-                    </FilterField>
-                    <CollapseAntd title={'FilterField'} text={`
-         <FilterField field_style="filter-field-white justify-content-between">
-         <div className="d-flex align-items-center">
-             <Input style="square-gray" />
-             <span className="fw-500 ms-2">Тип иглы</span>
-         </div>
-         <MdChevronRight size={24} fill="gray" />                   
-     </FilterField>
+                    <FilterFieldWhite title="Тип иглы" />
+                    <CollapseAntd title={'FilterFieldWhite'} text={`
+         <FilterFieldWhite title="Тип иглы" />
          `}></CollapseAntd>
 
                     <InputSwitch></InputSwitch>

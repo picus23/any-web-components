@@ -11,11 +11,11 @@ const FilterCategory: FC<FilterCategoryProps> = ({ children,title,filter_style }
     return <div className={filter_style ? filter_style : 'filter-category'}>
         <div className="d-flex gap-2 align-items-center">
             <MdOutlineSegment size={20} fill="gray" />
-            {children}
+            <span className="font-size-16-gray">{title}</span>
         </div>
-        <MdUnfoldMore size={20} fill="gray" />
-        
+        <MdUnfoldMore size={20} fill="gray" />        
     </div>;
 }
 
 export default FilterCategory;
+
