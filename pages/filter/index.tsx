@@ -3,6 +3,10 @@ import Footer from "../../components/footer/Footer";
 import CollapseAntd from "../../components/collapse/CollapseAntd";
 
 import reference from "./ref.png";
+
+
+
+
 import Image from "next/image";
 import Filter from "@/components/filter/Filter";
 import FilterCategory from "@/components/filter/FilterCategory";
@@ -13,6 +17,7 @@ import FilterHead from "@/components/filter/FilterHead";
 import FilterField from "@/components/filter/FilterField";
 import { Input } from "@/components/inputs/Input";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
+import ContentList from "./content";
 
 export default function () {
 
@@ -27,6 +32,10 @@ export default function () {
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
             <Image src={reference} alt="" />
         </div>
+
+
+        <ContentList />
+
 
         <div className="container-xxl justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
 
@@ -60,6 +69,12 @@ export default function () {
             </Filter>
 
         </div >
+
+
+        
+
+
+
 
         <hr />
 
