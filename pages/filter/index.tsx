@@ -10,11 +10,9 @@ import { MdChevronRight, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
 import FilterChips from "@/components/filter/FilterChips";
 import FilterMarker from "@/components/filter/FilterMarker";
 import FilterHead from "@/components/filter/FilterHead";
-import FilterField from "@/components/filter/FilterFieldBlue";
 import { Input } from "@/components/inputs/Input";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
-import FilterFieldWhite from "@/components/filter/FilterFieldWhite";
-import FilterFieldBlue from "@/components/filter/FilterFieldBlue";
+import FilterField from "@/components/filter/FilterField";
 
 export default function () {
 
@@ -35,19 +33,19 @@ export default function () {
             <div className="d-flex flex-column gap-2">
                 <Filter>
 
-                    <FilterCategory title="Шаровые краны" />
+                    <FilterCategory title="Шаровые краны" onClick={() => alert(111)} />
                     <CollapseAntd title={'FilterCategory'} text={`
-         <FilterCategory title="Шаровые краны" />
+         <FilterCategory title="Шаровые краны" onClick={() => alert(111)} />
          `}></CollapseAntd>
 
-                    <FilterChips title="Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм" />
+                    <FilterChips title="Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм" onClick={() => alert(111)} />
                     <CollapseAntd title={'FilterChips'} text={`
-                    <FilterChips title="Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм" />
+                    <FilterChips title="Hy-Lok 3ммHy-Lok 3ммHy-Lok 3ммHy-Lok 3мм" onClick={() => alert(111)} />
         `}></CollapseAntd>
 
-                    <FilterChips title="Hy-Lok 3мм" />
+                    <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
                     <CollapseAntd title={'FilterChips'} text={`
-         <FilterChips title="Hy-Lok 3мм" />
+         <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
         `}></CollapseAntd>
 
                     <FilterMarker title="1/4’’" />
@@ -57,18 +55,19 @@ export default function () {
 
                     <FilterHead title="BSPP Наружная" />
                     <CollapseAntd title={'FilterHead'} text={`
-                    <FilterHead title="BSPP Наружная" />
+                    <FilterHead title="BSPP Наружная" />  //Можно передать img (<img src={img} alt="" />)
         `}></CollapseAntd>
 
-                    <FilterFieldBlue title="Подсоединение" />
-                    <CollapseAntd title={'FilterFieldBlue'} text={`
-         <FilterField title="Подсоединение" />
-        `}></CollapseAntd>
-
-                    <FilterFieldWhite title="Тип иглы" />
+                    <FilterField isActive title="Тип иглы" onClick={() => alert(111)} />
                     <CollapseAntd title={'FilterFieldWhite'} text={`
-         <FilterFieldWhite title="Тип иглы" />
+         <FilterField isActive title="Тип иглы" onClick={() => alert(111)} />
          `}></CollapseAntd>
+
+                    <FilterField title="Подсоединение" onClick={() => alert('Click')} />
+                    <CollapseAntd title={'FilterFieldBlue'} text={`
+         <FilterField title="Подсоединение" onClick={() => alert('Click')} />
+        `}></CollapseAntd>
+
 
                     <InputSwitch></InputSwitch>
                     <CollapseAntd title={'InputSwitch'} text={`
@@ -82,9 +81,6 @@ export default function () {
 
         <hr />
 
-        <CollapseAntd title={'Filter'} text={`
-         
-        `}></CollapseAntd>
 
     </>
 

@@ -14,6 +14,7 @@
 
 .filter-chips {
     display: flex;
+    // flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -46,7 +47,7 @@
     text-overflow: ellipsis;
 }
 
-.filter-field-white {
+.filter-field {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -57,9 +58,10 @@
     background: #FFFFFF;
     border-radius: 8px;
     padding: 10px;
+    border: none;
 }
 
-.filter-field-blue {
+.filter-field.active {
     display: flex;
     flex-direction: row;
     justify-content: center;

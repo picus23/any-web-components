@@ -5,12 +5,15 @@ interface FilterChipsProps {
     children?: ReactNode,
     title?: string,
     filter_style?: string,
+    onClick: () => {},
+
 }
 
-const FilterChips: FC<FilterChipsProps> = ({ children,title,filter_style }) => {
-    return <div className={filter_style ? filter_style : 'filter-chips'}>
-            <span className="font-size-16-gray text-overflow">{title}</span>
-        <MdCancel size={20} fill="gray" />
+const FilterChips: FC<FilterChipsProps> = ({ children, title, onClick }) => {
+    return <div className='filter-chips'>
+        <span className="font-size-16-gray text-overflow">{title}</span>
+        <button style={{ border: 'none', background: 'none' }}
+            onClick={onClick}><MdCancel size={20} fill="gray" /></button>
     </div>;
 }
 

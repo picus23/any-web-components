@@ -527,7 +527,7 @@ input:checked + .slider:before {
   text-overflow: ellipsis;
 }
 
-.filter-field-white {
+.filter-field {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -538,9 +538,10 @@ input:checked + .slider:before {
   background: #FFFFFF;
   border-radius: 8px;
   padding: 10px;
+  border: none;
 }
 
-.filter-field-blue {
+.filter-field.active {
   display: flex;
   flex-direction: row;
   justify-content: center;
