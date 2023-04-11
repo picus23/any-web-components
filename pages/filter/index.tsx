@@ -19,6 +19,7 @@ import FilterSearchInput from "@/components/filter/FilterSearchInput";
 import FilterFieldWrapper from "@/components/filter/FilterFieldWrapper";
 
 export default function () {
+    let FilterFields = ['1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’'];
 
     return <>
 
@@ -52,42 +53,35 @@ export default function () {
                 <div className="filter-base">
                     <span className="font-size-20 fw-500 bg-white mb-3">Подсоединения</span>
                     <div className="d-flex flex-column">
-                        <FilterHead title="BSPP Наружная" />
+                        <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
                         <div className="filter-chips-block my-2">
-                            {/* <div className="filter-chips-item"> */}
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
-                            <div className="">
-                                <FilterMarker title="1/4’’" />
-                            </div>
+                            {
+                                FilterFields.map(item => (
+                                    <FilterMarker title={item} />
+                                ))
+                            }
                         </div>
                     </div>
-
+                    <div className="d-flex flex-column">
+                        <div className="my-2"><FilterHead title="BSPP Внутреняя" /></div>
+                        <div className="filter-chips-block my-2">
+                            {
+                                FilterFields.map(item => (
+                                    <FilterMarker title={item} />
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div className="d-flex flex-column">
+                        <div className="my-2"><FilterHead title="BSPP Наружная" /></div>
+                        <div className="filter-chips-block my-2">
+                            {
+                                FilterFields.map(item => (
+                                    <FilterMarker title={item} />
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -114,7 +108,7 @@ export default function () {
          <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
         `}></CollapseAntd>
 
-                    <FilterMarker title="1/4’’" onClick={()=>alert('Click')}/>
+                    <FilterMarker title="1/4’’" onClick={() => alert('Click')} />
                     <FilterMarker title="Option" />
                     <FilterMarker title="Option" isGray />
                     <FilterMarker title="Option" isActive />
