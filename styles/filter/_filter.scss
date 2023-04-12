@@ -142,6 +142,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 16px 48px 16px 16px;
+    position: relative;
     // gap: 24px;
     // margin: 24px 0;
     isolation: isolate;
@@ -154,6 +155,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    // position: absolute;
     padding: 0px;
     gap: 12px;
     width: 28px;
@@ -176,15 +178,9 @@
     align-items: flex-start;
     padding: 4px 8px;
     gap: 10px;
-
     width: 74px;
     height: 32px;
-
-    /* Light/Grayscale/Background Primary */
-
     background: #FFFFFF;
-    /* Light/Grayscale/Border */
-
     border: 1px solid #E8E8E8;
     border-radius: 8px;
 }
@@ -234,6 +230,10 @@ font-weight: 600;
     border: 1px solid #E8E8E8;
     text-align: center;
     color: white;
-    padding: 0 8px;
-    
+    padding: 0 8px;    
 }
+
+.letter-active {
+    color: #0085FF !important;
+}
+

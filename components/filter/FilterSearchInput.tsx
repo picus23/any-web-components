@@ -14,7 +14,7 @@ const FilterSearchInput: FC<FilterSearchInputProps> = ({ handleSearch, handleUse
     return <div className="filter-search-input">
         <div className="d-flex justify-content-between w-100">
             <span className="filter-search-title">{title}</span>
-            <MdClose className="d-flex align-items-start"  size={24} fill="gray"/>
+            <MdClose className="d-flex align-items-start" size={24} fill="#969696" />
         </div>
         <form className=" d-flex my-2" onSubmit={handleSearch}>
             <input

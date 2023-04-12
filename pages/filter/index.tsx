@@ -20,6 +20,8 @@ import FilterFieldWrapper from "@/components/filter/FilterFieldWrapper";
 import FilterButtonShow from "@/components/filter/FilterButtonShow";
 import FilterMarkerWrapper from "@/components/filter/FilterMarkerWrapper";
 import FilterTitle from "@/components/filter/FilterTitle";
+import FilterLaungageList from "@/components/filter/FilterLanguageList";
+import FilterLanguageLetter from "@/components/filter/FilterLanguageLetter";
 
 export default function () {
     let FilterFields = ['1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’'];
@@ -81,6 +83,10 @@ export default function () {
                     }
                 </FilterMarkerWrapper>
             </div>
+            <FilterLaungageList>
+                <li><img src="/kit/GB.ru" alt="" /></li>
+                <FilterLanguageLetter isActive letter="B" />
+            </FilterLaungageList>
 
         </div>
 
