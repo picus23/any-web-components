@@ -6,7 +6,7 @@ interface FilterFieldWrapperProps {
 }
  
 const FilterFieldWrapper: FC<FilterFieldWrapperProps> = ({children, height = 600}) => {
-    return <ul className="list-group list-group-flush py-2 overflow-auto" style={{ maxHeight: height, minHeight: height }}>
+    return <ul className="list-group list-unstyled p-2 overflow-auto" style={{ maxHeight: height, minHeight: height }}>
         {children}
     </ul>;
 }
