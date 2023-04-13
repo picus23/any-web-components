@@ -5,7 +5,7 @@ interface FieldTextProps {
 }
 
 const FieldText: FC<FieldTextProps> = ({ children }) => {
-    return <div className="text-field">{children}</div>
+    return <div className="text-field" dangerouslySetInnerHTML={{__html: children}} />
 }
 
 export default FieldText;
