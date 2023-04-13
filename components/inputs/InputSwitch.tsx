@@ -1,19 +1,19 @@
-import { FC, ReactNode } from "react"
+import { ReactNode } from "react"
 
 
-interface InputProps {
+interface InputSwitchProps {
     title_style?: string,
     icon?: ReactNode,
     children?: ReactNode,
     style?: string,
-    isActive?: boolean,
-    isGray?: boolean,
+
 }
 
-const Input: FC<InputProps> = ({ children, isActive = false, isGray = false }) => {
-    return <>
-        <input className={'square-gray ' + (isActive ? 'input-active' : '') + (isGray ? ' bg-gray' : '')} type="checkbox" />
-    </>
+export function InputSwitch(props: InputSwitchProps) {
+    return <label className="switch">
+    <input type="checkbox" />
+    <span className="slider round"></span>
+  </label>
     // return (
     //     <div className="d-flex justify-content-center align-items-center p-1">
     //         <div className={'input-' + props.button_style +" text-light " + props.title_style}>
@@ -24,5 +24,3 @@ const Input: FC<InputProps> = ({ children, isActive = false, isGray = false }) =
     //     </div>
     // )
 }
-
-export default Input;
