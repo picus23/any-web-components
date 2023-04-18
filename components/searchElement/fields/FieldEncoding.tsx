@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { MdArrowForward } from 'react-icons/md'
-import ButtonGrayArrow from '../../../components/buttons/ButtonGrayArrow'
+import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
 
 interface FieldEncodingProps {
     title: string,

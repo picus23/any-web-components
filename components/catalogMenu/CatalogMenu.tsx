@@ -1,9 +1,6 @@
 import { FC, ReactNode } from "react";
-import { Button } from "react-bootstrap";
-import { MdArrowForward } from 'react-icons/md';
 import { MdChevronRight } from 'react-icons/md';
 import SearchSeries from "../searchElement/fields/FieldSeries";
-import ButtonGrayArrow from "../buttons/ButtonGrayArrow";
 
 
 interface CatalogMenuProps {

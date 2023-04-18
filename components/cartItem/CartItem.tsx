@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import Button from '../../components/buttons/Button';
+import Button from '../buttons/Button';
 import { MdRemove } from 'react-icons/md';
 import { MdAdd } from 'react-icons/md';
 import { Md3DRotation } from 'react-icons/md';
