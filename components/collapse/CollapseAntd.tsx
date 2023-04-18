@@ -1,7 +1,6 @@
 import React from 'react';
 import {ReactNode} from 'react';
 import { Collapse } from 'antd';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
 // import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 

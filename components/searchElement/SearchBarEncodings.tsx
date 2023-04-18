@@ -1,14 +1,4 @@
-import React, { FC, ReactNode } from 'react';
-import Button from "../../components/buttons/Button";
-import ButtonCounter from "../../components/buttons/ButtonCounter";
-import ButtonShow from "../../components/buttons/ButtonShow";
-import FieldSeries from "../../components/searchElement/fields/FieldSeries";
-import FieldCategory from "../../components/searchElement/fields/FieldCategory";
-import FieldEncoding from "../../components/searchElement/fields/FieldEncoding";
-import { MdSearch } from "react-icons/md";
-import { MdShoppingCart } from "react-icons/md";
-import { MdRemove } from "react-icons/md";
-import { MdAdd } from "react-icons/md";
+import { FC, ReactNode } from "react";
 
 interface SearchBarEncodingProps {
     children: ReactNode,

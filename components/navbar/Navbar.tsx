@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import Button from '../../components/buttons/Button';
+import Button from '../buttons/Button';
 import { MdOutlineMenuOpen } from 'react-icons/md';
 import { MdPerson } from 'react-icons/md';
 import { MdFavorite } from 'react-icons/md';
