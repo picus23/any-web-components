@@ -23,13 +23,13 @@ const SearchInput: FC<SearchInputProps> = ({handleSearch, handleUserTyping, hand
     }
 
     return (
-        <form className=" d-flex my-2" onSubmit={handleSearchWrapper}>
+        <form className="d-flex" onSubmit={handleSearchWrapper}>
             <input 
                 ref={searchInput}
                 onFocus={e => handleFocus(true)}
                 onBlur={e => handleFocus(false)}
                 onInput={handleUserTypingWrapper}
-                className="input-find" 
+                className="input-find flex-grow-1" 
                 type="search" 
                 placeholder="Поиск" 
                 aria-label="Search"
