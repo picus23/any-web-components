@@ -9,7 +9,7 @@ interface ButtonCounterProps {
     icon2?: ReactNode,
     counter?: number,
     btn_style: string,
-    text_style: string,
+    text_style?: string,
     counter_style?: string,
 }
 

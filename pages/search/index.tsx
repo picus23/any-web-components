@@ -176,14 +176,14 @@ export default function () {
                                         title={item[0]}
                                         price={item[1]}
                                         amount={item[2]}
-                                        button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
+                                        button={<ButtonCounter text_style={'font-size-16-gray '} counter={1} btn_style="counter-h52"></ButtonCounter>}
                                         button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}>
                                     </FieldEncoding>
                                 )
                                 )
                             }
-                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
                         </div>
+                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
 
                         <hr className="w-100" />
 
@@ -248,10 +248,9 @@ export default function () {
             </div >
 
         </div >
-
         <CollapseAntd title={'Search Bar'} text={`
-    
-            <div className="d-flex flex-column my-3">
+        
+        <div className="d-flex flex-column my-3">
                 <SearchInput></SearchInput>
                 <SearchBarEncoding>
                     <div className="search-hint-history">

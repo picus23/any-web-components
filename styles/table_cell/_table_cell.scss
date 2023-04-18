@@ -1,4 +1,3 @@
-
 .table-cell-row,
 .table-cell-column,
 .table-cell-img-right,
@@ -7,20 +6,22 @@
 .table-cell-two-buttons-vertical {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  max-width: 192px;
+  align-items: center;
+  // max-width: 192px;
   gap: 8px;
-  padding: 0.8rem;
+  padding: 16px;
   background: #FFFFFF;
   /* border: 1px solid gray; */
   /* position: absolute;
   right: 0; */
+  font-size: 16px;
+  font-weight: 400;
   height: 100%;
 
 }
 
 .table-cell-img-right {
-  min-width: 192px;
+  // min-width: 192px;
   align-items: center;
   justify-content: space-between;
 }
@@ -38,5 +39,9 @@
 }
 
 .table-cell-two-buttons-horizont {
-  width: max-content 
+  width: max-content
 }
+
+// .underline-dashed {
+//   text-decoration: dashed;
+// }
