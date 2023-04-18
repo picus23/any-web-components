@@ -192,8 +192,6 @@ export default function () {
                         <div className="row w-100  gap-2">
                             {
                                 character.map(item => (
-
-
                                     <div>
                                         <FieldSeries title={item.title} subtitle={item.subtitle} icon={<img src="/kit/empty_square.png" alt="" />}></FieldSeries>
 
@@ -208,8 +206,6 @@ export default function () {
                                     </div>
                                 ))
                             }
-
-
                         </div>
                         <hr className="w-100" />
                         <SearchTitle>PDF документы</SearchTitle>
@@ -251,9 +247,11 @@ export default function () {
                 </SearchBarEncoding>
             </div >
 
-        </div ><CollapseAntd title={'Search Bar'} text={`
-        
-        <div className="d-flex flex-column my-3">
+        </div >
+
+        <CollapseAntd title={'Search Bar'} text={`
+    
+            <div className="d-flex flex-column my-3">
                 <SearchInput></SearchInput>
                 <SearchBarEncoding>
                     <div className="search-hint-history">

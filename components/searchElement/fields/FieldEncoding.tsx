@@ -10,13 +10,14 @@ interface FieldEncodingProps {
     button?: ReactNode,
     button2?: ReactNode,
     btnGrayArrow: boolean,
+    handleArrowClick?: () => void,
 }
 
 
 function FieldEncoding(props: FieldEncodingProps) {
     return (
         <div className="search-field my-2">
-            <div className='d-flex gap-2'>
+            <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
                 <div className='d-flex gap-2'>
                     {props.icon ?? false}
                     <div className="d-flex flex-column">
@@ -33,22 +34,9 @@ function FieldEncoding(props: FieldEncodingProps) {
                 </div>
             </div>
             <div className=''>
-                { props.btnGrayArrow ? <ButtonGrayArrow /> : false}
+                { props.btnGrayArrow ? <ButtonGrayArrow onClick={props.handleArrowClick} /> : false}
             </div>
         </div>
-        // <div className="search-field px-2">
-        //     <div className='d-flex'>
-        //         {props.icon ?? false}
-        //         <div className="d-flex flex-column mx-2 justify-content-start">
-        //             <span className="font-size-20 fw-500">{props.title}</span>
-        //             {props.price ? <span className="font-size-16-gray fw-500">{props.price}$ за шт.</span> : false}
-        //             {props.amount ? <span className="font-size-16-gray fw-500">Осталось {props.amount} шт.</span> : false}
-        //         </div>
-        //         {props.button ?? false}
-        //         {props.button2 ?? false}
-        //     </div>
-        //     <ButtonGrayArrow />
-        // </div>
     )
 }
 

@@ -6,7 +6,8 @@ interface FieldSeriesProps {
     title: string,
     subtitle?: string,
     icon?: ReactNode,
-    characteristics?: ReactNode[]
+    characteristics?: ReactNode[],
+    handleArrowClick?: () => void,
 }
 
 
@@ -20,29 +21,9 @@ function FieldSeries(props: FieldSeriesProps) {
                     {props.subtitle ? <span className="font-size-16-gray fw-500">{props.subtitle}</span> : false}
                 </div>
             </div>
-            <ButtonGrayArrow />
+            <ButtonGrayArrow onClick={props.handleArrowClick} />
         </div>
     )
 }
 
 export default FieldSeries;
-
-
-{/* <div className="row">
-    <div className="col-2">
-        <span className="font-size-13">Давление</span> <br />
-        <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
-    </div>
-    <div className="col-2">
-        <span className="font-size-13">Давление</span> <br />
-        <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
-    </div>
-    <div className="col-2">
-        <span className="font-size-13">Давление</span> <br />
-        <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
-    </div>
-    <div className="d-flex flex-column col-2 justify-content-end align-items-end mr-2">
-        <span className="font-size-13 mb-1">Итого</span>
-        <span className="font-size-16-black fw-500">$214</span>
-    </div>
-</div> */}
