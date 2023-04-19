@@ -2,12 +2,13 @@ import { FC, FormEvent, createRef } from "react";
 import Button from "../buttons/Button";
 
 interface SearchInputProps {
+    searchPhrase?: string,
     handleFocus?: (isFocused: boolean) => void,
     handleUserTyping: (phrase: string) => void,
     handleSearch: (phrase: string, context: string|null) => void,
 }
  
-const SearchInput: FC<SearchInputProps> = ({handleSearch, handleUserTyping, handleFocus}) => {
+const SearchInput: FC<SearchInputProps> = ({searchPhrase, handleSearch, handleUserTyping, handleFocus}) => {
 
     const searchInput = createRef<HTMLInputElement>()
 
@@ -25,6 +26,7 @@ const SearchInput: FC<SearchInputProps> = ({handleSearch, handleUserTyping, hand
     return (
         <form className="d-flex" onSubmit={handleSearchWrapper}>
             <input 
+                value={searchPhrase !== undefined ? searchPhrase : '' }
                 ref={searchInput}
                 onFocus={e => handleFocus === undefined ? false : handleFocus(true)}
                 onBlur={e => handleFocus === undefined ? false : handleFocus(false)}
