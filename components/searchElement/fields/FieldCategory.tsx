@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 
 interface FieldCategoryProps {
     title: string,
+    handleArrowClick?: () => void,
 }
 
 
@@ -15,18 +16,9 @@ function FieldCategory(props: FieldCategoryProps) {
                 <MdSearch size={24} fill={'gray'} />
                 <span className="font-size-20 ms-3 fw-500">{props.title}</span>
             </div>
-            <ButtonGrayArrow />
-
+            <ButtonGrayArrow onClick={props.handleArrowClick} />
         </div>
     )
 }
 
 export default FieldCategory;
-
-
-{/* <div className="search-hint-search-often">
-    <span className="font-size-16-gray fw-500">Часто ищут</span>
-    <SearchCategory title="Hy-Lok 3мм"></SearchCategory>
-    <SearchCategory title="Hy-Lok 3мм"></SearchCategory>
-    <SearchCategory title="Hy-Lok 3мм"></SearchCategory>
-</div> */}
