@@ -15,7 +15,7 @@ interface CollapseProps {
 
 const CollapseAntd: React.FC<CollapseProps> = ({ title, text,children }) => {
     const onChange = (key: string | string[]) => {
-        console.log(key);
+        
     };
 
     return (
