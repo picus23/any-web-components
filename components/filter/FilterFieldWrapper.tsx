@@ -1,5 +1,6 @@
-import { filterHeight } from "@/components/filter/varibles";
+
 import React, { FC, ReactNode } from "react";
+import { filterHeight } from "../varibles";
 
 interface FilterFieldWrapperProps {
     children: ReactNode;

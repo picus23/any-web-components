@@ -5,18 +5,18 @@ import Link from "next/link";
 
 interface BreadCrumbsProps {
     list: IBreadСrumbs[],
-    prefix: string,
+    route?: (url: string) => string
 }
 
-const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, prefix}) => {
+const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, route}) => {
     return <>
         {
 
             list.map(({title, id, url}, index) => {
-                return <>
+                return <span key={id}>
                     {index != 0 ? ' / ' : ''}
-                    <Link href={prefix + url}>{title}</Link> 
-                </>
+                    <Link href={route ? route(url) : url}>{title}</Link> 
+                </span>
             })
         }
     </>

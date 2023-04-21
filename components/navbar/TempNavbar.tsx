@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, RefObject } from "react";
 import { MdMenuOpen, MdOutlineFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 
 
 interface TempNavbarProps {
-    catalog: ReactNode
+    catalog: ReactNode,
+    hook: RefObject<HTMLDivElement>,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog }) => {
-    return <div className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook}) => {
+    return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
         <div className="row align-items-center mb-3">
             <div className="col-3">
