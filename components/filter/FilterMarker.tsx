@@ -4,7 +4,7 @@ import Input from "../inputs/Input";
 import { Checkbox } from "antd";
 
 interface FilterMarkerProps {
-    title: string,
+    title: string | ReactNode,
     isActive?: boolean,
     isGray?: boolean,
     onChange?: (isChecked: boolean) => void,
