@@ -165,6 +165,7 @@
   font-size: 16px;
   font-weight: 500;
 }
+
 .my-btn-go-to {
   display: flex;
   align-items: center;
@@ -193,4 +194,24 @@
   /* position: absolute;
   right: 0; */
   height: 100%;
+}
+
+.btn_shop_gray {
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #1C1C1C;
+}
+
+.btn_shop_blue {
+  background: #0085FF;
+  border: none;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
 }

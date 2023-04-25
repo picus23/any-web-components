@@ -1,5 +1,5 @@
 import { FC } from "react";
-import {IBreadСrumbs} from './interface'
+import { IBreadСrumbs } from './interface'
 import Link from "next/link";
 
 
@@ -8,14 +8,13 @@ interface BreadCrumbsProps {
     route?: (url: string) => string
 }
 
-const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, route}) => {
+const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, route }) => {
     return <>
         {
-
-            list.map(({title, id, url}, index) => {
+            list.map(({ title, id, url }, index) => {
                 return <span key={id}>
                     {index != 0 ? ' / ' : ''}
-                    <Link href={route ? route(url) : url}>{title}</Link> 
+                    <Link className="text-decoration-none" style={{color:'#585757'}} href={route ? route(url) : url}>{title}</Link>
                 </span>
             })
         }

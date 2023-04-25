@@ -6,7 +6,7 @@ interface EncodingWrapperProps {
 
 const EncodingWrapper: FC<EncodingWrapperProps> = ({ children }) => {
     return <>
-        <div className="d-flex px-4">
+        <div className="row px-4">
             {children}
         </div>
     </>;

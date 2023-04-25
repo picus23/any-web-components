@@ -12,6 +12,8 @@ export default function Index() {
 
 
 
+    <Link href="/buttons">Кнопочки</Link>
+    <br />
     <CartComponent link="/navbar" title="навигатор" description="" />
     <CartComponent link="/search" title="Подсказки для поиска" description="Комплекс компонентов специально разработаных для упрощения отображений подсказок поиска" />
     <CartComponent link="/footer" title="Footer" description="Комплекс компонентов специально разработаных для упрощения отображений" />
@@ -29,8 +31,6 @@ export default function Index() {
 
     {/* <Link href="/cartItem">Карта товара</Link> */}
     {/* <Link href="/tableRow">TableRow</Link> */}
-    <br />
-    <Link href="/buttons">Кнопочки</Link>
     <br />
     <Link href="/tableCell">Ячейки таблицы</Link>
     <br />

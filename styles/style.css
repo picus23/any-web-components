@@ -202,6 +202,26 @@ body {
   height: 100%;
 }
 
+.btn_shop_gray {
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #1C1C1C;
+}
+
+.btn_shop_blue {
+  background: #0085FF;
+  border: none;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.06), 0px 1px 1px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
 .navbar-my {
   box-sizing: border-box;
   display: flex;
@@ -215,7 +235,6 @@ body {
 }
 
 .input-find {
-  width: 613px;
   min-height: 52px;
   padding: 0 0.8rem;
   color: #212529;
@@ -364,8 +383,11 @@ input:checked + .slider:before {
   width: max-content;
 }
 
+.search-hint-wrap {
+  position: relative;
+}
+
 .input-find {
-  width: 613px;
   min-height: 52px;
   padding: 0 0.8rem;
   background-color: #fff;
@@ -400,6 +422,9 @@ input:checked + .slider:before {
   box-shadow: 0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04);
   border-radius: 8px;
   max-width: 737px;
+  position: absolute;
+  width: 100%;
+  padding: 10px;
 }
 
 .search-hint-history {
@@ -542,23 +567,44 @@ input:checked + .slider:before {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 256px;
   min-height: 48px;
   background: #FFFFFF;
   border-radius: 8px;
   padding: 6px 10px;
-  border: none;
+  border: 1px solid #fff;
+  width: 100%;
 }
 .filter-field span {
   text-align: start;
+}
+.filter-field:hover {
+  background: #F7F7F7;
 }
 .filter-field.active {
   background: #0085FF;
   color: white;
 }
-.filter-field.selected {
+.filter-field.active:hover {
+  background: #339DFF;
+}
+.filter-field.isOpen {
+  background: #e5e5e5;
+}
+.filter-field:focus {
+  outline: none;
   border: 1px solid #0085FF;
   box-shadow: 0px 0px 2px 4px rgba(0, 133, 255, 0.16);
+}
+.filter-field.selected {
+  border: 1px solid #0085FF;
+}
+.filter-field .filter-field-up {
+  transition: all 0.3s;
+  transform: rotate(90deg);
+}
+.filter-field .filter-field-down {
+  transition: all 0.3s;
+  transform: rotate(-90deg);
 }
 
 .filter-search-title {
@@ -642,7 +688,6 @@ input:checked + .slider:before {
   flex-wrap: wrap;
   padding: 0px;
   gap: 12px;
-  width: 559px;
 }
 
 .filter-chips-item {
