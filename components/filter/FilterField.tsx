@@ -33,7 +33,7 @@ const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, isActive = f
         onClick={onClick}>
         <div className="d-flex align-items-center">
             {isActive ? <img src="/kit/white_square.png" alt="" /> : <img src="/kit/gray_square.png" alt="" />}
-            <span className="fw-500 ms-2 d-flex text-left">{title}</span>
+            <span className="fw-400 ms-2 d-flex text-left" style={{fontSize:'16px'}}>{title}</span>
         </div>
         <MdChevronRight size={24} fill={isActive ? 'white' : 'gray'} />
     </button>

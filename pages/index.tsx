@@ -20,6 +20,7 @@ export default function Index() {
     <CartComponent link="/tableRow" title="Table Row" description="Комплекс компонентов специально разработаных для упрощения отображений" />
     <CartComponent link="/filter" title="Filter" description="Комплекс компонентов специально разработаных для упрощения отображений" />
     <CartComponent link="/popularFilter" title="Popular Filter" description="ну нафиг" />
+    <CartComponent link="/encoding" title="Кодировки" description="" />
 
 
     <br />
