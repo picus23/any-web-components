@@ -10,9 +10,10 @@ interface ButtonProps {
     counter_style?: string,
     text_style?: string,
     class_name?: string,
+    onClick?: ()=>void,
 }
 
-const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, btn_style,text_style,counter_style }) => {
+const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, btn_style,onClick,counter_style }) => {
     return <button className={'my-btn-' + btn_style}>
 
         {icon ?? false}

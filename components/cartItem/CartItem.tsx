@@ -10,68 +10,80 @@ import { MdDelete } from 'react-icons/md';
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import ButtonCounter from "../buttons/ButtonCounter";
+import BreadCrumbs from "../breadСrumbs/BreadCrumbs";
+import { IBreadСrumbs } from '../breadСrumbs/interface'
+import ButtonGrayAddRemove from "../buttons/ButtonGrayAddRemove";
 
+interface encoding {
+    prop: string,
+    param: string
+}
 
 interface CartItemProps {
     children?: ReactNode,
     icon?: ReactNode,
     btn_style?: string,
-    type_counter?: string,
     count?: number,
     name_item: string,
+    list: IBreadСrumbs[],
+    props_list: encoding[],
+    price: number,
 }
 
-const CartItem: FC<CartItemProps> = ({ children, icon, btn_style, type_counter, count, name_item }) => {
+
+const CartItem: FC<CartItemProps> = ({ children, props_list, btn_style, list, count, name_item, price }) => {
     return <div className="d-flex border border-dark">
 
-        <div className="d-flex flex-column mx-1 justify-content-evenly me-2">
-            <MdOutlineKeyboardArrowUp />
-            <span className="mx-1">{count}</span>
-            <MdKeyboardArrowDown />
+        <div className="d-flex flex-column mx-1 justify-content-center me-2">
+            <button onClick={() => alert(123)} className="border-0 bg-white"><MdOutlineKeyboardArrowUp fill="#969696" /></button>
+            <span className="ms-2 my-2">1</span>
+            <button onClick={() => alert(123)} className="border-0 bg-white"><MdKeyboardArrowDown fill="#969696" /></button>
         </div>
-        <img src="/kit/cart_item.png" alt="" />
+        <img src="kit/cart_item.png" alt="PRODUCT LOGO" />
 
         <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
             <div className="row">
-                <div className="col-4">
-                    <span className="font-size-13">Продукция /</span>
-                    <span className="font-size-13"> Клапаны /</span>
-                    <span className="font-size-13"> Шаровые краны</span>
+                <div className="col-5">
+                    <a className="text-decoration-none" style={{ color: '#585757', fontSize: '16px', fontWeight: '400' }} href={'/'}>Продукция / </a>
+                    <a className="text-decoration-none" style={{ color: '#585757', fontSize: '16px', fontWeight: '400' }} href={'/'}>Продукция / </a>
+                    <a className="text-decoration-none" style={{ color: '#585757', fontSize: '16px', fontWeight: '400' }} href={'/'}>Продукция</a>
                     <br />
-                    <span className="font-size-20 fw-500">{name_item}</span>
+                    <span className="font-size-20 fw-500">H1B-H-6M</span>
                 </div>
-                <div className="d-flex col-4 gap-3">
-                    <div className="action-group">
-                        <Button icon={<MdCheckCircle size={20} fill={'gray'} />} btn_style="small-gray"></Button>
-                        <Button icon={<MdAddComment size={20} fill={'gray'} />} btn_style="small-gray"></Button>
+                <div className="d-flex col gap-3">
+                    <div className="d-flex align-items-center gap-1">
+                        <Button onClick={() => {
+                            alert(123)
+                        }} icon={<MdCheckCircle size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
+                        <Button onClick={() => alert(123)} icon={<MdAddComment size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
                     </div>
-                    <div className="action-group">
-                        <Button icon={<Md3DRotation size={20} fill={'gray'} />} btn_style="small-gray"></Button>
-                        <Button icon={<MdPictureAsPdf size={20} fill={'gray'} />} btn_style="small-gray"></Button>
+                    <div className="d-flex align-items-center gap-1">
+                        <Button onClick={() => alert(123)} icon={<Md3DRotation size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
+                        <Button onClick={() => alert(123)} icon={<MdPictureAsPdf size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
                     </div>
-                    <div className="action-group">
-                        <ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="with-imgs"></ButtonCounter>
-                        <Button icon={<MdDelete size={20} fill={'gray'} />} btn_style="small-gray"></Button>
+                    <div className="d-flex align-items-center gap-1">
+                        <ButtonGrayAddRemove btn_class="my-btn-small-gray-h40" counter={1} onClickRemove={() => alert(123)} onClickAdd={() => alert(123)} />
+                        <Button onClick={() => alert(123)} icon={<MdDelete size={20} fill={'gray'} />} btn_style="small-gray my-btn-small-gray-h40"></Button>
                     </div>
                 </div>
             </div>
 
             <div className="row">
-                <div className="col-2">
+                <div className="col-3">
                     <span className="font-size-13">Давление</span> <br />
                     <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
                 </div>
-                <div className="col-2">
+                <div className="col-3">
                     <span className="font-size-13">Давление</span> <br />
                     <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
                 </div>
-                <div className="col-2">
+                <div className="col-3">
                     <span className="font-size-13">Давление</span> <br />
                     <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
                 </div>
-                <div className="d-flex flex-column col-2 justify-content-end align-items-end mr-2">
+                <div className="d-flex flex-column col-3 justify-content-end align-items-start mr-2">
                     <span className="font-size-13 mb-1">Итого</span>
-                    <span className="font-size-16-black fw-500">$214</span>
+                    <span className="font-size-16-black fw-500">$216</span>
                 </div>
             </div>
 
