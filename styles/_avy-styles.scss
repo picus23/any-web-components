@@ -1,0 +1,159 @@
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #1C1C1C44;
+    border-radius: 20px;
+    border: 3px solid #fff;
+}
+
+
+:root {
+    scrollbar-face-color: rgb(255, 255, 255);
+    /* Firefox 63 compatibility */
+    scrollbar-track-color: rgb(46, 54, 69);
+    /* Firefox 63 compatibility */
+    scrollbar-color: rgb(210, 210, 210) #fff0;
+    scrollbar-width: thin;
+}
+
+
+
+
+
+.header-shadow {
+    transition: box-shadow .5s;
+}
+
+.header-shadow-show {
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.175) !important;
+}
+
+.header-shadow-inverse {
+    box-shadow: 0 -15px 20px rgba(0, 0, 0, 0.175) !important;
+}
+
+.header-shadow-filter {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.175) !important;
+}
+
+
+.ant-modal-body {
+
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+.ant-modal-content {
+    padding: 0 !important;
+
+    .ant-modal-title {
+        padding: 16px !important;
+    }
+
+    .ant-modal-body {
+        padding: 0 12px !important;
+    }
+}
+
+
+
+.show-hover {
+
+    .hover {
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s;
+    }
+
+    &:hover {
+
+        .hover {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+}
+
+
+
+.text-underline-hover {
+    text-decoration: none;
+}
+
+.text-underline-hover:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+.ant-select-dropdown {
+    z-index: 3000 !important;
+}
+
+.ant-tooltip {
+    z-index: 3500 !important;
+}
+
+
+
+.highlight,
+highlight,
+mark {
+    background-color: #FACC15;
+    padding: 3px 0 !important;
+    border-radius: 3px !important;
+}
+
+
+html {
+    scroll-behavior: smooth
+}
+
+
+
+
+
+.catalog-list {
+    position: absolute;
+    left: -4px;
+    width: calc(100% + 8px);
+
+    top: 65px;
+    height: 0px;
+    background: #ffffff;
+    
+    transition: height .5s cubic-bezier(1,-0.07,.24,1), border 1s ease-in-out, padding .3s ease-in-out;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0 10px;
+    padding-left: 17px;
+    border-top: 1px solid #ffffff;
+}
+
+
+.catalog-list-show {
+    height: calc(100vh - 165px - 32px);
+    padding: 10px;
+    padding-left: 17px;
+    border-top: 1px solid #ddd;
+}
