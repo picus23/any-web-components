@@ -9,7 +9,8 @@ interface ButtonBuyProps {
 }
 
 function ButtonBuy(props: ButtonBuyProps) {
-    return <button className={'d-flex justify-content-center align-items-center gap-1 px-4 py-2 btn_shop_' + props.btn_style} onClick={props.onClick}>
+    return <button className={'d-flex justify-content-center align-items-center gap-1 px-4 py-2 btn_shop_' + props.btn_style}
+        onClick={props.onClick}>
         {props.icon}
         <span>{props.children}</span>
     </button>

@@ -19,6 +19,8 @@ function ButtonCounter( props:ButtonCounterProps ) {
 
         {props.icon ?? <MdRemove size={20} fill={'gray'} />}
         
+        {/* <span className='d-flex align-items-center justify-content-center position-absolute top-0 p-2 text-white'
+                style={{fontSize:'13px',background:'#0085FF'}}>{props.counter ?? 0}</span> */}
         <span className={'counter-' + props.counter_style}>{props.counter ?? 0}</span>
         
         {props.icon2 ??<MdAdd size={20} fill={'gray'} />}

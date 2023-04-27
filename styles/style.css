@@ -89,14 +89,13 @@ body {
   position: absolute;
   top: -4px;
   right: -4px;
-  width: 23px;
   height: 20px;
   font-size: 0.5rem;
   background: #0085FF;
   border-radius: 90%;
   text-align: center;
   color: white;
-  padding: 0 8px;
+  padding: 3px 8px;
 }
 
 .counter-show {
@@ -292,7 +291,7 @@ body {
   content: "";
   height: 14px;
   width: 14px;
-  left: -3px;
+  left: 3px;
   right: 0;
   top: calc(50% - 7px);
   background-color: white;
@@ -309,7 +308,7 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(20px);
   right: -3px;
 }
 
@@ -337,7 +336,6 @@ input:checked + .slider:before {
 
 .action-group {
   display: flex;
-  align-items: center;
   gap: 4px;
 }
 
