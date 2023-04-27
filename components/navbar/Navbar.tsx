@@ -44,10 +44,10 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                     <Button btn_style="find-blue">Найти</Button>
                 </form>
                 <div className="d-flex justify-content-end gap-2">
-                    <Button icon={<MdPerson size={24} fill={'gray'} />} btn_style={"gray"}><span className="fw-500">Войти</span></Button>
-                    <Button icon={<MdFavorite size={24} fill={'gray'} />} btn_style={"small-gray"}></Button>
+                    <Button icon={<MdPerson size={24} fill={'#969696'} />} btn_style={"gray"}><span className="fw-500">Войти</span></Button>
+                    <Button icon={<MdFavorite size={24} fill={'#969696'} />} btn_style={"small-gray"}></Button>
                     <div className="position-relative">
-                        <Button icon={<MdShoppingCart size={24} fill={'gray'} />} btn_style={"gray"} counter={0} counter_style={"up"}><span className="fw-500">Корзина</span></Button>
+                        <Button icon={<MdShoppingCart size={24} fill={'#969696'} />} btn_style={"gray"} counter={0} counter_style={"up"}><span className="fw-500">Корзина</span></Button>
                     </div>
                 </div>
             </div>

@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { FC, ReactNode, RefObject } from "react";
-import { MdMenuOpen, MdOutlineFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
+import { MdFavorite, MdMenuOpen, MdOutlineFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
+import Button from "../buttons/Button";
 
 
 interface TempNavbarProps {
     catalog: ReactNode,
     hook: RefObject<HTMLDivElement>,
+    basket: ReactNode,
+    login: ReactNode,
+    favorite: ReactNode,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook}) => {
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorite }) => {
     return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
         <div className="row align-items-center mb-3">
@@ -75,7 +79,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook}) => {
 
                 <button className="btn btn-outline-secondary d-flex gap-2">
                     <img src="/kit/ru.svg" /> RU
-                    <MdUnfoldMore size={23}/>
+                    <MdUnfoldMore size={23} />
                 </button>
 
             </div>
@@ -108,23 +112,25 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook}) => {
             </div>
             <div className="col-3 d-flex align-items-stretch">
                 <div className="d-flex gap-2 w-100">
-                    <button className="btn btn-outline-secondary grow pe-4">
+                    {login}
+
+                    {/* <button className="btn btn-outline-secondary grow pe-4">
                         <MdPerson size={22} color="#969696" className="me-2"/>
                         Войти
-                    </button>
-                    <button className="btn btn-outline-secondary px-3">
-                        <MdOutlineFavorite size={22} color="#969696" />
-                    </button>
+                    </button> */}
+                    
+                    {favorite}
 
 
-                    <button type="button" className="btn btn-outline-secondary position-relative pe-4">
-                        <MdShoppingCart size={22} color="#969696" className="me-2"/>
+                    {basket}
+                    {/* <button type="button" className="btn btn-outline-secondary position-relative pe-4">
+                        <MdShoppingCart size={22} color="#969696" className="me-2" />
                         Корзина
                         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
                             0
                             <span className="visually-hidden">unread messages</span>
                         </span>
-                    </button>
+                    </button> */}
 
 
 
