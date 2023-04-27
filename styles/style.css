@@ -1,4 +1,122 @@
 @charset "UTF-8";
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(28, 28, 28, 0.2666666667);
+  border-radius: 20px;
+  border: 3px solid #fff;
+}
+
+:root {
+  scrollbar-face-color: rgb(255, 255, 255);
+  /* Firefox 63 compatibility */
+  scrollbar-track-color: rgb(46, 54, 69);
+  /* Firefox 63 compatibility */
+  scrollbar-color: rgb(210, 210, 210) rgba(255, 255, 255, 0);
+  scrollbar-width: thin;
+}
+
+.header-shadow {
+  transition: box-shadow 0.5s;
+}
+
+.header-shadow-show {
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.175) !important;
+}
+
+.header-shadow-inverse {
+  box-shadow: 0 -15px 20px rgba(0, 0, 0, 0.175) !important;
+}
+
+.header-shadow-filter {
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.175) !important;
+}
+
+.ant-modal-body table,
+.ant-modal-body th,
+.ant-modal-body td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+.ant-modal-content {
+  padding: 0 !important;
+}
+.ant-modal-content .ant-modal-title {
+  padding: 16px !important;
+}
+.ant-modal-content .ant-modal-body {
+  padding: 0 12px !important;
+}
+
+.show-hover .hover {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.show-hover:hover .hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.text-underline-hover {
+  text-decoration: none;
+}
+
+.text-underline-hover:hover {
+  text-decoration: underline;
+}
+
+.ant-select-dropdown {
+  z-index: 3000 !important;
+}
+
+.ant-tooltip {
+  z-index: 3500 !important;
+}
+
+.highlight,
+highlight,
+mark,
+.mark {
+  background-color: #FACC15;
+  padding: 3px 0 !important;
+  border-radius: 3px !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.catalog-list {
+  position: absolute;
+  left: -4px;
+  width: calc(100% + 8px);
+  top: 65px;
+  height: 0px;
+  background: #ffffff;
+  transition: height 0.5s cubic-bezier(1, -0.07, 0.24, 1), border 1s ease-in-out, padding 0.3s ease-in-out;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 10px;
+  padding-left: 17px;
+  border-top: 1px solid #ffffff;
+}
+
+.catalog-list-show {
+  height: calc(100vh - 165px - 32px);
+  padding: 10px;
+  padding-left: 17px;
+  border-top: 1px solid #ddd;
+}
+
 body {
   padding: 10%;
   background: #fff;
@@ -88,7 +206,7 @@ body {
   justify-content: center;
   position: absolute;
   top: -4px;
-  right: -4px;
+  width: 23px;
   height: 20px;
   font-size: 0.5rem;
   background: #0085FF;

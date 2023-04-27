@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { CSSProperties, FC, ReactNode } from "react";
 
 
 interface ButtonProps {
@@ -6,23 +6,32 @@ interface ButtonProps {
     icon?: ReactNode,
     icon2?: ReactNode
     counter?: number,
-    btn_style: string,
-    counter_style?: string,
-    text_style?: string,
     class_name?: string,
+    counter_style?: string,
+    style?: CSSProperties,
+    isCounterUp?: boolean,
+    isGray?: boolean,
 }
 
-const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, btn_style,text_style,counter_style }) => {
-    return <button className={'my-btn-' + btn_style}>
+const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, class_name, isCounterUp = false, isGray,style }) => {
+    return <button className={isGray ?
+        'position-relative d-flex align-items-center px-2 py-1 border rounded-2 text-black gap-1 bg-white ' + class_name :
+        'position-relative d-flex align-items-center px-2 py-1 border-0 text-white gap-1 bg-primary ' + class_name}
+        style={style}>
+        {/* return <button className={btn_style ? 'position-relative my-btn-' + btn_style : 'btn-primary'}> */}
 
         {icon ?? false}
         {children}
 
-        {counter_style ? <span className={'counter-' + counter_style}>{counter}</span> : false}
-        {/* {counter_style ? <span className='d-flex align-items-center justify-content-center position-absolute top-0 end-0 px-1 text-white border rounded-circle'
-            style={{ fontSize: '13px', background: '#0085FF' }}>{counter ?? 0}</span> : false} */}
+        {isCounterUp ?
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">{counter}
+                <span className="visually-hidden">unread messages</span>
+            </span> : false}
+
         {icon2 ?? false}
+
     </button>
+
 }
 
 export default Button;

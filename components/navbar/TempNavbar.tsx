@@ -118,11 +118,12 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
                         <MdPerson size={22} color="#969696" className="me-2"/>
                         Войти
                     </button> */}
-                    
+
                     {favorite}
 
 
                     {basket}
+                    
                     {/* <button type="button" className="btn btn-outline-secondary position-relative pe-4">
                         <MdShoppingCart size={22} color="#969696" className="me-2" />
                         Корзина

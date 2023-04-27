@@ -30,7 +30,7 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 </ul>
                 <div className="d-flex align-items-center justify-content-end col-3 gap-3">
                     <div className="font-size-16-gray "><span>+7 (495) 984-41-06</span></div>
-                    <Button btn_style={"small-gray"}>
+                    <Button isGray={true}>
                         <img src="/kit/ru.svg" alt="" />
                         <span className="font-size-16-gray mx-1">RU</span>
                         <MdOutlineUnfoldMore />
@@ -38,17 +38,16 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 </div>
             </div>
             <div className="d-flex align-items-end justify-content-between gap-3">
-                <Button icon={<MdOutlineMenuOpen size={24} />} btn_style="catalog-blue">Каталог</Button>
+                <Button icon={<MdOutlineMenuOpen size={24} />} isGray={false} class_name="py-2 rounded-2" style={{width:'256px'}}>Каталог</Button>
                 <form className=" d-flex">
-                    <input className="input-find" type="search" placeholder="Поиск" aria-label="Search" />
-                    <Button btn_style="find-blue">Найти</Button>
+                    <input className="input-find" style={{width:'613px'}} type="search" placeholder="Поиск" aria-label="Search" />
+                    <Button isGray={false} class_name="justify-content-center" style={{width:'124px',borderRadius:'0 8px 8px 0'}}>Найти</Button>
                 </form>
                 <div className="d-flex justify-content-end gap-2">
-                    <Button icon={<MdPerson size={24} fill={'#969696'} />} btn_style={"gray"}><span className="fw-500">Войти</span></Button>
-                    <Button icon={<MdFavorite size={24} fill={'#969696'} />} btn_style={"small-gray"}></Button>
-                    <div className="position-relative">
-                        <Button icon={<MdShoppingCart size={24} fill={'#969696'} />} btn_style={"gray"} counter={0} counter_style={"up"}><span className="fw-500">Корзина</span></Button>
-                    </div>
+                    <Button class_name="py-2" icon={<MdPerson size={24} fill={'#969696'} />} isGray={true}><span className="fw-500">Войти</span></Button>
+                    <Button icon={<MdFavorite size={24} fill={'#969696'} />} isGray={true}></Button>
+                    <Button isCounterUp={true} icon={<MdShoppingCart size={24} fill={'#969696'} />} isGray={true} counter={0} counter_style={"up"}><span className="fw-500">Корзина</span></Button>
+                    {/* <Button isCounterUp={true} icon={<MdShoppingCart size={24} fill={'#969696'} />} btn_style={"gray"} counter={0} counter_style={"up"}><span className="fw-500">Корзина</span></Button> */}
                 </div>
             </div>
         </div>
