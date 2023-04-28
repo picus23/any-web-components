@@ -105,33 +105,17 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
             <div className="col d-flex align-items-stretch" id="search">
                 <div className="input-group " >
                     <input type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                    <button className="btn btn-primary px-5" type="button" id="button-addon2" >
-                        Найти
-                    </button>
+                    <Button btn_style="btn-primary" style={{ width: '124px' }}>Найти</Button>
                 </div>
             </div>
             <div className="col-3 d-flex align-items-stretch">
                 <div className="d-flex gap-2 w-100">
                     {login}
 
-                    {/* <button className="btn btn-outline-secondary grow pe-4">
-                        <MdPerson size={22} color="#969696" className="me-2"/>
-                        Войти
-                    </button> */}
-
                     {favorite}
 
 
                     {basket}
-                    
-                    {/* <button type="button" className="btn btn-outline-secondary position-relative pe-4">
-                        <MdShoppingCart size={22} color="#969696" className="me-2" />
-                        Корзина
-                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                            0
-                            <span className="visually-hidden">unread messages</span>
-                        </span>
-                    </button> */}
 
 
 

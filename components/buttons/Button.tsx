@@ -7,26 +7,37 @@ interface ButtonProps {
     icon2?: ReactNode
     counter?: number,
     class_name?: string,
-    counter_style?: string,
     style?: CSSProperties,
     isCounterUp?: boolean,
-    isGray?: boolean,
+    counterPosition?: 'left' | 'right'
+    contentPosition?: 'center' | 'start'
+    btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success',
 }
 
-const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, class_name, isCounterUp = false, isGray,style }) => {
-    return <button className={isGray ?
-        'position-relative d-flex align-items-center px-2 py-1 border rounded-2 text-black gap-1 bg-white ' + class_name :
-        'position-relative d-flex align-items-center px-2 py-1 border-0 text-white gap-1 bg-primary ' + class_name}
+const Button: FC<ButtonProps> = ({ children, icon, icon2, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition }) => {
+    return <button className={btn_style ?
+        'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn ' + btn_style :
+        'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn btn-primary'}
         style={style}>
-        {/* return <button className={btn_style ? 'position-relative my-btn-' + btn_style : 'btn-primary'}> */}
 
-        {icon ?? false}
+        {icon ? <div className="me-1">{icon}</div> : false}
         {children}
 
-        {isCounterUp ?
+        {counterPosition == 'left' ?
+            <span className="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-primary">{counter}
+                <span className="visually-hidden">unread messages</span>
+            </span> :
+            false}
+        {counterPosition == 'right' ?
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">{counter}
                 <span className="visually-hidden">unread messages</span>
-            </span> : false}
+            </span> :
+            false}
+
+        {/* {isCounterUp ?
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">{counter}
+                <span className="visually-hidden">unread messages</span>
+            </span> : false} */}
 
         {icon2 ?? false}
 

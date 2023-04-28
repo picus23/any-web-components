@@ -7,7 +7,10 @@ body {
 $theme-colors: (
   "primary": #0085FF,
   "success": #00BA34,
+  "light": #F7F7F7,
+  "secondary": #969696,
   ) !default;
+
 
 $container-max-widths: (
   sm: 540px,
@@ -15,7 +18,6 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px,
   xxl: 1440px) !default;
-
 
 
 @import "./button/button";
