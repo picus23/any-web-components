@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC, ReactNode, RefObject } from "react";
-import { MdFavorite, MdMenuOpen, MdOutlineFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
+import { MdFavorite, MdMenuOpen, MdOutlineFavorite, MdOutlineMenuOpen, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import Button from "../buttons/Button";
 
 
@@ -42,6 +42,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
                                     <Link className="nav-link active" aria-current="page" href="/">Главная</Link >
@@ -70,16 +71,15 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
 
 
 
+            <div className="col-3 justify-content-end d-flex gap-3 align-items-center">
 
-
-            <div className="col-3 justify-content-end d-flex gap-4 align-items-center">
-
-                <a className="nav-link text-dark" href="#Какзаказать">+7 (945) 984-41-06</a>
+                <a className="text-decoration-none font-size-16-gray" href="#Какзаказать">+7 (945) 984-41-06</a>
 
 
                 <button className="btn btn-outline-secondary d-flex gap-2">
-                    <img src="/kit/ru.svg" /> RU
-                    <MdUnfoldMore size={23} />
+                    <img src="/kit/ru.svg" />
+                    <span className="font-size-16-gray mx-1">RU</span>
+                    <MdUnfoldMore size={23} fill="#969696" />
                 </button>
 
             </div>
@@ -94,10 +94,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
 
         <div className="row mb-3 align-items-stretch position-relative" style={{ height: 50 }}>
             <div className="col-3 d-flex align-items-stretch " id="catalog">
-                {/* <button className="btn btn-primary w-100 d-flex justify-content-start fo align-items-center gap-3 fs-5" >
-                    <MdMenuOpen size={24}/>
-                    <div className="span">Каталог</div>
-                </button> */}
+
                 {
                     catalog
                 }
@@ -105,11 +102,16 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
             <div className="col d-flex align-items-stretch" id="search">
                 <div className="input-group " >
                     <input type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                    <Button btn_style="btn-primary" style={{ width: '124px' }}>Найти</Button>
+                    <Button
+                        btn_style="btn-primary"
+                        style={{ width: '124px' }}>
+                        Найти
+                    </Button>
                 </div>
             </div>
             <div className="col-3 d-flex align-items-stretch">
                 <div className="d-flex gap-2 w-100">
+
                     {login}
 
                     {favorite}

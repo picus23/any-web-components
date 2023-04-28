@@ -29,7 +29,7 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                     <li className="nav-item-my"><a className="nav-link" href="">Как заказать</a></li>
                 </ul>
                 <div className="d-flex align-items-center justify-content-end col-3 gap-3">
-                    <div className="font-size-16-gray "><span>+7 (495) 984-41-06</span></div>
+                    <div className="font-size-16-gray "><a className="nav-link text-dark" href="#Какзаказать">+7 (495) 984-41-06</a></div>
                     <Button btn_style="btn-outline-secondary">
                         <img src="/kit/ru.svg" alt="" />
                         <span className="font-size-16-gray mx-1">RU</span>
@@ -38,7 +38,8 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 </div>
             </div>
             <div className="d-flex align-items-end justify-content-between gap-3">
-                <Button icon={<MdOutlineMenuOpen size={24} />}
+                <Button 
+                icon={<MdOutlineMenuOpen size={24} />}
                     contentPosition="start"
                     style={{ width: '256px' }}>Каталог</Button>
                 <div className="col d-flex align-items-stretch" id="search">

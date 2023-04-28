@@ -14,7 +14,7 @@ const FilterChips: FC<FilterChipsProps> = ({ children, title, onClick }) => {
     style={{background:'#F7F7F7'}}>
         <span className="font-size-16-gray text-overflow">{title}</span>
         <button style={{ border: 'none', background: 'none' }}
-            onClick={onClick}><MdCancel size={20} fill="gray" /></button>
+            onClick={onClick}><MdCancel size={18} fill="#969696" /></button>
     </div>;
 }
 

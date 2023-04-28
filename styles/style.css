@@ -499,6 +499,11 @@ input:checked + .slider:before {
   width: max-content;
 }
 
+.underline-dashed {
+  -webkit-text-decoration: dashed;
+          text-decoration: dashed;
+}
+
 .search-hint-wrap {
   position: relative;
 }
@@ -11561,17 +11566,18 @@ textarea.form-control-lg {
 
 .btn-outline-secondary {
   --bs-btn-color: #000;
-  --bs-btn-border-color: #969696;
+  --bs-btn-border-color: #E8E8E8;
   --bs-btn-hover-color: #000;
   --bs-btn-hover-bg: none;
-  --bs-btn-hover-border-color: #969696;
+  --bs-btn-hover-border-color: #E8E8E8;
   --bs-btn-focus-shadow-rgb: 150, 150, 150;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #969696;
-  --bs-btn-active-border-color: #969696;
+  --bs-btn-active-bg: #E8E8E8;
+  --bs-btn-active-border-color: #E8E8E8;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #969696;
+  --bs-btn-disabled-color: #E8E8E8;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #969696;
+  --bs-btn-disabled-border-color: #E8E8E8;
   --bs-gradient: none;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
 }/*# sourceMappingURL=style.css.map */
