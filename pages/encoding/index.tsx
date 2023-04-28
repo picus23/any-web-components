@@ -93,7 +93,7 @@ export default function () {
                         <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
                     }
                     buttonBuy={
-                        <ButtonBuy onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />} btn_style='blue'>Купить</ButtonBuy>
+                        <Button onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />}>Купить</Button>
                     }>
                 </EncodingBlockButtons>
                 <div className="d-flex my-4 gap-4">
@@ -152,9 +152,7 @@ export default function () {
                                     style={{ border: '1px solid #E8E8E8' }}>
                                     <FilterChips title="A-Flow" onClick={() => alert(111)} />
                                     <FilterChips title="A-Flow" onClick={() => alert(111)} />
-                                    <div className="d-flex flex-column ms-3 btn-group-vertical" role="group"
-                                        style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
-                                        <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-end"><MdArrowDropUp fill="#969696" /></button>
+                                    <div className="d-flex flex-column ms-3 btn-group-vertical" role="group">                                        <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-end"><MdArrowDropUp fill="#969696" /></button>
                                         <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-start"><MdArrowDropDown fill="#969696" /></button>
                                     </div>
                                 </div>
@@ -285,7 +283,7 @@ export default function () {
                     </div>
 
                     <div className="d-flex my-3">
-                        <div className="d-flex position-relative w-100">
+                        <div className="d-flex position-relative">
                             <TableCell
                                 title={'Кодировка'}
                                 icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
@@ -297,7 +295,8 @@ export default function () {
                             <TableCell title={'CV/ДУ'} describe={'мм.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
                             <TableCell title={'Давление'} describe={'бар.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
                             <TableCell title={'Температура'} describe={'℃'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
-                            <div className="d-flex bg-white position-absolute top-0 end-0 justify-content-center gap-3 p-2">
+                            <div className="d-flex bg-white position-absolute top-0 end-0 justify-content-center gap-3 p-2"
+                                style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
                                 <Button
                                     onClick={() => alert('Click')}
                                     icon={<MdChevronLeft fill="#969696" />}
@@ -332,8 +331,10 @@ export default function () {
                                 <ButtonGrayAddRemove
                                     counter={0}
                                     onClickRemove={() => alert('Click')}
-                                    onClickAdd={() => alert('Click')}
-                                    onClickBuy={() => alert('Click')} />
+                                    onClickAdd={() => alert('Click')} />
+                                <Button
+                                    onClick={() => alert('Click')}
+                                    icon={<MdShoppingCart size={20} fill={'#fff'} />} />
                             </TableCell>
                             <TableCell title={'Подсоединение'}></TableCell>
                             <TableCell title={'CV/ДУ'}></TableCell>
