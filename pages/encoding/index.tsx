@@ -284,17 +284,62 @@ export default function () {
 
                     <div className="d-flex my-3">
                         <div className="d-flex position-relative">
-                            <TableCell
-                                title={'Кодировка'}
-                                icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
-                            <TableCell title={'Действия'} />
-                            <TableCell title={'Кол-во'}></TableCell>
-                            <TableCell title={'Цена'} describe={'Без НДС'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
-                            <TableCell title={'Купить'}></TableCell>
-                            <TableCell title={'Подсоединение'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
-                            <TableCell title={'CV/ДУ'} describe={'мм.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
-                            <TableCell title={'Давление'} describe={'бар.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
-                            <TableCell title={'Температура'} describe={'℃'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                            <div>
+                                <TableCell
+                                    title={'Кодировка'}
+                                    icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                                <TableCell
+                                    title={'H1B-H-6M'}
+                                    icon={<MdInfo type="button"
+                                        size={24} fill="#0085FF" onClick={() => alert('Click')} />} isTextDashed={true} />
+                            </div>
+                            <div>
+                                <TableCell title={'Действия'} />
+                                <TableCell>
+                                    <Button
+                                        btn_style="btn-outline-secondary"
+                                        icon={<MdPictureAsPdf fill="gray" />} />
+                                    <Button
+                                        btn_style="btn-outline-secondary"
+                                        icon={<Md3DRotation fill="gray" />} />
+                                </TableCell>
+                            </div>
+                            <div>
+                                <TableCell title={'Кол-во'}></TableCell>
+                                <TableCell contentPosition="end" title={'17 шт.'} />
+                            </div>
+                            <div>
+                                <TableCell title={'Цена'} describe={'Без НДС'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                                <TableCell contentPosition="end" title={'7685 ₽'} />
+                            </div>
+                            <div>
+                                <TableCell title={'Купить'}></TableCell>
+                                <TableCell>
+                                    <ButtonGrayAddRemove
+                                        counter={0}
+                                        onClickRemove={() => alert('Click')}
+                                        onClickAdd={() => alert('Click')} />
+                                    <Button
+                                        onClick={() => alert('Click')}
+                                        icon={<MdShoppingCart size={20} fill={'#fff'} />} />
+                                </TableCell>
+                            </div>
+                            <div>
+                                <TableCell title={'Подсоединение'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                                <TableCell title={'Подсоединение'}></TableCell>
+                            </div>
+                            <div>
+                                <TableCell title={'CV/ДУ'} describe={'мм.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                                <TableCell title={'CV/ДУ'}></TableCell>
+                            </div>
+                            <div>
+                                <TableCell title={'Давление'} describe={'бар.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                                <TableCell title={'Давление'}></TableCell>
+                            </div>
+                            <div>
+                                <TableCell title={'Температура'} describe={'℃'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                                <TableCell title={'Температура'}></TableCell>
+                            </div>
                             <div className="d-flex bg-white position-absolute top-0 end-0 justify-content-center gap-3 p-2"
                                 style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
                                 <Button
@@ -309,13 +354,12 @@ export default function () {
                         </div>
                     </div>
 
-                    <div className="d-flex my-3 bg-white">
+                    {/* <div className="d-flex my-3 bg-white">
                         <div className="d-flex position-relative w-100">
                             <TableCell
                                 title={'H1B-H-6M'}
                                 icon={<MdInfo type="button"
                                     size={24} fill="#0085FF" onClick={() => alert('Click')} />} isTextDashed={true} />
-
                             <TableCell>
                                 <Button
                                     btn_style="btn-outline-secondary"
@@ -341,7 +385,7 @@ export default function () {
                             <TableCell title={'Давление'}></TableCell>
                             <TableCell title={'Температура'}></TableCell>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
 
