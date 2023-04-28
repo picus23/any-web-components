@@ -90,46 +90,44 @@ export default function () {
                     price={79.99}
                     amount={16}
                     buttonCount={
-                        <ButtonGrayAddRemove
-                            counter={2}
-                            onClickRemove={() => alert('Click')}
-                            onClickAdd={() => alert('Click')}
-                            onClickBuy={() => alert('Click')} />
+                        <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
+                    }
+                    buttonBuy={
+                        <ButtonBuy onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />} btn_style='blue'>Купить</ButtonBuy>
                     }>
                 </EncodingBlockButtons>
+                <div className="d-flex my-4 gap-4">
+                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#0085FF', borderBottom: '2px solid #0085FF' }}
+                        onClick={() => alert('Click')}>Таблица конфигураций</a>
+                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
+                        onClick={() => alert('Click')}>Конструкционные материалы</a>
+                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
+                        onClick={() => alert('Click')}>Вебинары</a>
+                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
+                        onClick={() => alert('Click')}>Каталоги</a>
+                </div>
             </EncodingWrapper>
-            <div className="d-flex my-4 gap-4">
-                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#0085FF', borderBottom: '2px solid #0085FF' }}
-                    onClick={() => alert('Click')}>Таблица конфигураций</a>
-                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                    onClick={() => alert('Click')}>Конструкционные материалы</a>
-                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                    onClick={() => alert('Click')}>Вебинары</a>
-                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                    onClick={() => alert('Click')}>Каталоги</a>
-            </div>
         </div >
         <br />
         <CollapseAntd title={'Encoding Header'} text={`
-          <EncodingWrapper>
-          <EncodingPicture
-              onClickLeft={() => alert('Click')}
-              onClickRight={() => alert('Click')}
-              list_picture={array_picture}>
-          </EncodingPicture>
-          <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
-          <EncodingBlockButtons
-              price={79.99}
-              amount={16}
-              buttonCount={
-                  <ButtonGrayAddRemove
-                      counter={2}
-                      onClickRemove={() => alert('Click')}
-                      onClickAdd={() => alert('Click')}
-                      onClickBuy={() => alert('Click')} />
-              }>
-          </EncodingBlockButtons>
-      </EncodingWrapper>
+           <EncodingWrapper>
+           <EncodingPicture
+               onClickLeft={() => alert('Click')}
+               onClickRight={() => alert('Click')}
+               list_picture={array_picture}>
+           </EncodingPicture>
+           <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
+           <EncodingBlockButtons
+               price={79.99}
+               amount={16}
+               buttonCount={
+                   <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
+               }
+               buttonBuy={
+                   <ButtonBuy onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />} btn_style='blue'>Купить</ButtonBuy>
+               }>
+           </EncodingBlockButtons>
+       </EncodingWrapper>
          `}></CollapseAntd>
 
         <h1>Образец</h1>
