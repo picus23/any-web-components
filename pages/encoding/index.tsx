@@ -90,47 +90,46 @@ export default function () {
                     price={79.99}
                     amount={16}
                     buttonCount={
-                        <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
-                    }
-                    buttonBuy={
-                        <ButtonBuy onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />} btn_style='blue'>Купить</ButtonBuy>
+                        <ButtonGrayAddRemove
+                            counter={2}
+                            onClickRemove={() => alert('Click')}
+                            onClickAdd={() => alert('Click')}
+                            onClickBuy={() => alert('Click')} />
                     }>
                 </EncodingBlockButtons>
-                <div className="d-flex my-4 gap-4">
-                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#0085FF', borderBottom: '2px solid #0085FF' }}
-                        onClick={() => alert('Click')}>Таблица конфигураций</a>
-                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                        onClick={() => alert('Click')}>Конструкционные материалы</a>
-                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                        onClick={() => alert('Click')}>Вебинары</a>
-                    <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                        onClick={() => alert('Click')}>Каталоги</a>
-                </div>
             </EncodingWrapper>
+            <div className="d-flex my-4 gap-4">
+                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#0085FF', borderBottom: '2px solid #0085FF' }}
+                    onClick={() => alert('Click')}>Таблица конфигураций</a>
+                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
+                    onClick={() => alert('Click')}>Конструкционные материалы</a>
+                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
+                    onClick={() => alert('Click')}>Вебинары</a>
+                <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
+                    onClick={() => alert('Click')}>Каталоги</a>
+            </div>
         </div >
         <br />
         <CollapseAntd title={'Encoding Header'} text={`
-           <EncodingWrapper>
-           <EncodingPicture
-               onClickLeft={() => alert('Click')}
-               onClickRight={() => alert('Click')}
-               list_picture={array_picture}>
-           </EncodingPicture>
-
-           <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
-
-           <EncodingBlockButtons
-               price={79.99}
-               amount={16}
-               buttonCount={
-                   <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
-               }
-               buttonBuy={
-                   <ButtonBuy onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />} btn_style='blue'>Купить</ButtonBuy>
-               }>
-
-           </EncodingBlockButtons>
-       </EncodingWrapper>
+          <EncodingWrapper>
+          <EncodingPicture
+              onClickLeft={() => alert('Click')}
+              onClickRight={() => alert('Click')}
+              list_picture={array_picture}>
+          </EncodingPicture>
+          <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
+          <EncodingBlockButtons
+              price={79.99}
+              amount={16}
+              buttonCount={
+                  <ButtonGrayAddRemove
+                      counter={2}
+                      onClickRemove={() => alert('Click')}
+                      onClickAdd={() => alert('Click')}
+                      onClickBuy={() => alert('Click')} />
+              }>
+          </EncodingBlockButtons>
+      </EncodingWrapper>
          `}></CollapseAntd>
 
         <h1>Образец</h1>
@@ -155,7 +154,8 @@ export default function () {
                                     style={{ border: '1px solid #E8E8E8' }}>
                                     <FilterChips title="A-Flow" onClick={() => alert(111)} />
                                     <FilterChips title="A-Flow" onClick={() => alert(111)} />
-                                    <div className="d-flex flex-column ms-3 btn-group-vertical" role="group">
+                                    <div className="d-flex flex-column ms-3 btn-group-vertical" role="group"
+                                        style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
                                         <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-end"><MdArrowDropUp fill="#969696" /></button>
                                         <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-start"><MdArrowDropDown fill="#969696" /></button>
                                     </div>
@@ -234,7 +234,7 @@ export default function () {
 
             <EncodingWrapper>
 
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column bg-white">
                     <div className="d-flex position-relative">
                         <Card icon={<img src="/kit/card.png" alt="" />}
                             title={'Проходной 2-х ходовой'}
@@ -273,7 +273,8 @@ export default function () {
                             title={'Проходной 2-х ходовой'}
                             input_name={'card'}>
                         </Card>
-                        <div className="d-flex flex-column bg-white position-absolute top-0 end-0 h-100 justify-content-center gap-3 p-2">
+                        <div className="d-flex flex-column bg-white position-absolute top-0 end-0 h-100 justify-content-center gap-3 p-2"
+                            style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
                             <Button
                                 onClick={() => alert('Click')}
                                 icon={<MdChevronLeft fill="#969696" />}
@@ -287,9 +288,9 @@ export default function () {
 
                     <div className="d-flex my-3">
                         <div className="d-flex position-relative w-100">
-                            <TableCell 
-                            title={'Кодировка'} 
-                            icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                            <TableCell
+                                title={'Кодировка'}
+                                icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
                             <TableCell title={'Действия'} />
                             <TableCell title={'Кол-во'}></TableCell>
                             <TableCell title={'Цена'} describe={'Без НДС'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
