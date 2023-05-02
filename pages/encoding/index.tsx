@@ -494,7 +494,7 @@ export default function () {
                         <div className=" row d-flex position-relative w-100">
                             <TableCell
                                 class_name="col"
-                                
+
                                 isBorder={true}
                                 title={'H1B-H-6M'}
                                 icon={<MdInfo type="button"

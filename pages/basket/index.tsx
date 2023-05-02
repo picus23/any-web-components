@@ -28,34 +28,32 @@ export default function () {
 
             <Basket>
                 <div className="basket py-3">
-                {/* <div className="basket py-3 justify-content-between"> */}
+                    {/* <div className="basket py-3 justify-content-between"> */}
                     <div className="d-flex flex-column mx-3">
                         <div className="d-flex justify-content-between w-100 align-items-center">
                             <span className="font-size-20-black fw-500">Ваша корзина</span>
-                            <Button icon={<MdClose size={20} fill={'gray'} />} btn_style="gray my-btn-h40"><span className="font-size-16-black fw-500">Закрыть</span></Button>
+                            <Button icon={<MdClose size={20} fill={'gray'} />} btn_style="btn-outline-secondary"><span className="font-size-16-black fw-500">Закрыть</span></Button>
                         </div>
                         <div className="d-flex flex-column w-100">
                             {
                                 [
                                     ['B1V-H-3M', 156],
                                 ].map(item => (
-
-
                                     <FieldEncoding
                                         imgUrl={'/kit/empty_square.png'}
                                         pagetitle={item[0]}
                                         price={item[1]}
                                         basketButtons={
                                             <div className="d-flex gap-1">
-                                            <ButtonGrayAddRemove
-                                                counter={0}
-                                                onClickRemove={() => alert('Click')}
-                                                onClickAdd={() => alert('Click')}
-                                            />
-                                            <Button
-                                            btn_style="btn-outline-secondary"
-                                            onClick={() => alert('Click')}
-                                            icon={<MdDelete size={20} fill='#969696' />} />
+                                                <ButtonGrayAddRemove
+                                                    counter={0}
+                                                    onClickRemove={() => alert('Click')}
+                                                    onClickAdd={() => alert('Click')}
+                                                />
+                                                <Button
+                                                    btn_style="btn-outline-secondary"
+                                                    onClick={() => alert('Click')}
+                                                    icon={<MdDelete size={20} fill='#969696' />} />
                                             </div>
                                         }
                                     />
@@ -74,8 +72,8 @@ export default function () {
                             <span className="font-size-16-black">Итого</span>
                             <span className="font-size-16-black">650 $</span>
                         </div>
-                        <ButtonCheckout btn_style="my-btn-checkout">Оформить заказ</ButtonCheckout>
-                        <ButtonCheckout btn_style="my-btn-go-to">Перейти в корзину</ButtonCheckout>
+                        <a className="text-decoration-none" href="#"><Button btn_style="btn-primary" class_name="w-100">Оформить заказ</Button></a>
+                        <a className="text-decoration-none" href="#"><Button btn_style="btn-outline-primary" class_name="w-100">Перейти в корзину</Button></a>
                     </div>
                 </div>
             </Basket>

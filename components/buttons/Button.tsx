@@ -11,7 +11,7 @@ interface ButtonProps {
     isCounterUp?: boolean,
     counterPosition?: 'left' | 'right'
     contentPosition?: 'center' | 'start'
-    btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success',
+    btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
     onClick?: () => void,
     htmlType?: 'submit'|'reset',
 }
