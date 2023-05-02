@@ -5,19 +5,24 @@ import Link from "next/link";
 import header from "./header.png";
 import PopularFilters from "./PopularFilters.png";
 import table from "./table.png";
+import Content from "./Content.png";
 import EncodingWrapper from "@/components/encoding/EncodingWrapper";
 import EncodingPicture from "@/components/encoding/EncodingPicture";
 import EncodingBlockText from "@/components/encoding/EncodingBlockText";
 import EncodingBlockButtons from "@/components/encoding/EncodingBlockButtons";
 import CollapseAntd from "@/components/collapse/CollapseAntd";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
-import { Md3DRotation, MdArrowDropDown, MdArrowDropUp, MdCancel, MdChevronLeft, MdChevronRight, MdFilterList, MdInfo, MdPictureAsPdf, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
+import { Md3DRotation, MdArrowDropDown, MdArrowDropUp, MdCancel, MdChevronLeft, MdChevronRight, MdDelete, MdFilterList, MdInfo, MdPictureAsPdf, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import ButtonBuy from "@/components/buttons/ButtonBuy";
 import { InputSwitch } from "@/components/inputs/InputSwitch";
 import FilterChips from "@/components/filter/FilterChips";
 import Button from "@/components/buttons/Button";
 import Card from "@/components/card/Card";
 import TableCell from "@/components/tableCell/TableCell";
+import CartItem from "@/components/cartItem/CartItem";
+import EncodingOrder from "@/components/encoding/EncodingOrder";
+import { Form, Input, Radio, Select,Button as BtnAntd } from "antd";
+const { Option } = Select;
 
 
 
@@ -62,6 +67,38 @@ const list = [
         'url': 'Шаровые краны',
     },
 ];
+const list_links = [
+    {
+        'id': 1,
+        'title': 'Продукция',
+        'url': 'Продукция',
+    },
+    {
+        'id': 2,
+        'title': 'Клапаны',
+        'url': 'Клапаны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+]
+
+const props_list = [
+    {
+        'prop': 'Давление',
+        'param': 'до 207 бар при 21°C',
+    },
+    {
+        'prop': 'Давление',
+        'param': 'до 207 бар при 21°C',
+    },
+    {
+        'prop': 'Давление',
+        'param': 'до 207 бар при 21°C',
+    },
+]
 
 export default function () {
 
@@ -71,6 +108,76 @@ export default function () {
         </h1>
         <Link href='/'>Back</Link>
         <hr />
+
+
+        <h1>Образец</h1>
+        <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+            <Image src={Content} alt="" />
+        </div>
+
+        <h1>Мой</h1>
+        <div className="container-xxl d-flex p-0 w-100" style={{ outline: '1px solid #000;background:#fff' }}>
+            <div className="d-flex flex-column w-75 p-2">
+                <div className="d-flex justify-content-between mb-4">
+                    <h5>Корзина</h5>
+                    <Button
+                        onClick={() => alert(111)}
+                        icon={<MdDelete fill="#969696" />}
+                        btn_style="btn-outline-secondary">Очистить корзину</Button>
+                </div>
+                <div className="d-flex flex-column gap-4">
+                    <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
+                    <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
+                    <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
+                </div>
+            </div>
+            <div className="d-flex flex-column p-2 w-25">
+                <h5>Оформление заказа</h5>
+                <EncodingOrder
+                    isActive={true}
+                    onClick={() => alert('Click')}
+                    title="Самовывоз"
+                    subtitle="г.Москва, ул.Большая Семеновская, дом 49." />
+                <EncodingOrder
+                    onClick={() => alert('Click')}
+                    title="Доставка"
+                    subtitle="Список партнёров флюид-лайн." />
+                <div className="">
+                    <Form layout="vertical">
+                        <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Контактное лицо</span>}>
+                            <Input placeholder="ФИО" />
+                        </Form.Item>
+                        <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Телефон</span>}>
+                            <Input placeholder="+7 (000) 000-00-00" />
+                        </Form.Item>
+                        <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>E-mail</span>}>
+                            <Input placeholder="example@mail.ru" />
+                        </Form.Item>
+                        <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Адрес</span>}>
+                            <Input placeholder="" />
+                        </Form.Item>
+                        <Form.Item
+                            name="manager"
+                            label={<span style={{ fontSize: '16px', color: '#585757' }}>Ваш менеджер</span>}>
+                            <Select placeholder="-">
+                                <Option value="1">1</Option>
+                                <Option value="2">2</Option>
+                                <Option value="other">Other</Option>
+                            </Select>
+                        </Form.Item>
+                        <span style={{ color: '#969696', fontSize: '13px' }}>Менеджер на стороне Fluid-line. Если заказываете сами, оставьте поле пустым.</span>
+                        <Form.Item className="mt-3" style={{ width: '100%' }} >
+                            <BtnAntd type="primary" htmlType="submit">Отправить</BtnAntd>
+                        </Form.Item>
+                    </Form>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
 
         <h1>Образец</h1>
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
@@ -141,7 +248,7 @@ export default function () {
                 <div className="bg-white">
 
                     <div className="d-flex">
-                        <div className="d-flex w-100 justify-content-between">
+                        <div className="d-flex justify-content-between">
                             <div className="d-flex gap-2">
                                 <div className="d-flex align-items-center px-2 py-1 border rounded-2 gap-2"
                                     style={{ border: '1px solid #E8E8E8' }}>
@@ -152,9 +259,9 @@ export default function () {
                                     style={{ border: '1px solid #E8E8E8' }}>
                                     <FilterChips title="A-Flow" onClick={() => alert(111)} />
                                     <FilterChips title="A-Flow" onClick={() => alert(111)} />
-                                    <div className="d-flex flex-column ms-3 btn-group-vertical" role="group">                                        <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-end"><MdArrowDropUp fill="#969696" /></button>
+                                    {/* <div className="d-flex flex-column ms-3 btn-group-vertical" role="group">                                        <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-end"><MdArrowDropUp fill="#969696" /></button>
                                         <button style={{ height: '20px' }} onClick={() => alert('Click')} className="bg-transparent border-0 d-flex align-items-start"><MdArrowDropDown fill="#969696" /></button>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className="d-flex gap-2">
@@ -281,20 +388,62 @@ export default function () {
                                 btn_style="btn-outline-secondary" />
                         </div>
                     </div>
+                </div>
 
-                    <div className="d-flex my-3">
-                        <div className="d-flex position-relative">
-                            <div>
-                                <TableCell
-                                    title={'Кодировка'}
-                                    icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                <div className="row d-flex">
+                    <div className="d-flex position-relative align-items-stretch" style={{ height: '80px' }}>
+                        <div className="col">
+                            <TableCell
+                                title={'Кодировка'}
+                                icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Действия'} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Кол-во'} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Цена'} describe={'Без НДС'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Купить'} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Подсоединение'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'CV/ДУ'} describe={'мм.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Давление'} describe={'бар.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                        </div>
+                        <div className="col">
+                            <TableCell title={'Температура'} describe={'℃'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                        </div>
+                        <div className="d-flex bg-white position-absolute top-0 end-0 justify-content-center gap-3 p-2"
+                            style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
+                            <Button
+                                onClick={() => alert('Click')}
+                                icon={<MdChevronLeft fill="#969696" />}
+                                btn_style="btn-outline-secondary" />
+                            <Button
+                                onClick={() => alert('Click')}
+                                icon={<MdChevronRight fill="#969696" />}
+                                btn_style="btn-outline-secondary" />
+                        </div>
+                    </div>
+
+                    <div className="d-flex bg-white">
+                        <div className=" row d-flex position-relative w-100">
+                            <div className="col">
                                 <TableCell
                                     title={'H1B-H-6M'}
                                     icon={<MdInfo type="button"
-                                        size={24} fill="#0085FF" onClick={() => alert('Click')} />} isTextDashed={true} />
+                                        size={24} fill="#0085FF" onClick={() => alert('Click')} />} isTextDashed={true}
+                                    contentPosition="between" />
                             </div>
-                            <div>
-                                <TableCell title={'Действия'} />
+                            <div className="col">
                                 <TableCell>
                                     <Button
                                         btn_style="btn-outline-secondary"
@@ -304,16 +453,13 @@ export default function () {
                                         icon={<Md3DRotation fill="gray" />} />
                                 </TableCell>
                             </div>
-                            <div>
-                                <TableCell title={'Кол-во'}></TableCell>
+                            <div className="col">
                                 <TableCell contentPosition="end" title={'17 шт.'} />
                             </div>
-                            <div>
-                                <TableCell title={'Цена'} describe={'Без НДС'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                            <div className="col">
                                 <TableCell contentPosition="end" title={'7685 ₽'} />
                             </div>
-                            <div>
-                                <TableCell title={'Купить'}></TableCell>
+                            <div className="col">
                                 <TableCell>
                                     <ButtonGrayAddRemove
                                         counter={0}
@@ -324,69 +470,20 @@ export default function () {
                                         icon={<MdShoppingCart size={20} fill={'#fff'} />} />
                                 </TableCell>
                             </div>
-                            <div>
-                                <TableCell title={'Подсоединение'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                            <div className="col">
                                 <TableCell title={'Подсоединение'}></TableCell>
                             </div>
-                            <div>
-                                <TableCell title={'CV/ДУ'} describe={'мм.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                            <div className="col">
                                 <TableCell title={'CV/ДУ'}></TableCell>
                             </div>
-                            <div>
-                                <TableCell title={'Давление'} describe={'бар.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                            <div className="col">
                                 <TableCell title={'Давление'}></TableCell>
                             </div>
-                            <div>
-                                <TableCell title={'Температура'} describe={'℃'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                            <div className="col">
                                 <TableCell title={'Температура'}></TableCell>
-                            </div>
-                            <div className="d-flex bg-white position-absolute top-0 end-0 justify-content-center gap-3 p-2"
-                                style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
-                                <Button
-                                    onClick={() => alert('Click')}
-                                    icon={<MdChevronLeft fill="#969696" />}
-                                    btn_style="btn-outline-secondary" />
-                                <Button
-                                    onClick={() => alert('Click')}
-                                    icon={<MdChevronRight fill="#969696" />}
-                                    btn_style="btn-outline-secondary" />
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className="d-flex my-3 bg-white">
-                        <div className="d-flex position-relative w-100">
-                            <TableCell
-                                title={'H1B-H-6M'}
-                                icon={<MdInfo type="button"
-                                    size={24} fill="#0085FF" onClick={() => alert('Click')} />} isTextDashed={true} />
-                            <TableCell>
-                                <Button
-                                    btn_style="btn-outline-secondary"
-                                    icon={<MdPictureAsPdf fill="gray" />} />
-                                <Button
-                                    btn_style="btn-outline-secondary"
-                                    icon={<Md3DRotation fill="gray" />} />
-                            </TableCell>
-
-                            <TableCell contentPosition="end" title={'17 шт.'} />
-                            <TableCell contentPosition="end" title={'7685 ₽'} />
-                            <TableCell>
-                                <ButtonGrayAddRemove
-                                    counter={0}
-                                    onClickRemove={() => alert('Click')}
-                                    onClickAdd={() => alert('Click')} />
-                                <Button
-                                    onClick={() => alert('Click')}
-                                    icon={<MdShoppingCart size={20} fill={'#fff'} />} />
-                            </TableCell>
-                            <TableCell title={'Подсоединение'}></TableCell>
-                            <TableCell title={'CV/ДУ'}></TableCell>
-                            <TableCell title={'Давление'}></TableCell>
-                            <TableCell title={'Температура'}></TableCell>
-                        </div>
-                    </div> */}
-
                 </div>
 
             </EncodingWrapper >
@@ -447,6 +544,8 @@ export default function () {
 
        </EncodingWrapper>
          `}></CollapseAntd>
+
+
 
 
 

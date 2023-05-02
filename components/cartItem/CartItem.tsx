@@ -32,7 +32,7 @@ interface CartItemProps {
 
 
 const CartItem: FC<CartItemProps> = ({ children, props_list, btn_style, list, count, name_item, price }) => {
-    return <div className="d-flex border border-dark">
+    return <div className="d-flex">
 
         <div className="d-flex flex-column mx-1 justify-content-center me-2">
             <button onClick={() => alert(123)} className="border-0 bg-white"><MdOutlineKeyboardArrowUp fill="#969696" /></button>
@@ -54,16 +54,16 @@ const CartItem: FC<CartItemProps> = ({ children, props_list, btn_style, list, co
                     <div className="d-flex align-items-center gap-1">
                         <Button onClick={() => {
                             alert(123)
-                        }} icon={<MdCheckCircle size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
-                        <Button onClick={() => alert(123)} icon={<MdAddComment size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
+                        }} icon={<MdCheckCircle size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
+                        <Button onClick={() => alert(123)} icon={<MdAddComment size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
                     </div>
                     <div className="d-flex align-items-center gap-1">
-                        <Button onClick={() => alert(123)} icon={<Md3DRotation size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
-                        <Button onClick={() => alert(123)} icon={<MdPictureAsPdf size={20} fill={'gray'} />} btn_style="small-gray my-btn-40x40"></Button>
+                        <Button onClick={() => alert(123)} icon={<Md3DRotation size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
+                        <Button onClick={() => alert(123)} icon={<MdPictureAsPdf size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
                     </div>
                     <div className="d-flex align-items-center gap-1">
                         <ButtonGrayAddRemove btn_class="my-btn-small-gray-h40" counter={1} onClickRemove={() => alert(123)} onClickAdd={() => alert(123)} />
-                        <Button onClick={() => alert(123)} icon={<MdDelete size={20} fill={'gray'} />} btn_style="small-gray my-btn-small-gray-h40"></Button>
+                        <Button onClick={() => alert(123)} icon={<MdDelete size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@ const CartItem: FC<CartItemProps> = ({ children, props_list, btn_style, list, co
                     <span className="font-size-13">Давление</span> <br />
                     <span className="font-size-16-black fw-500">до 207 бар при 21°C</span>
                 </div>
-                <div className="d-flex flex-column col-3 justify-content-end align-items-start mr-2">
+                <div className="d-flex flex-column col-2 justify-content-end align-items-end mr-2">
                     <span className="font-size-13 mb-1">Итого</span>
                     <span className="font-size-16-black fw-500">$216</span>
                 </div>

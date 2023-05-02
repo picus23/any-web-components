@@ -6,14 +6,15 @@ import { MdInfo } from "react-icons/md";
 interface TableCellProps {
     children?: ReactNode,
     icon?: ReactNode,
-    contentPosition?: 'center' | 'start' | 'end' | 'between'
+    contentPosition?: 'center' | 'start' | 'end' | 'between',
+    isBorder?: boolean,
     isTextDashed?: boolean,
     title?: string,
     describe?: string,
     style?: CSSProperties,
 }
 
-const TableCell: FC<TableCellProps> = ({ children, icon, title, describe, isTextDashed = false, contentPosition = 'start', style }) => {
+const TableCell: FC<TableCellProps> = ({ children, icon, title, describe, isTextDashed = false, contentPosition = 'start', isBorder = false }) => {
     return <div className={'d-flex gap-2 p-1 align-items-center justify-content-' + contentPosition + ' '}
         style={{ border: '1px solid #E8E8E8' }}>
 
