@@ -117,6 +117,10 @@ html {
   border-top: 1px solid #ddd;
 }
 
+.ant-drawer {
+  z-index: 3000;
+}
+
 body {
   padding: 10%;
   background: #fff;
