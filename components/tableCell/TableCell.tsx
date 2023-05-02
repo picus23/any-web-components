@@ -21,7 +21,7 @@ const TableCell: FC<TableCellProps> = ({ children, icon, title, describe, isText
         style={{ border: isBorder ? '1px solid #E8E8E8' : 'none' }}>
 
         <div className={'d-flex flex-column'}>
-            {title ? <span style={{ color: '#000', fontSize: '16px', borderBottom: isTextDashed ? '1px dashed #969696' : 'none' }}>{title}</span> : false}
+            {title ? <span style={{ color: '#000', fontSize: '16px', borderBottom: isTextDashed ? '2px dashed #969696' : 'none' }}>{title}</span> : false}
             {describe ? <span className="font-size-13 mt-1 "
                 style={{ color: '#969696', fontWeight: '400' }}>{describe}</span> : false}
         </div>
