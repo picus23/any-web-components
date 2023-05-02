@@ -11569,8 +11569,8 @@ textarea.form-control-lg {
 }
 
 .btn-outline-secondary {
-  --bs-btn-color: #000;
-  --bs-btn-border-color: #E8E8E8;
+  --bs-btn-color: #000 ;
+  --bs-btn-border-color: #E8E8E8 ;
   --bs-btn-hover-color: #000;
   --bs-btn-hover-bg: none;
   --bs-btn-hover-border-color: #E8E8E8;
@@ -11586,8 +11586,21 @@ textarea.form-control-lg {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.06);
 }
 
-.order-active {
+.order {
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+}
+
+.ant-radio-wrapper-checked {
   background: #FFFFFF;
   border: 2px solid #0085FF;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1), 0px 1px 18px rgba(0, 0, 0, 0.06), 0px 6px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-item {
+  background: #F7F7F7;
+}
+
+.card-item:checked {
+  background: #FFFFFF;
 }/*# sourceMappingURL=style.css.map */

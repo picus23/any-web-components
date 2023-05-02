@@ -8,11 +8,12 @@ import { MdClose, MdDelete } from "react-icons/md";
 import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonCounter from "@/components/buttons/ButtonCounter";
 import ButtonCheckout from "@/components/buttons/ButtonCheckout";
+import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
 
 export default function () {
     return <>
         <h1>
-            Navbar
+
         </h1>
         <Link href='/'>Back</Link>
         <hr />
@@ -26,7 +27,8 @@ export default function () {
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
 
             <Basket>
-                <div className="basket py-3 justify-content-between">
+                <div className="basket py-3">
+                {/* <div className="basket py-3 justify-content-between"> */}
                     <div className="d-flex flex-column mx-3">
                         <div className="d-flex justify-content-between w-100 align-items-center">
                             <span className="font-size-20-black fw-500">Ваша корзина</span>
@@ -38,13 +40,25 @@ export default function () {
                                     ['B1V-H-3M', 156],
                                 ].map(item => (
 
-                                    <FieldEncoding icon={<img src={'/kit/empty_square.png'} alt='' />}
-                                        title={item[0]}
+
+                                    <FieldEncoding
+                                        imgUrl={'/kit/empty_square.png'}
+                                        pagetitle={item[0]}
                                         price={item[1]}
-                                        buttonGray
-                                        button={<ButtonCounter text_style={'font-size-16-gray'} counter={1} btn_style="counter-h40"></ButtonCounter>}
-                                        button2={<Button icon={<MdDelete size={20} fill={'gray'} />} btn_style={"small-gray my-btn-small-gray-h40"}></Button>}>
-                                    </FieldEncoding>
+                                        basketButtons={
+                                            <div className="d-flex gap-1">
+                                            <ButtonGrayAddRemove
+                                                counter={0}
+                                                onClickRemove={() => alert('Click')}
+                                                onClickAdd={() => alert('Click')}
+                                            />
+                                            <Button
+                                            btn_style="btn-outline-secondary"
+                                            onClick={() => alert('Click')}
+                                            icon={<MdDelete size={20} fill='#969696' />} />
+                                            </div>
+                                        }
+                                    />
                                 )
                                 )
                             }

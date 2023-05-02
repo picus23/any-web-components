@@ -6,12 +6,13 @@ interface InputSwitchProps {
     icon?: ReactNode,
     children?: ReactNode,
     style?: string,
+    onChange?: () => void,
 
 }
 
 export function InputSwitch(props: InputSwitchProps) {
     return <label className="switch">
-    <input type="checkbox" />
+    <input onChange={props.onChange} type="checkbox"/>
     <span className="slider round"></span>
   </label>
     // return (
