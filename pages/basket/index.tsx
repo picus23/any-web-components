@@ -11,7 +11,7 @@ import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonCounter from "@/components/buttons/ButtonCounter";
 import ButtonCheckout from "@/components/buttons/ButtonCheckout";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
-import DeleteCartItem from "@/components/basket/MainBasketEraceTimer";
+import MainBasketEraceTimer from "@/components/basket/MainBasketEraceTimer";
 
 export default function () {
     return <>
@@ -30,7 +30,7 @@ export default function () {
         </div>
         <h1>Мой</h1>
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
-            <DeleteCartItem
+            <MainBasketEraceTimer
                 onClick={() => alert('Click')}
             />
         </div>
