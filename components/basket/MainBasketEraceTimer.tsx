@@ -8,9 +8,24 @@ interface MainBasketEraceTimerProps {
 }
 
 const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ title, onClick }) => {
+
+    // var ProgressBar = require('progressbar.js')
+    // var line = new ProgressBar.Line('#basket-timer',
+    //     {
+    //         color: '#0085FF',
+    //         strokeHeight: 4,
+    //         trailHeight: 0.5
+    //     });
+    // line.animate(1, {
+    //     duration: 5
+    // });
+
+
+
     return <>
         <div className="d-flex flex-column w-75">
-            <div style={{height:'4px',background:'#0085FF'}}></div>
+            <div id="basket-timer" />
+            {/* <div id="basket-timer" style={{ height: '4px', background: '#0085FF' }} /> */}
             <div className="d-flex flex-column justify-content-center align-items-center gap-1 py-4 bg-white">
                 <h6 style={{ fontSize: '20px', fontWeight: '500' }}>Товар удалён</h6>
                 <Button

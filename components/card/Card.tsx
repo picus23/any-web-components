@@ -13,17 +13,18 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ icon, title, class_name, input_name, value }) => {
-    function changeRadio(event: any) {
-        if (event.target.checked == true) {
-            const cardItems = document.querySelectorAll('.card-item .ant-radio');
-            console.log(cardItems)
-            console.log(event.target.value - 1)
-        }
+    // function changeRadio(event: any) {
+    //     if (event.target.checked == true) {
+    //         const cardItems = document.querySelectorAll('.card-item .ant-radio');
+    //         console.log(cardItems)
+    //         console.log(event.target.value - 1)
+    //     }
 
-    }
+    // }
 
     return <div id="card-item" className={class_name + ' d-flex flex-column align-items-start p-2 gap-1 card-item'} style={{ border: '1px solid #E8E8E8' }}>
-        <Radio onChange={changeRadio} name={input_name ?? ''} value={value ?? 1} />
+        <Radio name={input_name ?? ''} value={value ?? 1} />
+        {/* <Radio onChange={changeRadio} name={input_name ?? ''} value={value ?? 1} /> */}
         {icon ?? false}
         <span style={{ fontSize: '16px', color: '#585757' }}>{title ?? false}</span>
     </div>

@@ -69,7 +69,7 @@ const list = [
     },
 ];
 
-const list_links = [
+const links = [
     {
         'id': 1,
         'title': 'Продукция',
@@ -87,18 +87,18 @@ const list_links = [
     },
 ]
 
-const props_list = [
+const props = [
     {
-        'prop': 'Давление',
-        'param': 'до 207 бар при 21°C',
+        'title': 'Давление',
+        'value': 'до 207 бар при 21°C',
     },
     {
-        'prop': 'Давление',
-        'param': 'до 207 бар при 21°C',
+        'title': 'Давление',
+        'value': 'до 207 бар при 21°C',
     },
     {
-        'prop': 'Давление',
-        'param': 'до 207 бар при 21°C',
+        'title': 'Давление',
+        'value': 'до 207 бар при 21°C',
     },
 ]
 
@@ -131,9 +131,30 @@ export default function () {
                             btn_style="btn-outline-secondary">Очистить корзину</Button>
                     </div>
                     <div className="d-flex flex-column gap-4">
-                        <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
-                        <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
-                        <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
+                        <CartItem
+                            index={1}
+                            imgUrl="/kit/cart_item.png"
+                            breadCrumbs={links}
+                            price={214}
+                            props={props}
+                            count={3}
+                            pagetitle={"H1B-H-6M"}
+                            BasketButton={<>
+                                <ButtonGrayAddRemove
+                                    btn_class="btn-outline-secondary"
+                                    counter={1}
+                                    onClickRemove={() => alert('Click')}
+                                    onClickAdd={() => alert('Click')}
+                                />
+                                <Button
+                                    onClick={() => alert('Click')}
+                                    icon={<MdDelete size={20}
+                                        fill={'gray'} />}
+                                    btn_style="btn-outline-secondary"
+                                />
+                            </>
+                            }
+                        />
                     </div>
                 </div>
                 <div className="d-flex flex-column p-2 w-25">
@@ -657,7 +678,7 @@ export default function () {
                     </div>
                 </div>
             </EncodingWrapper >
-            
+
             {/* </Radio.Group> */}
         </div >
 
