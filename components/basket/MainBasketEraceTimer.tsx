@@ -1,13 +1,22 @@
-import { FC, ReactNode } from "react";
+import { FC, memo, useEffect, useRef } from "react";
 import Button from "../buttons/Button";
 import { MdRestore } from "react-icons/md";
-// var ProgressBar = require('progressbar.js')
+
 
 interface MainBasketEraceTimerProps {
-    onClick?: () => void,
+    onClick: () => void,
+    onErace: () => void,
 }
 
-const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick }) => {
+const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick, onErace }) => {
+    const timer = useRef(null)
+
+    useEffect(() => {
+        timer.current = setTimeout(() => {
+            onErace()
+        }, 5000)
+        return () => clearTimeout(timer.current)
+    }, [])
 
     return <>
         {/* {deleteBar()} */}
@@ -16,7 +25,12 @@ const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick }) => {
             <div className="d-flex flex-column justify-content-center align-items-center gap-1 py-4 bg-white">
                 <h6 style={{ fontSize: '20px', fontWeight: '500' }}>Товар удалён</h6>
                 <Button
-                    onClick={onClick}
+                    onClick={() => {
+                        if (timer.current) 
+                            clearTimeout(timer.current)
+                        
+                        onClick()
+                    }}
                     btn_style="btn-outline-secondary"
                     icon={<MdRestore fill="#969696" />}
                 >
@@ -28,4 +42,4 @@ const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick }) => {
     </>;
 }
 
-export default MainBasketEraceTimer;
+export default memo(MainBasketEraceTimer);
