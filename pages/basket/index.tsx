@@ -11,7 +11,7 @@ import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonCounter from "@/components/buttons/ButtonCounter";
 import ButtonCheckout from "@/components/buttons/ButtonCheckout";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
-import DeleteCartItem from "@/components/basket/DeleteCartItem";
+import DeleteCartItem from "@/components/basket/MainBasketEraceTimer";
 
 export default function () {
     return <>

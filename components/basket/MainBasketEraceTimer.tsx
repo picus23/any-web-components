@@ -2,12 +2,12 @@ import { FC, ReactNode } from "react";
 import Button from "../buttons/Button";
 import { MdRestore } from "react-icons/md";
 
-interface DeleteCartItemProps {
+interface MainBasketEraceTimerProps {
     title?: string,
     onClick?: () => void
 }
 
-const DeleteCartItem: FC<DeleteCartItemProps> = ({ title, onClick }) => {
+const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ title, onClick }) => {
     return <>
         <div className="d-flex flex-column w-75">
             <div style={{height:'4px',background:'#0085FF'}}></div>
@@ -31,4 +31,4 @@ const DeleteCartItem: FC<DeleteCartItemProps> = ({ title, onClick }) => {
     </>;
 }
 
-export default DeleteCartItem;
+export default MainBasketEraceTimer;
