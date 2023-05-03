@@ -8,8 +8,6 @@ import Basket from "../../components/basket/Basket";
 import Button from "../../components/buttons/Button";
 import { MdClose, MdDelete } from "react-icons/md";
 import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
-import ButtonCounter from "@/components/buttons/ButtonCounter";
-import ButtonCheckout from "@/components/buttons/ButtonCheckout";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
 import MainBasketEraceTimer from "@/components/basket/MainBasketEraceTimer";
 
