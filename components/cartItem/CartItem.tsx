@@ -13,6 +13,7 @@ import ButtonCounter from "../buttons/ButtonCounter";
 import BreadCrumbs from "../breadСrumbs/BreadCrumbs";
 import { IBreadСrumbs } from '../breadСrumbs/interface'
 import ButtonGrayAddRemove from "../buttons/ButtonGrayAddRemove";
+import MainBasketEraceTimer from "../basket/MainBasketEraceTimer";
 
 interface encoding {
     title: string,
@@ -32,10 +33,18 @@ interface CartItemProps {
     icon?: ReactNode,
     btn_style?: string,
     onClick?: () => void,
+
+    onErace: () => void,
+    onCancelErace: () => void,
 }
 
 
-const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index }) => {
+const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index, onErace, onCancelErace }) => {
+
+    if (count == 0)
+        return <MainBasketEraceTimer onClick={onCancelErace} onErace={onErace} />
+
+
     return <div className="d-flex">
 
         <div className="d-flex flex-column mx-1 justify-content-center me-2">
