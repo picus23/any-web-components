@@ -13,7 +13,7 @@ interface EncodingOrderProps {
 const EncodingOrder: FC<EncodingOrderProps> = ({ children, title, subtitle, value, checked = false }) => {
     return <>
         <Radio className='d-flex gap-2 rounded-2 p-2 my-1 order '
-            value={value} name='1' checked={checked}>
+            value={value} name='1'>
             <div className="d-flex flex-column justify-content-center align-items-start">
                 <h6 style={{ fontSize: '16px', fontWeight: '500' }}>{title}</h6>
                 <span style={{ fontSize: '13px', color: '#969696' }}>{subtitle}</span>
