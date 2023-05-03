@@ -20,21 +20,22 @@ interface encoding {
 }
 
 interface CartItemProps {
-    pagetitle?: string,
+    pagetitle: string,
     props: encoding[],
     breadCrumbs: IBreadСrumbs[],
-    imgUrl?: string,
-    BasketButton?: ReactNode,
+    breadCrumbsRoute?: (url: string) => string,
+    imgUrl: string,
+    BasketButton: ReactNode,
     price: number,
     index?: number
-    count?: number,
+    count: number,
     icon?: ReactNode,
     btn_style?: string,
     onClick?: () => void,
 }
 
 
-const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, count, imgUrl, price, onClick, pagetitle, index }) => {
+const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index }) => {
     return <div className="d-flex">
 
         <div className="d-flex flex-column mx-1 justify-content-center me-2">
@@ -47,7 +48,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
         <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
             <div className="row">
                 <div className="col-5">
-                    <BreadCrumbs list={breadCrumbs} />
+                    <BreadCrumbs list={breadCrumbs} route={breadCrumbsRoute}/>
                     <br />
                     <span className="font-size-20 fw-500">{pagetitle}</span>
                 </div>
