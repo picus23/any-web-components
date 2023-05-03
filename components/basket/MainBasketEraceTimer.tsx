@@ -1,43 +1,35 @@
 import { FC, ReactNode } from "react";
 import Button from "../buttons/Button";
 import { MdRestore } from "react-icons/md";
-var ProgressBar = require('progressbar.js')
+// var ProgressBar = require('progressbar.js')
 
 interface MainBasketEraceTimerProps {
     // title?: string,
     onClick?: () => void,
-    funcEraseTimeout?: () => void,
+    // funcEraseTimeout?: () => void,
 }
 
 const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick, funcEraseTimeout }) => {
-    function deleteBar() {
-        const bar = document.querySelector('#basket-timer');
-        if (bar?.classList.contains('d-none')) {
-            bar?.classList.remove('d-none');
-            const line = new ProgressBar.Line('#basket-timer',
-                {
-                    color: '#0085FF',
-                    height: '4px',
-                    trailColor: '#fff',
-                });
-            line.animate(-1, {
-                duration: 5000
-            }, { funcEraseTimeout });
-        } else {
-            bar?.classList.add('d-none');
-        }
-    }
-
-
+    // function deleteBar() {
+    //     const line = new ProgressBar.Line('#basket-timer',
+    //         {
+    //             color: '#0085FF',
+    //             height: '4px',
+    //             trailColor: '#fff',
+    //         });
+    //     line.animate(1, {
+    //         duration: 5000
+    //     }, { funcEraseTimeout });
+    // }
 
 
     return <>
+        {/* {deleteBar()} */}
         <div className="d-flex flex-column w-75">
-            <div id="basket-timer" className="d-none" />
+            <div id="basket-timer" className="" />
             <div className="d-flex flex-column justify-content-center align-items-center gap-1 py-4 bg-white">
                 <h6 style={{ fontSize: '20px', fontWeight: '500' }}>Товар удалён</h6>
                 <Button
-                    onClick={deleteBar}
                     btn_style="btn-outline-secondary"
                     icon={<MdRestore fill="#969696" />}
                 >
