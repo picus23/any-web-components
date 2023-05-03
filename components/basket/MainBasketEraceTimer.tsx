@@ -1,35 +1,43 @@
 import { FC, ReactNode } from "react";
 import Button from "../buttons/Button";
 import { MdRestore } from "react-icons/md";
+var ProgressBar = require('progressbar.js')
 
 interface MainBasketEraceTimerProps {
     // title?: string,
-    onClick?: () => void
+    onClick?: () => void,
+    funcEraseTimeout?: () => void,
 }
 
-const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick }) => {
+const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick, funcEraseTimeout }) => {
+    function deleteBar() {
+        const bar = document.querySelector('#basket-timer');
+        if (bar?.classList.contains('d-none')) {
+            bar?.classList.remove('d-none');
+            const line = new ProgressBar.Line('#basket-timer',
+                {
+                    color: '#0085FF',
+                    height: '4px',
+                    trailColor: '#fff',
+                });
+            line.animate(-1, {
+                duration: 5000
+            }, { funcEraseTimeout });
+        } else {
+            bar?.classList.add('d-none');
+        }
+    }
 
-    // var ProgressBar = require('progressbar.js')
-    // var line = new ProgressBar.Line('#basket-timer',
-    //     {
-    //         color: '#0085FF',
-    //         strokeHeight: 4,
-    //         trailHeight: 0.5
-    //     });
-    // line.animate(1, {
-    //     duration: 5
-    // });
 
 
 
     return <>
         <div className="d-flex flex-column w-75">
-            {/* <div id="basket-timer" /> */}
-            <div id="basket-timer" style={{ height: '4px', background: '#0085FF' }} />
+            <div id="basket-timer" className="d-none" />
             <div className="d-flex flex-column justify-content-center align-items-center gap-1 py-4 bg-white">
                 <h6 style={{ fontSize: '20px', fontWeight: '500' }}>Товар удалён</h6>
                 <Button
-                    onClick={onClick}
+                    onClick={deleteBar}
                     btn_style="btn-outline-secondary"
                     icon={<MdRestore fill="#969696" />}
                 >
