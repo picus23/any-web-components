@@ -102,6 +102,8 @@ const props_list = [
     },
 ]
 
+
+
 export default function () {
 
     return <>
@@ -117,10 +119,8 @@ export default function () {
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
             <Image src={Content} alt="" />
         </div>
-
         <h1>Мой</h1>
         <div className="container-xxl d-flex p-0" style={{ outline: '1px solid #000;background:#fff' }}>
-
             <EncodingWrapper>
                 <div className="d-flex flex-column w-75 p-2">
                     <div className="d-flex justify-content-between mb-4">
@@ -399,6 +399,7 @@ export default function () {
         <h1>Мой</h1>
         <div className="container-xxl d-flex p-0" style={{ outline: '1px solid #000;background:#fff' }}>
 
+            {/* <Radio.Group name="radiogroup"> */}
             <EncodingWrapper>
                 <div className="d-flex flex-column">
                     {/* Карта товара 8 шт */}
@@ -409,47 +410,57 @@ export default function () {
                                 title={'Проходной 2-х ходовой'}
                                 isActive
                                 input_name={'card'}
+                                value={1}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={2}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={3}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={4}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={5}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={6}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={7}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={8}
                             />
                             <Card
                                 icon={<img src="/kit/card.png" alt="" />}
                                 title={'Проходной 2-х ходовой'}
                                 input_name={'card'}
+                                value={9}
                             />
+
                             <div className="d-flex flex-column bg-white position-absolute top-0 end-0 h-100 justify-content-center gap-2 px-2"
                                 style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
                                 <Button
@@ -646,7 +657,10 @@ export default function () {
                     </div>
                 </div>
             </EncodingWrapper >
+            
+            {/* </Radio.Group> */}
         </div >
+
         <br />
         <CollapseAntd title={'Encoding Table'} text={`
            <EncodingWrapper>

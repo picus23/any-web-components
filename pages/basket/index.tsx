@@ -1,4 +1,6 @@
 import reference from "./ref.png";
+import del from "./delete.png";
+import seconds from "./seconds.png";
 import CollapseAntd from "../../components/collapse/CollapseAntd";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,6 +11,7 @@ import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonCounter from "@/components/buttons/ButtonCounter";
 import ButtonCheckout from "@/components/buttons/ButtonCheckout";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
+import DeleteCartItem from "@/components/basket/DeleteCartItem";
 
 export default function () {
     return <>
@@ -17,6 +20,24 @@ export default function () {
         </h1>
         <Link href='/'>Back</Link>
         <hr />
+        <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
+            <h1>Образец</h1>
+            <Image src={del} alt="" />
+        </div>
+        <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
+            <h1>Образец</h1>
+            <Image src={seconds} alt="" />
+        </div>
+        <h1>Мой</h1>
+        <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
+            <DeleteCartItem
+                onClick={() => alert('Click')}
+            />
+        </div>
+
+
+
+
 
 
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000' }}>
