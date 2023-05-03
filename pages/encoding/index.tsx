@@ -1,5 +1,3 @@
-import Header from "../../components/header/Header";
-import Navbar from "../../components/navbar/Navbar";
 import Image from "next/image";
 import Link from "next/link";
 import header from "./header.png";
@@ -12,16 +10,14 @@ import EncodingBlockText from "@/components/encoding/EncodingBlockText";
 import EncodingBlockButtons from "@/components/encoding/EncodingBlockButtons";
 import CollapseAntd from "@/components/collapse/CollapseAntd";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
-import { Md3DRotation, MdArrowDropDown, MdArrowDropUp, MdCancel, MdChevronLeft, MdChevronRight, MdDelete, MdFilterList, MdInfo, MdPictureAsPdf, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
-import ButtonBuy from "@/components/buttons/ButtonBuy";
-import { InputSwitch } from "@/components/inputs/InputSwitch";
+import { Md3DRotation, MdCancel, MdChevronLeft, MdChevronRight, MdDelete, MdFilterList, MdInfo, MdPictureAsPdf, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import FilterChips from "@/components/filter/FilterChips";
 import Button from "@/components/buttons/Button";
 import Card from "@/components/card/Card";
 import TableCell from "@/components/tableCell/TableCell";
 import CartItem from "@/components/cartItem/CartItem";
 import EncodingOrder from "@/components/encoding/EncodingOrder";
-import { Form, Input, Radio, Select, Button as BtnAntd, RadioChangeEvent, Switch } from "antd";
+import { Form, Input, Radio, Select, Switch } from "antd";
 const { Option } = Select;
 
 
@@ -204,79 +200,81 @@ export default function () {
         <br />
         <CollapseAntd title={'Encoding Content'} text={`
          <EncodingWrapper>
-         <div className="d-flex flex-column w-75 p-2">
-             <div className="d-flex justify-content-between mb-4">
-                 <h5>Корзина</h5>
-                 <Button
-                     onClick={() => alert(111)}
-                     icon={<MdDelete fill="#969696" />}
-                     btn_style="btn-outline-secondary">Очистить корзину</Button>
+         <div className="d-flex">
+             <div className="d-flex flex-column w-75 p-2">
+                 <div className="d-flex justify-content-between mb-4">
+                     <h5>Корзина</h5>
+                     <Button
+                         onClick={() => alert(111)}
+                         icon={<MdDelete fill="#969696" />}
+                         btn_style="btn-outline-secondary">Очистить корзину</Button>
+                 </div>
+                 <div className="d-flex flex-column gap-4">
+                     <CartItem
+                         index={1}
+                         imgUrl="/kit/cart_item.png"
+                         breadCrumbs={links}
+                         price={214}
+                         props={props}
+                         count={3}
+                         pagetitle={"H1B-H-6M"}
+                         BasketButton={<>
+                             <ButtonGrayAddRemove
+                                 btn_class="btn-outline-secondary"
+                                 counter={1}
+                                 onClickRemove={() => alert('Click')}
+                                 onClickAdd={() => alert('Click')}
+                             />
+                             <Button
+                                 onClick={() => alert('Click')}
+                                 icon={<MdDelete size={20}
+                                     fill={'gray'} />}
+                                 btn_style="btn-outline-secondary"
+                             />
+                         </>
+                         }
+                     />
+                 </div>
              </div>
-             <div className="d-flex flex-column gap-4">
-                 <CartItem
-                     index={1}
-                     imgUrl="/kit/cart_item.png"
-                     breadCrumbs={links}
-                     price={214}
-                     props={props}
-                     count={3}
-                     pagetitle={"H1B-H-6M"}
-                     BasketButton={<>
-                         <ButtonGrayAddRemove
-                             btn_class="btn-outline-secondary"
-                             counter={1}
-                             onClickRemove={() => alert('Click')}
-                             onClickAdd={() => alert('Click')}
-                         />
-                         <Button
-                             onClick={() => alert('Click')}
-                             icon={<MdDelete size={20}
-                                 fill={'gray'} />}
-                             btn_style="btn-outline-secondary"
-                         />
-                     </>
-                     }
-                 />
-             </div>
-         </div>
-         <div className="d-flex flex-column p-2 w-25">
-             <h5>Оформление заказа</h5>
-             <Radio.Group name="radiogroup">
-                 <EncodingOrder
-                     value={1}
-                     title="Самовывоз"
-                     subtitle="г.Москва, ул.Большая Семеновская, дом 49." />
-                 <EncodingOrder
-                     value={2}
-                     title="Доставка"
-                     subtitle="Список партнёров флюид-лайн." />
-             </Radio.Group>
-             <div className="">
-                 <Form layout="vertical">
-                     <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Контактное лицо</span>}>
-                         <Input placeholder="ФИО" />
-                     </Form.Item>
-                     <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Телефон</span>}>
-                         <Input placeholder="+7 (000) 000-00-00" />
-                     </Form.Item>
-                     <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>E-mail</span>}>
-                         <Input placeholder="example@mail.ru" />
-                     </Form.Item>
-                     <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Адрес</span>}>
-                         <Input placeholder="" />
-                     </Form.Item>
-                     <Form.Item
-                         name="manager"
-                         label={<span style={{ fontSize: '16px', color: '#585757' }}>Ваш менеджер</span>}>
-                         <Select placeholder="-">
-                             <Option value="1">1</Option>
-                             <Option value="2">2</Option>
-                             <Option value="other">Other</Option>
-                         </Select>
-                     </Form.Item>
-                     <span style={{ color: '#969696', fontSize: '13px' }}>Менеджер на стороне Fluid-line. Если заказываете сами, оставьте поле пустым.</span>
-                     <button type="submit" className="btn btn-primary w-100 my-3">Отправить</button>
-                 </Form>
+             <div className="d-flex flex-column p-2 w-25">
+                 <h5>Оформление заказа</h5>
+                 <Radio.Group name="radiogroup" defaultValue={1}>
+                     <EncodingOrder
+                         value={1}
+                         title="Самовывоз"
+                         subtitle="г.Москва, ул.Большая Семеновская, дом 49." />
+                     <EncodingOrder
+                         value={2}
+                         title="Доставка"
+                         subtitle="Список партнёров флюид-лайн." />
+                 </Radio.Group>
+                 <div className="">
+                     <Form layout="vertical">
+                         <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Контактное лицо</span>}>
+                             <Input placeholder="ФИО" />
+                         </Form.Item>
+                         <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Телефон</span>}>
+                             <Input placeholder="+7 (000) 000-00-00" />
+                         </Form.Item>
+                         <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>E-mail</span>}>
+                             <Input placeholder="example@mail.ru" />
+                         </Form.Item>
+                         <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Адрес</span>}>
+                             <Input placeholder="" />
+                         </Form.Item>
+                         <Form.Item
+                             name="manager"
+                             label={<span style={{ fontSize: '16px', color: '#585757' }}>Ваш менеджер</span>}>
+                             <Select placeholder="-">
+                                 <Option value="1">1</Option>
+                                 <Option value="2">2</Option>
+                                 <Option value="other">Other</Option>
+                             </Select>
+                         </Form.Item>
+                         <span style={{ color: '#969696', fontSize: '13px' }}>Менеджер на стороне Fluid-line. Если заказываете сами, оставьте поле пустым.</span>
+                         <button type="submit" className="btn btn-primary w-100 my-3">Отправить</button>
+                     </Form>
+                 </div>
              </div>
          </div>
      </EncodingWrapper>
@@ -291,7 +289,7 @@ export default function () {
         </div>
         <h1>Мой</h1>
         <div className="container-xxl d-flex p-0" style={{ outline: '1px solid #000;background:#eee' }}>
-            <div className="d-flex w-100 px-4">
+            <div className="d-flex w-100 px-3">
                 <EncodingWrapper>
                     <EncodingPicture
                         onClickLeft={() => alert('Click')}
@@ -302,46 +300,64 @@ export default function () {
                     <EncodingBlockButtons
                         price={79.99}
                         amount={16}
-                        buttonCount={
-                            <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
+                        buttons={
+                            <>
+                                <ButtonGrayAddRemove
+                                    counter={2}
+                                    onClickRemove={() => alert('Click')}
+                                    onClickAdd={() => alert('Click')}
+                                />
+                                <Button
+                                    onClick={() => alert('Click')}
+                                    icon={<MdShoppingCart size={20} fill={'#fff'} />}
+                                >
+                                    Купить
+                                </Button>
+                            </>
                         }
-                        buttonBuy={
-                            <Button onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />}>Купить</Button>
-                        }>
-                    </EncodingBlockButtons>
+                    />
                     {/* <div className="d-flex my-4 gap-4">
                         <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#0085FF', borderBottom: '2px solid #0085FF' }}
-                            onClick={() => alert('Click')}>Таблица конфигураций</a>
+                        onClick={() => alert('Click')}>Таблица конфигураций</a>
                         <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                            onClick={() => alert('Click')}>Конструкционные материалы</a>
+                        onClick={() => alert('Click')}>Конструкционные материалы</a>
                         <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                            onClick={() => alert('Click')}>Вебинары</a>
+                        onClick={() => alert('Click')}>Вебинары</a>
                         <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                            onClick={() => alert('Click')}>Каталоги</a>
+                        onClick={() => alert('Click')}>Каталоги</a>
                     </div> */}
                 </EncodingWrapper>
             </div>
         </div >
         <br />
         <CollapseAntd title={'Encoding Header'} text={`
-           <EncodingWrapper>
-           <EncodingPicture
-               onClickLeft={() => alert('Click')}
-               onClickRight={() => alert('Click')}
-               list_picture={array_picture}>
-           </EncodingPicture>
-           <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
-           <EncodingBlockButtons
-               price={79.99}
-               amount={16}
-               buttonCount={
-                   <ButtonGrayAddRemove counter={2} onClickRemove={() => alert('Click')} onClickAdd={() => alert('Click')} />
-               }
-               buttonBuy={
-                   <ButtonBuy onClick={() => alert('Click')} icon={<MdShoppingCart size={20} fill={'#fff'} />} btn_style='blue'>Купить</ButtonBuy>
-               }>
-           </EncodingBlockButtons>
-       </EncodingWrapper>
+            <EncodingWrapper>
+            <EncodingPicture
+                onClickLeft={() => alert('Click')}
+                onClickRight={() => alert('Click')}
+                list_picture={array_picture}>
+            </EncodingPicture>
+            <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
+            <EncodingBlockButtons
+                price={79.99}
+                amount={16}
+                buttons={
+                    <>
+                        <ButtonGrayAddRemove
+                            counter={2}
+                            onClickRemove={() => alert('Click')}
+                            onClickAdd={() => alert('Click')}
+                        />
+                        <Button
+                            onClick={() => alert('Click')}
+                            icon={<MdShoppingCart size={20} fill={'#fff'} />}
+                        >
+                            Купить
+                        </Button>
+                    </>
+                }
+            />
+        </EncodingWrapper>
          `}></CollapseAntd>
         {/* Верхняя часть кодировки */}
 
@@ -387,49 +403,44 @@ export default function () {
                         <FilterChips title="Оранжевый" onClick={() => alert(111)} />
                         <FilterChips title="3-x ходовой" onClick={() => alert(111)} />
                     </div>
-
-
                 </EncodingWrapper >
             </div>
         </div>
         <br />
         <CollapseAntd title={'Encoding Popular Filter'} text={`
            <EncodingWrapper>
-           <div className="bg-white">
 
-               <div className="d-flex">
-                   <div className="d-flex justify-content-between w-100">
-                       <div className="d-flex gap-2">
-                           <div className="d-flex align-items-center px-2 py-1 border rounded-2 gap-2"
-                               style={{ border: '1px solid #E8E8E8' }}>
-                               <span style={{ fontSize: '16px', fontWeight: '500' }}>Есть в наличии</span>
-                               <InputSwitch></InputSwitch>
-                           </div>
-                           <div className="d-flex align-items-center px-1 border rounded-2 gap-2"
-                               style={{ border: '1px solid #E8E8E8' }}>
-                               <FilterChips title="A-Flow" onClick={() => alert(111)} />
-                               <FilterChips title="A-Flow" onClick={() => alert(111)} />
-                               <MdUnfoldMore className="ms-4" fill="#969696" />
-                           </div>
+           <div className="d-flex">
+               <div className="d-flex justify-content-between w-100">
+                   <div className="d-flex gap-2">
+                       <div className="d-flex align-items-center px-2 py-1 border rounded-2 gap-2"
+                           style={{ border: '1px solid #E8E8E8' }}>
+                           <span style={{ fontSize: '16px', fontWeight: '500' }}>Есть в наличии</span>
+                           <Switch size="default" defaultChecked onChange={() => alert('switch')} />
+                           {/* <InputSwitch onChange={()=>alert('switch')} /> */}
                        </div>
-                       <div className="d-flex gap-2">
-                           <Button
-                               onClick={() => alert(111)}
-                               iconRightContent={<MdCancel fill="#969696" />}
-                               btn_style="btn-outline-secondary">Очистить фильтры</Button>
-                           <Button onClick={() => alert(111)} icon={<MdFilterList />}>Все фильтры</Button>
+                       <div className="d-flex align-items-center px-1 border rounded-2 gap-2"
+                           style={{ border: '1px solid #E8E8E8' }}>
+                           <FilterChips title="A-Flow" onClick={() => alert(111)} />
+                           <FilterChips title="A-Flow" onClick={() => alert(111)} />
+                           <MdUnfoldMore className="ms-4" fill="#969696" />
                        </div>
                    </div>
+                   <div className="d-flex gap-2">
+                       <Button
+                           onClick={() => alert(111)}
+                           iconRightContent={<MdCancel fill="#969696" />}
+                           btn_style="btn-outline-secondary">Очистить фильтры</Button>
+                       <Button onClick={() => alert(111)} icon={<MdFilterList />}>Все фильтры</Button>
+                   </div>
                </div>
-
-               <div className="d-flex mt-2 gap-2">
-                   <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
-                   <FilterChips title="Оранжевый" onClick={() => alert(111)} />
-                   <FilterChips title="3-x ходовой" onClick={() => alert(111)} />
-               </div>
-
            </div>
 
+           <div className="d-flex mt-2 gap-2">
+               <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
+               <FilterChips title="Оранжевый" onClick={() => alert(111)} />
+               <FilterChips title="3-x ходовой" onClick={() => alert(111)} />
+           </div>
        </EncodingWrapper >
          `}></CollapseAntd>
         {/* Популятрые фильтры */}

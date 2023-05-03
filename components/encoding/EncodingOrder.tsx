@@ -1,16 +1,13 @@
 import { Radio } from 'antd';
-import { ReactNode, FC } from 'react'
+import { FC } from 'react'
 
 interface EncodingOrderProps {
-    children?: ReactNode,
     title?: string,
     subtitle?: string,
-    isActive?: boolean,
     value?: number,
-    checked?: boolean,
 }
 
-const EncodingOrder: FC<EncodingOrderProps> = ({ children, title, subtitle, value, checked = false }) => {
+const EncodingOrder: FC<EncodingOrderProps> = ({ title, subtitle, value }) => {
     return <>
         <Radio className='d-flex gap-2 rounded-2 p-2 my-1 order '
             value={value} name='1'>

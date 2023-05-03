@@ -17,7 +17,7 @@ interface EncodingBlockTextProps {
 
 const EncodingBlockText: FC<EncodingBlockTextProps> = ({ prop_encodings, list }) => {
     return <>
-        <div className="col-5 align-items-start">
+        <div className="col-5 align-items-start ms-4">
             <div className='d-flex flex-column'>
                 <div style={{ color: '#585757', fontSize: '16px', fontWeight: '400' }}>
                     <BreadCrumbs list={list}></BreadCrumbs>

@@ -69,6 +69,8 @@
     background: #F7F7F7;
 }
 
-.card-item.ant-radio-wrapper-checked {
-    background: #FFFFFF;
+.card-item {
+    .active {
+        background: #FFFFFF;
+    }
 }
