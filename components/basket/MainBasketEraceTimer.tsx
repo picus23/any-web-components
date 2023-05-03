@@ -3,11 +3,11 @@ import Button from "../buttons/Button";
 import { MdRestore } from "react-icons/md";
 
 interface MainBasketEraceTimerProps {
-    title?: string,
+    // title?: string,
     onClick?: () => void
 }
 
-const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ title, onClick }) => {
+const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick }) => {
 
     // var ProgressBar = require('progressbar.js')
     // var line = new ProgressBar.Line('#basket-timer',
@@ -24,8 +24,8 @@ const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ title, onClick })
 
     return <>
         <div className="d-flex flex-column w-75">
-            <div id="basket-timer" />
-            {/* <div id="basket-timer" style={{ height: '4px', background: '#0085FF' }} /> */}
+            {/* <div id="basket-timer" /> */}
+            <div id="basket-timer" style={{ height: '4px', background: '#0085FF' }} />
             <div className="d-flex flex-column justify-content-center align-items-center gap-1 py-4 bg-white">
                 <h6 style={{ fontSize: '20px', fontWeight: '500' }}>Товар удалён</h6>
                 <Button
@@ -36,11 +36,11 @@ const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ title, onClick })
                     Восстановить
                 </Button>
             </div>
-            <span
+            {/* <span
                 className="d-flex justify-content-center align-items-center pt-2 pb-1"
                 style={{ fontSize: '20px', color: '#585757' }}>
                 Только удалили
-            </span>
+            </span> */}
         </div>
 
     </>;

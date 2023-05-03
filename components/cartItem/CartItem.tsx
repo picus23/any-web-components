@@ -48,26 +48,17 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
             <div className="row">
                 <div className="col-5">
                     <BreadCrumbs list={breadCrumbs} />
-                    {/* {
-                        breadCrumbs.map(el => {
-                            return <a
-                                className="text-decoration-none"
-                                style={{ color: '#585757', fontSize: '16px', fontWeight: '400' }}
-                                href={'/'}>{el.title}
-                            </a>
-                        })
-                    } */}
                     <br />
                     <span className="font-size-20 fw-500">{pagetitle}</span>
                 </div>
                 <div className="d-flex col gap-3">
                     <div className="d-flex align-items-center gap-1">
-                        <Button onClick={() => alert('Click')} icon={<MdCheckCircle size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
-                        <Button onClick={() => alert('Click')} icon={<MdAddComment size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
+                        <Button onClick={() => alert('Click')} icon={<MdCheckCircle size={20} fill={'#969696'} />} btn_style="btn-outline-secondary"></Button>
+                        <Button onClick={() => alert('Click')} icon={<MdAddComment size={20} fill={'#969696'} />} btn_style="btn-outline-secondary"></Button>
                     </div>
                     <div className="d-flex align-items-center gap-1">
-                        <Button onClick={() => alert('Click')} icon={<Md3DRotation size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
-                        <Button onClick={() => alert('Click')} icon={<MdPictureAsPdf size={20} fill={'gray'} />} btn_style="btn-outline-secondary"></Button>
+                        <Button onClick={() => alert('Click')} icon={<Md3DRotation size={20} fill={'#969696'} />} btn_style="btn-outline-secondary"></Button>
+                        <Button onClick={() => alert('Click')} icon={<MdPictureAsPdf size={20} fill={'#969696'} />} btn_style="btn-outline-secondary"></Button>
                     </div>
                     <div className="d-flex align-items-center gap-1">
                         {BasketButton}
