@@ -53,7 +53,7 @@ export default function () {
                     <div className="d-flex flex-column mx-3">
                         <div className="d-flex justify-content-between w-100 align-items-center">
                             <span className="font-size-20-black fw-500">Ваша корзина</span>
-                            <Button icon={<MdClose size={20} fill={'gray'} />} btn_style="btn-outline-secondary"><span className="font-size-16-black fw-500">Закрыть</span></Button>
+                            <Button onClick={() => alert('Click')} icon={<MdClose size={20} fill={'#969696'} />} btn_style="btn-outline-secondary"><span className="font-size-16-black fw-500">Закрыть</span></Button>
                         </div>
                         <div className="d-flex flex-column w-100">
                             {

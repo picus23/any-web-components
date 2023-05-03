@@ -19,7 +19,7 @@ function FieldEncoding(props: FieldEncodingProps) {
         <div className="search-field my-2">
             <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
                 <div className='d-flex gap-2'>
-                    <img src={props.imgUrl} alt="logo" />
+                    <img style={{width:'64px',height:'64px'}} src={props.imgUrl} alt="logo" />
                     <div className="d-flex flex-column">
                         <span className="font-size-20 fw-500">{props.pagetitle}</span>
                         <div className='d-flex gap-2'>
