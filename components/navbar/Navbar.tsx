@@ -38,8 +38,8 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 </div>
             </div>
             <div className="d-flex align-items-end justify-content-between gap-3">
-                <Button 
-                icon={<MdOutlineMenuOpen size={24} />}
+                <Button
+                    icon={<MdOutlineMenuOpen size={24} />}
                     contentPosition="start"
                     style={{ width: '256px' }}>Каталог</Button>
                 <div className="col d-flex align-items-stretch" id="search">
@@ -49,14 +49,26 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                     </div>
                 </div>
                 <div className="d-flex justify-content-end gap-2">
-                    <Button icon={<MdPerson size={24} fill={'#969696'} />} btn_style="btn-outline-secondary"><span className="fw-500">Войти</span></Button>
-                    <Button icon={<MdFavorite size={24} fill={'#969696'} />} btn_style="btn-outline-secondary"></Button>
                     <Button
+                        style={{ height: '52px' }}
+                        fontSize="20px"
+                        icon={<MdPerson size={24} fill={'#969696'} />}
+                        btn_style="btn-outline-secondary">
+                        Войти
+                    </Button>
+                    <Button
+                        style={{ height: '52px' }}
+                        icon={<MdFavorite size={24} fill={'#969696'} />}
+                        btn_style="btn-outline-secondary"
+                    />
+                    <Button
+                        style={{ height: '52px' }}
+                        fontSize="20px"
                         counterPosition="right"
                         icon={<MdShoppingCart size={24} fill={'#969696'} />}
                         btn_style="btn-outline-secondary"
                         counter={0}>
-                        <span className="fw-500">Корзина</span>
+                        Корзина
                     </Button>
                 </div>
             </div>

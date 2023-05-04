@@ -13,33 +13,19 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ icon, title, class_name, input_name, value }) => {
-    function changeRadio(event: any) {
-        if (event.target.checked == true) {
-            console.log(event.parentNode)
-            const cardItems = document.querySelector('.card-item .ant-radio');
-            // cardItems.forEach(el => {
-            //     console.log(el.parentElement?.parentElement)
-            //     console.log(event.target)
-            // })
+    function onRadio(element: any) {
+        const cardItems = document.querySelectorAll('.card-item .ant-radio');
+        if (element.target.checked == true) {
+            const currentCardItem = cardItems[element.target.value - 1]
+            currentCardItem.parentElement.parentElement.classList.add('card-item-active')
         }
-
     }
 
     return <div id="card-item" className={class_name + ' d-flex flex-column align-items-start p-2 gap-1 card-item'} style={{ border: '1px solid #E8E8E8' }}>
-        {/* <Radio name={input_name ?? ''} value={value}  /> */}
-        <Radio onChange={changeRadio} name={input_name ?? ''} value={value ?? 1} />
+        <Radio onChange={onRadio} name={input_name ?? ''} value={value ?? 1} />
         {icon ?? false}
         <span style={{ fontSize: '16px', color: '#585757' }}>{title ?? false}</span>
     </div>
-
-    // return <Radio
-    //     className={class_name + ' d-flex flex-column align-items-start p-2 gap-1 card-item'}
-    //     style={{ border: '1px solid #E8E8E8' }}
-    //     name={input_name ?? ''}
-    //     value={value ?? 1} >
-    //     {icon ?? false}
-    //     <span style={{ fontSize: '16px', color: '#585757' }}>{title ?? false}</span>
-    // </Radio >
 }
 
 export default Card;

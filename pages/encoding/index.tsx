@@ -575,6 +575,7 @@ export default function () {
                     </div>
 
                     <div className="d-flex flex-column">
+
                         {/* Описание под колонками карт товара */}
                         <div className="d-flex">
                             <TableCell
@@ -719,59 +720,262 @@ export default function () {
         <br />
         <CollapseAntd title={'Encoding Table'} text={`
            <EncodingWrapper>
+           <div className="d-flex flex-column">
+               {/* Карта товара 8 шт */}
+               <div className="d-flex flex-column">
+                   <div className="d-flex position-relative">
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           isActive
+                           input_name={'card'}
+                           value={1}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={2}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={3}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={4}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={5}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={6}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={7}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={8}
+                       />
+                       <Card
+                           icon={<img src="/kit/card.png" alt="" />}
+                           title={'Проходной 2-х ходовой'}
+                           input_name={'card'}
+                           value={9}
+                       />
 
-           <div className="d-flex">
-               <div className="d-flex position-relative">
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       isActive
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <Card icon={<img src="/kit/card.png" alt="" />}
-                       title={'Проходной 2-х ходовой'}
-                       input_name={'card'}>
-                   </Card>
-                   <div className="d-flex flex-column bg-white position-absolute top-0 end-0 h-100 justify-content-center gap-3">
+                       <div className="d-flex flex-column bg-white position-absolute top-0 end-0 h-100 justify-content-center gap-2 px-2"
+                           style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
+                           <Button
+                               onClick={() => alert('Click')}
+                               icon={<MdChevronLeft fill="#969696" />}
+                               btn_style="btn-outline-secondary" />
+                           <Button
+                               onClick={() => alert('Click')}
+                               icon={<MdChevronRight fill="#969696" />}
+                               btn_style="btn-outline-secondary" />
+                       </div>
+                   </div>
+               </div>
+
+               {/* Название колонок под картами товара */}
+               <div className="d-flex position-relative" style={{ height: '80px', border: '1px solid #E8E8E8' }}>
+                   <div className="col">
+                       <TableCell
+                           title={'Кодировка'}
+                           icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Действия'} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Кол-во'} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Цена'} describe={'Без НДС'} icon={<MdUnfoldMore size={20} fill="#0085FF" />}></TableCell>
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Купить'} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Подсоединение'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'CV/ДУ'} describe={'мм.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Давление'} describe={'бар.'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                   </div>
+                   <div className="col">
+                       <TableCell title={'Температура'} describe={'℃'} icon={<MdUnfoldMore size={20} fill="#0085FF" />} />
+                   </div>
+                   <div className="d-flex bg-white position-absolute top-0 end-0 h-100 justify-content-center gap-2 p-2"
+                       style={{ boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
                        <Button
+                           onClick={() => alert('Click')}
                            icon={<MdChevronLeft fill="#969696" />}
                            btn_style="btn-outline-secondary" />
                        <Button
+                           onClick={() => alert('Click')}
                            icon={<MdChevronRight fill="#969696" />}
                            btn_style="btn-outline-secondary" />
                    </div>
                </div>
-           </div>
 
-       </EncodingWrapper>
-{/* Таблица с товарами */}
+               <div className="d-flex flex-column">
+                   {/* Описание под колонками карт товара */}
+                   <div className="d-flex">
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'H1B-H-6M'}
+                           icon={<MdInfo type="button" size={24} fill="#0085FF" onClick={() => alert('Click')} />}
+                           isTextDashed={true}
+                           contentPosition="between"
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                       >
+                           <Button
+                               btn_style="btn-outline-secondary"
+                               icon={<MdPictureAsPdf fill="#969696" />} />
+                           <Button
+                               btn_style="btn-outline-secondary"
+                               icon={<Md3DRotation fill="#969696" />} />
+                       </TableCell>
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           contentPosition="end"
+                           title={'17 шт.'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           contentPosition="end"
+                           title={'7685 ₽'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                       >
+                           <ButtonGrayAddRemove
+                               counter={0}
+                               onClickRemove={() => alert('Click')}
+                               onClickAdd={() => alert('Click')} />
+                           <Button
+                               onClick={() => alert('Click')}
+                               icon={<MdShoppingCart size={20} fill={'#fff'} />} />
+                       </TableCell>
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'Подсоединение'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'CV/ДУ'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'Давление'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'Температура'}
+                       />
+                   </div>
+
+                   {/* Описание под колонками карт товара №2 */}
+                   <div className="d-flex">
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'H1B-H-6M'}
+                           icon={<MdInfo type="button"
+                               size={24} fill="#0085FF" onClick={() => alert('Click')} />} isTextDashed={true}
+                           contentPosition="between"
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                       >
+                           <Button
+                               btn_style="btn-outline-secondary"
+                               icon={<MdPictureAsPdf fill="#969696" />} />
+                           <Button
+                               btn_style="btn-outline-secondary"
+                               icon={<Md3DRotation fill="#969696" />} />
+                       </TableCell>
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           contentPosition="end"
+                           title={'17 шт.'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           contentPosition="end"
+                           title={'7685 ₽'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                       >
+                           <ButtonGrayAddRemove
+                               counter={0}
+                               onClickRemove={() => alert('Click')}
+                               onClickAdd={() => alert('Click')} />
+                           <Button
+                               onClick={() => alert('Click')}
+                               icon={<MdShoppingCart size={20} fill={'#fff'} />} />
+                       </TableCell>
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'Подсоединение'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'CV/ДУ'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'Давление'}
+                       />
+                       <TableCell
+                           class_name="col"
+                           isBorder={true}
+                           title={'Температура'}
+                       />
+                   </div>
+
+               </div>
+           </div>
+       </EncodingWrapper >
          `}></CollapseAntd>
         {/* Таблица с товарами */}
 

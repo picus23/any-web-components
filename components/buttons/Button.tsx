@@ -14,9 +14,10 @@ interface ButtonProps {
     btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
     onClick?: () => void,
     htmlType?: 'submit'|'reset',
+    fontSize?: string,
 }
 
-const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition,htmlType='submit' }) => {
+const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition,htmlType='submit',fontSize }) => {
     return <button onClick={onClick} type={htmlType} className={btn_style ?
         'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn ' + btn_style :
         'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn btn-primary'}
@@ -24,8 +25,8 @@ const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, co
 
         {icon ?? false}
         {children ?
-            <span className="mx-2" style={{ fontWeight: '500', fontSize: '16px' }}>{children}</span> :
-            <span style={{ fontWeight: '500', fontSize: '16px' }}></span>}
+            <span className="mx-2" style={{ fontWeight: '500', fontSize: fontSize }}>{children}</span> :
+            <span style={{ fontWeight: '500', fontSize: fontSize }}></span>}
 
         {counterPosition == 'left' ?
             <span className="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-primary">{counter}

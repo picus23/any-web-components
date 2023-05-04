@@ -27,9 +27,9 @@ interface CartItemProps {
     breadCrumbsRoute?: (url: string) => string,
     imgUrl: string,
     BasketButton: ReactNode,
-    price: number,
+    price?: number,
     index?: number
-    count: number,
+    count?: number,
     icon?: ReactNode,
     btn_style?: string,
     onClick?: () => void,
