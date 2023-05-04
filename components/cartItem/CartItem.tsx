@@ -35,12 +35,11 @@ interface CartItemProps {
     onClick?: () => void,
     isDelete?: boolean,
 
-    onErace: () => void,
     onCancelErace: () => void,
 }
 
 
-const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index, onErace, onCancelErace, isDelete = false }) => {
+const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index,  onCancelErace, isDelete = false }) => {
 
 
 
