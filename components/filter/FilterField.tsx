@@ -48,7 +48,8 @@ const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, isActive = f
         {
 
 
-            isActive && !!links && !!links.length && <ol className="list-unstyled ms-4 py-2">
+            // isActive && !!links && !!links.length && 
+            links && !!links.length && <ol className="list-unstyled ms-4" style={{height: isActive ? links.length * 22 : 0, transition: 'all .3s', overflow: 'hidden'}}>
 
                 {
 
