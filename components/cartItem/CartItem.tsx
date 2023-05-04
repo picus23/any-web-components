@@ -22,7 +22,7 @@ interface encoding {
 
 interface CartItemProps {
     pagetitle: string,
-    props: encoding[],
+    props?: encoding[],
     breadCrumbs: IBreadСrumbs[],
     breadCrumbsRoute?: (url: string) => string,
     imgUrl: string,
@@ -57,8 +57,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
         <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
             <div className="row">
                 <div className="col-5">
-                    <BreadCrumbs list={breadCrumbs} route={breadCrumbsRoute}/>
-                    <br />
+                    <BreadCrumbs list={breadCrumbs} route={breadCrumbsRoute} />
                     <span className="font-size-20 fw-500">{pagetitle}</span>
                 </div>
                 <div className="d-flex col gap-3">
@@ -77,16 +76,18 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
             </div>
 
             <div className="row">
-                {
+                {props ?
                     props.map(el => {
                         return <div className="col-3">
                             <span className="font-size-13">{el.title}</span> <br />
                             <span className="font-size-16-black fw-500">{el.value}</span>
                         </div>
 
-                    })
+                    }) : false
                 }
-                <div className="d-flex flex-column col-2 justify-content-end align-items-end mr-2">
+                <div className={props
+                    ? "d-flex flex-column col-2 justify-content-end align-items-end mr-2"
+                    : "d-flex flex-column justify-content-end align-items-end pe-5"}>
                     <span className="font-size-13 mb-1">Итого</span>
                     <span className="font-size-16-black fw-500">$ {price}</span>
                 </div>

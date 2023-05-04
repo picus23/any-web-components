@@ -13,7 +13,7 @@ interface TempNavbarProps {
     basketCounter: number,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite }) => {
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter }) => {
     return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
         <div className="row align-items-center mb-3">
@@ -133,7 +133,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
                         counterPosition="right"
                         icon={<MdShoppingCart size={24} fill={'#969696'} />}
                         btn_style="btn-outline-secondary"
-                        counter={0}>
+                        counter={basketCounter}>
                         Корзина
                     </Button>
                 </div>

@@ -81,6 +81,21 @@ const links = [
         'title': 'Шаровые краны',
         'url': 'Шаровые краны',
     },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
 ]
 
 const props = [
@@ -120,6 +135,7 @@ export default function () {
             <EncodingWrapper>
                 <div className="d-flex">
                     <div className="d-flex flex-column w-75 p-2">
+
                         <div className="d-flex justify-content-between mb-4">
                             <h5>Корзина</h5>
                             <Button
@@ -127,7 +143,129 @@ export default function () {
                                 icon={<MdDelete fill="#969696" />}
                                 btn_style="btn-outline-secondary">Очистить корзину</Button>
                         </div>
+
+                        {/* CartItem */}
                         <div className="d-flex flex-column gap-4">
+                            <CartItem
+                                index={1}
+                                imgUrl="/kit/cart_item.png"
+                                breadCrumbs={links}
+                                price={214}
+                                // props={props}
+                                count={3}
+                                pagetitle={"H1B-H-6M"}
+                                BasketButton={<>
+                                    <ButtonGrayAddRemove
+                                        btn_class="btn-outline-secondary"
+                                        counter={1}
+                                        onClickRemove={() => alert('Click')}
+                                        onClickAdd={() => alert('Click')}
+                                    />
+                                    <Button
+                                        onClick={() => alert('Click')}
+                                        icon={<MdDelete size={20}
+                                            fill={'gray'} />}
+                                        btn_style="btn-outline-secondary"
+                                    />
+                                </>
+                                }
+                            />
+                            <CartItem
+                                index={1}
+                                imgUrl="/kit/cart_item.png"
+                                breadCrumbs={links}
+                                price={214}
+                                props={props}
+                                count={3}
+                                pagetitle={"H1B-H-6M"}
+                                BasketButton={<>
+                                    <ButtonGrayAddRemove
+                                        btn_class="btn-outline-secondary"
+                                        counter={1}
+                                        onClickRemove={() => alert('Click')}
+                                        onClickAdd={() => alert('Click')}
+                                    />
+                                    <Button
+                                        onClick={() => alert('Click')}
+                                        icon={<MdDelete size={20}
+                                            fill={'gray'} />}
+                                        btn_style="btn-outline-secondary"
+                                    />
+                                </>
+                                }
+                            />
+                            <CartItem
+                                index={1}
+                                imgUrl="/kit/cart_item.png"
+                                breadCrumbs={links}
+                                price={214}
+                                props={props}
+                                count={3}
+                                pagetitle={"H1B-H-6M"}
+                                BasketButton={<>
+                                    <ButtonGrayAddRemove
+                                        btn_class="btn-outline-secondary"
+                                        counter={1}
+                                        onClickRemove={() => alert('Click')}
+                                        onClickAdd={() => alert('Click')}
+                                    />
+                                    <Button
+                                        onClick={() => alert('Click')}
+                                        icon={<MdDelete size={20}
+                                            fill={'gray'} />}
+                                        btn_style="btn-outline-secondary"
+                                    />
+                                </>
+                                }
+                            />
+                            <CartItem
+                                index={1}
+                                imgUrl="/kit/cart_item.png"
+                                breadCrumbs={links}
+                                price={214}
+                                props={props}
+                                count={3}
+                                pagetitle={"H1B-H-6M"}
+                                BasketButton={<>
+                                    <ButtonGrayAddRemove
+                                        btn_class="btn-outline-secondary"
+                                        counter={1}
+                                        onClickRemove={() => alert('Click')}
+                                        onClickAdd={() => alert('Click')}
+                                    />
+                                    <Button
+                                        onClick={() => alert('Click')}
+                                        icon={<MdDelete size={20}
+                                            fill={'gray'} />}
+                                        btn_style="btn-outline-secondary"
+                                    />
+                                </>
+                                }
+                            />
+                            <CartItem
+                                index={1}
+                                imgUrl="/kit/cart_item.png"
+                                breadCrumbs={links}
+                                price={214}
+                                props={props}
+                                count={3}
+                                pagetitle={"H1B-H-6M"}
+                                BasketButton={<>
+                                    <ButtonGrayAddRemove
+                                        btn_class="btn-outline-secondary"
+                                        counter={1}
+                                        onClickRemove={() => alert('Click')}
+                                        onClickAdd={() => alert('Click')}
+                                    />
+                                    <Button
+                                        onClick={() => alert('Click')}
+                                        icon={<MdDelete size={20}
+                                            fill={'gray'} />}
+                                        btn_style="btn-outline-secondary"
+                                    />
+                                </>
+                                }
+                            />
                             <CartItem
                                 index={1}
                                 imgUrl="/kit/cart_item.png"
@@ -153,18 +291,23 @@ export default function () {
                                 }
                             />
                         </div>
+
                     </div>
-                    <div className="d-flex flex-column p-2 w-25">
+
+                    {/* Форма */}
+                    <div className="d-flex flex-column p-2 w-25 position-sticky" style={{top:'200px',zIndex:'10'}}>
                         <h5>Оформление заказа</h5>
                         <Radio.Group name="radiogroup" defaultValue={1}>
                             <EncodingOrder
                                 value={1}
                                 title="Самовывоз"
-                                subtitle="г.Москва, ул.Большая Семеновская, дом 49." />
+                                subtitle="г.Москва, ул.Большая Семеновская, дом 49."
+                            />
                             <EncodingOrder
                                 value={2}
                                 title="Доставка"
-                                subtitle="Список партнёров флюид-лайн." />
+                                subtitle="Список партнёров флюид-лайн."
+                            />
                         </Radio.Group>
                         <div className="">
                             <Form layout="vertical">
@@ -194,7 +337,9 @@ export default function () {
                             </Form>
                         </div>
                     </div>
+
                 </div>
+
             </EncodingWrapper>
         </div>
         <br />
