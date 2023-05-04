@@ -147,7 +147,7 @@ export default function () {
                         {/* CartItem */}
                         <div className="d-flex flex-column gap-4">
                             <CartItem
-                            isDelete
+                                isDelete
                                 index={1}
                                 imgUrl="/kit/cart_item.png"
                                 breadCrumbs={links}
@@ -296,7 +296,7 @@ export default function () {
                     </div>
 
                     {/* Форма */}
-                    <div className="d-flex flex-column p-2 w-25 position-sticky" style={{top:'200px',zIndex:'10'}}>
+                    <div className="d-flex flex-column p-2 w-25 position-sticky" style={{ top: '200px', zIndex: '10' }}>
                         <h5>Оформление заказа</h5>
                         <Radio.Group name="radiogroup" defaultValue={1}>
                             <EncodingOrder

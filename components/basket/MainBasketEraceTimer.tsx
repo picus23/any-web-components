@@ -5,26 +5,27 @@ import { MdRestore } from "react-icons/md";
 
 interface MainBasketEraceTimerProps {
     onClick: () => void,
+    textSize?:string,
 }
 
-const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick }) => {
+const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick,textSize }) => {
 
-    return <>
-            <div className="d-flex flex-column position-absolute w-100 " style={{backgroundColor:'#fffb', zIndex: 1}}>
-                <div id="basket-timer" className="" />
-                <div className="d-flex flex-column justify-content-center align-items-center gap-1 py-4">
-                    <h6 style={{ fontSize: '20px', fontWeight: '500' }}>Товар удалён</h6>
-                    <Button
-                        onClick={onClick}
-                        btn_style="btn-outline-secondary"
-                        icon={<MdRestore fill="#969696" />}
-                    >
-                        Восстановить
-                    </Button>
-                </div>
-            </div>
+    return <div className="d-flex flex-column position-absolute h-100 w-100" style={{ backgroundColor: '#fffb', zIndex: 1}}>
+        <div id="basket-timer" className="" />
+        {/* <div className="d-flex flex-column justify-content-center align-items-center"> */}
+        <div className="d-flex flex-column justify-content-center align-items-center gap-1 pt-3">
+            <h6 style={{ fontSize: textSize ?? '20px', fontWeight: '500' }}>Товар удалён</h6>
+            <Button
+                onClick={onClick}
+                btn_style="btn-outline-secondary"
+                icon={<MdRestore fill="#969696" />}
+            >
+                Восстановить
+            </Button>
+        </div>
+    </div>
 
-    </>;
+
 }
 
 export default memo(MainBasketEraceTimer);

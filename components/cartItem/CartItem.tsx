@@ -44,7 +44,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
 
 
 
-    return <div className="d-flex">
+    return <div className="d-flex position-relative">
         {
             isDelete && <MainBasketEraceTimer onClick={onCancelErace} />
         }

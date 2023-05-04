@@ -68,6 +68,7 @@ export default function () {
                     imgUrl="/kit/cart_item.png"
                     price={214}
                     count={3}
+                    isDelete
                     breadCrumbs={links}
                     pagetitle={"H1B-H-6M"}
                     BasketButton={<>
@@ -86,11 +87,6 @@ export default function () {
                     </>
                     }
                 />
-
-                <MainBasketEraceTimer
-                    onClick={() => alert('Click')}
-                    onErace={() => { console.log(123)}}
-                />
             </div>
 
 
@@ -107,7 +103,6 @@ export default function () {
 
             <Basket>
                 <div className="basket p-3">
-                    {/* <div className="basket py-3 justify-content-between"> */}
                     <div className="d-flex flex-column mx-3">
                         <div className="d-flex justify-content-between w-100 align-items-center">
                             <span className="font-size-20-black fw-500">Ваша корзина</span>
@@ -123,6 +118,7 @@ export default function () {
                                         imgUrl={item[2]}
                                         pagetitle={item[0]}
                                         price={item[1]}
+                                        isDelete
                                         basketButtons={
                                             <div className="d-flex gap-1">
                                                 <ButtonGrayAddRemove

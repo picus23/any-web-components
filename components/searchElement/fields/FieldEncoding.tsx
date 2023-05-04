@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { MdArrowForward } from 'react-icons/md'
 import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
+import MainBasketEraceTimer from '@/components/basket/MainBasketEraceTimer'
 
 interface FieldEncodingProps {
     imgUrl?: string,
@@ -12,11 +13,17 @@ interface FieldEncodingProps {
     btnGrayArrow?: ReactNode,
     handleArrowClick?: () => void,
     isDelete?: boolean,
+    onCancelErace: () => void,
 }
 
 
-const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amount, basketButtons, btnGrayArrow, handleArrowClick }) => {
-    return <div className="search-field my-2">
+const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amount, basketButtons, btnGrayArrow, handleArrowClick, onCancelErace, isDelete = false }) => {
+
+    return <div className="search-field my-2 position-relative">
+        {
+            isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} />
+        }
+
         <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
             <div className='d-flex gap-2'>
                 <img style={{ aspectRatio: '1/1', width: '64px', height: '64px' }} src={imgUrl} alt="logo" />
@@ -36,7 +43,6 @@ const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amoun
         {btnGrayArrow ? <div className=''><ButtonGrayArrow onClick={handleArrowClick} /></div> : false}
 
     </div>
-
 }
 export default FieldEncoding;
 
