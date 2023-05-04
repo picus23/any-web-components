@@ -1,22 +1,19 @@
 import Link from "next/link";
 import { FC, ReactNode, RefObject } from "react";
-import { MdFavorite, MdMenuOpen, MdOutlineFavorite, MdOutlineMenuOpen, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
+import { MdFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import Button from "../buttons/Button";
 
 
 interface TempNavbarProps {
     catalog: ReactNode,
     hook: RefObject<HTMLDivElement>,
-    basket: ReactNode,
-    login: ReactNode,
-    favorite: ReactNode,
     onBasket: () => void,
     onLogin: () => void,
     onFavorite: () => void,
     basketCounter: number,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorite, onBasket, onLogin, onFavorite }) => {
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite }) => {
     return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
         <div className="row align-items-center mb-3">
@@ -115,17 +112,30 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorit
             </div>
             <div className="col-3 d-flex align-items-stretch">
                 <div className="d-flex gap-2 w-100">
-
-                    {login}
-
-                    {favorite}
-
-
-                    {basket}
-
-
-
-
+                    <Button
+                        onClick={onLogin}
+                        style={{ height: '52px' }}
+                        fontSize="20px"
+                        icon={<MdPerson size={24} fill={'#969696'} />}
+                        btn_style="btn-outline-secondary">
+                        Войти
+                    </Button>
+                    <Button
+                        onClick={onFavorite}
+                        style={{ height: '52px' }}
+                        icon={<MdFavorite size={24} fill={'#969696'} />}
+                        btn_style="btn-outline-secondary"
+                    />
+                    <Button
+                        onClick={onBasket}
+                        style={{ height: '52px' }}
+                        fontSize="20px"
+                        counterPosition="right"
+                        icon={<MdShoppingCart size={24} fill={'#969696'} />}
+                        btn_style="btn-outline-secondary"
+                        counter={0}>
+                        Корзина
+                    </Button>
                 </div>
             </div>
         </div>
