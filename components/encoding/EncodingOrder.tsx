@@ -5,9 +5,14 @@ interface EncodingOrderProps {
     title?: string,
     subtitle?: string,
     value?: number,
+    checked?: boolean,
 }
 
+<<<<<<< HEAD
 const EncodingOrder: FC<EncodingOrderProps> = ({ title, subtitle, value }) => {
+=======
+const EncodingOrder: FC<EncodingOrderProps> = ({ title, subtitle, value, checked = false }) => {
+>>>>>>> c3ed907c7a15a709ca9fe0be947ba768e49333eb
     return <>
         <Radio className='d-flex gap-2 rounded-2 p-2 my-1 order '
             value={value} name='1'>
