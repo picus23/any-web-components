@@ -19,9 +19,10 @@ interface FilterFieldProps {
     isEmbedded?: boolean,
 
     links?: string[],
+    icon?: ReactNode,
 }
 
-const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, isActive = false, isSelected = false, isEmbedded = false }) => {
+const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, isActive = false, isSelected = false, isEmbedded = false, icon }) => {
 
     return <li><button role='button' tabIndex={0}
 
@@ -32,15 +33,20 @@ const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, isActive = f
         }
         onClick={onClick}>
         <div className="d-flex align-items-center">
-            {isActive ? <img src="/kit/white_square.png" alt="" /> : <img src="/kit/gray_square.png" alt="" />}
-            <span className="fw-400 ms-2 d-flex text-left" style={{fontSize:'16px'}}>{title}</span>
+            {
+                icon
+                    ? <span style={{ color: isActive ? '#fff' : '#aaa' }}>{icon}</span>
+                    : <img src={isActive ? "/kit/white_square.png" : "/kit/gray_square.png"} alt="" />
+
+            }
+            <span className="fw-400 ms-2 d-flex text-left" style={{ fontSize: '16px' }}>{title}</span>
         </div>
         <MdChevronRight size={24} fill={isActive ? 'white' : 'gray'} />
     </button>
 
 
         {
-            
+
 
             isActive && !!links && !!links.length && <ol className="list-unstyled ms-4 py-2">
 
