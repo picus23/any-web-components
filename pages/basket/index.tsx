@@ -46,7 +46,7 @@ export default function () {
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
 
             <Basket>
-                <div className="basket py-3">
+                <div className="basket p-3">
                     {/* <div className="basket py-3 justify-content-between"> */}
                     <div className="d-flex flex-column mx-3">
                         <div className="d-flex justify-content-between w-100 align-items-center">
@@ -56,10 +56,11 @@ export default function () {
                         <div className="d-flex flex-column w-100">
                             {
                                 [
-                                    ['B1V-H-3M', 156],
+                                    ['B1V-H-3M', 156,'/kit/0__andpa.png'],
+                                    ['B1V-H-3M', 156,'/kit/0__anhua.png'],
                                 ].map(item => (
                                     <FieldEncoding
-                                        imgUrl={'/kit/empty_square.png'}
+                                        imgUrl={item[2]}
                                         pagetitle={item[0]}
                                         price={item[1]}
                                         basketButtons={

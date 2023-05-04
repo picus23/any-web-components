@@ -13,14 +13,20 @@ interface ButtonProps {
     contentPosition?: 'center' | 'start'
     btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
     onClick?: () => void,
-    htmlType?: 'submit'|'reset',
+    onBasket?: () => void,
+    onLogin?: () => void,
+    onFavorite?: () => void,
+    htmlType?: 'submit' | 'reset',
     fontSize?: string,
 }
 
-const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition,htmlType='submit',fontSize }) => {
-    return <button onClick={onClick} type={htmlType} className={btn_style ?
-        'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn ' + btn_style :
-        'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn btn-primary'}
+const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, onBasket, onLogin, onFavorite, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize }) => {
+    return <button
+        onClick={onClick || onBasket || onLogin || onFavorite}
+        type={htmlType}
+        className={btn_style
+            ? 'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn ' + btn_style
+            : 'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn btn-primary'}
         style={style}>
 
         {icon ?? false}

@@ -10,9 +10,13 @@ interface TempNavbarProps {
     basket: ReactNode,
     login: ReactNode,
     favorite: ReactNode,
+    onBasket: () => void,
+    onLogin: () => void,
+    onFavorite: () => void,
+    basketCounter: number,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorite }) => {
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, basket, login, favorite, onBasket, onLogin, onFavorite }) => {
     return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
         <div className="row align-items-center mb-3">

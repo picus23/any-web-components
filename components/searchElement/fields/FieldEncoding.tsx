@@ -19,8 +19,8 @@ function FieldEncoding(props: FieldEncodingProps) {
         <div className="search-field my-2">
             <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
                 <div className='d-flex gap-2'>
-                    <img style={{aspectRatio:'1:1'}} src={props.imgUrl} alt="logo" />
-                    <div className="d-flex flex-column">
+                    <img style={{aspectRatio:'1/1',width:'70%',height:'70%'}} src={props.imgUrl} alt="logo" />
+                    <div className="d-flex flex-column justify-content-center">
                         <span className="font-size-20 fw-500">{props.pagetitle}</span>
                         <div className='d-flex gap-2'>
                             {props.price ? <span className="font-size-16-gray fw-500">{props.price}$ за шт.</span> : false}
