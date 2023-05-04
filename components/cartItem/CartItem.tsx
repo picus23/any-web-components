@@ -33,24 +33,26 @@ interface CartItemProps {
     icon?: ReactNode,
     btn_style?: string,
     onClick?: () => void,
+    isDelete?: boolean,
 
     onErace: () => void,
     onCancelErace: () => void,
 }
 
 
-const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index, onErace, onCancelErace }) => {
+const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index, onErace, onCancelErace, isDelete = false }) => {
 
-    if (count == 0)
-        return <MainBasketEraceTimer onClick={onCancelErace} onErace={onErace} />
 
 
     return <div className="d-flex">
+        {
+            isDelete && <MainBasketEraceTimer onClick={onCancelErace} />
+        }
 
         <div className="d-flex flex-column mx-1 justify-content-center me-2">
-            <button onClick={() => alert('Click')} className="border-0 bg-white"><MdOutlineKeyboardArrowUp fill="#969696" /></button>
+            <button onClick={() => alert('Click')} className="border-0 bg-none"><MdOutlineKeyboardArrowUp fill="#969696" /></button>
             <span className="ms-2">{index}</span>
-            <button onClick={() => alert('Click')} className="border-0 bg-white"><MdKeyboardArrowDown fill="#969696" /></button>
+            <button onClick={() => alert('Click')} className="border-0 bg-none"><MdKeyboardArrowDown fill="#969696" /></button>
         </div>
         <img src={imgUrl} alt="PRODUCT LOGO" />
 
@@ -76,18 +78,18 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
             </div>
 
             <div className="row">
-                {props ?
-                    props.map(el => {
-                        return <div className="col-3">
-                            <span className="font-size-13">{el.title}</span> <br />
-                            <span className="font-size-16-black fw-500">{el.value}</span>
-                        </div>
+                <div className="d-flex col-9">
+                    {props ?
+                        props.map(el => {
+                            return <div className="col">
+                                <span className="font-size-13">{el.title}</span> <br />
+                                <span className="font-size-16-black fw-500">{el.value}</span>
+                            </div>
 
-                    }) : false
-                }
-                <div className={props
-                    ? "d-flex flex-column col-2 justify-content-end align-items-end mr-2"
-                    : "d-flex flex-column justify-content-end align-items-end pe-5"}>
+                        }) : false
+                    }
+                </div>
+                <div className="d-flex flex-column col-3 justify-content-end align-items-center mr-2">
                     <span className="font-size-13 mb-1">Итого</span>
                     <span className="font-size-16-black fw-500">$ {price}</span>
                 </div>

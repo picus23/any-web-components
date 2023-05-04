@@ -147,6 +147,7 @@ export default function () {
                         {/* CartItem */}
                         <div className="d-flex flex-column gap-4">
                             <CartItem
+                            isDelete
                                 index={1}
                                 imgUrl="/kit/cart_item.png"
                                 breadCrumbs={links}

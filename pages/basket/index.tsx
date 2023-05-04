@@ -10,7 +10,41 @@ import { MdClose, MdDelete } from "react-icons/md";
 import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
 import MainBasketEraceTimer from "@/components/basket/MainBasketEraceTimer";
+import CartItem from "@/components/cartItem/CartItem";
 
+
+const links = [
+    {
+        'id': 1,
+        'title': 'Продукция',
+        'url': 'Продукция',
+    },
+    {
+        'id': 2,
+        'title': 'Клапаны',
+        'url': 'Клапаны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+    {
+        'id': 3,
+        'title': 'Шаровые краны',
+        'url': 'Шаровые краны',
+    },
+]
 export default function () {
     return <>
         <h1>
@@ -28,10 +62,36 @@ export default function () {
         </div>
         <h1>Мой</h1>
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
-            <MainBasketEraceTimer
-                onClick={() => alert('Click')}
-            />
-        </div>
+            
+                <CartItem
+                    index={1}
+                    imgUrl="/kit/cart_item.png"
+                    price={214}
+                    count={3}
+                    breadCrumbs={links}
+                    pagetitle={"H1B-H-6M"}
+                    BasketButton={<>
+                        <ButtonGrayAddRemove
+                            btn_class="btn-outline-secondary"
+                            counter={1}
+                            onClickRemove={() => alert('Click')}
+                            onClickAdd={() => alert('Click')}
+                        />
+                        <Button
+                            onClick={() => alert('Click')}
+                            icon={<MdDelete size={20}
+                                fill={'gray'} />}
+                            btn_style="btn-outline-secondary"
+                        />
+                    </>
+                    }
+                />
+
+                <MainBasketEraceTimer
+                    onClick={() => alert('Click')}
+                    onErace={() => { console.log(123)}}
+                />
+            </div>
 
 
 
@@ -56,8 +116,8 @@ export default function () {
                         <div className="d-flex flex-column w-100">
                             {
                                 [
-                                    ['B1V-H-3M', 156,'/kit/0__andpa.png'],
-                                    ['B1V-H-3M', 156,'/kit/0__anhua.png'],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png'],
+                                    ['B1V-H-3M', 156, '/kit/0__anhua.png'],
                                 ].map(item => (
                                     <FieldEncoding
                                         imgUrl={item[2]}
