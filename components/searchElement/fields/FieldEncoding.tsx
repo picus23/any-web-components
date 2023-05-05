@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { MdArrowForward } from 'react-icons/md'
 import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
-import MainBasketEraceTimer from '@/components/basket/MainBasketEraceTimer'
+import MainBasketEraceTimer from '../../basket/MainBasketEraceTimer'
 
 interface FieldEncodingProps {
     imgUrl?: string,
