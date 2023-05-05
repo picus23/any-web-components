@@ -100,7 +100,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
                     catalog
                 }
             </div>
-            <div className="col d-flex align-items-stretch" id="search">
+            <div className="col d-flex align-items-stretch me-4" id="search">
                 <div className="input-group " >
                     <input type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <Button
@@ -110,8 +110,8 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
                     </Button>
                 </div>
             </div>
-            <div className="col-4 d-flex align-items-stretch">
-                <div className="d-flex gap-2 w-100">
+            <div className="col-3 d-flex">
+                <div className="d-flex gap-2 w-100 justify-content-end">
                     <Button
                         onClick={onLogin}
                         style={{ height: '52px' }}
