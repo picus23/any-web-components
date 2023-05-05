@@ -44,7 +44,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{fontSize:'16px',color:'#585757'}}>
                                 <li className="nav-item">
                                     <Link className="nav-link active" aria-current="page" href="/">Главная</Link >
                                 </li>
@@ -94,7 +94,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
 
 
         <div className="row mb-3 align-items-stretch position-relative" style={{ height: 50 }}>
-            <div className="col-3 d-flex align-items-stretch " id="catalog">
+            <div className="d-flex align-items-stretch " style={{ maxWidth: '256px' }} id="catalog">
 
                 {
                     catalog
@@ -105,12 +105,12 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
                     <input type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <Button
                         btn_style="btn-primary"
-                        style={{ width: '124px' }}>
+                        >
                         Найти
                     </Button>
                 </div>
             </div>
-            <div className="col-3 d-flex align-items-stretch">
+            <div className="col-4 d-flex align-items-stretch">
                 <div className="d-flex gap-2 w-100">
                     <Button
                         onClick={onLogin}
