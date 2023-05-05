@@ -9,7 +9,7 @@ interface BasketFormProps {
 }
 
 const BasketForm: FC<BasketFormProps> = ({ managerList }) => {
-    return <div className="d-flex flex-column p-2 w-25 position-sticky" style={{ top: '200px', zIndex: '10' }}>
+    return <div className="d-flex flex-column p-2 w-25 sticky-top">
         <h5>Оформление заказа</h5>
         <Radio.Group name="radiogroup" defaultValue={1}>
             <EncodingOrder

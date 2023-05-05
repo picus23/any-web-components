@@ -114,6 +114,8 @@ const props = [
     },
 ]
 
+const managers = ['1','2','3'];
+
 
 
 export default function () {
@@ -297,7 +299,7 @@ export default function () {
                     </div>
 
                     {/* Форма */}
-                    <BasketForm />
+                    <BasketForm managerList={managers}/>
                 </div>
 
             </EncodingWrapper>

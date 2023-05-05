@@ -11,6 +11,7 @@ import FieldEncoding from "@/components/searchElement/fields/FieldEncoding";
 import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
 import MainBasketEraceTimer from "@/components/basket/MainBasketEraceTimer";
 import CartItem from "@/components/cartItem/CartItem";
+import BasketHeader from "@/components/basket/BasketHeader";
 
 
 const links = [
@@ -62,59 +63,55 @@ export default function () {
         </div>
         <h1>Мой</h1>
         <div className="container-xxl p-0 justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
-            
-                <CartItem
-                    index={1}
-                    imgUrl="/kit/cart_item.png"
-                    price={214}
-                    count={3}
-                    isDelete
-                    breadCrumbs={links}
-                    pagetitle={"H1B-H-6M"}
-                    BasketButton={<>
-                        <ButtonGrayAddRemove
-                            btn_class="btn-outline-secondary"
-                            counter={1}
-                            onClickRemove={() => alert('Click')}
-                            onClickAdd={() => alert('Click')}
-                        />
-                        <Button
-                            onClick={() => alert('Click')}
-                            icon={<MdDelete size={20}
-                                fill={'gray'} />}
-                            btn_style="btn-outline-secondary"
-                        />
-                    </>
-                    }
-                />
-                <CartItem
-                    index={1}
-                    imgUrl="/kit/cart_item.png"
-                    price={214}
-                    count={3}                    
-                    breadCrumbs={links}
-                    pagetitle={"H1B-H-6M"}
-                    BasketButton={<>
-                        <ButtonGrayAddRemove
-                            btn_class="btn-outline-secondary"
-                            counter={1}
-                            onClickRemove={() => alert('Click')}
-                            onClickAdd={() => alert('Click')}
-                        />
-                        <Button
-                            onClick={() => alert('Click')}
-                            icon={<MdDelete size={20}
-                                fill={'gray'} />}
-                            btn_style="btn-outline-secondary"
-                        />
-                    </>
-                    }
-                />
-            </div>
 
-
-
-
+            <CartItem
+                index={1}
+                imgUrl="/kit/cart_item.png"
+                price={214}
+                count={3}
+                isDelete
+                breadCrumbs={links}
+                pagetitle={"H1B-H-6M"}
+                BasketButton={<>
+                    <ButtonGrayAddRemove
+                        btn_class="btn-outline-secondary"
+                        counter={1}
+                        onClickRemove={() => alert('Click')}
+                        onClickAdd={() => alert('Click')}
+                    />
+                    <Button
+                        onClick={() => alert('Click')}
+                        icon={<MdDelete size={20}
+                            fill={'gray'} />}
+                        btn_style="btn-outline-secondary"
+                    />
+                </>
+                }
+            />
+            <CartItem
+                index={1}
+                imgUrl="/kit/cart_item.png"
+                price={214}
+                count={3}
+                breadCrumbs={links}
+                pagetitle={"H1B-H-6M"}
+                BasketButton={<>
+                    <ButtonGrayAddRemove
+                        btn_class="btn-outline-secondary"
+                        counter={1}
+                        onClickRemove={() => alert('Click')}
+                        onClickAdd={() => alert('Click')}
+                    />
+                    <Button
+                        onClick={() => alert('Click')}
+                        icon={<MdDelete size={20}
+                            fill={'gray'} />}
+                        btn_style="btn-outline-secondary"
+                    />
+                </>
+                }
+            />
+        </div>
 
 
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000' }}>
@@ -125,22 +122,31 @@ export default function () {
         <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
 
             <Basket>
-                <div className="basket p-3">
-                    <div className="d-flex flex-column mx-3">
-                        <div className="d-flex justify-content-between w-100 align-items-center">
-                            <span className="font-size-20-black fw-500">Ваша корзина</span>
-                            <Button onClick={() => alert('Click')} icon={<MdClose size={20} fill={'#969696'} />} btn_style="btn-outline-secondary"><span className="font-size-16-black fw-500">Закрыть</span></Button>
-                        </div>
-                        <div className="d-flex flex-column w-100">
+                <div
+                    className="d-flex flex-column bg-white"
+                    style={{ width: '512px', boxShadow: '0px 11px 15px rgba(0, 0, 0, 0.1), 0px 9px 46px rgba(0, 0, 0, 0.06), 0px 24px 38px rgba(0, 0, 0, 0.04)' }}>
+                    <div className="d-flex flex-column">
+                        <BasketHeader
+                            onClick={() => alert('Click')}
+                        />
+                        <div className="d-flex flex-column p-3">
                             {
                                 [
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png'],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
                                 ].map(item => (
                                     <FieldEncoding
                                         imgUrl={item[2]}
                                         pagetitle={item[0]}
                                         price={item[1]}
-                                        isDelete
+                                        isDelete={item[3]}
                                         basketButtons={
                                             <div className="d-flex gap-1">
                                                 <ButtonGrayAddRemove
@@ -160,7 +166,9 @@ export default function () {
                             }
                         </div>
                     </div>
-                    <div className="d-flex flex-column gap-1 mx-3">
+                    <div className="d-flex flex-column gap-1 py-2 px-3"
+                    // style={{ position: 'sticky', bottom: 0, zIndex: 1020 }}
+                    >
                         <hr />
                         <div className="d-flex justify-content-between">
                             <span className="font-size-16-black">Товаров</span>
