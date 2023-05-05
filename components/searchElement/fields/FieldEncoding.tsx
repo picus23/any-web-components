@@ -19,7 +19,7 @@ interface FieldEncodingProps {
 
 const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amount, basketButtons, btnGrayArrow, handleArrowClick, onCancelErace, isDelete = false }) => {
 
-    return <div className="search-field my-2 position-relative">
+    return <div className="my-2 position-relative">
         {
             isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} />
         }

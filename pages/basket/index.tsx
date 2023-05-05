@@ -61,7 +61,7 @@ export default function () {
             <Image src={seconds} alt="" />
         </div>
         <h1>Мой</h1>
-        <div className="container-xxl p-0 d-flex justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
+        <div className="container-xxl p-0 justify-content-center" style={{ outline: '1px solid #000', background: '#eee' }}>
             
                 <CartItem
                     index={1}
@@ -69,6 +69,29 @@ export default function () {
                     price={214}
                     count={3}
                     isDelete
+                    breadCrumbs={links}
+                    pagetitle={"H1B-H-6M"}
+                    BasketButton={<>
+                        <ButtonGrayAddRemove
+                            btn_class="btn-outline-secondary"
+                            counter={1}
+                            onClickRemove={() => alert('Click')}
+                            onClickAdd={() => alert('Click')}
+                        />
+                        <Button
+                            onClick={() => alert('Click')}
+                            icon={<MdDelete size={20}
+                                fill={'gray'} />}
+                            btn_style="btn-outline-secondary"
+                        />
+                    </>
+                    }
+                />
+                <CartItem
+                    index={1}
+                    imgUrl="/kit/cart_item.png"
+                    price={214}
+                    count={3}                    
                     breadCrumbs={links}
                     pagetitle={"H1B-H-6M"}
                     BasketButton={<>
@@ -112,7 +135,6 @@ export default function () {
                             {
                                 [
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png'],
-                                    ['B1V-H-3M', 156, '/kit/0__anhua.png'],
                                 ].map(item => (
                                     <FieldEncoding
                                         imgUrl={item[2]}
