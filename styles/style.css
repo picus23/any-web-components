@@ -1,6 +1,7 @@
 @charset "UTF-8";
 *::-webkit-scrollbar {
   width: 12px;
+  height: 11px;
 }
 
 *::-webkit-scrollbar-track {
@@ -11,6 +12,7 @@
   background-color: rgba(28, 28, 28, 0.2666666667);
   border-radius: 20px;
   border: 3px solid #fff;
+  right: 0;
 }
 
 :root {
@@ -11621,7 +11623,7 @@ textarea.form-control-lg {
 
 .order {
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
+  border: 2px solid #E8E8E8;
 }
 
 .order.ant-radio-wrapper-checked {
