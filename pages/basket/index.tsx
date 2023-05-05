@@ -141,6 +141,10 @@ export default function () {
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
                                 ].map(item => (
                                     <FieldEncoding
                                         imgUrl={item[2]}
