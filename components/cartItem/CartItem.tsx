@@ -58,7 +58,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
 
             <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-4">
                         <BreadCrumbs list={breadCrumbs} route={breadCrumbsRoute} />
                         <span className="font-size-20 fw-500">{pagetitle}</span>
                     </div>
