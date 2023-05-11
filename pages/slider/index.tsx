@@ -4,19 +4,19 @@ import Image from "next/image";
 import Slider from "@/components/slider/Slider";
 
 
-const values =
-{
-    1.18: 1.18,
-    0.09: 0.09,
-    30: 30,
-    0.14: 0.14,
-    2: 2,
-    0.48: 0.48,
-    14: 14,
-    58: 58,
-};
+// const values =
+// {
+//     1.18: 1.18,
+//     0.09: 0.09,
+//     30: 30,
+//     0.14: 0.14,
+//     2: 2,
+//     0.48: 0.48,
+//     14: 14,
+//     58: 58,
+// };
 
-// const values = [1.18, 0.09, 30, 0.14, 2, 0.48, 14, 58];
+const values = [1.18, 0.09, 30, 0.14, 2, 0.48, 14, 58];
 
 
 export default function () {
