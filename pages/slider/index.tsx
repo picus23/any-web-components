@@ -16,6 +16,9 @@ const values =
     58: 58,
 };
 
+// const values = [1.18, 0.09, 30, 0.14, 2, 0.48, 14, 58];
+
+
 export default function () {
     return <>
         <h1>
@@ -33,7 +36,11 @@ export default function () {
 
         <h1>МОЙ</h1>
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
-            <Slider valuesCv={values} />
+            <Slider 
+            valuesCv={values} 
+            minValue={0}
+            maxValue={58}
+            />
         </div>
 
         <hr />
