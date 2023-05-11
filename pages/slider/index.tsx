@@ -6,14 +6,14 @@ import Slider from "@/components/slider/Slider";
 
 const values =
 {
-    1.18: '1.18 cv',
-    0.09: '0.09 cv',
-    30: '30 cv',
-    0.14: '0.14 cv',
-    // 2: '2 cv',
-    0.48: '0.48 cv',
-    14: '14 cv',
-    58: '58 cv',
+    1.18: 1.18,
+    0.09: 0.09,
+    30: 30,
+    0.14: 0.14,
+    2: 2,
+    0.48: 0.48,
+    14: 14,
+    58: 58,
 };
 
 export default function () {
