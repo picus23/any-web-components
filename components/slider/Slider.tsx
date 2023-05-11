@@ -12,14 +12,13 @@ interface SliderProps {
 }
 
 const Slider: FC<SliderProps> = ({ valuesCv }) => {
-    // const sortedValues = Object.keys(valuesCv).sort();
     console.log('Изначальный вид', valuesCv)
+    const keys = Object.keys(valuesCv).sort();
+    const values = Object.values(valuesCv).sort();
+    console.log('key',keys,'values',values)
 
     const maxValue = Object.keys(valuesCv).reduce((a, b) => valuesCv[a] > valuesCv[b] ? a : b);
     console.log('Max Value', maxValue)
-
-    const minValue = Object.keys(valuesCv).reduce((a, b) => valuesCv[a] < valuesCv[b] ? a : b);
-    console.log('min Value', minValue)
 
     const lenghtValueCv = Object.keys(valuesCv).length
     console.log('Длина объекта', lenghtValueCv)
@@ -27,51 +26,23 @@ const Slider: FC<SliderProps> = ({ valuesCv }) => {
     const distanceBetweenValueOnSlider = maxValue / lenghtValueCv
     console.log('Расстояние между значениями', distanceBetweenValueOnSlider)
 
-    // const tempValuesCv = {};
-    // Object.assign(tempValuesCv, valuesCv)
-    // console.log('Temp', tempValuesCv)
-    // console.log('ValueCv', valuesCv)
 
     const changeKeys = {};
     Object.values(valuesCv).sort().forEach((el, index) => {
-        changeKeys[el] = distanceBetweenValueOnSlider * index;
+        console.log('el',el)
+        const distance = distanceBetweenValueOnSlider * index ;
+        changeKeys[distance] = el;
     })
-
-    Object.fromEntries(valuesCv).~((key,val) => {
-        val,key;
-    })
-    console.log('Change', changeKeys)
-    // Object.keys(valuesCv).forEach((key, value) => {
-    //     console.log(key)
-    //     console.log(value)
-    //     changeKeys[value] = key
-    //     console.log(changeKeys)
-    // })
-
-    // for (let i = 0; i < lenghtValueCv; i++) {
-    //     changeKeys[keys[i]] = values[i];
-    //     console.log(keys)
-    //     console.log(values)
-    // }
-
-    // Object.keys(valuesCv).sort().forEach((el, index) => {
-    //     changeKeys[el] = distanceBetweenValueOnSlider * index;
-    //     valuesCv[el] = distanceBetweenValueOnSlider * index;
-    // })
-
-    // console.log('Ключи после переопределения valuesCv',valuesCv)
-    // console.log('Ключи после переопределения changeKeys',changeKeys)
-
-
+    const maxValueChange = Object.keys(changeKeys).reduce((a, b) => changeKeys[a] > changeKeys[b] ? a : b);
 
 
     return <>
         <SliderA
             range
-            marks={valuesCv}
-        // defaultValue={[minValue, maxValue]}
-        // max={maxValue}
-        // min={minValue}
+            marks={changeKeys}
+            tooltip={{formatter:null}}
+        defaultValue={[0, maxValueChange]}
+        max={maxValueChange}
         />
 
 

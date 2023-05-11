@@ -10,20 +10,11 @@ const values =
     0.09: '0.09 cv',
     30: '30 cv',
     0.14: '0.14 cv',
-    2: '2 cv',
+    // 2: '2 cv',
     0.48: '0.48 cv',
     14: '14 cv',
     58: '58 cv',
 };
-// const marks: SliderMarks = {
-//     0.09: '0.09 cv',
-//     0.14: '0.14 cv',
-//     0.48: '0.48 cv',
-//     1.18: '1.18 cv',
-//     2: '2 cv',
-//     14: '14 cv',
-//     30: '30 cv',
-// };
 
 export default function () {
     return <>
