@@ -604,7 +604,7 @@ input:checked + .slider:before {
 
 #basket-timer {
   height: 4px;
-  transition: all 0.3s;
+  transition: all 0.3s linear;
   background: #0085FF;
 }
 
@@ -894,6 +894,10 @@ input:checked + .slider:before {
 
 .letter-active {
   color: #0085FF !important;
+}
+
+#my-canvas {
+  border: 1px solid #000;
 }
 
 .footer-text {
