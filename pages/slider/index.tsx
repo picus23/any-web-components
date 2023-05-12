@@ -16,7 +16,7 @@ import Slider from "@/components/slider/Slider";
 //     58: 58,
 // };
 
-const values = [1.18, 0.09, 30, 0.14, 2, 0.48, 14, 58];
+const values = [1, 2, 5, 20];
 
 
 export default function () {
@@ -36,11 +36,8 @@ export default function () {
 
         <h1>МОЙ</h1>
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
-            <Slider 
-            valuesCv={values} 
-            minValue={0}
-            maxValue={58}
-            />
+            {/* <Slider valuesCv={values} minValue={1} maxValue={20}/> */}
+            <Slider valuesCv={[1, 5, 12, 20, 100]} format={(value) => `${value} cv`} />
         </div>
 
         <hr />

@@ -2,6 +2,8 @@ import { FC, ReactNode } from 'react'
 import { MdArrowForward } from 'react-icons/md'
 import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
 import MainBasketEraceTimer from '../../basket/MainBasketEraceTimer'
+import { type } from 'os'
+
 
 interface FieldEncodingProps {
     imgUrl?: string,
@@ -21,7 +23,8 @@ const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amoun
 
     return <div className="my-2 position-relative">
         {
-            isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} timerWidth={isDelete >= 0 && isDelete <=100 ? isDelete : false} />
+            // isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} timerWidth={isDelete} />
+            isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} timerWidth={isDelete} />
         }
 
         <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
