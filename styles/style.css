@@ -1,17 +1,16 @@
 @charset "UTF-8";
 *::-webkit-scrollbar {
   width: 12px;
-  height: 11px;
+  height: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #fff;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: rgba(28, 28, 28, 0.2666666667);
   border-radius: 20px;
-  border: 3px solid #fff;
   right: 0;
 }
 
@@ -605,7 +604,8 @@ input:checked + .slider:before {
 
 #basket-timer {
   height: 4px;
-  animation: background 5s linear;
+  transition: all 0.3s;
+  background: #0085FF;
 }
 
 @keyframes background {

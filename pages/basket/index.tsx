@@ -132,19 +132,19 @@ export default function () {
                         <div className="d-flex flex-column p-3">
                             {
                                 [
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 10],
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 20],
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 30],
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 40],
                                     ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', true],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 50],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 60],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 70],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 85],
+                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 110],
                                 ].map(item => (
                                     <FieldEncoding
                                         imgUrl={item[2]}

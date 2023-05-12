@@ -11,7 +11,10 @@
 
 #basket-timer {
     height: 4px;
-    animation: background 5s linear;
+    // animation: background 5s linear;
+    transition: all .3s linear;
+    background: #0085FF;
+    
 }
 
 @keyframes background {

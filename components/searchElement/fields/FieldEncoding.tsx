@@ -12,16 +12,16 @@ interface FieldEncodingProps {
     basketButtons?: ReactNode,
     btnGrayArrow?: ReactNode,
     handleArrowClick?: () => void,
-    isDelete?: boolean,
+    isDelete?: false | number,
     onCancelErace: () => void,
 }
 
 
-const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amount, basketButtons, btnGrayArrow, handleArrowClick, onCancelErace, isDelete = false }) => {
+const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amount, basketButtons, btnGrayArrow, handleArrowClick, onCancelErace, isDelete }) => {
 
     return <div className="my-2 position-relative">
         {
-            isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} />
+            isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} timerWidth={isDelete >= 0 && isDelete <=100 ? isDelete : false} />
         }
 
         <div className='d-flex justify-content-between align-items-center w-100 gap-2'>

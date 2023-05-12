@@ -33,20 +33,20 @@ interface CartItemProps {
     icon?: ReactNode,
     btn_style?: string,
     onClick?: () => void,
-    isDelete?: boolean,
+    isDelete?: false | number,
 
     onCancelErace: () => void,
 }
 
 
-const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index, onCancelErace, isDelete = false }) => {
+const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrumbs, breadCrumbsRoute, count, imgUrl, price, onClick, pagetitle, index, onCancelErace, isDelete }) => {
 
 
 
     return <>
-         <div className="d-flex position-relative">
+        <div className="d-flex position-relative">
             {
-                isDelete && <MainBasketEraceTimer onClick={onCancelErace} />
+                isDelete && <MainBasketEraceTimer onClick={onCancelErace} timerWidth={isDelete >= 0 && isDelete <=100 ? isDelete : false}  />
             }
 
             <div className="d-flex flex-column mx-1 justify-content-center me-2">
@@ -96,7 +96,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
                 </div>
 
             </div >
-            
+
         </div>
     </>
 
