@@ -46,7 +46,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
     return <>
         <div className="d-flex position-relative">
             {
-                isDelete && <MainBasketEraceTimer onClick={onCancelErace} timerWidth={isDelete >= 0 && isDelete <=100 ? isDelete : false}  />
+                isDelete && <MainBasketEraceTimer onClick={onCancelErace} timerWidth={isDelete}  />
             }
 
             <div className="d-flex flex-column mx-1 justify-content-center me-2">

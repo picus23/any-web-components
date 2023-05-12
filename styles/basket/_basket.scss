@@ -9,21 +9,8 @@
 }
 
 
-#basket-timer {
+.basket-timer {
     height: 4px;
-    // animation: background 5s linear;
     transition: all .3s linear;
     background: #0085FF;
-    
-}
-
-@keyframes background {
-    100% {
-        background: #0085FF;
-        width: 0%;
-    }
-    0% {
-        background: #0085FF;
-        width: 100%;
-    }
 }
