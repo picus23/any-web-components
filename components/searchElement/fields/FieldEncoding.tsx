@@ -20,8 +20,7 @@ const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amoun
 
     return <div className="my-2 position-relative">
         {
-            // isDelete && 
-            <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} timerWidth={20} />
+            isDelete && <MainBasketEraceTimer textSize='14px' onClick={onCancelErace} timerWidth={isDelete} />
         }
 
         <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
