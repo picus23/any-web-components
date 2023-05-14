@@ -1,6 +1,5 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { Slider as SliderA } from "antd";
-import { SliderMarks } from "antd/es/slider";
 import SliderValueRange from "./SliderValueRange";
 
 interface SliderProps {
@@ -19,8 +18,8 @@ const Slider: FC<SliderProps> = ({ valuesCv, minPropValue, maxPropValue, format,
     const minValueValue = Math.min(...sortedArray);
     const maxValueValue = Math.max(...sortedArray);
 
-    let [minDisplayValue, setMinDisplayValue] = useState(minValueValue);
-    let [maxDisplayValue, setMaxDisplayValue] = useState(maxValueValue);
+    let minDisplayValue = useState(minValueValue);
+    let maxDisplayValue = useState(maxValueValue);
 
     const distanceBetweenValueOnSlider = maxValueValue / lenghtValueCv;
 

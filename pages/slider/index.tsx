@@ -2,33 +2,43 @@ import reference from "./ref.png";
 import Link from "next/link";
 import Image from "next/image";
 import Slider from "@/components/slider/Slider";
-import Graph from "@/components/slider/Graph";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
-import { VictoryChart, VictoryLine } from "victory";
 
-const values = [0.0111, 5, 12, 20, 30, 100];
-const data = [
+const values = [1, 5, 12, 20,22, 30, 100];
+const sortedArray = values.sort((a, b) => a - b);
+const minValue = Math.min(...sortedArray);
+const maxValue = Math.max(...sortedArray);
+
+let data = [
     {
-        name: 1,
-        cv: values[0],
-    },
-    {
-        name: 4,
-        cv: values[1],
-    },
-    {
-        name: 7,
-        cv: values[2],
-    },
-    {
-        name: 10,
-        cv: 12,
-    },
-    {
-        name: 14,
-        cv: values[4],
-    },
+        value : 1,
+    }
 ];
+values.map(el=> {
+    data[value] = el;
+})
+console.log(data)
+// const data = [
+//     {
+//         unit: values[0],
+//     },
+//     {
+//         unit: values[1],
+//     },
+//     {
+//         unit: values[2],
+//     },
+//     {
+//         unit: values[3]
+//     },
+//     {
+//         unit: values[4],
+//     },
+//     {
+//         unit: values[5],
+//     },
+// ];
+
 
 export default function () {
     return <>
@@ -48,11 +58,23 @@ export default function () {
         <h1>МОЙ</h1>
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
 
-            <LineChart width={600} height={300} data={data}>
-                <Line type="monotone" dataKey="cv" stroke="#0085FF" />
+            <LineChart 
+            width={600} 
+            height={300} 
+            margin={{
+                top:20,
+                right:20,
+                left:20,
+            }} 
+            data={data}>
+
+                <Line type="monotone" dataKey="unit" stroke="#0085FF" />
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey=" " /> {/* Ошибка из за hide,если есть. Она делает чистой X */}
-                <YAxis tickCount={values.length} />
+                {/* <XAxis dataKey="unit" name=" " />*/}
+                <YAxis dataKey="unit" domain={[minValue,maxValue]} />
+                {/* <YAxis dataKey="unit" domain={sortedArray} /> */}
+
             </LineChart>
 
             {/* <Slider valuesCv={values} minValue={1} maxValue={20}/> */}
