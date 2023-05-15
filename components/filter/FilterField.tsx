@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC, ReactNode } from "react";
 import { MdChevronRight } from "react-icons/md";
 
@@ -36,7 +37,7 @@ const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, isActive = f
             {
                 icon
                     ? <span style={{ color: isActive ? '#fff' : '#aaa' }}>{icon}</span>
-                    : <img src={isActive ? "/kit/white_square.png" : "/kit/gray_square.png"} alt="" />
+                    : <Image width={100} height={100} src={isActive ? "/kit/white_square.png" : "/kit/gray_square.png"} alt="" />
 
             }
             <span className="fw-400 ms-2 d-flex text-left" style={{ fontSize: '16px' }}>{title}</span>

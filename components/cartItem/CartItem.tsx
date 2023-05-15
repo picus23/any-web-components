@@ -1,19 +1,15 @@
 import { FC, ReactNode } from "react";
 import Button from '../buttons/Button';
-import { MdRemove } from 'react-icons/md';
-import { MdAdd } from 'react-icons/md';
 import { Md3DRotation } from 'react-icons/md';
 import { MdPictureAsPdf } from 'react-icons/md';
 import { MdCheckCircle } from 'react-icons/md';
 import { MdAddComment } from 'react-icons/md';
-import { MdDelete } from 'react-icons/md';
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import ButtonCounter from "../buttons/ButtonCounter";
 import BreadCrumbs from "../breadСrumbs/BreadCrumbs";
-import { IBreadСrumbs } from '../breadСrumbs/interface'
-import ButtonGrayAddRemove from "../buttons/ButtonGrayAddRemove";
+import { IBreadСrumbs } from '../breadСrumbs/interface';
 import MainBasketEraceTimer from "../basket/MainBasketEraceTimer";
+import Image from "next/image";
 
 interface encoding {
     title: string,
@@ -54,7 +50,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
                 <span className="ms-2">{index}</span>
                 <button onClick={() => alert('Click')} className="border-0 bg-transparent"><MdKeyboardArrowDown fill="#969696" /></button>
             </div>
-            <img src={imgUrl} alt="PRODUCT LOGO" />
+            <Image src={imgUrl} alt="PRODUCT LOGO" width={100} height={100} />
 
             <div className="d-flex flex-column flex-grow-1 ms-3 gap-2 py-1">
                 <div className="row">
@@ -81,7 +77,7 @@ const CartItem: FC<CartItemProps> = ({ BasketButton, props, btn_style, breadCrum
                     <div className="d-flex col-9">
                         {props
                             ? props.map(el => {
-                                return <div className="col">
+                                return <div key={el.title} className="col">
                                     <span className="font-size-13">{el.title}</span> <br />
                                     <span className="font-size-16-black fw-500">{el.value}</span>
                                 </div>

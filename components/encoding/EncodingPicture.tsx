@@ -1,6 +1,7 @@
 import { ReactNode, FC } from 'react'
 import ButtonGrayChevron from '../buttons/ButtonGrayChevron';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import Image from 'next/image';
 
 interface EncodingPictureProps {
     list_picture: string[],
@@ -23,7 +24,7 @@ const EncodingPicture: FC<EncodingPictureProps> = ({ list_picture, onClickLeft, 
             <div className='d-flex justify-content-center gap-2 mt-2'>
                 {
                     list_picture.map(img => {
-                        return <img src={img} alt="" />
+                        return <Image width={100} height={100} key={img} src={img} alt="" />
                     })
                 }
             </div>

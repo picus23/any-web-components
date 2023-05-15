@@ -3,10 +3,11 @@ import { MdArrowForward } from 'react-icons/md'
 import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
 import MainBasketEraceTimer from '../../basket/MainBasketEraceTimer'
 import { type } from 'os'
+import Image from 'next/image'
 
 
 interface FieldEncodingProps {
-    imgUrl?: string,
+    imgUrl: string,
     pagetitle: string,
     price?: number,
     amount?: number,
@@ -29,7 +30,7 @@ const FieldEncoding: FC<FieldEncodingProps> = ({ imgUrl, pagetitle, price, amoun
 
         <div className='d-flex justify-content-between align-items-center w-100 gap-2'>
             <div className='d-flex gap-2'>
-                <img style={{ aspectRatio: '1/1', width: '64px', height: '64px' }} src={imgUrl} alt="logo" />
+                <Image width={64} height={64} style={{ aspectRatio: '1/1', width: '64px', height: '64px' }} src={imgUrl} alt="logo" />
                 <div className="d-flex flex-column justify-content-center">
                     <span className="font-size-20 fw-500">{pagetitle}</span>
                     <div className='d-flex gap-2'>

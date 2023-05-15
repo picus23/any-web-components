@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { IBreadСrumbs } from './interface'
+import { IBreadСrumbs, NextUrl } from './interface'
 import Link from "next/link";
 
 
 interface BreadCrumbsProps {
     list: IBreadСrumbs[],
-    route?: (url: string) => string
+    route?: (url: string) => NextUrl
 }
 
 const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, route }) => {

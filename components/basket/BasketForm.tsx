@@ -25,10 +25,10 @@ const BasketForm: FC<BasketFormProps> = ({ managerList }) => {
         </Radio.Group>
         <div className="">
             <Form layout="vertical">
-                <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Контактное лицо</span>}>
+                 <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Контактное лицо</span>}>
                     <Input placeholder="ФИО" />
                 </Form.Item>
-                <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Телефон</span>}>
+                {/*<Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>Телефон</span>}>
                     <Input placeholder="+7 (000) 000-00-00" />
                 </Form.Item>
                 <Form.Item label={<span style={{ fontSize: '16px', color: '#585757' }}>E-mail</span>}>
@@ -48,7 +48,7 @@ const BasketForm: FC<BasketFormProps> = ({ managerList }) => {
                             })
                         }
                     </Select>
-                </Form.Item>
+                </Form.Item> */}
                 <span style={{ color: '#969696', fontSize: '13px' }}>Менеджер на стороне Fluid-line. Если заказываете сами, оставьте поле пустым.</span>
                 <button type="submit" className="btn btn-primary w-100 my-3">Отправить</button>
             </Form>

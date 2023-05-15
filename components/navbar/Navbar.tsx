@@ -5,6 +5,7 @@ import { MdPerson } from 'react-icons/md';
 import { MdFavorite } from 'react-icons/md';
 import { MdShoppingCart } from 'react-icons/md';
 import { MdOutlineUnfoldMore } from 'react-icons/md';
+import Image from "next/image";
 
 
 interface NavbarProps {
@@ -19,7 +20,7 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
         <div className="navbar-my">
             <div className="row justify-content-between">
                 <div className="col-2">
-                    <img src="/kit/logo.png" alt="" />
+                    <Image width={50} height={50} src="/kit/logo.png" alt="" />
                 </div>
                 <ul className="navbar col-5">
                     <li className="nav-item-my active"><a className="nav-link" href="">Главная</a></li>
@@ -31,7 +32,7 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 <div className="d-flex align-items-center justify-content-end col-3 gap-3">
                     <div className="font-size-16-gray "><a className="nav-link text-dark" href="#Какзаказать">+7 (495) 984-41-06</a></div>
                     <Button btn_style="btn-outline-secondary">
-                        <img src="/kit/ru.svg" alt="" />
+                        <Image width={50} height={50} src="/kit/ru.svg" alt="" />
                         <span className="font-size-16-gray mx-1">RU</span>
                         <MdOutlineUnfoldMore />
                     </Button>

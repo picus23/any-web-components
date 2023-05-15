@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FC, ReactNode, RefObject } from "react";
 import { MdFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
@@ -19,7 +20,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
         <div className="row align-items-center mb-3">
             <div className="col-3">
                 <Link href="/">
-                    <img src="/kit/logo.png" alt="logo" />
+                    <Image width={200} height={70} src="/kit/logo.png" alt="logo" />
                 </Link>
             </div>
 
@@ -78,7 +79,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
 
 
                 <button className="btn btn-outline-secondary d-flex gap-2">
-                    <img src="/kit/ru.svg" />
+                    <Image width={20} height={20} src="/kit/ru.svg" alt="lang icon"/>
                     <span className="font-size-16-gray mx-1">RU</span>
                     <MdUnfoldMore size={23} fill="#969696" />
                 </button>

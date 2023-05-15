@@ -28,7 +28,7 @@ const EncodingBlockText: FC<EncodingBlockTextProps> = ({ prop_encodings, list })
                 <div className='row gy-3'>
                     {
                         prop_encodings.map(el => {
-                            return <div className='col-6' style={{ fontSize: '16px', fontWeight: '400' }}><span style={{ color: '#969696' }}>{el.key}</span><span>{el.title}</span></div>
+                            return <div key={el.key} className='col-6' style={{ fontSize: '16px', fontWeight: '400' }}><span style={{ color: '#969696' }}>{el.key}</span><span>{el.title}</span></div>
                         })
                     }
                 </div>

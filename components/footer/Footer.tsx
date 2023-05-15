@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ReactNode, FC } from 'react'
 import { MdFacebook } from 'react-icons/md'
 
@@ -12,18 +13,18 @@ const Footer: FC<FooterProps> = () => {
         <div className='d-flex align-items-start px-4'>
             <div className='col footer-text'>
                 <div>
-                    <img src="/kit/footer_logo.png" alt="" />
+                    <Image width={20} height={20} src="/kit/footer_logo.png" alt="" />
                 </div>
                 <div className='my-3 lh-1'>
                     <span className='font-size-16-gray'>Компания «Флюид-Лайн» является <br /> изготовителем и эксклюзивным <br /> дистрибьютором продукции A-flow, Hy-Lok, <br /> Drastar и HIFLUX в России и СНГ.</span>
                 </div>
                 <div className='d-flex gap-3'>
                     {/* Facebook */}
-                    <img src="/kit/Facebook.png" alt="" />
+                    <Image width={20} height={20} src="/kit/Facebook.png" alt="" />
                     {/* Twitter */}
-                    <img src="/kit/Twitter.png" alt="" />
+                    <Image width={20} height={20} src="/kit/Twitter.png" alt="" />
                     {/* YouTube */}
-                    <img src="/kit/Youtube.png" alt="" />
+                    <Image width={20} height={20} src="/kit/Youtube.png" alt="" />
                 </div>
             </div>
             <div className='row flex-grow-1 gap-4'>
