@@ -11,11 +11,10 @@ interface FieldEncodingProps {
     pagetitle: string,
     price?: number,
     amount?: number,
-    icon?: ReactNode,
     basketButtons?: ReactNode,
     btnGrayArrow?: ReactNode,
     handleArrowClick?: () => void,
-    isDelete?: false | number,
+    isDelete: number | boolean,
     onCancelErace: () => void,
 }
 

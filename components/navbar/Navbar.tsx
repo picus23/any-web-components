@@ -32,8 +32,8 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
                 <div className="d-flex align-items-center justify-content-end col-3 gap-3">
                     <div className="font-size-16-gray "><a className="nav-link text-dark" href="#Какзаказать">+7 (495) 984-41-06</a></div>
                     <Button btn_style="btn-outline-secondary">
-                        <Image width={50} height={50} src="/kit/ru.svg" alt="" />
-                        <span className="font-size-16-gray mx-1">RU</span>
+                        <Image width={20} height={20} src="/kit/ru.svg" alt="" />
+                        <span className="mx-1" style={{color:'#585757', fontSize:'16px'}}>RU</span>
                         <MdOutlineUnfoldMore />
                     </Button>
                 </div>

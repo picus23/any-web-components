@@ -1,6 +1,6 @@
 interface FieldCharacteristicProps {
-    title: string[],
-    subtitle: string[],
+    title: string,
+    subtitle: string,
 }
 function FieldCharacteristic(props: FieldCharacteristicProps) {
     return <>

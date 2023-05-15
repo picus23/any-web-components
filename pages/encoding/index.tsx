@@ -114,7 +114,7 @@ const props = [
     },
 ]
 
-const managers = ['1','2','3'];
+const managers = ['1', '2', '3'];
 
 
 
@@ -150,14 +150,15 @@ export default function () {
                         {/* CartItem */}
                         <div className="d-flex flex-column gap-4">
                             <CartItem
-                                isDelete
                                 index={1}
                                 imgUrl="/kit/cart_item.png"
                                 breadCrumbs={links}
                                 price={214}
-                                // props={props}
+                                props={props}
                                 count={3}
                                 pagetitle={"H1B-H-6M"}
+                                isDelete={false}
+                                onCancelErace={(() => alert('Click'))}
                                 BasketButton={<>
                                     <ButtonGrayAddRemove
                                         btn_class="btn-outline-secondary"
@@ -182,6 +183,8 @@ export default function () {
                                 props={props}
                                 count={3}
                                 pagetitle={"H1B-H-6M"}
+                                isDelete={false}
+                                onCancelErace={(() => alert('Click'))}
                                 BasketButton={<>
                                     <ButtonGrayAddRemove
                                         btn_class="btn-outline-secondary"
@@ -206,6 +209,8 @@ export default function () {
                                 props={props}
                                 count={3}
                                 pagetitle={"H1B-H-6M"}
+                                isDelete={false}
+                                onCancelErace={(() => alert('Click'))}
                                 BasketButton={<>
                                     <ButtonGrayAddRemove
                                         btn_class="btn-outline-secondary"
@@ -230,6 +235,8 @@ export default function () {
                                 props={props}
                                 count={3}
                                 pagetitle={"H1B-H-6M"}
+                                isDelete={false}
+                                onCancelErace={(() => alert('Click'))}
                                 BasketButton={<>
                                     <ButtonGrayAddRemove
                                         btn_class="btn-outline-secondary"
@@ -254,6 +261,8 @@ export default function () {
                                 props={props}
                                 count={3}
                                 pagetitle={"H1B-H-6M"}
+                                isDelete={false}
+                                onCancelErace={(() => alert('Click'))}
                                 BasketButton={<>
                                     <ButtonGrayAddRemove
                                         btn_class="btn-outline-secondary"
@@ -278,6 +287,8 @@ export default function () {
                                 props={props}
                                 count={3}
                                 pagetitle={"H1B-H-6M"}
+                                isDelete={false}
+                                onCancelErace={(() => alert('Click'))}
                                 BasketButton={<>
                                     <ButtonGrayAddRemove
                                         btn_class="btn-outline-secondary"
@@ -299,7 +310,7 @@ export default function () {
                     </div>
 
                     {/* Форма */}
-                    <BasketForm managerList={managers}/>
+                    <BasketForm managerList={managers} />
                 </div>
 
             </EncodingWrapper>
@@ -401,9 +412,12 @@ export default function () {
                     <EncodingPicture
                         onClickLeft={() => alert('Click')}
                         onClickRight={() => alert('Click')}
-                        list_picture={array_picture}>
-                    </EncodingPicture>
-                    <EncodingBlockText prop_encodings={prop_encodings} list={list}></EncodingBlockText>
+                        list_picture={array_picture}
+                    />
+                    <EncodingBlockText
+                        prop_encodings={prop_encodings}
+                        list={list}
+                    />
                     <EncodingBlockButtons
                         price={79.99}
                         amount={16}
@@ -423,16 +437,6 @@ export default function () {
                             </>
                         }
                     />
-                    {/* <div className="d-flex my-4 gap-4">
-                        <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#0085FF', borderBottom: '2px solid #0085FF' }}
-                        onClick={() => alert('Click')}>Таблица конфигураций</a>
-                        <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                        onClick={() => alert('Click')}>Конструкционные материалы</a>
-                        <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                        onClick={() => alert('Click')}>Вебинары</a>
-                        <a type={'button'} style={{ fontWeight: '500', fontSize: '16px', color: '#1C1C1C' }}
-                        onClick={() => alert('Click')}>Каталоги</a>
-                    </div> */}
                 </EncodingWrapper>
             </div>
         </div >

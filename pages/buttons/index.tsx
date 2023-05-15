@@ -20,12 +20,12 @@ export default function () {
         <div className="d-flex flex-column gap-2">
 
             <div style={{ width: 'max-content' }}>
-                <Button counter={0} btn_style='gray' counter_style="gray">Button</Button>
+                <Button counter={0} btn_style='btn-secondary'>Button</Button>
             </div>
 
-            <Button btn_style='catalog-blue'>Button</Button>
+            <Button btn_style='btn-primary'>Button</Button>
 
-            <Button btn_style='catalog-blue'>Button</Button>
+            <Button btn_style='btn-primary'>Button</Button>
 
 
             <div style={{ width: 'max-content' }}>
@@ -41,7 +41,10 @@ export default function () {
          `}></CollapseAntd>
 
             <div style={{ width: 'max-content' }}>
-                <ButtonGrayAddRemove></ButtonGrayAddRemove>
+                <ButtonGrayAddRemove 
+                counter={1}
+                onClickAdd={()=>alert('click')}
+                onClickRemove={()=>alert('click')}  />
             </div>
             <CollapseAntd title={'ButtonGrayAddRemove'} text={`<ButtonGrayAddRemove></ButtonGrayAddRemove>
          `}></CollapseAntd>

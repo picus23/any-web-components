@@ -23,34 +23,42 @@ export default function () {
         <hr />
         <div className="d-flex flex-column">
 
-            <TableCell style={'table-cell-row'} title={'Кодировка'} icon={<MdUnfoldMore />}></TableCell>
+            <TableCell title={'Кодировка'} icon={<MdUnfoldMore />} />
 
-            <TableCell style={'table-cell-row'} title={'Кодировка'} describe={'Кодировка'} icon={<MdUnfoldMore />}></TableCell>
+            <TableCell title={'Кодировка'} describe={'Кодировка'} icon={<MdUnfoldMore />} />
 
-            <TableCell style={'table-cell-two-buttons-vertical'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
-                twoButton={<Button btn_style="small-gray" icon={<MdChevronRight />}></Button>}></TableCell>
+            <TableCell>
+                <Button btn_style="btn-outline-secondary" icon={<MdChevronLeft />} />
+                <Button btn_style="btn-outline-secondary" icon={<MdChevronRight />} />
+            </TableCell>
 
-            <TableCell style={'table-cell-two-buttons-horizont'} oneButton={<Button btn_style="small-gray" icon={<MdChevronLeft />}></Button>}
-                twoButton={<Button btn_style="small-gray" icon={<MdChevronRight />}></Button>}></TableCell>
+            <TableCell>
+                <Button btn_style="btn-outline-secondary" icon={<MdChevronLeft />} />
+                <Button btn_style="btn-outline-secondary" icon={<MdChevronRight />} />
+            </TableCell>
 
-            <TableCell style={'row'} title={'Ячейка'}></TableCell>
+            <TableCell title={'Ячейка'}></TableCell>
 
-            <TableCell style={'table-cell-img-right'} title={'Кодировка'} icon={<MdInfo fill="#0085FF" />}></TableCell>
-            <TableCell style={'table-cell-img-right'} title={'Кодировка'} icon={<MdInfo fill="#0085FF" />}></TableCell>
+            <TableCell title={'Кодировка'} icon={<MdInfo fill="#0085FF" />}></TableCell>
+            <TableCell title={'Кодировка'} icon={<MdInfo fill="#0085FF" />}></TableCell>
 
-            <TableCell style={'table-cell-two-buttons-horizont'} oneButton={<Button btn_style="gray" counter={0} icon={<MdRemove />} icon2={<MdAdd />}></Button>}
-                twoButton={<Button btn_style="blue" icon={<MdOutlineShoppingCart />}></Button>}></TableCell>
+            <TableCell>
+                <Button btn_style="btn-outline-secondary" counter={0} icon={<MdRemove />} iconRightContent={<MdAdd />}></Button>
+                <Button btn_style="btn-primary" icon={<MdOutlineShoppingCart />}></Button>
+            </TableCell>
 
-            <TableCell style={'table-cell-two-buttons-horizont'} oneButton={<Button btn_style="gray" icon={<MdPictureAsPdf />}></Button>}
-                twoButton={<Button btn_style="gray" icon={<Md3DRotation />}></Button>}></TableCell>
+            <TableCell>
+                <Button btn_style="btn-outline-secondary" icon={<MdPictureAsPdf />}></Button>
+                <Button btn_style="btn-outline-secondary" icon={<Md3DRotation />}></Button>
+            </TableCell>
 
-            <TableCell style={'table-cell-img-center'} imgCenter></TableCell>
+            <TableCell />
 
 
 
 
 
-        </div>
+        </div >
     </>
 
 }

@@ -1,10 +1,7 @@
 import assert from "assert";
 import Image, { StaticImageData } from "next/image";
+// import { parse } from "path";
 import { FC, useEffect, useState } from "react";
-import parse from 'html-react-parser';
-
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 
 
@@ -50,9 +47,6 @@ const View: FC<ViewProps> = ({ image, component }) => {
             //         {code}
             //     </code>
             // </pre>
-        break;
-        case showEnum.component:
-            show = <>{parse(code)}</>
         break;
     }
 

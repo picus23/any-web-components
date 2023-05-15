@@ -3,8 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import reference from "./ref.png";
+import ButtonGrayAddRemove from "@/components/buttons/ButtonGrayAddRemove";
+import { MdDelete } from "react-icons/md";
+import Button from "@/components/buttons/Button";
 
-const list_links = [
+const links = [
     {
         'id': 1,
         'title': 'Продукция',
@@ -22,18 +25,18 @@ const list_links = [
     },
 ]
 
-const props_list = [
+const props = [
     {
-        'prop' : 'Давление',
-        'param' : 'до 207 бар при 21°C',
+        'title': 'Давление',
+        'value': 'до 207 бар при 21°C',
     },
     {
-        'prop' : 'Давление',
-        'param' : 'до 207 бар при 21°C',
+        'title': 'Давление',
+        'value': 'до 207 бар при 21°C',
     },
     {
-        'prop' : 'Давление',
-        'param' : 'до 207 бар при 21°C',
+        'title': 'Давление',
+        'value': 'до 207 бар при 21°C',
     },
 ]
 export default function () {
@@ -51,7 +54,32 @@ export default function () {
         <hr />
 
         <div className="container-xxl p-0" style={{ outline: '1px solid #000' }}>
-            <CartItem price={214} props_list={props_list} list={list_links} count={3} name_item={"H1B-H-6M"}></CartItem>
+            <CartItem
+                index={1}
+                imgUrl="/kit/cart_item.png"
+                breadCrumbs={links}
+                price={214}
+                props={props}
+                count={3}
+                pagetitle={"H1B-H-6M"}
+                isDelete={false}
+                onCancelErace={(() => alert('Click'))}
+                BasketButton={<>
+                    <ButtonGrayAddRemove
+                        btn_class="btn-outline-secondary"
+                        counter={1}
+                        onClickRemove={() => alert('Click')}
+                        onClickAdd={() => alert('Click')}
+                    />
+                    <Button
+                        onClick={() => alert('Click')}
+                        icon={<MdDelete size={20}
+                            fill={'gray'} />}
+                        btn_style="btn-outline-secondary"
+                    />
+                </>
+                }
+            />
         </div>
 
     </>

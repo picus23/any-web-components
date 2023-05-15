@@ -23,63 +23,80 @@ import FieldCharacteristic from "../../components/searchElement/fields/FieldChar
 import FieldText from "@/components/searchElement/fields/FieldText";
 
 
+var character = [
+    {
+        title: 'Краны шаровые HY-LOK 112 серии',
+        subtitle: '115 кодировок',
+        characteristics: [
+            {
+                title: 'Давление',
+                subtitle: 'до 207 бар при 21°C',
+            },
+            {
+                title: 'ДУ',
+                subtitle: 'от 1.3мм до 10.3мм',
+            },
+            {
+                title: 'Диапазон температур',
+                subtitle: 'от +10°C до +65°C',
+            },
+        ],
+    },
+    {
+        title: 'Краны шаровые HY-LOK 112 серии',
+        subtitle: '115 кодировок',
+        characteristics: [
+            {
+                title: 'Давление',
+                subtitle: 'до 207 бар при 21°C',
+            },
+            {
+                title: 'ДУ',
+                subtitle: 'от 1.3мм до 10.3мм',
+            },
+            {
+                title: 'Диапазон температур',
+                subtitle: 'от +10°C до +65°C',
+            },
+        ],
+    },
+    {
+        title: 'Краны шаровые HY-LOK 112 серии',
+        subtitle: '115 кодировок',
+        characteristics: [
+            {
+                title: 'Давление',
+                subtitle: 'до 207 бар при 21°C',
+            },
+            {
+                title: 'ДУ',
+                subtitle: 'от 1.3мм до 10.3мм',
+            },
+            {
+                title: 'Диапазон температур',
+                subtitle: 'от +10°C до +65°C',
+            },
+        ],
+    },
+];
+const items = [
+    {
+        title: 'H1B-H-6M',
+        price: 156,
+        amount: 5
+    },
+    {
+        title: 'H1B-H-6M',
+        price: 156,
+        amount: 5
+    },
+    {
+        title: 'H1B-H-6M',
+        price: 156,
+        amount: 5
+    },
+];
 export default function () {
-    var character = [
-        {
-            title: 'Краны шаровые HY-LOK 112 серии',
-            subtitle: '115 кодировок',
-            characteristics: [
-                {
-                    title: 'Давление',
-                    subtitle: 'до 207 бар при 21°C',
-                },
-                {
-                    title: 'ДУ',
-                    subtitle: 'от 1.3мм до 10.3мм',
-                },
-                {
-                    title: 'Диапазон температур',
-                    subtitle: 'от +10°C до +65°C',
-                },
-            ],
-        },
-        {
-            title: 'Краны шаровые HY-LOK 112 серии',
-            subtitle: '115 кодировок',
-            characteristics: [
-                {
-                    title: 'Давление',
-                    subtitle: 'до 207 бар при 21°C',
-                },
-                {
-                    title: 'ДУ',
-                    subtitle: 'от 1.3мм до 10.3мм',
-                },
-                {
-                    title: 'Диапазон температур',
-                    subtitle: 'от +10°C до +65°C',
-                },
-            ],
-        },
-        {
-            title: 'Краны шаровые HY-LOK 112 серии',
-            subtitle: '115 кодировок',
-            characteristics: [
-                {
-                    title: 'Давление',
-                    subtitle: 'до 207 бар при 21°C',
-                },
-                {
-                    title: 'ДУ',
-                    subtitle: 'от 1.3мм до 10.3мм',
-                },
-                {
-                    title: 'Диапазон температур',
-                    subtitle: 'от +10°C до +65°C',
-                },
-            ],
-        },
-    ];
 
     return <>
         <h1>
@@ -97,7 +114,7 @@ export default function () {
 
             <h1>Мой</h1>
             <div className="d-flex flex-column my-3">
-                <SearchInput />
+                {/* <SearchInput /> */}
                 <SearchBar>
                     <SearchTitle>Часто ищут</SearchTitle>
                     {
@@ -118,8 +135,6 @@ export default function () {
                     }
                 </SearchBar>
 
-                {/* <hr />
-            <SearchBarEncodings></SearchBarEncodings> */}
             </div>
         </div>
 
@@ -160,30 +175,37 @@ export default function () {
 
             <h1>Мой</h1>
             <div className="d-flex flex-column my-3">
-                <SearchInput></SearchInput>
+                {/* <SearchInput /> */}
                 <SearchBarEncoding>
                     <div className="search-hint-history">
                         <SearchTitle>Кодировки</SearchTitle>
                         <div className="row w-100">
                             {
-                                [
-                                    ['H1B-H-6M', 156, 5],
-                                    ['H1B-H-6M', 156, 5],
-                                    ['H1B-H-6M', 156, 5],
-                                ].map(item => (
+                                items.map(item => (
 
-                                    <FieldEncoding icon={<img src={'/kit/empty_square.png'} alt='' />}
-                                        title={item[0]}
-                                        price={item[1]}
-                                        amount={item[2]}
-                                        button={<ButtonCounter text_style={'font-size-16-gray '} counter={1} btn_style="counter-h52"></ButtonCounter>}
-                                        button2={<Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style={"blue"}><span className="fw-500">Купить</span></Button>}>
-                                    </FieldEncoding>
+                                    <FieldEncoding
+                                        imgUrl={'/kit/empty_square.png'}
+                                        pagetitle={item.title}
+                                        price={item.price}
+                                        amount={item.amount}
+                                        onCancelErace={()=>alert('click')}
+                                        isDelete={false}
+                                        basketButtons={
+                                            <>
+                                                <Button
+                                                    btn_style="btn-outline-secondary"
+                                                    counterPosition="right"
+                                                    counter={1}
+                                                />
+                                                <Button icon={<MdShoppingCart size={24} fill={'white'} />} btn_style="btn-primary"><span className="fw-500">Купить</span></Button>
+                                            </>
+                                        }
+                                    />
                                 )
                                 )
                             }
                         </div>
-                            <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
+                        <ButtonShow btn_style='show' text={'Показать все кодировки'} text_style={'font-size-16-black fw-500'} counter={12}></ButtonShow>
 
                         <hr className="w-100" />
 

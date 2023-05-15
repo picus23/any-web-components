@@ -7,7 +7,7 @@ import { type } from "os";
 interface MainBasketEraceTimerProps {
     onClick: () => void,
     textSize?: string,
-    timerWidth?: false | number,
+    timerWidth: boolean | number,
 }
 
 const MainBasketEraceTimer: FC<MainBasketEraceTimerProps> = ({ onClick, textSize, timerWidth }) => {

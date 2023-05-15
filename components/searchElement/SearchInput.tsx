@@ -36,7 +36,7 @@ const SearchInput: FC<SearchInputProps> = ({searchPhrase, handleSearch, handleUs
                 placeholder="Поиск" 
                 aria-label="Search"
             />
-            <Button btn_style="find-blue">Найти</Button>
+            <Button btn_style="btn-primary">Найти</Button>
         </form>
     );
 }

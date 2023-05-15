@@ -11,12 +11,30 @@ const maxValue = Math.max(...sortedArray);
 
 let data = [
     {
-        value : 1,
-    }
+        value : values[0],
+    },
+    {
+        value : values[1],
+    },
+    {
+        value : values[2],
+    },
+    {
+        value : values[3],
+    },
+    {
+        value : values[4],
+    },
+    {
+        value : values[5],
+    },
+    {
+        value : values[6],
+    },
 ];
-values.map(el=> {
-    data[value] = el;
-})
+// values.map(el=> {
+//     data[value] = el;
+// })
 console.log(data)
 // const data = [
 //     {
@@ -59,7 +77,7 @@ export default function () {
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
 
             <LineChart 
-            width={600} 
+            width={1100} 
             height={300} 
             margin={{
                 top:20,
@@ -68,17 +86,17 @@ export default function () {
             }} 
             data={data}>
 
-                <Line type="monotone" dataKey="unit" stroke="#0085FF" />
+                <Line type="monotone" dataKey="value" stroke="#0085FF" />
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey=" " /> {/* Ошибка из за hide,если есть. Она делает чистой X */}
                 {/* <XAxis dataKey="unit" name=" " />*/}
-                <YAxis dataKey="unit" domain={[minValue,maxValue]} />
+                <YAxis dataKey="value" domain={[minValue,maxValue]} tickCount={sortedArray.length} />
                 {/* <YAxis dataKey="unit" domain={sortedArray} /> */}
 
             </LineChart>
 
             {/* <Slider valuesCv={values} minValue={1} maxValue={20}/> */}
-            <Slider valuesCv={values} format={(value) => `${value} cv`} />
+            {/* <Slider valuesCv={values} format={(value) => `${value} cv`} /> */}
 
             {/* <VictoryChart
                 theme={VictoryTheme.material}

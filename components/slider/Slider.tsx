@@ -10,7 +10,14 @@ interface SliderProps {
     format?: (value: number) => string | ReactNode,
 }
 
-const Slider: FC<SliderProps> = ({ valuesCv, minPropValue, maxPropValue, format, onChange}) => {
+interface iChangeKeys {
+    [key : number] : number,
+}
+interface iChangeKeysEmpty {
+    [key : string] : string,
+}
+
+const Slider: FC<SliderProps> = ({ valuesCv, minPropValue, maxPropValue, format, onChange }) => {
     const sortedArray = valuesCv.sort((a, b) => a - b);
 
     const lenghtValueCv = sortedArray.length
@@ -18,14 +25,16 @@ const Slider: FC<SliderProps> = ({ valuesCv, minPropValue, maxPropValue, format,
     const minValueValue = Math.min(...sortedArray);
     const maxValueValue = Math.max(...sortedArray);
 
-    let minDisplayValue = useState(minValueValue);
+    let minDisplayValue = useState<number>(minValueValue);
     let maxDisplayValue = useState(maxValueValue);
 
     const distanceBetweenValueOnSlider = maxValueValue / lenghtValueCv;
 
-    const changeKeys = {};
-    const changeKeysEmpty = {};
-    let maxRange = 0
+    let changeKeys : iChangeKeys = {};
+    const changeKeysEmpty : iChangeKeysEmpty = {};
+
+    let maxRange: number = 0
+
     sortedArray.map((itm, index) => {
         maxRange = Math.round(distanceBetweenValueOnSlider * index)
         changeKeys[maxRange] = itm;
@@ -38,7 +47,7 @@ const Slider: FC<SliderProps> = ({ valuesCv, minPropValue, maxPropValue, format,
 
     const change = (target: [number, number]) => {
         onChange([
-            formatter(target[0]), 
+            formatter(target[0]),
             formatter(target[1])
         ]);
     }
@@ -51,7 +60,7 @@ const Slider: FC<SliderProps> = ({ valuesCv, minPropValue, maxPropValue, format,
             // min={minValueValue}
             max={maxRange}
             onChange={change}
-            tooltip={{ formatter: (value: number) => format ? format(formatter(value)) : formatter(value) }}
+            tooltip={{ formatter: (value?: number) => format ? format(formatter(value!)) : formatter(value!) }}
             step={null}
         />
 

@@ -43,7 +43,7 @@ export default function () {
         </div>
         <h1>Мой</h1>
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
-            <FilterSearchInput title="Все фильтры" />
+            {/* <FilterSearchInput title="Все фильтры" /> */}
         </div>
 
         <h1>Образец</h1>
@@ -73,7 +73,7 @@ export default function () {
                         ))
                     }
                 </FilterMarkerWrapper>
-                <FilterButtonShow title="Показать ещё"></FilterButtonShow>
+                <FilterButtonShow>Показать ещё</FilterButtonShow>
                 <FilterHead title="BSPP Наружная" />
                 <FilterMarkerWrapper>
                     {
@@ -141,7 +141,7 @@ export default function () {
          <FilterChips title="Hy-Lok 3мм" onClick={() => alert(111)} />
         `}></CollapseAntd>
 
-                    <FilterMarker title="1/4’’" onClick={() => alert('Click')} />
+                    <FilterMarker title="1/4’’" />
                     <FilterMarker title="Option" />
                     <FilterMarker title="Option" isGray />
                     <FilterMarker title="Option" isActive />
@@ -178,7 +178,7 @@ export default function () {
                     <FilterFieldWrapper>
                         <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
                         <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
-                        <FilterField isSelected isOpen title="Категория" onClick={() => alert('Click')} />
+                        <FilterField isSelected title="Категория" onClick={() => alert('Click')} />
                     </FilterFieldWrapper>
 
                 </Filter>

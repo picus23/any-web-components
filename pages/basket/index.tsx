@@ -46,6 +46,33 @@ const links = [
         'url': 'Шаровые краны',
     },
 ]
+
+interface iItems {
+    pagetitle : string,
+    price : number,
+    imgUrl:string,
+    isDelete : number | boolean
+}
+const items = [
+    {
+        pagetitle: 'B1V-H-3M',
+        price: 156,
+        imgUrl: '/kit/0__andpa.png',
+        isDelete: 10,
+    },
+    {
+        pagetitle: 'B1V-H-3M',
+        price: 156,
+        imgUrl: '/kit/0__andpa.png',
+        isDelete: false,
+    },
+    {
+        pagetitle: 'B1V-H-3M',
+        price: 156,
+        imgUrl: '/kit/0__andpa.png',
+        isDelete: 20,
+    },
+];
 export default function () {
     return <>
         <h1>
@@ -69,9 +96,10 @@ export default function () {
                 imgUrl="/kit/cart_item.png"
                 price={214}
                 count={3}
-                isDelete
+                isDelete={20}
                 breadCrumbs={links}
                 pagetitle={"H1B-H-6M"}
+                onCancelErace={() => alert('click')}
                 BasketButton={<>
                     <ButtonGrayAddRemove
                         btn_class="btn-outline-secondary"
@@ -95,6 +123,7 @@ export default function () {
                 count={3}
                 breadCrumbs={links}
                 pagetitle={"H1B-H-6M"}
+                onCancelErace={() => alert('click')}
                 BasketButton={<>
                     <ButtonGrayAddRemove
                         btn_class="btn-outline-secondary"
@@ -131,26 +160,13 @@ export default function () {
                         />
                         <div className="d-flex flex-column p-3">
                             {
-                                [
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 10],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 20],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 30],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 40],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', false],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 50],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 60],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 70],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 85],
-                                    ['B1V-H-3M', 156, '/kit/0__andpa.png', 110],
-                                ].map(item => (
+                                items.map(item => (
                                     <FieldEncoding
-                                        imgUrl={item[2]}
-                                        pagetitle={item[0]}
-                                        price={item[1]}
-                                        isDelete={item[3]}
+                                        pagetitle={item.pagetitle}
+                                        price={item.price}
+                                        imgUrl={item.imgUrl}
+                                        isDelete={item.isDelete}
+                                        onCancelErace={() => alert('click')}
                                         basketButtons={
                                             <div className="d-flex gap-1">
                                                 <ButtonGrayAddRemove
