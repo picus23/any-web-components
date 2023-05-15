@@ -7,7 +7,7 @@ import { MdAddComment } from 'react-icons/md';
 import { MdOutlineKeyboardArrowUp } from 'react-icons/md';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import BreadCrumbs from "../breadСrumbs/BreadCrumbs";
-import { IBreadСrumbs } from '../breadСrumbs/interface';
+import { IBreadСrumbs, NextUrl } from '../breadСrumbs/interface';
 import MainBasketEraceTimer from "../basket/MainBasketEraceTimer";
 import Image from "next/image";
 
@@ -20,7 +20,7 @@ interface CartItemProps {
     pagetitle: string,
     props?: encoding[],
     breadCrumbs: IBreadСrumbs[],
-    breadCrumbsRoute?: (url: string) => string,
+    breadCrumbsRoute?: (url: string) => NextUrl,
     imgUrl: string,
     BasketButton: ReactNode,
     price?: number,

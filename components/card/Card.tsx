@@ -17,7 +17,7 @@ const Card: FC<CardProps> = ({ icon, title, class_name, input_name, value }) => 
         const cardItems = document.querySelectorAll('.card-item .ant-radio');
         if (element.target.checked == true) {
             const currentCardItem = cardItems[element.target.value - 1]
-            currentCardItem.parentElement.parentElement.classList.add('card-item-active')
+            currentCardItem?.parentElement?.parentElement?.classList.add('card-item-active')
         }
     }
 
@@ -29,7 +29,3 @@ const Card: FC<CardProps> = ({ icon, title, class_name, input_name, value }) => 
 }
 
 export default Card;
-
-// return <div className={'d-flex flex-column align-items-start p-3 gap-1 ' + `${isActive ? 'card-active' : 'card-unactive'}`}>
-
-// {`${type_btn ? 'my-btn-' + type_btn : 'btn-primary'}`} 
