@@ -3,7 +3,9 @@ import { ReactNode, FC } from 'react'
 interface EncodingBlockButtonsProps {
     price: number,
     amount: number,
-    buttons: ReactNode,
+    buttons?: ReactNode,
+    buttonCount: ReactNode,
+    buttonBuy: ReactNode,
 }
 
 const EncodingBlockButtons: FC<EncodingBlockButtonsProps> = ({ price, amount, buttons }) => {
