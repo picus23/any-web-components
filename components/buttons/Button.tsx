@@ -9,13 +9,14 @@ interface ButtonProps {
     class_name?: string,
     style?: CSSProperties,
     isCounterUp?: boolean,
-    counterPosition?: 'left' | 'right'
+    counterPosition?: 'left'   | 'right'
     contentPosition?: 'center' | 'start'
-    btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
+    btn_style?: 'btn-primary'  | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
     onClick?: () => void,
     htmlType?: 'submit' | 'reset',
     fontSize?: string,
 }
+
 
 const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize }) => {
     return <button
