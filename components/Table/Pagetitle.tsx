@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { FC } from "react";
 import { MdInfo } from "react-icons/md";
+import { NextUrl } from "../breadСrumbs/interface";
 
 interface PagetitleProps {
     pagetitle: string,
     onClick?: () => void,
-    url: string,
+    url: NextUrl,
 }
 
 const Pagetitle: FC<PagetitleProps> = ({ pagetitle, onClick, url}) => {

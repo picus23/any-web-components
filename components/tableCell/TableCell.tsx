@@ -1,7 +1,4 @@
 import { CSSProperties, FC, ReactNode } from "react";
-import Button from "../buttons/Button";
-import { MdInfo } from "react-icons/md";
-import style from "react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark";
 
 
 interface TableCellProps {
@@ -33,8 +30,4 @@ const TableCell: FC<TableCellProps> = ({ children, icon, title, describe, isText
     </div>
 }
 
-export default TableCell;
-
-// return <div className={'d-flex flex-column align-items-start p-3 gap-1 ' + `${isActive ? 'card-active' : 'card-unactive'}`}>
-
-// ${type_btn ? 'btn-' + type_btn : 'btn-primary'} 
+export default TableCell

@@ -405,7 +405,10 @@ export default function () {
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
             <Image src={header} alt="" />
         </div>
+        
         <h1>Мой</h1>
+
+
         <div className="container-xxl d-flex p-0" style={{ outline: '1px solid #000;background:#eee' }}>
             <div className="d-flex w-100 px-3">
                 <EncodingWrapper>
@@ -418,8 +421,9 @@ export default function () {
                         prop_encodings={prop_encodings}
                         list={list}
                     />
-                    <EncodingBlockButtons
+                    {/* <EncodingBlockButtons
                         price={79.99}
+                        
                         amount={16}
                         buttons={
                             <>
@@ -436,7 +440,7 @@ export default function () {
                                 </Button>
                             </>
                         }
-                    />
+                    /> */}
                 </EncodingWrapper>
             </div>
         </div >

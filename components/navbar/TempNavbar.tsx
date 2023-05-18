@@ -8,9 +8,9 @@ import Button from "../buttons/Button";
 interface TempNavbarProps {
     catalog: ReactNode,
     hook: RefObject<HTMLDivElement>,
-    onBasket: () => void,
-    onLogin: () => void,
-    onFavorite: () => void,
+    onBasket?: () => void,
+    onLogin?: () => void,
+    onFavorite?: () => void,
     basketCounter: number,
 }
 

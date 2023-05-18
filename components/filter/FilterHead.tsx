@@ -9,7 +9,7 @@ interface FilterHeadProps {
 
 const FilterHead: FC<FilterHeadProps> = ({ title, img }) => {
     return <div className="d-flex align-items-center mb-2 mt-3">
-        <Image src={img ? img : "/kit/filter_head_img.png"} alt="" width={100} height={100} />
+        <Image src={img ? img : "/kit/filter_head_img.png"} alt="" width={40} height={40} />
         <strong className="font-size-16-black fw-500 ms-2">{title}</strong>
     </div>
 }
