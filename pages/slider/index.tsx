@@ -6,7 +6,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import ExpoSlider from "@/components/slider/ExpoSlider";
 import { Tooltip } from "antd";
 
-const values = [2,4,6,10,20,40,100,200,400,1000,5000,10000];
+const values = [2, 4, 6, 10, 20, 40, 100, 200, 400, 1000, 5000, 10000];
 const sortedArray = values.sort((a, b) => a - b);
 const minValue = Math.min(...sortedArray);
 const maxValue = Math.max(...sortedArray);
@@ -69,7 +69,7 @@ export default function () {
         <hr />
 
         <h1>МОЙ</h1>
-        <div className="container-xxl p-0" style={{ outline: '1px solid #000',width:'1000px'}}>
+        <div className="container-xxl p-0" style={{ outline: '1px solid #000', width: '1000px' }}>
 
             <LineChart
                 width={1000}
@@ -84,8 +84,8 @@ export default function () {
 
                 <Line type="monotone" dataKey="value" stroke="#0085FF" />
                 <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="value" /> 
-                <YAxis domain={[0,10000]} tickCount={10}/>
+                <XAxis dataKey="value" />
+                <YAxis domain={[0, 10000]} tickCount={10} />
 
             </LineChart>
 
