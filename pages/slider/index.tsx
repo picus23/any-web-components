@@ -5,6 +5,7 @@ import Slider from "@/components/slider/Slider";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import ExpoSlider from "@/components/slider/ExpoSlider";
 import { Tooltip } from "antd";
+import Canvas from "@/components/slider/Canvas";
 
 const values = [2, 4, 6, 10, 20, 40, 100, 200, 400, 1000, 5000, 10000];
 const sortedArray = values.sort((a, b) => a - b);
@@ -66,10 +67,14 @@ export default function () {
             <Image src={reference} alt="" />
         </div>
 
-        <hr />
 
         <h1>МОЙ</h1>
         <div className="container-xxl p-0" style={{ outline: '1px solid #000', width: '1000px' }}>
+
+            <Canvas
+                width={1000}
+                height={300}
+                valuesCv={sortedArray} />
 
             <LineChart
                 width={1000}

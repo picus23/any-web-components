@@ -71,5 +71,66 @@
 }
 
 .card-item-active {
-        background: #FFFFFF;
+    background: #FFFFFF;
 }
+
+#chart-wrapper {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+
+}
+
+#chart {
+    border: solid;
+    border-width: 0 0 2px 2px;
+    border-color: #a3a3a3;
+    /*  background: -webkit-linear-gradient(top,#1dd2af,#fff);*/
+}
+
+#xAxisValues {
+position: relative;
+    span {
+        // width: 60px;
+        display: inline-block;
+        color: #000;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 2px;
+    }
+}
+
+// #xAxisValues>span:before {
+//     content: '';
+//     width: 5px;
+//     height: 5px;
+//     position: absolute;
+//     background-color: #a3a3a3;
+//     border-radius: 50%;
+//     bottom: 20px;
+// }
+
+// #yAxisValues {
+//     position: absolute;
+//     top: 0;
+//     left: -30px;
+//     margin-top: -2px;
+// }
+
+// #yAxisValues>span {
+//     display: block;
+//     color: #a3a3a3;
+//     font-size: 16px;
+//     height: 30px;
+// }
+
+// #yAxisValues>span:after {
+//     content: '';
+//     width: 4px;
+//     height: 4px;
+//     position: absolute;
+//     background-color: #a3a3a3;
+//     border-radius: 50%;
+//     margin-left: 5px;
+// }

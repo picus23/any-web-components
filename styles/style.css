@@ -11642,4 +11642,22 @@ textarea.form-control-lg {
 
 .card-item-active {
   background: #FFFFFF;
+}
+
+#chart {
+  border: solid;
+  border-width: 0 0 2px 2px;
+  border-color: #a3a3a3;
+  /*  background: -webkit-linear-gradient(top,#1dd2af,#fff);*/
+}
+
+#xAxisValues {
+  position: relative;
+}
+#xAxisValues span {
+  display: inline-block;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 2px;
 }/*# sourceMappingURL=style.css.map */

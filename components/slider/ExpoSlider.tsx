@@ -34,11 +34,13 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
 
     console.log(valuesCv)
+
     let rankValueCv = new Array(countRank);
     let prev = 0;
     let curr = 10;
     var lenghtPrevArr = 0;
     var tempLenght = 0;
+    
     for (let i = 0; i < countRank; i++) {
         let position = 0;
         rankValueCv[i] = [];
