@@ -11659,5 +11659,133 @@ textarea.form-control-lg {
   color: #000;
   font-size: 16px;
   font-weight: 600;
-  margin: 0 2px;
+}
+
+.range-labels {
+  display: flex;
+  margin: 12px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+.range-labels li {
+  display: flex;
+  position: relative;
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+}
+.range-labels li::before {
+  position: absolute;
+  top: -19px;
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 2px solid #84c4ff;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.sliderr {
+  height: 5px;
+  width: 1000px;
+  background: #ddd;
+  position: relative;
+  top: -11px;
+  cursor: pointer;
+}
+.sliderr:hover {
+  background: #c6c6c6;
+}
+.sliderr:hover .progres {
+  background: #0085FF;
+}
+.sliderr:hover .cs::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  box-shadow: 0px 0px 10px #329dff;
+  border: 4px solid #0077e5;
+  margin-top: -7px;
+}
+.sliderr .progres {
+  height: 5px;
+  position: absolute;
+  background: #84c4ff;
+  border-radius: 5px;
+}
+
+.range-input {
+  position: relative;
+}
+.range-input .cs {
+  position: absolute;
+  top: -11px;
+  height: 5px;
+  width: 1000px;
+  background: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.cs::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+          appearance: none;
+  pointer-events: auto;
+  border: 2px solid #84c4ff;
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  margin-top: -10px;
+  position: relative;
+  z-index: 4;
+}
+.cs::-webkit-slider-thumb:hover {
+  height: 20px;
+  width: 20px;
+  box-shadow: 0px 0px 10px #329dff;
+  border: 4px solid #0077e5;
+  margin-top: -7px;
+}
+
+.cs::-moz-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  -moz-appearance: none;
+       appearance: none;
+  pointer-events: auto;
+  border: 2px solid #84c4ff;
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  margin-top: -5px;
+}
+.cs::-moz-slider-thumb:hover {
+  height: 20px;
+  width: 20px;
+  box-shadow: 0px 0px 10px #329dff;
+  border: 4px solid #0077e5;
+  margin-top: -7px;
+}
+
+.breakpoint {
+  position: absolute;
+  top: -13px;
+  height: 9px;
+  width: 9px;
+  background: #fff;
+  border: 2px solid #c6c6c6;
+  border-radius: 50%;
+  pointer-events: auto;
+  z-index: 2;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.breakpoint-active {
+  border: 2px solid #84c4ff;
 }/*# sourceMappingURL=style.css.map */

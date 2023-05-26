@@ -28,12 +28,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     // Делю массив на разряды десяток
     let countRank = 0;
     if (maxValue.toString().length > 2) {
-        countRank = maxValue.toString().length - 1
+        countRank = maxValue.toString().length
     } else {
         countRank = maxValue.toString().length
     }
 
-    console.log(valuesCv)
+    // clg(valuesCv)
 
     let rankValueCv = new Array(countRank);
     let prev = 0;
@@ -64,7 +64,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         }
     }
-    console.log('Дроблённый массив на разряды', rankValueCv)
+    // clg('Дроблённый массив на разряды', rankValueCv)
     // Делю массив на разряды десяток
 
     let changeKeys: iChangeKeys = {};
@@ -96,7 +96,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             }
         })
     })
-    console.log('Change Keys', changeKeys)
+    // clg('Change Keys', changeKeys)
 
     const formatter = (value: number) => {
         return changeKeys[value];

@@ -38,10 +38,12 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, }) =>
         for (let i = 0; i < xAxisValues.length; i++) {
             if (i == 0) {
                 w[i] = 0
-            } else {
-                w[i] = Math.round(i * (cw / xAxisValues.length))
+                i++;
             }
+            w[i] = Math.round(i * (cw / xAxisValues.length))
+
         }
+        // clg("W Расстрояние", w, 'Массив со значениями', xAxisValues)
 
 
         // Значения X
@@ -64,14 +66,13 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, }) =>
 
         var chrt = document.getElementById("chart");
 
-        
+
         let percent = [];
         for (let i = 0; i < xAxisValues.length; i++) {
             percent[i] = xAxisValues[i] / maxValue * 100;
         }
-        
+
         //line     
-        chart.lineJoin = 'round';
         chart.moveTo(0, chrt);
         chart.beginPath();
         for (var i = 0; i < w.length; i++) {
