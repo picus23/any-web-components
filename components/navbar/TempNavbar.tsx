@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FC, ReactNode, RefObject } from "react";
+import { FC, ReactNode, RefObject, useState } from "react";
 import { MdFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import Button from "../buttons/Button";
 
@@ -12,9 +12,13 @@ interface TempNavbarProps {
     onLogin?: () => void,
     onFavorite?: () => void,
     basketCounter: number,
+    onSearch: (search: string) => void,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter }) => {
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter, onSearch }) => {
+
+    const [search, setSearch] = useState('')
+
     return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
         <div className="row align-items-center mb-3">
@@ -103,9 +107,10 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
             </div>
             <div className="col d-flex align-items-stretch me-4" id="search">
                 <div className="input-group " >
-                    <input type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                    <input value={search} onChange={(event) => setSearch(event.target.value)} type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <Button
                         btn_style="btn-primary"
+                        onClick={() => onSearch(search)}
                         >
                         Найти
                     </Button>
