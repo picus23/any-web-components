@@ -1,13 +1,12 @@
-import { FC, ReactNode, useState } from "react";
-import { Slider as SliderA } from "antd";
-import SliderValueRange from "./SliderValueRange";
+import { FC, ReactNode, use, useEffect, useState } from "react";
+import Canvas from "./Canvas";
 
 interface ExpoSliderProps {
     valuesCv: number[],
+    dataToWrapper?: (data: any) => void,
+    widthCanvas: number,
     minPropValue?: number,
     maxPropValue?: number,
-    onChange?: (target: [min: number, max: number]) => void,
-    format?: (value: number) => string | ReactNode,
 }
 
 interface iChangeKeys {
@@ -17,31 +16,36 @@ interface iChangeKeysEmpty {
     [key: string]: string,
 }
 
-const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, format, onChange }) => {
-    const minValue = Math.min(...valuesCv);
-    const maxValue = Math.max(...valuesCv);
+const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, widthCanvas }) => {
+    const minValue = Math.min(...valuesCv) ?? minPropValue;
+    const maxValue = Math.max(...valuesCv) ?? maxPropValue;
 
-    let minDisplayValue = useState(minValue);
-    let maxDisplayValue = useState(maxValue);
+    let [minDisplayValue, setMinDisplayValue] = useState(minValue);
+    let [maxDisplayValue, setMaxDisplayValue] = useState(maxValue);
 
-
-    // Делю массив на разряды десяток
-    let countRank = 0;
-    if (maxValue.toString().length > 2) {
-        countRank = maxValue.toString().length
-    } else {
-        countRank = maxValue.toString().length
+    const handleMinValueChange = (event: any) => {
+        setMinDisplayValue(event.target.value)
+    }
+    const handleMaxValueChange = (event: any) => {
+        setMaxDisplayValue(event.target.value)
     }
 
-    // clg(valuesCv)
+    // Делю массив на разряды десяток
+    let countSubArr = 0;
+    if (maxValue.toString().length > 2) {
+        countSubArr = maxValue.toString().length - 1
+    } else {
+        countSubArr = maxValue.toString().length
+    }
 
-    let rankValueCv = new Array(countRank);
+    // Происходит присвание значений в подмассивы поразрядно
+    let rankValueCv = new Array(countSubArr);
     let prev = 0;
     let curr = 10;
     var lenghtPrevArr = 0;
     var tempLenght = 0;
-    
-    for (let i = 0; i < countRank; i++) {
+
+    for (let i = 0; i < countSubArr; i++) {
         let position = 0;
         rankValueCv[i] = [];
         if (i > 0) {
@@ -64,112 +68,122 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         }
     }
-    // clg('Дроблённый массив на разряды', rankValueCv)
-    // Делю массив на разряды десяток
+    console.log('TEST Дроблённый массив на разряды', rankValueCv)
 
+
+    // Здесь высчитывается расстояние для breakpoint (круглешки) на графике
     let changeKeys: iChangeKeys = {};
     const changeKeysEmpty: iChangeKeysEmpty = {};
-
-    let maxRange: number = 0
-
-    let prevValue = 0;
+    let rank: number[] = [];
+    let iter: number, maxRange, prevValue = 0;
     rankValueCv.map((array, index) => {
-
-        let rangeEverySubArray = (maxValue / rankValueCv.length) * (index + 1)
+        let rangeEverySubArray = (widthCanvas / countSubArr) * (index + 1)
         if (index == 0) {
-            var firstValue = rangeEverySubArray / 3;
+            var firstValue = 0;
         } else {
-            firstValue = 0;
+            firstValue = 1;
         }
-
-        array.map(item => {
-            if (firstValue != 0) {
+        // Подмассив (разряды до 10,100,1000 и т.д.)
+        array.map((item, index) => {
+            if (firstValue == 0) {
                 changeKeys[firstValue] = item;
                 changeKeysEmpty[firstValue] = ' ';
                 prevValue = firstValue;
-                firstValue = 0;
-            } else {
-                maxRange = ((rangeEverySubArray - prevValue) / 2) + prevValue;
+                firstValue = 1;
+            }
+            else if (index == array.length - 1) {
+                prevValue = rangeEverySubArray;
+                changeKeys[rangeEverySubArray] = item;
+                changeKeysEmpty[rangeEverySubArray] = ' ';
+                rank[iter] = item;
+                iter++;
+            }
+            else {
+                maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 2) + prevValue);
                 prevValue = maxRange;
                 changeKeys[maxRange] = item;
                 changeKeysEmpty[maxRange] = ' ';
             }
         })
     })
-    // clg('Change Keys', changeKeys)
 
-    const formatter = (value: number) => {
-        return changeKeys[value];
-    };
 
-    const change = (target: [number, number]) => {
-        onChange([
-            formatter(target[0]),
-            formatter(target[1])
-        ]);
+    let valuesFromSlider: number[] = [];
+    let arrKeys = Object.keys(changeKeys);
+    for (let i = 0; i < arrKeys.length; i++) {
+        valuesFromSlider[i] = +arrKeys[i];
     }
+    valuesFromSlider[valuesFromSlider.length - 1] = 1000;
+    valuesFromSlider.sort((a, b) => a - b);
 
+    // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
+    useEffect(() => {
+        const progress = document.querySelector(".sliderr .progres") as HTMLElement;
+        const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
+        let gap = maxValue / 100 * 10;
+        breakpoints.forEach(el => {
+            let leftValue = +el.style.left.slice(0, 3);
+            if (leftValue / 10 > minDisplayValue / maxValue * 100 && leftValue / 10 < maxDisplayValue / maxValue * 100) {
+                el.classList.add('breakpoint-active')
+            } else {
+                el.classList.add('breakpoint')
+                el.classList.remove('breakpoint-active')
+            }
+        })
+        if (maxDisplayValue - minDisplayValue < gap) {
+            if (maxDisplayValue - gap < minValue) {
+                setMinDisplayValue(minValue);
+            }
+            else {
+                setMinDisplayValue(maxDisplayValue - gap);
+            }
+        }
+        progress.style.left = minDisplayValue / maxValue * 100 + '%';
+        progress.style.right = 100 - (maxDisplayValue / maxValue * 100) + '%';
+    })
+
+    console.log('Change Keys', valuesFromSlider)
     return <>
-        <SliderA
-            range
-            marks={changeKeysEmpty}
-            defaultValue={[minValue ?? minPropValue, maxRange ?? maxPropValue]}
-            // min={minValueValue}
-            max={maxRange}
-            onChange={change}
-            tooltip={{ formatter: (value?: number) => format ? format(formatter(value!)) : formatter(value!) }}
-            step={null}
+        <Canvas
+            width={1000}
+            height={300}
+            valuesFromSlider={valuesFromSlider}
+            valuesCv={valuesCv}
+            rank={rank}
         />
 
-        <div className="d-flex justify-content-between">
-            <SliderValueRange
+        {/* Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
+        <div className="sliderr">
+            <div className="progres"></div>
+        </div>
+        <div className="range-input">
+            <input type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
+            <input type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
+        </div>
+
+        <div className="d-flex justify-content-between my-5">
+            <div>
+                <p>Min: {minDisplayValue}</p>
+                <input type="number" onChange={handleMinValueChange} value={minDisplayValue} />
+            </div>
+            <div>
+                <p>Max: {maxDisplayValue}</p>
+                <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} />
+            </div>
+        </div>
+
+        {/* <div className="d-flex justify-content-between mt-5">
+            <ValueInput
                 value={minDisplayValue}
                 unit={'cv'}
             />
-            <SliderValueRange
+            <ValueInput
                 value={maxDisplayValue}
                 unit={'cv'}
             />
-        </div>
+        </div> */}
+
     </>
 }
 
 export default ExpoSlider;
-
-
-
-    //     array.map((item, index) => {
-
-    //         if (index === 0) {
-    //             let firstValue = ((rangeEverySubArray / 3) * (index + 1)) //1333 | 2666 | 4000
-    //             // let firstValue = ((rangeEverySubArray / 3) * (index + 1)) * 2 //1333 | 2666 | 4000
-    //             maxRange = firstValue;
-    //             prevValue = maxRange;
-    //             console.log('First maxRange', maxRange, index)
-
-    //             changeKeys[maxRange] = item;
-    //             changeKeysEmpty[maxRange] = ' ';
-
-    //             console.log('First Range', maxRange)
-
-    //         } else {
-
-    //             maxRange = ((rangeEverySubArray - prevValue) / 2) + prevValue;
-    //             console.log('Other Range', maxRange)
-
-    //             changeKeys[maxRange] = item;
-    //             changeKeysEmpty[maxRange] = ' ';
-
-    //         }
-    //     })
-    // })
-
-    // let changeKeys : iChangeKeys = {};
-    // const changeKeysEmpty : iChangeKeysEmpty = {};
-
-    // let maxRange: number = 0
-    // valuesCv.map((itm, index) => {
-    //     maxRange = Math.round(distanceBetweenValueOnSlider * index);
-    //     changeKeys[maxRange] = itm;
-    //     changeKeysEmpty[maxRange] = ' ';
-    // })

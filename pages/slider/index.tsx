@@ -1,13 +1,12 @@
 import reference from "./ref.png";
 import Link from "next/link";
 import Image from "next/image";
-import WrapperSlider from "@/components/slider/WrapperSlider";
+import ExpoSliderTest from "@/components/slider/ExpoSlider";
 
 
 const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
-const sortedArray = values.sort((a, b) => a - b);
-const minValue = Math.min(...sortedArray);
-const maxValue = Math.max(...sortedArray);
+// const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
+values.sort((a, b) => a - b);
 
 export default function () {
     return <>
@@ -28,29 +27,11 @@ export default function () {
 
             <div>Подопытный</div>
 
-            <WrapperSlider
-                width={1000}
-                values={values}
-                onChange={() => { }}
+            <ExpoSliderTest
+                valuesCv={values}
+                widthCanvas={1000}
             />
 
-            {/* <LineChart
-                width={1000}
-                height={300}
-                margin={{
-                    top: 20,
-                    right: 20,
-                    left: 20,
-                }}
-                data={data}
-            >
-
-                <Line type="monotone" dataKey="value" stroke="#0085FF" />
-                <CartesianGrid stroke="#ccc" />
-                <XAxis dataKey="value" />
-                <YAxis domain={[0, 10000]} tickCount={10} />
-
-            </LineChart> */}
         </div>
 
         <hr />
