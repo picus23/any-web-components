@@ -138,8 +138,18 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         let fromKey = 0
         let toKey = 0
         let currentPosition = minDisplayValue
+        let currentMaxPosition = maxDisplayValue
+        console.log(minDisplayValue)
+        console.log(currentMaxPosition)
+        let reverseValuesFromSlider = valuesFromSlider.reverse();
+        valuesFromSlider.reverse();
         for (let key in valuesFromSlider) {
             if (currentPosition < valuesFromSlider[key]) {
+                fromKey = Number(key) - 1
+                toKey = Number(key)
+                break;
+            }
+            if (currentMaxPosition < reverseValuesFromSlider[key]) {
                 fromKey = Number(key) - 1
                 toKey = Number(key)
                 break;
@@ -151,9 +161,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         const valFrom = valuesCv[fromKey];
         const valTo = valuesCv[toKey];
 
-        let currentValue = valFrom + ((valTo - valFrom) * (currentPosition / pixTo));
+        let differencePix = pixTo - pixFrom;
+        let differenceCurrentPix = currentPosition - pixFrom
 
-        console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValue })
+        // (начальное значение делим на последнее значение) * ((текущая позиция - начальная позиция) / (последняя позиция - начальная позиция)) + начальное значение
+        let currentValue = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
+        console.log({ currentValue })
     })
 
     return <>
@@ -172,8 +185,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         <div className="range-input">
             <input type="range" className="range-min cs" min={0} max={1000} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
             <input type="range" className="range-max cs" min={0} max={1000} value={maxDisplayValue} onChange={handleMaxValueChange} />
-            {/* <input type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
-            <input type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} /> */}
         </div>
 
         {/* <div className="d-flex justify-content-between my-5">
