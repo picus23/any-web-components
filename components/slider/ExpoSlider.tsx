@@ -68,7 +68,10 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         }
     }
-    console.log('TEST Дроблённый массив на разряды', rankValueCv)
+    useEffect(() => {
+        console.log('TEST Дроблённый массив на разряды', rankValueCv)
+
+    }, [])
 
 
     // Здесь высчитывается расстояние для breakpoint (круглешки) на графике
@@ -115,12 +118,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
     valuesFromSlider[valuesFromSlider.length - 1] = 1000;
     valuesFromSlider.sort((a, b) => a - b);
+    console.log('значения',valuesCv)
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
     useEffect(() => {
         const progress = document.querySelector(".sliderr .progres") as HTMLElement;
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
-        let gap = maxValue / 100 * 10;
         breakpoints.forEach(el => {
             let leftValue = +el.style.left.slice(0, 3);
             if (leftValue / 10 > minDisplayValue / maxValue * 100 && leftValue / 10 < maxDisplayValue / maxValue * 100) {
@@ -130,17 +133,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
                 el.classList.remove('breakpoint-active')
             }
         })
-        if (maxDisplayValue - minDisplayValue < gap) {
-            if (maxDisplayValue - gap < minValue) {
-                setMinDisplayValue(minValue);
-            }
-            else {
-                setMinDisplayValue(maxDisplayValue - gap);
-            }
-        }
         progress.style.left = minDisplayValue / maxValue * 100 + '%';
         progress.style.right = 100 - (maxDisplayValue / maxValue * 100) + '%';
-    })
+    },[])
 
     console.log('Change Keys', valuesFromSlider)
     return <>
@@ -157,7 +152,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             <div className="progres"></div>
         </div>
         <div className="range-input">
-            <input type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
+            <input type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
             <input type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 

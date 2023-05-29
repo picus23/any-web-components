@@ -11,7 +11,6 @@ interface CanvasProps {
 
 const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank }) => {
     const canvasRef = useRef(null)
-    console.log('Расстояние для графика', valuesFromSlider)
 
     const maxValue = Math.max(...valuesCv);
 
@@ -60,6 +59,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 text = document.createTextNode(xAxisValues[i] + '');
                 xAxisValue.appendChild(text);
                 xAxisValue.style.fontSize = '20px';
+                xAxisValue.style.top = '20px';
                 verticalLine!.appendChild(xAxisValue);
                 verticalLine!.appendChild(breakpoint);
                 breakpointsStyles(breakpoint)
@@ -98,14 +98,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
 
         // Отрисовка линии на графике     
         var chrt = document.getElementById("chart");
-        chart.moveTo(0, chrt);
-        chart.beginPath();
-        for (var i = 0; i < valuesFromSlider.length; i++) {
-            chart.strokeStyle = '#0085FF';
-            chart.lineWidth = 3;
-            chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
-            chart.stroke();
-        }
 
         // Отрисовка вертикальных линий
         function gridV() {
@@ -120,7 +112,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
 
         // Отрисовка горизонтальных линий
         function gridH() {
-
             for (var i = 0; i < tickCount; i++) {
                 chart.strokeStyle = '#ccc';
                 chart.lineWidth = 0.5;
@@ -131,13 +122,27 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         }
         gridV();
         gridH();
+
+        chart.lineWidth = "10"
+        chart.bezierCurveTo(20, 100, 20, 20, 200, 20);
+        chart.moveTo(0, chrt);
+
+        var chrt = document.getElementById("chart");
+        chart.moveTo(0, chrt);
+        chart.beginPath();
+        chart.strokeStyle = '#0085FF';
+        chart.lineWidth = 3;
+        for (var i = 0; i < valuesFromSlider.length; i++) {
+            chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
+            chart.stroke();
+        }
     }
 
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
         draw(context)
-
+        console.log('draw')
     }, [])
     return <>
         <div id="chart-wrapper">

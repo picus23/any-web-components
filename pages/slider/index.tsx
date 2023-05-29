@@ -4,8 +4,8 @@ import Image from "next/image";
 import ExpoSliderTest from "@/components/slider/ExpoSlider";
 
 
+// const values = [1, 10, 100]
 const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
-// const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
 values.sort((a, b) => a - b);
 
 export default function () {
