@@ -1,5 +1,6 @@
 import { FC, ReactNode, use, useEffect, useState } from "react";
 import Canvas from "./Canvas";
+import { reverse } from "dns";
 
 interface ExpoSliderProps {
     valuesCv: number[],
@@ -17,8 +18,8 @@ interface iChangeKeysEmpty {
 }
 
 const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, widthCanvas }) => {
-    const minValue = Math.min(...valuesCv) ?? minPropValue;
-    const maxValue = Math.max(...valuesCv) ?? maxPropValue;
+    let minValue = Math.min(...valuesCv) ?? minPropValue;
+    let maxValue = Math.max(...valuesCv) ?? maxPropValue;
 
     let [minDisplayValue, setMinDisplayValue] = useState(minValue);
     let [maxDisplayValue, setMaxDisplayValue] = useState(maxValue);
@@ -118,7 +119,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
     valuesFromSlider[valuesFromSlider.length - 1] = 1000;
     valuesFromSlider.sort((a, b) => a - b);
-    console.log('значения',valuesCv)
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
     useEffect(() => {
@@ -126,18 +126,36 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
         breakpoints.forEach(el => {
             let leftValue = +el.style.left.slice(0, 3);
-            if (leftValue / 10 > minDisplayValue / maxValue * 100 && leftValue / 10 < maxDisplayValue / maxValue * 100) {
+            if (leftValue / 10 > minDisplayValue / maxValue * 1000 && leftValue / 10 < maxDisplayValue / maxValue * 1000) {
                 el.classList.add('breakpoint-active')
             } else {
                 el.classList.add('breakpoint')
                 el.classList.remove('breakpoint-active')
             }
         })
-        progress.style.left = minDisplayValue / maxValue * 100 + '%';
-        progress.style.right = 100 - (maxDisplayValue / maxValue * 100) + '%';
-    },[])
+        progress.style.left = minDisplayValue / maxValue * 1000 + '%';
+        progress.style.right = 100 - (maxDisplayValue / maxValue * 1000) + '%';
+        let fromKey = 0
+        let toKey = 0
+        let currentPosition = minDisplayValue
+        for (let key in valuesFromSlider) {
+            if (currentPosition < valuesFromSlider[key]) {
+                fromKey = Number(key) - 1
+                toKey = Number(key)
+                break;
+            }
+        }
+        const pixFrom = valuesFromSlider[fromKey];
+        const pixTo = valuesFromSlider[toKey];
 
-    console.log('Change Keys', valuesFromSlider)
+        const valFrom = valuesCv[fromKey];
+        const valTo = valuesCv[toKey];
+
+        let currentValue = valFrom + ((valTo - valFrom) * (currentPosition / pixTo));
+
+        console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValue })
+    })
+
     return <>
         <Canvas
             width={1000}
@@ -152,11 +170,13 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             <div className="progres"></div>
         </div>
         <div className="range-input">
-            <input type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
-            <input type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input type="range" className="range-min cs" min={0} max={1000} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
+            <input type="range" className="range-max cs" min={0} max={1000} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            {/* <input type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
+            <input type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} /> */}
         </div>
 
-        <div className="d-flex justify-content-between my-5">
+        {/* <div className="d-flex justify-content-between my-5">
             <div>
                 <p>Min: {minDisplayValue}</p>
                 <input type="number" onChange={handleMinValueChange} value={minDisplayValue} />
@@ -165,7 +185,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
                 <p>Max: {maxDisplayValue}</p>
                 <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} />
             </div>
-        </div>
+        </div> */}
 
         {/* <div className="d-flex justify-content-between mt-5">
             <ValueInput
