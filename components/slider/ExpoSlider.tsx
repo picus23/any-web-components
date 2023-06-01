@@ -5,6 +5,7 @@ interface ExpoSliderProps {
     valuesCv: number[],
     dataToWrapper?: (data: any) => void,
     widthCanvas: number,
+    heightCanvas: number,
     minPropValue?: number,
     maxPropValue?: number,
 }
@@ -16,7 +17,7 @@ interface iChangeKeysEmpty {
     [key: string]: string,
 }
 
-const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, widthCanvas }) => {
+const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, widthCanvas, heightCanvas }) => {
     let minValue = Math.min(...valuesCv) ?? minPropValue;
     let maxValue = Math.max(...valuesCv) ?? maxPropValue;
 
@@ -31,7 +32,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
-    let comparisonArray = [0, 1, 10, 100, 1000, 10000];
+    let comparisonArray = [-1000,-100,-10,-1,0, 1, 10, 100, 1000, 10000];
     let countSubArr = 0;
     var j = 0;
     for (let i = 0; i < comparisonArray.length + 1; i++) {
@@ -49,20 +50,28 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     var tempLenght = 0;
     let prev = 0;
     let curr = 0;
+    let indexComparisonArray = 0;
 
     for (let i = 0; i < countSubArr; i++) {
         let position = 0;
         rankValueCv[i] = [];
-        prev = comparisonArray[i];
-        curr = comparisonArray[i + 1];
         for (let j = tempLenght; j < valuesCv.length; j++) {
+            prev = comparisonArray[indexComparisonArray];
+            curr = comparisonArray[indexComparisonArray + 1];
 
             if (valuesCv[j] >= prev && valuesCv[j] <= curr) {
                 rankValueCv[i][position] = valuesCv[j];
                 lenghtPrevArr = position;
                 position++;
-            } else {
+
+            } else if (rankValueCv[i].length === 0) {
+                j--;
+                indexComparisonArray++;
+                continue;
+            }
+            else {
                 tempLenght += ++lenghtPrevArr;
+                indexComparisonArray++;
                 break;
             }
 
@@ -122,15 +131,15 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
         breakpoints.forEach(el => {
             let leftValue = +el.style.left.slice(0, 3);
-            if (leftValue / 10 > minDisplayValue / maxValue * 1000 && leftValue / 10 < maxDisplayValue / maxValue * 1000) {
+            if (leftValue / 10 > minDisplayValue / maxValue * widthCanvas && leftValue / 10 < maxDisplayValue / maxValue * widthCanvas) {
                 el.classList.add('breakpoint-active')
             } else {
                 el.classList.add('breakpoint')
                 el.classList.remove('breakpoint-active')
             }
         })
-        progress.style.left = minDisplayValue / maxValue * 1000 + '%';
-        progress.style.right = 100 - (maxDisplayValue / maxValue * 1000) + '%';
+        progress.style.left = minDisplayValue / maxValue * widthCanvas + '%';
+        progress.style.right = 100 - (maxDisplayValue / maxValue * widthCanvas) + '%';
         let fromKey = 0
         let toKey = 0
         let currentPosition = minDisplayValue
@@ -168,8 +177,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     console.log('Change Keys', changeKeys);
     return <>
         <Canvas
-            width={1000}
-            height={300}
+            width={widthCanvas}
+            height={heightCanvas}
             valuesFromSlider={valuesFromSlider}
             valuesCv={valuesCv}
             rank={rank}
@@ -180,8 +189,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             <div className="progres"></div>
         </div>
         <div className="range-input">
-            <input type="range" className="range-min cs" min={0} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
-            <input type="range" className="range-max cs" min={0} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={0} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
+            <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={0} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
         {/* <div className="d-flex justify-content-between my-5">

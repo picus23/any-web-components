@@ -2,8 +2,8 @@ import { FC, useEffect, useRef } from "react";
 
 interface CanvasProps {
     valuesCv: number[],
-    width?: number,
-    height?: number,
+    width: number,
+    height: number,
     tickCount?: number,
     valuesFromSlider: number[],
     rank?: number[],
