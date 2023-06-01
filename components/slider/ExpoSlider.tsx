@@ -32,12 +32,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
-    let comparisonArray = [-1000,-100,-10,-1,0, 1, 10, 100, 1000, 10000];
+    let comparisonArray = [-1000, -100, -10, -1, 0, 1, 10, 100, 1000, 10000];
     let countSubArr = 0;
     var j = 0;
     for (let i = 0; i < comparisonArray.length + 1; i++) {
-        if (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1]) {
-            while (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1]) {
+        if (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1] || valuesCv[j] <= comparisonArray[i] && valuesCv[j] >= comparisonArray[i + 1]) {
+            while (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1] || valuesCv[j] <= comparisonArray[i] && valuesCv[j] >= comparisonArray[i + 1]) {
                 j++;
             }
             countSubArr++;
@@ -59,7 +59,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             prev = comparisonArray[indexComparisonArray];
             curr = comparisonArray[indexComparisonArray + 1];
 
-            if (valuesCv[j] >= prev && valuesCv[j] <= curr) {
+            if (valuesCv[j] >= prev && valuesCv[j] <= curr || valuesCv[j] <= comparisonArray[i] && valuesCv[j] >= comparisonArray[i + 1]) {
                 rankValueCv[i][position] = valuesCv[j];
                 lenghtPrevArr = position;
                 position++;
@@ -108,7 +108,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             }
             else {
                 maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 4) + prevValue);
-                // maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 2) + prevValue);
                 prevValue = maxRange;
                 changeKeys[maxRange] = item;
                 changeKeysEmpty[maxRange] = ' ';
