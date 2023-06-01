@@ -31,8 +31,10 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         setMaxDisplayValue(event.target.value)
     }
 
-    // Делю массив на разряды десяток
+    // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
     let countSubArr = 0;
+
+
     if (maxValue.toString().length > 2) {
         countSubArr = maxValue.toString().length - 1
     } else {
@@ -40,9 +42,10 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
 
     // Происходит присвание значений в подмассивы поразрядно
+    // let rankValueCv : [] = [];
     let rankValueCv = new Array(countSubArr);
     let prev = 0;
-    let curr = 10;
+    let curr = 1;
     var lenghtPrevArr = 0;
     var tempLenght = 0;
 
@@ -69,10 +72,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         }
     }
-    useEffect(() => {
-        console.log('TEST Дроблённый массив на разряды', rankValueCv)
-
-    }, [])
+    console.log('TEST Дроблённый массив на разряды', rankValueCv)
 
 
     // Здесь высчитывается расстояние для breakpoint (круглешки) на графике
@@ -166,7 +166,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         // (начальное значение делим на последнее значение) * ((текущая позиция - начальная позиция) / (последняя позиция - начальная позиция)) + начальное значение
         let currentValue = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
-        console.log({ currentValue })
+        console.log({ currentValue, minValue, maxValue, changeKeys }, 'TEST Дроблённый массив на разряды', rankValueCv)
     })
 
     return <>
@@ -183,8 +183,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             <div className="progres"></div>
         </div>
         <div className="range-input">
-            <input type="range" className="range-min cs" min={0} max={1000} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
-            <input type="range" className="range-max cs" min={0} max={1000} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input type="range" className="range-min cs" min={0} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
+            <input type="range" className="range-max cs" min={0} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
         {/* <div className="d-flex justify-content-between my-5">
