@@ -78,8 +78,9 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 }
             }
             xAxisValue.style.position = 'absolute';
-            xAxisValue.style.left = valuesFromSlider[i] - 3 + 'px';
+            xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
             document.getElementById('xAxisValues')!.appendChild(xAxisValue);
+            console.log(valuesFromSlider[i])
         }
 
         // Отрисовка Значений Y
@@ -142,7 +143,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
         draw(context)
-        console.log('draw')
     }, [])
     return <>
         <div id="chart-wrapper">

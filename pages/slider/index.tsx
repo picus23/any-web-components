@@ -5,7 +5,7 @@ import ExpoSliderTest from "@/components/slider/ExpoSlider";
 
 
 // const values = [1, 10, 100]
-const values = [0.18, 0.63, 0.87, 0.93, 1.2, 2.34, 3.62, 5.57, 6.42, 7.2, 7.5, 10, 19,30];
+const values = [0.18, 0.63, 0.87, 0.93, 1.2,1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 7.5, 10, 19,30];
 // const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
 values.sort((a, b) => a - b);
 

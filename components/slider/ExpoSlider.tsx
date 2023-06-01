@@ -1,6 +1,5 @@
 import { FC, ReactNode, use, useEffect, useState } from "react";
 import Canvas from "./Canvas";
-import { reverse } from "dns";
 
 interface ExpoSliderProps {
     valuesCv: number[],
@@ -32,33 +31,30 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
+    let comparisonArray = [0, 1, 10, 100, 1000, 10000];
     let countSubArr = 0;
-
-
-    if (maxValue.toString().length > 2) {
-        countSubArr = maxValue.toString().length - 1
-    } else {
-        countSubArr = maxValue.toString().length
+    var j = 0;
+    for (let i = 0; i < comparisonArray.length + 1; i++) {
+        if (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1]) {
+            while (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1]) {
+                j++;
+            }
+            countSubArr++;
+        }
     }
 
     // Происходит присвание значений в подмассивы поразрядно
-    // let rankValueCv : [] = [];
     let rankValueCv = new Array(countSubArr);
-    let prev = 0;
-    let curr = 1;
     var lenghtPrevArr = 0;
     var tempLenght = 0;
+    let prev = 0;
+    let curr = 0;
 
     for (let i = 0; i < countSubArr; i++) {
         let position = 0;
         rankValueCv[i] = [];
-        if (i > 0) {
-            prev = curr;
-            curr = String(curr);
-            curr += '0';
-            curr = Number(curr);
-
-        }
+        prev = comparisonArray[i];
+        curr = comparisonArray[i + 1];
         for (let j = tempLenght; j < valuesCv.length; j++) {
 
             if (valuesCv[j] >= prev && valuesCv[j] <= curr) {
@@ -72,7 +68,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         }
     }
-    console.log('TEST Дроблённый массив на разряды', rankValueCv)
 
 
     // Здесь высчитывается расстояние для breakpoint (круглешки) на графике
@@ -103,7 +98,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
                 iter++;
             }
             else {
-                maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 2) + prevValue);
+                maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 4) + prevValue);
+                // maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 2) + prevValue);
                 prevValue = maxRange;
                 changeKeys[maxRange] = item;
                 changeKeysEmpty[maxRange] = ' ';
@@ -117,7 +113,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     for (let i = 0; i < arrKeys.length; i++) {
         valuesFromSlider[i] = +arrKeys[i];
     }
-    valuesFromSlider[valuesFromSlider.length - 1] = 1000;
+    // valuesFromSlider[valuesFromSlider.length - 1] = 1000;
     valuesFromSlider.sort((a, b) => a - b);
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
@@ -139,8 +135,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         let toKey = 0
         let currentPosition = minDisplayValue
         let currentMaxPosition = maxDisplayValue
-        console.log(minDisplayValue)
-        console.log(currentMaxPosition)
         let reverseValuesFromSlider = valuesFromSlider.reverse();
         valuesFromSlider.reverse();
         for (let key in valuesFromSlider) {
@@ -166,9 +160,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
         // (начальное значение делим на последнее значение) * ((текущая позиция - начальная позиция) / (последняя позиция - начальная позиция)) + начальное значение
         let currentValue = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
-        console.log({ currentValue, minValue, maxValue, changeKeys }, 'TEST Дроблённый массив на разряды', rankValueCv)
     })
 
+
+
+    console.log('Дроблённый массив на разряды', rankValueCv);
+    console.log('Change Keys', changeKeys);
     return <>
         <Canvas
             width={1000}
