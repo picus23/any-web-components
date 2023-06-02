@@ -18,8 +18,8 @@ interface iChangeKeysEmpty {
 }
 
 const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, widthCanvas, heightCanvas }) => {
-    let minValue = Math.min(...valuesCv) ?? minPropValue;
-    let maxValue = Math.max(...valuesCv) ?? maxPropValue;
+    let minValue = minPropValue ?? Math.min(...valuesCv);
+    let maxValue = maxPropValue ?? Math.max(...valuesCv);
 
     let [minDisplayValue, setMinDisplayValue] = useState(minValue);
     let [maxDisplayValue, setMaxDisplayValue] = useState(maxValue);
@@ -46,11 +46,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
     // Происходит присвание значений в подмассивы поразрядно
     let rankValueCv = new Array(countSubArr);
-    var lenghtPrevArr = 0;
-    var tempLenght = 0;
-    let prev = 0;
-    let curr = 0;
-    let indexComparisonArray = 0;
+    var lenghtPrevArr, tempLenght = 0;
+    let prev, curr, indexComparisonArray = 0;
 
     for (let i = 0; i < countSubArr; i++) {
         let position = 0;
@@ -81,7 +78,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
     // Здесь высчитывается расстояние для breakpoint (круглешки) на графике
     let changeKeys: iChangeKeys = {};
-    const changeKeysEmpty: iChangeKeysEmpty = {};
+    let changeKeysEmpty: iChangeKeysEmpty = {};
     let rank: number[] = [];
     let iter: number, maxRange, prevValue = 0;
     rankValueCv.map((array, index) => {
@@ -107,7 +104,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
                 iter++;
             }
             else {
-                maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 4) + prevValue);
+                maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 6) + prevValue);                   //Здесь расчёт расстояния между значениями
                 prevValue = maxRange;
                 changeKeys[maxRange] = item;
                 changeKeysEmpty[maxRange] = ' ';
@@ -121,7 +118,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     for (let i = 0; i < arrKeys.length; i++) {
         valuesFromSlider[i] = +arrKeys[i];
     }
-    // valuesFromSlider[valuesFromSlider.length - 1] = 1000;
     valuesFromSlider.sort((a, b) => a - b);
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
@@ -137,10 +133,23 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
                 el.classList.remove('breakpoint-active')
             }
         })
-        progress.style.left = minDisplayValue / maxValue * widthCanvas + '%';
-        progress.style.right = 100 - (maxDisplayValue / maxValue * widthCanvas) + '%';
-        let fromKey = 0
-        let toKey = 0
+        if (maxValue < 0) {
+            progress.style.left = Math.abs(minDisplayValue / maxValue * widthCanvas) + '%';
+            progress.style.right = Math.abs(maxDisplayValue / widthCanvas * 100) + '%';
+        }
+        else if (minValue < 0) {
+            progress.style.left = Math.abs(minDisplayValue / maxValue * widthCanvas) + '%';
+            progress.style.right = maxDisplayValue / widthCanvas * 1000 + '%';
+        } else {
+            progress.style.left = minDisplayValue / maxValue * widthCanvas + '%';
+            progress.style.right = maxDisplayValue / widthCanvas * 100 + '%';
+        }
+        console.log({ minDisplayValue, maxDisplayValue, maxValue })
+        console.log('% left', minDisplayValue / maxValue * widthCanvas + '%')
+        console.log('% right', (maxDisplayValue / widthCanvas) * 100 + '%')
+        // progress.style.left = minDisplayValue / maxValue * widthCanvas + '%';
+        // progress.style.right = 100 - (maxDisplayValue / maxValue * widthCanvas) + '%';
+        let fromKey, toKey: number = 0
         let currentPosition = minDisplayValue
         let currentMaxPosition = maxDisplayValue
         let reverseValuesFromSlider = valuesFromSlider.reverse();
@@ -188,8 +197,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             <div className="progres"></div>
         </div>
         <div className="range-input">
-            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={0} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
-            <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={0} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
+            <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
         {/* <div className="d-flex justify-content-between my-5">

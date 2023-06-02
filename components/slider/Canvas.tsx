@@ -80,7 +80,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             xAxisValue.style.position = 'absolute';
             xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
             document.getElementById('xAxisValues')!.appendChild(xAxisValue);
-            console.log(valuesFromSlider[i])
         }
 
         // Отрисовка Значений Y
@@ -124,10 +123,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         gridV();
         gridH();
 
-        chart.lineWidth = "10"
-        chart.bezierCurveTo(20, 100, 20, 20, 200, 20);
-        chart.moveTo(0, chrt);
-
         var chrt = document.getElementById("chart");
         chart.moveTo(0, chrt);
         chart.beginPath();
@@ -137,6 +132,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
             chart.stroke();
         }
+
     }
 
     useEffect(() => {
