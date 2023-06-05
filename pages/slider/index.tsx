@@ -4,9 +4,9 @@ import Image from "next/image";
 import ExpoSlider from "@/components/slider/ExpoSlider";
 
 
-const values = [1, 10, 50, 100];
+// const values = [1, 10, 50, 100];
 // const values = [-120, -90, -75, -30, -25, -21];
-// const values = [16, 18, 24, 30, 35, 40, 44, 50, 65, 70, 75, 90, 95, 120, 137, 144, 172, 190, 205, 230, 240, 270, 300, 400, 700];
+const values = [16, 18, 24, 30, 35, 40, 44, 50, 65, 70, 75, 90, 95, 120, 137, 144, 172, 190, 205, 230, 240, 270, 300, 400, 700];
 // const values = [-120,-90,-75,-30,-12,-1,3, 6, 8, 10, 12, 15, 20, 25, 32, 40, 50, 65, 80];
 // const values = [0.18, 0.63, 0.87, 0.93, 1.2,1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 7.5, 10, 19,30];
 // const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
@@ -37,6 +37,7 @@ export default function () {
                 heightCanvas={300}
             />
 
+            <div className="mt-2" style={{ width: 553 / 2 + 'px', height: '20px', background: 'red' }}></div>
         </div>
 
         <hr />

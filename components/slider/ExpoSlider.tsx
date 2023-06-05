@@ -125,8 +125,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         const progress = document.querySelector(".sliderr .progres") as HTMLElement;
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
         breakpoints.forEach(el => {
-            let leftValue = +el.style.left.slice(0, 3);
-            if (leftValue / 10 > minDisplayValue / maxValue * widthCanvas && leftValue / 10 < maxDisplayValue / maxValue * widthCanvas) {
+            let leftValue = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
+            if (leftValue > minDisplayValue / maxValue * widthCanvas && leftValue < maxDisplayValue / maxValue * widthCanvas) { // Активно, если breakpoint больше левого пальца и меньше правого
                 el.classList.add('breakpoint-active')
             } else {
                 el.classList.add('breakpoint')
@@ -134,33 +134,24 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             }
         })
         if (maxValue < 0) {
-            progress.style.left = Math.abs(minDisplayValue / maxValue * widthCanvas) + '%';
-            progress.style.right = Math.abs(maxDisplayValue / widthCanvas * 100) + '%';
+            progress.style.left = Math.abs((minDisplayValue / maxValue) * 100) + '%';
+            progress.style.right = Math.abs(100 - ((maxDisplayValue / maxValue) * 100)) + '%';
         }
         else if (minValue < 0) {
-            progress.style.left = Math.abs(minDisplayValue / maxValue * widthCanvas) + '%';
-            progress.style.right = maxDisplayValue / widthCanvas * 1000 + '%';
+            progress.style.left = Math.abs((minDisplayValue / maxValue) * 100) + '%';
+            progress.style.right = 100 - ((maxDisplayValue / maxValue) * 100) + '%';
         } else {
-            progress.style.left = minDisplayValue / maxValue * widthCanvas + '%';
-            progress.style.right = maxDisplayValue / widthCanvas * 100 + '%';
+            progress.style.left = (minDisplayValue / maxValue) * 100 + '%';
+            progress.style.right = 100 - ((maxDisplayValue / maxValue) * 100) + '%';
         }
-        console.log({ minDisplayValue, maxDisplayValue, maxValue })
-        console.log('% left', minDisplayValue / maxValue * widthCanvas + '%')
-        console.log('% right', (maxDisplayValue / widthCanvas) * 100 + '%')
-        // progress.style.left = minDisplayValue / maxValue * widthCanvas + '%';
-        // progress.style.right = 100 - (maxDisplayValue / maxValue * widthCanvas) + '%';
-        let fromKey, toKey: number = 0
-        let currentPosition = minDisplayValue
-        let currentMaxPosition = maxDisplayValue
-        let reverseValuesFromSlider = valuesFromSlider.reverse();
-        valuesFromSlider.reverse();
+
+        // console.log({ minDisplayValue, maxDisplayValue, maxValue })
+
+        let fromKey = 0
+        let toKey = 0
+        let currentPosition = Math.floor(minDisplayValue / maxValue * widthCanvas);
         for (let key in valuesFromSlider) {
             if (currentPosition < valuesFromSlider[key]) {
-                fromKey = Number(key) - 1
-                toKey = Number(key)
-                break;
-            }
-            if (currentMaxPosition < reverseValuesFromSlider[key]) {
                 fromKey = Number(key) - 1
                 toKey = Number(key)
                 break;
@@ -175,14 +166,16 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPosition - pixFrom
 
-        // (начальное значение делим на последнее значение) * ((текущая позиция - начальная позиция) / (последняя позиция - начальная позиция)) + начальное значение
         let currentValue = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
+
+        console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValue })
     })
 
 
 
     console.log('Дроблённый массив на разряды', rankValueCv);
     console.log('Change Keys', changeKeys);
+
     return <>
         <Canvas
             width={widthCanvas}
@@ -193,11 +186,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
         />
 
         {/* Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
-        <div className="sliderr">
+        <div style={{ width: widthCanvas }} className="sliderr">
             <div className="progres"></div>
         </div>
-        <div className="range-input">
-            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} onClick={handleMinValueChange} />
+        <div style={{ width: widthCanvas }} className="range-input">
+            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
             <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 

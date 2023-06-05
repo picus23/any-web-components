@@ -11687,7 +11687,6 @@ textarea.form-control-lg {
 
 .sliderr {
   height: 5px;
-  width: 1000px;
   background: #ddd;
   position: relative;
   top: -11px;
@@ -11720,7 +11719,6 @@ textarea.form-control-lg {
   position: absolute;
   top: -11px;
   height: 5px;
-  width: 1000px;
   background: none;
   -webkit-appearance: none;
      -moz-appearance: none;
