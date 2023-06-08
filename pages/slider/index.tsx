@@ -42,17 +42,16 @@ export default function () {
             <div>Подопытный</div>
             <button onClick={() => setCurrent(current+1)}>click</button>
             {
-                current % 3 == 0 
-                    ? current
-                    :
-                    current % 2 ?
+                // current % 3 == 0 
+                //     ? current
+                //     :
+                    current % 2 == 1 ?
                     <>
                         1
                         <ExpoSlider
                             data_array={[values]}
                             widthCanvas={1000}
                             heightCanvas={300}
-                            indexOrder={'1'}
                         />
                     </>
                     : <>
@@ -61,7 +60,6 @@ export default function () {
                             data_array={[arr1, arr2, arr3]}
                             widthCanvas={1000}
                             heightCanvas={300}
-                            indexOrder={'1'}
                         />
                     </>
             }
@@ -81,7 +79,7 @@ export default function () {
             /> */}
 
 
-            <div className="mt-2" style={{ width: 553 / 2 + 'px', height: '20px', background: 'red' }}></div>
+            {/* <div className="mt-2" style={{ width: 553 / 2 + 'px', height: '20px', background: 'red' }}></div> */}
         </div>
 
         <hr />

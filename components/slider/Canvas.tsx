@@ -7,10 +7,9 @@ interface CanvasProps {
     tickCount?: number,
     valuesFromSlider: number[],
     rank?: number[],
-    indexOrder: string,
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, indexOrder }) => {
+const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank }) => {
     const canvasRef = useRef(null)
 
     const maxValue = Math.max(...valuesCv);
@@ -38,14 +37,15 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         let j = 0;
         function breakpointsStyles(element: any) {
             element.classList.add('breakpoint')
-            element.classList.add('breakpoint-' + indexOrder)
+            element.classList.add('breakpoint')
+            element.classList.add('prev-canvas-values')
             element.style.left = valuesFromSlider[i] - 2 + 'px';
         }
         let strValue, lengthStrValue, text;
         for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
             let breakpoint = document.createElement('div');
-            let verticalLine = document.getElementById('xAxisValue-' + indexOrder);
+            let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
             // Отрисовка числа в степени
@@ -82,9 +82,10 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                     xAxisValue.style.top = '-10px';
                 }
             }
+            xAxisValue.classList.add('prev-canvas-values');
             xAxisValue.style.position = 'absolute';
             xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
-            document.getElementById('xAxisValue-' + indexOrder)!.appendChild(xAxisValue);
+            document.getElementById('xAxisValue')!.appendChild(xAxisValue);
         }
 
         // Отрисовка Значений Y
@@ -141,17 +142,22 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
     }
 
     useEffect(() => {
+        document.querySelectorAll('.prev-canvas-values').forEach(el => {
+            if (el.classList.contains('prev-canvas-values')) {
+                el.remove()
+            }
+        })
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
         draw(context)
-    }, [])
+    }, [draw])
     return <>
         <div id="chart-wrapper">
             <div id="yAxisValues"></div>
             <canvas id="chart"
                 ref={canvasRef}
                 width={width} />
-            <div id={'xAxisValue-' + indexOrder} />
+            <div id={'xAxisValue'} />
         </div>
 
     </>

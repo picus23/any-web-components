@@ -8,7 +8,6 @@ interface ExpoSliderProps {
     heightCanvas: number,
     minPropValue?: number,
     maxPropValue?: number,
-    indexOrder: string,
 }
 
 interface iChangeKeys {
@@ -18,15 +17,16 @@ interface iChangeKeysEmpty {
     [key: string]: string,
 }
 
-const ExpoSlider: FC<ExpoSliderProps> = ({ data_array, minPropValue, maxPropValue, widthCanvas, heightCanvas, indexOrder}) => {
+const ExpoSlider: FC<ExpoSliderProps> = ({ data_array, minPropValue, maxPropValue, widthCanvas, heightCanvas}) => {
     const valuesCv = data_array.flat(Infinity);
     valuesCv.sort((a, b) => a - b);
 
     let minValue = minPropValue ?? Math.min(...valuesCv);
     let maxValue = maxPropValue ?? Math.max(...valuesCv);
-
+    
     let [minDisplayValue, setMinDisplayValue] = useState(minValue);
     let [maxDisplayValue, setMaxDisplayValue] = useState(maxValue);
+    console.log({maxValue,maxDisplayValue});
 
     const handleMinValueChange = (event: any) => {
         setMinDisplayValue(event.target.value)
@@ -126,9 +126,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data_array, minPropValue, maxPropValu
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
     useEffect(() => {
-        const progress = document.querySelector('.sliderr .progres-' + indexOrder) as HTMLElement;
+        const progress = document.querySelector('.sliderr .progres') as HTMLElement;
         console.log(progress)
-        const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint-' + indexOrder);
+        const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
         breakpoints.forEach(el => {
             let leftValue = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
             if (leftValue > minDisplayValue / maxValue * widthCanvas && leftValue < maxDisplayValue / maxValue * widthCanvas) { // Активно, если breakpoint больше левого пальца и меньше правого
@@ -186,12 +186,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data_array, minPropValue, maxPropValu
             valuesFromSlider={valuesFromSlider}
             valuesCv={valuesCv}
             rank={rank}
-            indexOrder={indexOrder}
         />
 
         {/* Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
         <div style={{ width: widthCanvas }} className="sliderr">
-            <div className={'progres progres-' + indexOrder}></div>
+            <div className={'progres progres'}></div>
         </div>
         <div style={{ width: widthCanvas }} className="range-input">
             <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
