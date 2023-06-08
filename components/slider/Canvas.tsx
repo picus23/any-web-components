@@ -22,7 +22,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         var cw = chart.canvas.width;
         var ch = chart.canvas.height;
 
-
         // Расстояние для горизонтальных полос
         let h = [];
         for (let i = 0; i < tickCount; i++) {
@@ -77,9 +76,9 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 verticalLine!.appendChild(breakpoint);
                 breakpointsStyles(breakpoint)
                 if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
-                    xAxisValue.style.top = '-35px';
+                    xAxisValue.style.top = '-40px';
                 } else { // Нечётный индекс [i] == 1,3,5 ...
-                    xAxisValue.style.top = '-10px';
+                    xAxisValue.style.top = '0px';
                 }
             }
             xAxisValue.classList.add('prev-canvas-values');
@@ -101,9 +100,6 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         for (let i = 0; i < xAxisValues!.length; i++) {
             percent[i] = xAxisValues![i] / maxValue * 100;
         }
-
-        // Отрисовка линии на графике     
-        var chrt = document.getElementById("chart");
 
         // Отрисовка вертикальных линий
         function gridV() {
@@ -129,16 +125,16 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         gridH();
         gridV();
 
+        // Отрисовка линии на графике
         var chrt = document.getElementById("chart");
         chart.moveTo(0, chrt);
         chart.beginPath();
         chart.strokeStyle = '#0085FF';
-        chart.lineWidth = 3;
+        chart.lineWidth = 6;
         for (var i = 0; i < valuesFromSlider.length; i++) {
             chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
             chart.stroke();
         }
-
     }
 
     useEffect(() => {
@@ -151,13 +147,14 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         const context = canvas.getContext('2d')
         draw(context)
     }, [draw])
+
     return <>
         <div id="chart-wrapper">
             <div id="yAxisValues"></div>
             <canvas id="chart"
                 ref={canvasRef}
                 width={width} />
-            <div id={'xAxisValue'} />
+            <div id='xAxisValue' />
         </div>
 
     </>

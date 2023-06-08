@@ -11689,7 +11689,7 @@ textarea.form-control-lg {
   height: 5px;
   background: #ddd;
   position: relative;
-  top: -11px;
+  top: -4px;
   cursor: pointer;
 }
 .sliderr:hover {
@@ -11717,7 +11717,7 @@ textarea.form-control-lg {
 }
 .range-input .cs {
   position: absolute;
-  top: -11px;
+  top: -6px;
   height: 5px;
   background: none;
   -webkit-appearance: none;
@@ -11771,7 +11771,7 @@ textarea.form-control-lg {
 
 .breakpoint {
   position: absolute;
-  top: -13px;
+  top: -6.5px;
   height: 9px;
   width: 9px;
   background: #fff;

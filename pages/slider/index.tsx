@@ -12,7 +12,7 @@ import { useState } from "react";
 // const values = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
 const arr1 = [1, 2, 3];
 const arr2 = [4, [5, 6]];
-const arr3 = [7, [8, [9]]];
+const arr3 = [7, [8, [9,10]]];
 // const values = [-120,-90,-75,-30,-12,-1,3, 6, 8, 10, 12, 15, 20, 25, 32, 40, 50, 65, 80];
 const values = [0.18, 0.63, 0.87, 0.93, 1.2, 1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 7.5, 10, 19, 30, 21000];
 // const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
@@ -37,7 +37,7 @@ export default function () {
 
 
         <h1>МОЙ</h1>
-        <div className="container-xxl p-0" style={{ outline: '1px solid #000', width: '1000px' }}>
+        <div className="container-xxl p-0 p-4" style={{ outline: '1px solid #000' }}>
 
             <div>Подопытный</div>
             <button onClick={() => setCurrent(current+1)}>click</button>
@@ -49,7 +49,7 @@ export default function () {
                     <>
                         1
                         <ExpoSlider
-                            data_array={[values]}
+                            data={[values]}
                             widthCanvas={1000}
                             heightCanvas={300}
                         />
@@ -57,7 +57,7 @@ export default function () {
                     : <>
                         2
                         <ExpoSlider
-                            data_array={[arr1, arr2, arr3]}
+                            data={[arr1, arr2, arr3]}
                             widthCanvas={1000}
                             heightCanvas={300}
                         />
