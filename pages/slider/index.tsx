@@ -2,6 +2,8 @@ import reference from "./ref.png";
 import Link from "next/link";
 import Image from "next/image";
 import ExpoSlider from "@/components/slider/ExpoSlider";
+import { Tabs, TabsProps } from "antd";
+import { useState } from "react";
 
 
 // const values = [1, 10, 50, 100];
@@ -16,7 +18,12 @@ const values = [0.18, 0.63, 0.87, 0.93, 1.2, 1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 7
 // const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
 
 export default function () {
+
+
+    const [current, setCurrent] = useState(1)
+
     return <>
+
         <h1>
             Slider
         </h1>
@@ -33,8 +40,33 @@ export default function () {
         <div className="container-xxl p-0" style={{ outline: '1px solid #000', width: '1000px' }}>
 
             <div>Подопытный</div>
+            <button onClick={() => setCurrent(current+1)}>click</button>
+            {
+                current % 3 == 0 
+                    ? current
+                    :
+                    current % 2 ?
+                    <>
+                        1
+                        <ExpoSlider
+                            data_array={[values]}
+                            widthCanvas={1000}
+                            heightCanvas={300}
+                            indexOrder={'1'}
+                        />
+                    </>
+                    : <>
+                        2
+                        <ExpoSlider
+                            data_array={[arr1, arr2, arr3]}
+                            widthCanvas={1000}
+                            heightCanvas={300}
+                            indexOrder={'1'}
+                        />
+                    </>
+            }
 
-            <ExpoSlider
+            {/* <ExpoSlider
                 data_array={[values]}
                 widthCanvas={553}
                 heightCanvas={300}
@@ -46,7 +78,8 @@ export default function () {
                 widthCanvas={553}
                 heightCanvas={300}
                 indexOrder={'2'}
-            />
+            /> */}
+
 
             <div className="mt-2" style={{ width: 553 / 2 + 'px', height: '20px', background: 'red' }}></div>
         </div>
