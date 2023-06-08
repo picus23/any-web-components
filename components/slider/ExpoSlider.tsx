@@ -2,12 +2,13 @@ import { FC, ReactNode, use, useEffect, useState } from "react";
 import Canvas from "./Canvas";
 
 interface ExpoSliderProps {
-    valuesCv: number[],
+    data_array: [],
     dataToWrapper?: (data: any) => void,
     widthCanvas: number,
     heightCanvas: number,
     minPropValue?: number,
     maxPropValue?: number,
+    indexOrder: string,
 }
 
 interface iChangeKeys {
@@ -17,7 +18,10 @@ interface iChangeKeysEmpty {
     [key: string]: string,
 }
 
-const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue, widthCanvas, heightCanvas }) => {
+const ExpoSlider: FC<ExpoSliderProps> = ({ data_array, minPropValue, maxPropValue, widthCanvas, heightCanvas, indexOrder}) => {
+    const valuesCv = data_array.flat(Infinity);
+    valuesCv.sort((a, b) => a - b);
+
     let minValue = minPropValue ?? Math.min(...valuesCv);
     let maxValue = maxPropValue ?? Math.max(...valuesCv);
 
@@ -32,7 +36,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
     }
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
-    let comparisonArray = [-1000, -100, -10, -1, 0, 1, 10, 100, 1000, 10000];
+    let comparisonArray = [-1000, -100, -10, -1, 0, 1, 10, 100, 1000, 10000, 100000];
     let countSubArr = 0;
     var j = 0;
     for (let i = 0; i < comparisonArray.length + 1; i++) {
@@ -122,8 +126,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
     useEffect(() => {
-        const progress = document.querySelector(".sliderr .progres") as HTMLElement;
-        const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
+        const progress = document.querySelector('.sliderr .progres-' + indexOrder) as HTMLElement;
+        console.log(progress)
+        const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint-' + indexOrder);
         breakpoints.forEach(el => {
             let leftValue = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
             if (leftValue > minDisplayValue / maxValue * widthCanvas && leftValue < maxDisplayValue / maxValue * widthCanvas) { // Активно, если breakpoint больше левого пальца и меньше правого
@@ -144,8 +149,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             progress.style.left = (minDisplayValue / maxValue) * 100 + '%';
             progress.style.right = 100 - ((maxDisplayValue / maxValue) * 100) + '%';
         }
-
-        // console.log({ minDisplayValue, maxDisplayValue, maxValue })
 
         let fromKey = 0
         let toKey = 0
@@ -183,11 +186,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ valuesCv, minPropValue, maxPropValue,
             valuesFromSlider={valuesFromSlider}
             valuesCv={valuesCv}
             rank={rank}
+            indexOrder={indexOrder}
         />
 
         {/* Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
         <div style={{ width: widthCanvas }} className="sliderr">
-            <div className="progres"></div>
+            <div className={'progres progres-' + indexOrder}></div>
         </div>
         <div style={{ width: widthCanvas }} className="range-input">
             <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />

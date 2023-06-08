@@ -7,9 +7,10 @@ interface CanvasProps {
     tickCount?: number,
     valuesFromSlider: number[],
     rank?: number[],
+    indexOrder: string,
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank }) => {
+const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, indexOrder }) => {
     const canvasRef = useRef(null)
 
     const maxValue = Math.max(...valuesCv);
@@ -37,18 +38,22 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         let j = 0;
         function breakpointsStyles(element: any) {
             element.classList.add('breakpoint')
+            element.classList.add('breakpoint-' + indexOrder)
             element.style.left = valuesFromSlider[i] - 2 + 'px';
         }
         let strValue, lengthStrValue, text;
         for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
             let breakpoint = document.createElement('div');
-            let verticalLine = document.getElementById('xAxisValues');
+            let verticalLine = document.getElementById('xAxisValue-' + indexOrder);
+            verticalLine?.classList.add('position-relative');
+
             // Отрисовка числа в степени
             if (xAxisValues![i] >= 10000) {
                 strValue = xAxisValues![i] + '';
                 lengthStrValue = strValue.length - 2 + '';
                 text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
+
                 xAxisValue.appendChild(text);
                 verticalLine!.appendChild(xAxisValue);
                 verticalLine!.appendChild(breakpoint);
@@ -79,7 +84,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             }
             xAxisValue.style.position = 'absolute';
             xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
-            document.getElementById('xAxisValues')!.appendChild(xAxisValue);
+            document.getElementById('xAxisValue-' + indexOrder)!.appendChild(xAxisValue);
         }
 
         // Отрисовка Значений Y
@@ -114,14 +119,14 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         function gridH() {
             for (var i = 0; i < tickCount; i++) {
                 chart.strokeStyle = '#ccc';
-                chart.lineWidth = 0.5;
+                chart.lineWidth = 2;
                 chart.moveTo(0, ch - i * (ch / tickCount));
                 chart.lineTo(cw, ch - i * (ch / tickCount));
             }
             chart.stroke();
         }
-        gridV();
         gridH();
+        gridV();
 
         var chrt = document.getElementById("chart");
         chart.moveTo(0, chrt);
@@ -146,7 +151,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             <canvas id="chart"
                 ref={canvasRef}
                 width={width} />
-            <div id="xAxisValues" />
+            <div id={'xAxisValue-' + indexOrder} />
         </div>
 
     </>
