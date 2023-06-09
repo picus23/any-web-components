@@ -9,7 +9,7 @@ interface ExpoSliderProps {
     heightCanvas: number,
     minPropValue?: number,
     maxPropValue?: number,
-    onChange: () => void,
+    onChange: (min: number, max: number) => void,
 }
 
 interface iChangeKeys {
@@ -32,6 +32,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         setMaxDisplayValue(maxValue);
         setMinDisplayValue(minValue);
     }, [maxValue, minValue])
+
 
     const handleMinValueChange = (event: any) => {
         setMinDisplayValue(event.target.value)
@@ -218,6 +219,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
     var currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
 
+    useEffect(() => {
+        onChange(currentValueMin, currentValueMax)
+    }, [minDisplayValue, maxDisplayValue])
+
+
 
     // console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValueMin })  // Поднять выше
     // console.log({ valFromMax, valToMax, pixFromMax, currentPositionMax, pixToMax, currentValueMax, fromKeyMax, toKeyMax })  // Поднять выше
@@ -237,11 +243,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
         </div>
         <div style={{ width: widthCanvas }} className="range-input">
-            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={onChange} />
-            <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={onChange} />
+            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
+            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
-        <div className="d-flex justify-content-between my-5">
+        {/* <div className="d-flex justify-content-between my-5">
             <div>
                 <p>Min: {Math.trunc(currentValueMin * 100) / 100}</p>
                 <input type="number" onChange={handleMinValueChange} value={minDisplayValue} />
@@ -250,7 +256,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
                 <p>Max: {Math.trunc(currentValueMax * 100) / 100}</p>
                 <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} />
             </div>
-        </div>
+        </div> */}
 
     </>
 }
