@@ -9,6 +9,7 @@ interface ExpoSliderProps {
     heightCanvas: number,
     minPropValue?: number,
     maxPropValue?: number,
+    onChange: () => void,
 }
 
 interface iChangeKeys {
@@ -18,7 +19,7 @@ interface iChangeKeysEmpty {
     [key: string]: string,
 }
 
-const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, widthCanvas, heightCanvas }) => {
+const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, widthCanvas, heightCanvas, onChange }) => {
     const valuesCv = data.flat(Infinity);
     valuesCv.sort((a, b) => a - b);
 
@@ -236,8 +237,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
         </div>
         <div style={{ width: widthCanvas }} className="range-input">
-            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
-            <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={onChange} />
+            <input style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={onChange} />
         </div>
 
         <div className="d-flex justify-content-between my-5">
