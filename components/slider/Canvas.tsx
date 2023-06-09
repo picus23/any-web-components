@@ -5,11 +5,12 @@ interface CanvasProps {
     width: number,
     height: number,
     tickCount?: number,
+    lineWidth: number,
     valuesFromSlider: number[],
     rank?: number[],
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank }) => {
+const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth }) => {
     const canvasRef = useRef(null)
 
     const maxValue = Math.max(...valuesCv);
@@ -32,15 +33,15 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             }
         }
 
-        // Отрисовка Значений X (подписи + breakpoints + степени)
+        // Отрисовка Значений X (числа(текст) + breakpoints + степени)
         let j = 0;
+        let strValue, lengthStrValue, text;
         function breakpointsStyles(element: any) {
             element.classList.add('breakpoint')
             element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
             element.style.left = valuesFromSlider[i] - 2 + 'px';
         }
-        let strValue, lengthStrValue, text;
         for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
             let breakpoint = document.createElement('div');
@@ -76,29 +77,33 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 verticalLine!.appendChild(breakpoint);
                 breakpointsStyles(breakpoint)
                 if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
-                    xAxisValue.style.top = '-40px';
+                    xAxisValue.style.top = '-35px';
                 } else { // Нечётный индекс [i] == 1,3,5 ...
-                    xAxisValue.style.top = '0px';
+                    xAxisValue.style.top = '10px';
                 }
             }
             xAxisValue.classList.add('prev-canvas-values');
             xAxisValue.style.position = 'absolute';
+            xAxisValue.style.fontSize = '14px';
             xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
             document.getElementById('xAxisValue')!.appendChild(xAxisValue);
         }
 
-        // Отрисовка Значений Y
+        // Отрисовка Значений Y 
         // for (var i = yAxisValues.length - 1; i >= 0; i--) {
         //     var value = document.createElement('span');
         //     var text_value = document.createTextNode(yAxisValues[i])
         //     value.appendChild(text_value);
         //     document.getElementById('yAxisValues').appendChild(value);
         // }
-
-        // Расчитывает растояние для линий от максимального значения, а не от ширины
         let percent = [];
+        // Расчитывает растояние для линий от максимального значения (в %), а не от ширины
         for (let i = 0; i < xAxisValues!.length; i++) {
-            percent[i] = xAxisValues![i] / maxValue * 100;
+            if (xAxisValues[i] < 0) {
+                percent[i] = Math.abs(maxValue / xAxisValues![i] * 100);
+            } else {
+                percent[i] = xAxisValues![i] / maxValue * 100;
+            }
         }
 
         // Отрисовка вертикальных линий
@@ -130,7 +135,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         chart.moveTo(0, chrt);
         chart.beginPath();
         chart.strokeStyle = '#0085FF';
-        chart.lineWidth = 6;
+        chart.lineWidth = lineWidth;
         for (var i = 0; i < valuesFromSlider.length; i++) {
             chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
             chart.stroke();
