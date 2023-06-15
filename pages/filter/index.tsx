@@ -8,7 +8,7 @@ import search_input from "./search_input.png";
 import Image from "next/image";
 import Filter from "@/components/filter/Filter";
 import FilterCategory from "@/components/filter/FilterCategory";
-import { MdChevronRight, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
+import { MdAccountBalance, MdChevronRight, MdOutlineSegment, MdUnfoldMore } from "react-icons/md";
 import FilterChips from "@/components/filter/FilterChips";
 import FilterMarker from "@/components/filter/FilterMarker";
 import FilterHead from "@/components/filter/FilterHead";
@@ -22,6 +22,7 @@ import FilterMarkerWrapper from "@/components/filter/FilterMarkerWrapper";
 import FilterTitle from "@/components/filter/FilterTitle";
 import FilterLaungageList from "@/components/filter/FilterLanguageList";
 import FilterLanguageLetter from "@/components/filter/FilterLanguageLetter";
+import FilterSuggest from "@/components/filter/FilterSuggest";
 
 export default function () {
     let FilterFields = ['1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’', '1/4’’'];
@@ -43,6 +44,7 @@ export default function () {
         </div>
         <h1>Мой</h1>
         <div className="container-xxl d-flex justify-content-center p-0" style={{ outline: '1px solid #000;background:#eee' }}>
+            <FilterSuggest title="Техническая характеристика" icon={<MdAccountBalance />} onClick={() => alert('Click')} isSuggest={true} />
             {/* <FilterSearchInput title="Все фильтры" /> */}
         </div>
 
