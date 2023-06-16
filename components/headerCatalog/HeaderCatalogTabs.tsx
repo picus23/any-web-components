@@ -1,5 +1,6 @@
 import { FC, ReactNode} from "react";
 import { MdKeyboardArrowRight, MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+import FilterField from "../filter/FilterField";
 
 
 interface HeaderCatalogTabsProps {
@@ -22,13 +23,13 @@ const HeaderCatalogTabs: FC<HeaderCatalogTabsProps> = ({ active = 0, titles, chi
                     titles.map((title: string, index: number) => {
 
                         const isActive = index == active
-                        const classli = "list-group-item border-0 rounded-3 d-flex gap-2 mb-2" + (isActive ? ' active' : '')
 
-                        return <li key={title + '_' + index} className={classli} role='button' onClick={() => onClick(index)}>
-                            <MdOutlineCheckBoxOutlineBlank size={24} color={isActive ? '#fff3' : '#aaa3'} />
-                            <div className="flex-grow-1">{title}</div>
-                            <MdKeyboardArrowRight size={24} color={isActive ? '#fff' : '#aaa'} />
-                        </li>
+                        return <FilterField
+                            key={title + '_' + index}
+                            title={title}
+                            onClick={() => onClick(index)}
+                            isActive={isActive}
+                        />
                     })
                 }
             </ul>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC, ReactNode } from "react";
-import { MdChevronRight } from "react-icons/md";
+import { MdArrowCircleRight, MdChevronRight } from "react-icons/md";
 
 
 
@@ -35,8 +35,12 @@ const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, imgUrl, isAc
         }
         onClick={onClick}>
         <div className="d-flex align-items-center">
-            <span style={{ color: isActive ? '#fff' : '#aaa' }}>{icon}</span>
-            <Image width={20} height={20} src={imgUrl ?? "/kit/filter_head_img.png"} alt="" />
+            {
+                imgUrl
+                    ? <Image width={20} height={20} src={imgUrl} alt="" />
+                    : <span style={{ color: isActive ? '#fff' : '#aaa' }}>{icon || <MdArrowCircleRight />}</span>
+            }
+
             <span className="fw-400 ms-2 d-flex text-left" style={{ fontSize: '16px' }}>{title}</span>
         </div>
         <MdChevronRight size={24} fill={isActive ? 'white' : 'gray'} />
