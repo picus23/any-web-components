@@ -37,8 +37,8 @@ const SearchInput: FC<SearchInputProps> = ({ searchPhrase, handleSearch, handleU
                     placeholder="Поиск"
                     aria-label="Search"
                 />
-                <Button btn_style="btn-primary">Найти</Button>
-            </div> 
+                <Button btn_style="btn-primary" style={{ borderRadius: '0 8px 8px 0' }}>Найти</Button>
+            </div>
         </form>
     );
 }

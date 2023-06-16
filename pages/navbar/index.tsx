@@ -8,6 +8,7 @@ import TempNavbar from "@/components/navbar/TempNavbar";
 import Button from "@/components/buttons/Button";
 import { useRef } from "react";
 import { MdFavorite, MdPerson, MdShoppingCart } from "react-icons/md";
+import SearchInput from "@/components/searchElement/SearchInput";
 
 export default function () {
 
@@ -31,15 +32,16 @@ export default function () {
         <CollapseAntd title={'Nav Bar'} text={'<Navbar type_navbar="my"></Navbar>'}></CollapseAntd>
 
         <div className="container-xxl" style={{ outline: '1px solid #000' }}>
-            {/* <TempNavbar
+            <TempNavbar
                 catalog={<Button />}
                 hook={useRef()}
-                basket={<Button isCounterUp={true} icon={<MdShoppingCart size={24} fill={'#969696'} />} counter={0}><span style={{fontWeight:'500'}}>Корзина</span></Button>}
-                login={<Button class_name="py-2" icon={<MdPerson size={24} fill={'#969696'} />} ><span style={{fontWeight:'500'}}>Войти</span></Button>
+                basket={<Button isCounterUp={true} icon={<MdShoppingCart size={24} fill={'#969696'} />} counter={0}><span style={{ fontWeight: '500' }}>Корзина</span></Button>}
+                login={<Button class_name="py-2" icon={<MdPerson size={24} fill={'#969696'} />} ><span style={{ fontWeight: '500' }}>Войти</span></Button>
                 }
                 favorite={<Button icon={<MdFavorite size={24} fill={'#969696'} />} />}>
 
-            </TempNavbar> */}
+            </TempNavbar>
+            <SearchInput />
         </div>
 
         <hr />
