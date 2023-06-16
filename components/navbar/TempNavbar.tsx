@@ -1,23 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FC, ReactNode, RefObject, useState } from "react";
+import { FC, ReactNode, RefObject } from "react";
 import { MdFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import Button from "../buttons/Button";
 
 
 interface TempNavbarProps {
     catalog: ReactNode,
+    search: ReactNode,
     hook: RefObject<HTMLDivElement>,
     onBasket?: () => void,
     onLogin?: () => void,
     onFavorite?: () => void,
     basketCounter: number,
-    onSearch: (search: string) => void,
 }
 
-const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter, onSearch }) => {
+const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter, search }) => {
 
-    const [search, setSearch] = useState('')
 
     return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
 
@@ -81,40 +80,25 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
 
                 <a className="text-decoration-none font-size-16-gray" href="#Какзаказать">+7 (945) 984-41-06</a>
 
-
                 <button className="btn btn-outline-secondary d-flex gap-2">
                     <Image width={20} height={20} src="/kit/ru.svg" alt="lang icon"/>
                     <span className="font-size-16-gray mx-1">RU</span>
                     <MdUnfoldMore size={23} fill="#969696" />
                 </button>
-
             </div>
-
-
-
-
-
-
         </div>
 
 
         <div className="row mb-3 align-items-stretch position-relative" style={{ height: 50 }}>
             <div className="d-flex align-items-stretch " style={{ maxWidth: '256px' }} id="catalog">
-
                 {
                     catalog
                 }
             </div>
             <div className="col d-flex align-items-stretch me-4" id="search">
-                <div className="input-group " >
-                    <input value={search} onChange={(event) => setSearch(event.target.value)} type="text" className="form-control border border-primary" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2" />
-                    <Button
-                        btn_style="btn-primary"
-                        onClick={() => onSearch(search)}
-                        >
-                        Найти
-                    </Button>
-                </div>
+                {
+                    search
+                }
             </div>
             <div className="col-3 d-flex">
                 <div className="d-flex gap-2 w-100 justify-content-end">

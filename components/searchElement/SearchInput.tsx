@@ -5,10 +5,10 @@ interface SearchInputProps {
     searchPhrase?: string,
     handleFocus?: (isFocused: boolean) => void,
     handleUserTyping: (phrase: string) => void,
-    handleSearch: (phrase: string, context: string|null) => void,
+    handleSearch: (phrase: string, context: string | null) => void,
 }
- 
-const SearchInput: FC<SearchInputProps> = ({searchPhrase, handleSearch, handleUserTyping, handleFocus}) => {
+
+const SearchInput: FC<SearchInputProps> = ({ searchPhrase, handleSearch, handleUserTyping, handleFocus }) => {
 
     const searchInput = createRef<HTMLInputElement>()
 
@@ -25,20 +25,22 @@ const SearchInput: FC<SearchInputProps> = ({searchPhrase, handleSearch, handleUs
 
     return (
         <form className="d-flex" onSubmit={handleSearchWrapper}>
-            <input 
-                value={searchPhrase !== undefined ? searchPhrase : '' }
-                ref={searchInput}
-                onFocus={e => handleFocus === undefined ? false : handleFocus(true)}
-                onBlur={e => handleFocus === undefined ? false : handleFocus(false)}
-                onInput={handleUserTypingWrapper}
-                className="input-find flex-grow-1" 
-                type="search" 
-                placeholder="Поиск" 
-                aria-label="Search"
-            />
-            <Button btn_style="btn-primary">Найти</Button>
+            <div className="input-group mb-3">
+                <input
+                    value={searchPhrase !== undefined ? searchPhrase : ''}
+                    ref={searchInput}
+                    onFocus={e => handleFocus === undefined ? false : handleFocus(true)}
+                    onBlur={e => handleFocus === undefined ? false : handleFocus(false)}
+                    onInput={handleUserTypingWrapper}
+                    className="input-find flex-grow-1 form-control"
+                    type="search"
+                    placeholder="Поиск"
+                    aria-label="Search"
+                />
+                <Button btn_style="btn-primary">Найти</Button>
+            </div> 
         </form>
     );
 }
- 
+
 export default SearchInput;
