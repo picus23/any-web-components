@@ -7,18 +7,19 @@ interface ButtonProps {
     iconRightContent?: ReactNode
     counter?: number,
     class_name?: string,
+    counterNearText?: boolean,
     style?: CSSProperties,
     isCounterUp?: boolean,
-    counterPosition?: 'left'   | 'right'
+    counterPosition?: 'left' | 'right'
     contentPosition?: 'center' | 'start'
-    btn_style?: 'btn-primary'  | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
+    btn_style?: 'btn-primary' | 'btn-secondary' | 'btn-outline-secondary' | 'btn-success' | 'btn-outline-primary',
     onClick?: () => void,
     htmlType?: 'submit' | 'reset',
     fontSize?: string,
 }
 
 
-const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize }) => {
+const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize, counterNearText }) => {
     return <button
         onClick={onClick}
         type={htmlType}
@@ -28,9 +29,14 @@ const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, co
         style={style}>
 
         {icon ?? false}
-        {children ?
-            <span className="mx-2" style={{ fontWeight: '500', fontSize: fontSize }}>{children}</span> :
-            <span style={{ fontWeight: '500', fontSize: fontSize }}></span>}
+        <div className="d-flex justify-content-center align-items-center gap-1">
+            {children ?
+                <span className="mx-2" style={{ fontWeight: '500', fontSize: fontSize }}>{children}</span> :
+                <span style={{ fontWeight: '500', fontSize: fontSize }}></span>}
+            {counterNearText ?
+                <span className="bg-white rounded-3 text-black d-flex align-items-center justify-content-center" style={{ fontSize: '10px', fontWeight: 700, width: '20px', height: '20px' }}>{counter}</span> :
+                false}
+        </div>
 
         {counterPosition == 'left' ?
             <span className="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-primary">{counter}
