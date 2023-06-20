@@ -17,7 +17,7 @@ const CartComponent: FC<LinkProps> = ({ link, title, description }) => {
     return <div className="card mb-5" >
         <div className="p-5 d-flex justify-content-center           " style={{background: '#eee'}}>
             <div className="shadow-lg">
-                <Image style={{maxHeight: 500, width: 'auto'}} src={image} alt={link} />
+                {/* <Image style={{maxHeight: 500, width: 'auto'}} src={image} alt={link} /> */}
             </div>
         </div>
         <div className="card-body">

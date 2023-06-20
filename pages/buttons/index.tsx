@@ -18,7 +18,10 @@ export default function () {
         <Link href='/'>Back</Link>
         <hr />
         <div className="d-flex flex-column gap-2">
-
+            <Button
+                counterNearText
+                counter={123}
+            >Показать ещё</Button>
             <div style={{ width: 'max-content' }}>
                 <Button counter={0} btn_style='btn-secondary'>Button</Button>
             </div>
@@ -41,10 +44,10 @@ export default function () {
          `}></CollapseAntd>
 
             <div style={{ width: 'max-content' }}>
-                <ButtonGrayAddRemove 
-                counter={1}
-                onClickAdd={()=>alert('click')}
-                onClickRemove={()=>alert('click')}  />
+                <ButtonGrayAddRemove
+                    counter={1}
+                    onClickAdd={() => alert('click')}
+                    onClickRemove={() => alert('click')} />
             </div>
             <CollapseAntd title={'ButtonGrayAddRemove'} text={`<ButtonGrayAddRemove></ButtonGrayAddRemove>
          `}></CollapseAntd>

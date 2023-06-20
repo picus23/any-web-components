@@ -6,6 +6,7 @@ import CartComponent from "./CartComponent";
 export default function Index() {
   return <div className="p-2">
 
+    <CartComponent link="/buttons" title="Кнопки" description="" />
     <CartComponent link="/slider" title="Слайдер" description="" />
     <CartComponent link="/navbar" title="навигатор" description="" />
     <CartComponent link="/search" title="Подсказки для поиска" description="* подсказок поиска" />
