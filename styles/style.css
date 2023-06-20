@@ -1,7 +1,7 @@
 @charset "UTF-8";
 *::-webkit-scrollbar {
-  width: 12px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 *::-webkit-scrollbar-track {
@@ -9,7 +9,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(28, 28, 28, 0.2666666667);
+  background-color: rgba(136, 136, 136, 0.3333333333);
   border-radius: 20px;
   right: 0;
 }
@@ -54,7 +54,7 @@
   padding: 16px !important;
 }
 .ant-modal-content .ant-modal-body {
-  padding: 0 12px !important;
+  margin: 0 10px !important;
 }
 
 .show-hover .hover {

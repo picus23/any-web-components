@@ -1,11 +1,14 @@
 import { FC, ReactNode} from "react";
-import { MdKeyboardArrowRight, MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import FilterField from "../filter/FilterField";
 
+interface HeaderItem {
+    title: string,
+    preview: string,
+}
 
 interface HeaderCatalogTabsProps {
     active?: number,
-    titles: string[],
+    titles: HeaderItem[],
     children: ReactNode,
     widthColl: number,
     onClick: (index: number) => void,
@@ -20,15 +23,16 @@ const HeaderCatalogTabs: FC<HeaderCatalogTabsProps> = ({ active = 0, titles, chi
 
             <ul className="sticky-top list-group list-group-flush py-2 overflow-auto ">
                 {
-                    titles.map((title: string, index: number) => {
+                    titles.map((item: HeaderItem, index: number) => {
 
                         const isActive = index == active
 
                         return <FilterField
-                            key={title + '_' + index}
-                            title={title}
+                            key={item.title + '_' + index}
+                            title={item.title}
                             onClick={() => onClick(index)}
                             isActive={isActive}
+                            imgUrl={item.preview}
                         />
                     })
                 }
