@@ -6,17 +6,17 @@ import { Tabs, TabsProps } from "antd";
 import { useState } from "react";
 
 
-// const values = [1, 10, 50, 100];
-const values = [-120, -90, -75, -30, -25, -21];
-// const values = [16, 18, 24, 30, 35, 40, 44, 50, 65, 70, 75, 90, 95, 120, 137, 144, 172, 190, 205, 230, 240, 270, 300, 400, 700];
-// const values = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
-const arr1 = [1, 2, 3];
-const arr2 = [4, [5, 6]];
-const arr3 = [7, [8, [9, 10]]];
-// const values = [-120,-90,-75,-30,-12,-1,3, 6, 8, 10, 12, 15, 20, 25, 32, 40, 50, 65, 80];
-// const values = [0.18, 0.63, 0.87, 0.93, 1.2, 1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 7.5, 10, 19, 30, 21000];
-// const values = [120, 140, 210, 220, 340, 450, 560, 943];
-// const values = [2, 4, 6, 10, 20, 40, 100, 200, 300, 400, 500, 1000, 10000];
+const values1 = [-120, -90, -75, -30, -25, -21];
+const values2 = [-20, -7, 0, 1, 10, 50, 100];
+
+// const values1 = [16, 18, 24, 30, 35, 40, 44, 50, 65, 70, 75, 90, 95, 120, 137, 144, 172, 190, 205, 230, 240, 270, 300, 400, 700];
+// const values2 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+
+// const values1 = [0.18, 0.63, 0.87, 0.93, 1.2, 1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 7.5, 10, 19, 30];
+// const values2 = [-0.18, -0.63, -0.87, -0.93, -1.2, -1.4, -2.34, -3.62, -5.57, -6.42, -7.2, -7.5, -10, -19, -30];
+
+// const values1 = [120, 140, 210, 220, 340, 450, 560, 943];
+// const values2 = [-120, -140, -210, -220, -340, -450, -560, -943];
 
 export default function () {
 
@@ -50,7 +50,7 @@ export default function () {
                     <>
                         1
                         <ExpoSlider
-                            data={[values]}
+                            data={[values1]}
                             widthCanvas={553}
                             heightCanvas={300}
                             onChange={() => { }}
@@ -60,8 +60,8 @@ export default function () {
                     : <>
                         2
                         <ExpoSlider
-                            data={[arr1, arr2, arr3]}
-                            widthCanvas={553}
+                            data={[values2]}
+                            widthCanvas={1000}
                             heightCanvas={300}
                             onChange={() => { }}
                         />

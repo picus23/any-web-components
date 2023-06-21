@@ -20,7 +20,7 @@ export default function () {
         <div className="d-flex flex-column gap-2">
             <Button
                 counterNearText
-                counter={123}
+                counter={165}
             >Показать ещё</Button>
             <div style={{ width: 'max-content' }}>
                 <Button counter={0} btn_style='btn-secondary'>Button</Button>

@@ -34,7 +34,7 @@ const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, co
                 <span className="mx-2" style={{ fontWeight: '500', fontSize: fontSize }}>{children}</span> :
                 <span style={{ fontWeight: '500', fontSize: fontSize }}></span>}
             {counterNearText ?
-                <span className="bg-white rounded-3 text-black d-flex align-items-center justify-content-center" style={{ fontSize: '10px', fontWeight: 700, width: '20px', height: '20px' }}>{counter}</span> :
+                <span className="bg-white rounded-3 text-black d-flex align-items-center justify-content-center" style={{ fontSize: '10px', fontWeight: 700, width: '', height: '20px',padding:'0 2px'}}>{counter}</span> :
                 false}
         </div>
 

@@ -26,11 +26,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     let minValue = minPropValue ?? Math.min(...valuesCv);
     let maxValue = maxPropValue ?? Math.max(...valuesCv);
 
-    let [minDisplayValue, setMinDisplayValue] = useState(minValue);
-    let [maxDisplayValue, setMaxDisplayValue] = useState(maxValue);
+    let [minDisplayValue, setMinDisplayValue] = useState(0);
+    let [maxDisplayValue, setMaxDisplayValue] = useState(100);
     useEffect(() => {
-        setMaxDisplayValue(maxValue);
-        setMinDisplayValue(minValue);
+        setMaxDisplayValue(100);
+        setMinDisplayValue(0);
     }, [maxValue, minValue])
 
 
@@ -137,8 +137,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         const progress = document.querySelector('.sliderr .progres') as HTMLElement;
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
         breakpoints.forEach(el => {
-            let leftValue = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
-            if (leftValue > minDisplayValue / maxValue * widthCanvas && leftValue < maxDisplayValue / maxValue * widthCanvas) { // Активно, если breakpoint больше левого пальца и меньше правого
+            let breakpoint_pos = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
+            if (breakpoint_pos > currentPosition && breakpoint_pos < currentPositionMax) { // Активно, если breakpoint больше левого пальца и меньше правого
                 el.classList.add('breakpoint-active')
             } else {
                 el.classList.add('breakpoint')
@@ -147,15 +147,15 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         })
         // Закрашивание синей полосы
         if (maxValue < 0) {
-            progress.style.left = Math.abs(100 - ((minDisplayValue / minValue) * 100)) + '%';
-            progress.style.right = Math.abs(100 - ((maxValue / maxDisplayValue) * 100)) + '%';
+            progress.style.left = Math.abs(((minDisplayValue))) + '%';
+            progress.style.right = Math.abs(100 - maxDisplayValue) + '%';
         }
         else if (minValue < 0) {
-            progress.style.left = Math.abs((100 - (minDisplayValue / minValue) * 100)) + '%';
-            progress.style.right = 100 - ((maxDisplayValue / maxValue) * 100) + '%';
+            progress.style.left = Math.abs(minDisplayValue) + '%';
+            progress.style.right = 100 - maxDisplayValue + '%';
         } else {
-            progress.style.left = (minDisplayValue / maxValue) * 100 + '%';
-            progress.style.right = 100 - ((maxDisplayValue / maxValue) * 100) + '%';
+            progress.style.left = minDisplayValue + '%';
+            progress.style.right = 100 - maxDisplayValue + '%';
         }
     })
 
@@ -166,10 +166,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     let toKeyMax = 0;
     let currentPosition = 0;
     let currentPositionMax = 0;
-    // let currentPosition = Math.floor(minDisplayValue / maxValue * widthCanvas);
-    // let currentPositionMax = Math.ceil(((maxDisplayValue / maxValue) * widthCanvas));
-
-    // console.log({ currentPosition, currentPositionMax })
     let reverseValuesFromSlider: number[] = [];
     let reverseValuesCv: number[] = [];
     let k = 0;
@@ -185,21 +181,25 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     }
     // Конец переворачивания
 
-    // Расчёт Позиций для положительных / отрицательных значений
+    // Расчёт Current Position (зависит от данных, которые отображаются на отрезке (числа)) для положительных / отрицательных значений
+    // Если отрицательное и МИН и МАКС
     if (maxValue < 0) {
-        currentPosition = Math.floor((maxValue / minDisplayValue) / widthCanvas);
-        currentPositionMax = Math.ceil(((maxValue / maxDisplayValue) * widthCanvas));
+        currentPosition = Math.floor(Math.abs((minDisplayValue * widthCanvas) / 100));
+        currentPositionMax = Math.ceil(Math.abs(maxDisplayValue * widthCanvas / 100));
     }
+    // Если отрицательное только MIN
     else if (minValue < 0) {
-        currentPosition = Math.floor(maxValue / minDisplayValue * widthCanvas);
-        currentPositionMax = Math.ceil((maxDisplayValue / maxValue) * widthCanvas);
-    } else {
-        currentPosition = Math.floor(minDisplayValue / maxValue * widthCanvas);
-        currentPositionMax = Math.ceil(((maxDisplayValue / maxValue) * widthCanvas));
+        currentPosition = Math.floor(Math.abs((minDisplayValue * widthCanvas) / 100));
+        currentPositionMax = Math.ceil((maxDisplayValue * widthCanvas) / 100);
     }
-    // console.log({ maxValue })
+    // Если положительные и МИН и МАКС
+    else {
+        currentPosition = Math.floor((minDisplayValue * widthCanvas) / 100);
+        currentPositionMax = Math.ceil((maxDisplayValue * widthCanvas) / 100);
+    }
     console.log({ currentPosition, currentPositionMax })
-    // Позиция Для положительных значений
+
+    // Отрезок между левым и правым значением Для положительных значений
     // Позиция для MIN
     for (let key in valuesFromSlider) {
         if (currentPosition < valuesFromSlider[key]) {
@@ -217,7 +217,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         }
     }
 
-    // Позиция Для отрицательных значений
+    // Отрезок между левым и правым значением Для отрицательных значений
     // Позиция для MIN
     for (let key in reverseValuesFromSlider) {
         if (currentPosition < valuesFromSlider[key]) {
@@ -275,9 +275,10 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPosition - pixFrom;
 
-        var currentValueMin = (valFrom / valTo) * (differenceCurrentPix / differencePix) + valFrom;
+        var currentValueMin = (valFrom - valTo);
+        var currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
 
-        console.log({ pixFrom, pixTo, valFrom, valTo, currentValueMin, differenceCurrentPix, differencePix, currentPosition })
+        // console.log({ pixFrom, pixTo, valFrom, valTo, currentValueMin, differenceCurrentPix, differencePix, currentPosition })
 
         // MAX
         const pixFromMax = reverseValuesFromSlider[fromKeyMax];
@@ -289,7 +290,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differencePixMax = pixFromMax - pixToMax;
         let differenceCurrentPixMax = currentPositionMax - pixToMax;
 
-        var currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) - valToMax;
+        var currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
         // console.log({ pixToMax, pixFromMax, valFromMax, valToMax, differenceCurrentPixMax, differencePixMax, currentValueMax, currentPositionMax })
     }
 
@@ -300,11 +301,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     }, [minDisplayValue, maxDisplayValue])
 
 
-
+    console.log(widthCanvas - currentPositionMax);
     // console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValueMin })  // Поднять выше
     // console.log({ valFromMax, valToMax, pixFromMax, currentPositionMax, pixToMax, currentValueMax, fromKeyMax, toKeyMax })  // Поднять выше
     // console.log('Дроблённый массив на разряды', rankValueCv);
-    console.log('Change Keys', changeKeys);
+    // console.log('Change Keys', changeKeys);
     // console.log('rank', rank)
 
     return <>
@@ -323,8 +324,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
         </div>
         <div style={{ width: widthCanvas }} className="range-input">
-            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-min cs" min={minValue} max={maxValue} value={minDisplayValue} onChange={handleMinValueChange} />
-            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-max cs" min={minValue} max={maxValue} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onChange={handleMinValueChange} />
+            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
         <div className="mt-3" style={{ width: widthCanvas / 2 + 'px', height: '20px', background: 'gray' }}></div>
