@@ -19,8 +19,8 @@ interface ButtonProps {
 }
 
 
-const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize, counterNearText }) => {
-    return <button
+const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize, counterNearText}) => {
+    return <button 
         onClick={onClick}
         type={htmlType}
         className={btn_style
