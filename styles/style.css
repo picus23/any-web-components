@@ -900,6 +900,33 @@ input:checked + .slider:before {
   border: 1px solid #000;
 }
 
+.seria-table-header__navigation {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+}
+.seria-table-header__navigation .micro-dialog {
+  width: 300px;
+  background: #fff;
+  position: absolute;
+  top: calc(100% - 15px);
+  right: 0;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1019607843);
+  border: 1px solid #E8E8E8;
+}
+.seria-table-header__navigation .micro-dialog ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.coll-width {
+  min-width: 240px;
+}
+
 .footer-text {
   width: 360px;
 }
