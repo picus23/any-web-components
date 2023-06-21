@@ -98,21 +98,16 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         //     document.getElementById('yAxisValues').appendChild(value);
         // }
         let percent = [];
+        let k = valuesFromSlider.length - 1;
         // Расчитывает растояние для линий по Y от ширины X (в %)
-        for (let i = 0; i < xAxisValues!.length; i++) {
-            // if (i == 0) {
-            //     percent[i] = 100;
-            // } else {
-                percent[i] = ch - ((valuesFromSlider[i] / cw * 100) / 100 * ch);
-            // }
+        for (let i = 0; i < valuesFromSlider!.length; i++) {
+            if (i == 0) {
+                percent[i] = ch;
+            } else {
+                percent[i] = (valuesFromSlider![k] / ch * 100);
+            }
+            k--;
         }
-        // for (let i = 0; i < xAxisValues!.length; i++) {
-        //     if (xAxisValues[i] < 0) {
-        //         percent[i] = maxValue / xAxisValues![i] * 100;
-        //     } else {
-        //         percent[i] = xAxisValues![i] / maxValue * 100;
-        //     }
-        // }
         console.log('percent 1', percent);
         console.log('valuesFromSlider', valuesFromSlider);
 
