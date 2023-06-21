@@ -22,7 +22,6 @@ interface iChangeKeysEmpty {
 const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, widthCanvas, heightCanvas, onChange, lineWidth = 2 }) => {
     const valuesCv = data.flat(Infinity);
     valuesCv.sort((a, b) => a - b);
-
     let minValue = minPropValue ?? Math.min(...valuesCv);
     let maxValue = maxPropValue ?? Math.max(...valuesCv);
 
@@ -248,6 +247,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differenceCurrentPix = currentPosition - pixFrom;
 
         var currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
+        if (minDisplayValue >= 100) {
+            currentValueMin = maxValue;
+        }
 
         // MAX
         const pixToMax = reverseValuesFromSlider[fromKeyMax];
@@ -260,8 +262,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differenceCurrentPixMax = currentPositionMax - pixToMax
 
         var currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
-        // console.log({ pixFrom, pixTo, valFrom, valTo, currentValueMin, differenceCurrentPix, differencePix })
-        // console.log({ pixToMax, pixFromMax, valFromMax, valToMax, differenceCurrentPixMax, differencePixMax, currentValueMax })
+        if (maxDisplayValue <= 0) {
+            currentValueMax = minValue;
+        }
     }
     // Current Value для отрицательных значений
     else {
@@ -277,6 +280,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
         var currentValueMin = (valFrom - valTo);
         var currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
+        if (minDisplayValue >= 100) {
+            currentValueMin = maxValue;
+        }
 
         // console.log({ pixFrom, pixTo, valFrom, valTo, currentValueMin, differenceCurrentPix, differencePix, currentPosition })
 
@@ -291,13 +297,21 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differenceCurrentPixMax = currentPositionMax - pixToMax;
 
         var currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
-        // console.log({ pixToMax, pixFromMax, valFromMax, valToMax, differenceCurrentPixMax, differencePixMax, currentValueMax, currentPositionMax })
+        if (maxDisplayValue <= 0) {
+            currentValueMax = minValue;
+        }
     }
 
     // Этот useEffect для того, что бы Canvas (график) перерисовывался при переключении без обновления страницы
     useEffect(() => {
         onChange(currentValueMin, currentValueMax)
     }, [minDisplayValue, maxDisplayValue])
+    // if (minDisplayValue > maxDisplayValue) {
+    //     let rangeMin = document.querySelector('.range-min');
+    //     let rangeMax = document.querySelector('.range-max');
+    //     console.log(rangeMin?.value)
+    //     console.log(rangeMax?.value)
+    // }
 
 
     // console.log({ currentPosition, currentPositionMax })
@@ -319,12 +333,12 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             />
         </div>
 
-        <div style={{ width: widthCanvas }} className="sliderr">
+        <div style={{ width: widthCanvas }} className="sliderr" >
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
         </div>
         <div style={{ width: widthCanvas }} className="range-input">
-            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onChange={handleMinValueChange} />
-            <input step={0.01} style={{ width: widthCanvas }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input step={0.01} style={{ width: widthCanvas + 7, left: '-2px' }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onChange={handleMinValueChange} />
+            <input step={0.01} style={{ width: widthCanvas + 7 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
         <div className="mt-3" style={{ width: widthCanvas / 2 + 'px', height: '20px', background: 'gray' }}></div>

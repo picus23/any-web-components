@@ -165,7 +165,6 @@
 
 .sliderr {
   height: 5px;
-  // width: 1000px;
   background: #ddd;
   position: relative;
   top: -4px;
@@ -175,7 +174,7 @@
     background: #c6c6c6;
 
     .progres {
-      background: #0085FF;
+      background: #64b3fd;
     }
 
     .cs::-webkit-slider-thumb {
@@ -198,9 +197,10 @@
 .range-input {
   position: relative;
 
+
   .cs {
     position: absolute;
-    top: -6px;
+    top: -5px;
     height: 5px;
     // width: 1000px;
     background: none;
@@ -248,13 +248,37 @@
     width: 20px;
     box-shadow: 0px 0px 10px #329dff;
     border: 4px solid #0077e5;
-    margin-top: -7px;
+    // margin-top: -7px;
+  }
+}
+
+.range-min.cs::-webkit-slider-thumb {
+  &:hover {
+    left: -3px;
+  }
+}
+
+.range-min.cs::-moz-slider-thumb {
+  &:hover {
+    left: -3px;
+  }
+}
+
+.range-max.cs::-webkit-slider-thumb {
+  &:hover {
+    right: -3px;
+  }
+}
+
+.range-max.cs::-moz-slider-thumb {
+  &:hover {
+    right: -3px;
   }
 }
 
 .breakpoint {
   position: absolute;
-  top: 2.5px;
+  top: 3.5px;
   height: 9px;
   width: 9px;
   background: #fff;
@@ -263,7 +287,22 @@
   pointer-events: auto;
   z-index: 2;
   appearance: none;
+
+  &:hover {
+    height: 12px;
+    width: 12px;
+    border: 3px solid #a8a8a8;
+    top: 3px;
+  }
 }
+
 .breakpoint-active {
   border: 2px solid #84c4ff;
+
+  &:hover {
+    height: 12px;
+    width: 12px;
+    border: 3px solid #0077e5;
+    top: 3px;
+  }
 }

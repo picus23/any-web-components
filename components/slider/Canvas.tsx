@@ -13,8 +13,6 @@ interface CanvasProps {
 const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth }) => {
     const canvasRef = useRef(null)
 
-    const maxValue = Math.max(...valuesCv);
-    const minValue = Math.min(...valuesCv);
 
     const draw = chart => {
         let xAxisValues = valuesCv;
@@ -108,8 +106,9 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             }
             k--;
         }
-        console.log('percent 1', percent);
-        console.log('valuesFromSlider', valuesFromSlider);
+
+        // console.log('percent 1', percent);
+        // console.log('valuesFromSlider', valuesFromSlider);
 
         // Отрисовка вертикальных линий
         function gridV() {
