@@ -2,7 +2,6 @@ import reference from "./ref.png";
 import Link from "next/link";
 import Image from "next/image";
 import ExpoSlider from "@/components/slider/ExpoSlider";
-import { Tabs, TabsProps } from "antd";
 import { useState } from "react";
 
 
@@ -43,14 +42,11 @@ export default function () {
             <div>Подопытный</div>
             <button onClick={() => setCurrent(current + 1)}>click</button>
             {
-                // current % 3 == 0 
-                //     ? current
-                //     :
                 current % 2 == 1 ?
                     <>
                         1
                         <ExpoSlider
-                            data={[values1]}
+                            data={[values2]}
                             widthCanvas={553}
                             heightCanvas={300}
                             onChange={() => { }}
@@ -60,31 +56,13 @@ export default function () {
                     : <>
                         2
                         <ExpoSlider
-                            data={[values2]}
+                            data={[values1]}
                             widthCanvas={1000}
                             heightCanvas={300}
                             onChange={() => { }}
                         />
                     </>
             }
-
-
-            {/* <ExpoSlider
-                data_array={[values]}
-                widthCanvas={553}
-                heightCanvas={300}
-                indexOrder={'1'}
-            />
-            <div className="my-3"></div>
-            <ExpoSlider
-                data_array={[arr1, arr2, arr3]}
-                widthCanvas={553}
-                heightCanvas={300}
-                indexOrder={'2'}
-            /> */}
-
-
-            {/* <div className="mt-2" style={{ width: 553 / 2 + 'px', height: '20px', background: 'red' }}></div> */}
         </div>
 
         <hr />

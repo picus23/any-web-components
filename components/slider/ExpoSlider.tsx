@@ -85,7 +85,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         }
     }
 
-
     // Здесь высчитывается расстояние между значениями (breakpoint (круглешки),числа, текст и т.д.) на графике
     let changeKeys: iChangeKeys = {};
     let changeKeysEmpty: iChangeKeysEmpty = {};
@@ -124,7 +123,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         })
     })
 
-
+    // Здесь создаётся массив с позициями
     let valuesFromSlider: number[] = [];
     let arrKeys = Object.keys(changeKeys);
     for (let i = 0; i < arrKeys.length; i++) {
@@ -169,12 +168,14 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     let reverseValuesFromSlider: number[] = [];
     let reverseValuesCv: number[] = [];
     let k = 0;
-    // Переворачивание массивов для расчитывания Позиции
+    // Переворачивание массивов для расчитывания Позиции отрицательных чисел
+    // Переворачивание массива с позициями
     for (let i = valuesFromSlider.length - 1; i >= 0; i--) {
         reverseValuesFromSlider[k] = valuesFromSlider[i];
         k++;
     }
     k = 0;
+    // Переворачивание массива со значениями
     for (let i = valuesCv.length - 1; i >= 0; i--) {
         reverseValuesCv[k] = valuesCv[i];
         k++;
@@ -197,7 +198,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         currentPosition = Math.floor((minDisplayValue * widthCanvas) / 100);
         currentPositionMax = Math.ceil((maxDisplayValue * widthCanvas) / 100);
     }
-    console.log({ currentPosition, currentPositionMax })
 
     // Отрезок между левым и правым значением Для положительных значений
     // Позиция для MIN
@@ -294,14 +294,13 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         // console.log({ pixToMax, pixFromMax, valFromMax, valToMax, differenceCurrentPixMax, differencePixMax, currentValueMax, currentPositionMax })
     }
 
-
-
+    // Этот useEffect для того, что бы Canvas (график) перерисовывался при переключении без обновления страницы
     useEffect(() => {
         onChange(currentValueMin, currentValueMax)
     }, [minDisplayValue, maxDisplayValue])
 
 
-    console.log(widthCanvas - currentPositionMax);
+    // console.log({ currentPosition, currentPositionMax })
     // console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValueMin })  // Поднять выше
     // console.log({ valFromMax, valToMax, pixFromMax, currentPositionMax, pixToMax, currentValueMax, fromKeyMax, toKeyMax })  // Поднять выше
     // console.log('Дроблённый массив на разряды', rankValueCv);

@@ -14,6 +14,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
     const canvasRef = useRef(null)
 
     const maxValue = Math.max(...valuesCv);
+    const minValue = Math.min(...valuesCv);
 
     const draw = chart => {
         let xAxisValues = valuesCv;
@@ -97,14 +98,23 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         //     document.getElementById('yAxisValues').appendChild(value);
         // }
         let percent = [];
-        // Расчитывает растояние для линий от максимального значения (в %), а не от ширины
+        // Расчитывает растояние для линий по Y от ширины X (в %)
         for (let i = 0; i < xAxisValues!.length; i++) {
-            if (xAxisValues[i] < 0) {
-                percent[i] = Math.abs(maxValue / xAxisValues![i] * 100);
-            } else {
-                percent[i] = xAxisValues![i] / maxValue * 100;
-            }
+            // if (i == 0) {
+            //     percent[i] = 100;
+            // } else {
+                percent[i] = ch - ((valuesFromSlider[i] / cw * 100) / 100 * ch);
+            // }
         }
+        // for (let i = 0; i < xAxisValues!.length; i++) {
+        //     if (xAxisValues[i] < 0) {
+        //         percent[i] = maxValue / xAxisValues![i] * 100;
+        //     } else {
+        //         percent[i] = xAxisValues![i] / maxValue * 100;
+        //     }
+        // }
+        console.log('percent 1', percent);
+        console.log('valuesFromSlider', valuesFromSlider);
 
         // Отрисовка вертикальных линий
         function gridV() {
@@ -137,7 +147,8 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         chart.strokeStyle = '#0085FF';
         chart.lineWidth = lineWidth;
         for (var i = 0; i < valuesFromSlider.length; i++) {
-            chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
+            chart.lineTo(valuesFromSlider[i], percent[i]);
+            // chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
             chart.stroke();
         }
     }
