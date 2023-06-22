@@ -25,7 +25,7 @@ const SearchInput: FC<SearchInputProps> = ({ searchPhrase, handleSearch, handleU
 
     return (
         <form className="d-flex" onSubmit={handleSearchWrapper}>
-            <div className="input-group mb-3">
+            <div className="input-group">
                 <input
                     value={searchPhrase !== undefined ? searchPhrase : ''}
                     ref={searchInput}

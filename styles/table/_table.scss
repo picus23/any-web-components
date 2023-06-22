@@ -1,3 +1,8 @@
+.seria-table-row,
+.seria-table-header {
+    vertical-align: middle;
+}
+
 .seria-table-header__navigation {
     position: absolute;
     right: 0;
@@ -26,5 +31,5 @@
 }
 
 .coll-width {
-    min-width: 240px;
+    min-width: 80px;
 }

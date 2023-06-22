@@ -11,7 +11,7 @@ interface PagetitleProps {
 
 const Pagetitle: FC<PagetitleProps> = ({ pagetitle, onClick, url}) => {
 
-    return <div className="d-flex">
+    return <div className="d-flex" style={{minWidth: 200}}>
         <div className="flex-grow-1 ">
             <span style={{ borderBottom: '2px dashed #ccc' }} role="button" onClick={onClick}>
                 <Link href={url}>
