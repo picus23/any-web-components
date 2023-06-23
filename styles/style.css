@@ -11712,7 +11712,6 @@ textarea.form-control-lg {
   height: 5px;
   background: #ddd;
   position: relative;
-  top: -4px;
   cursor: pointer;
 }
 .sliderr:hover {
@@ -11721,13 +11720,6 @@ textarea.form-control-lg {
 .sliderr:hover .progres {
   background: #64b3fd;
 }
-.sliderr:hover .cs::-webkit-slider-thumb {
-  height: 20px;
-  width: 20px;
-  box-shadow: 0px 0px 10px #329dff;
-  border: 4px solid #0077e5;
-  margin-top: -7px;
-}
 .sliderr .progres {
   height: 5px;
   position: absolute;
@@ -11735,17 +11727,14 @@ textarea.form-control-lg {
   border-radius: 5px;
 }
 
-.range-input {
-  position: relative;
-}
-.range-input .cs {
+.cs {
   position: absolute;
-  top: -5px;
   height: 5px;
   background: none;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  cursor: pointer;
 }
 
 .cs::-webkit-slider-thumb {
@@ -11759,7 +11748,6 @@ textarea.form-control-lg {
   background: #fff;
   appearance: none;
   cursor: pointer;
-  margin-top: -10px;
   position: relative;
   z-index: 4;
 }
@@ -11768,7 +11756,6 @@ textarea.form-control-lg {
   width: 20px;
   box-shadow: 0px 0px 10px #329dff;
   border: 4px solid #0077e5;
-  margin-top: -7px;
 }
 
 .cs::-moz-slider-thumb {
@@ -11782,17 +11769,14 @@ textarea.form-control-lg {
   background: #fff;
   appearance: none;
   cursor: pointer;
-  margin-top: -5px;
+  position: relative;
+  z-index: 4;
 }
 .cs::-moz-slider-thumb:hover {
   height: 20px;
   width: 20px;
   box-shadow: 0px 0px 10px #329dff;
   border: 4px solid #0077e5;
-}
-
-.range-min.cs::-webkit-slider-thumb:hover {
-  left: -3px;
 }
 
 .range-min.cs::-moz-slider-thumb:hover {
@@ -11809,7 +11793,7 @@ textarea.form-control-lg {
 
 .breakpoint {
   position: absolute;
-  top: 3.5px;
+  top: 8px;
   height: 9px;
   width: 9px;
   background: #fff;
@@ -11820,12 +11804,13 @@ textarea.form-control-lg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  cursor: pointer;
 }
 .breakpoint:hover {
   height: 12px;
   width: 12px;
   border: 3px solid #a8a8a8;
-  top: 3px;
+  top: 7px;
 }
 
 .breakpoint-active {
@@ -11835,5 +11820,4 @@ textarea.form-control-lg {
   height: 12px;
   width: 12px;
   border: 3px solid #0077e5;
-  top: 3px;
 }/*# sourceMappingURL=style.css.map */

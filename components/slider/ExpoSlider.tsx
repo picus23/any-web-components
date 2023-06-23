@@ -22,14 +22,25 @@ interface iChangeKeysEmpty {
 const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, widthCanvas, heightCanvas, onChange, lineWidth = 2 }) => {
     const valuesCv = data.flat(Infinity);
     valuesCv.sort((a, b) => a - b);
-    let minValue = minPropValue ?? Math.min(...valuesCv);
-    let maxValue = maxPropValue ?? Math.max(...valuesCv);
 
-    let [minDisplayValue, setMinDisplayValue] = useState(0);
-    let [maxDisplayValue, setMaxDisplayValue] = useState(100);
+    // Ездит вместе с antd слайдером
+    // let minValue = minPropValue ?? Math.min(...valuesCv);
+    // let maxValue = maxPropValue ?? Math.max(...valuesCv);
+
+    let minValue = Math.min(...valuesCv);
+    let maxValue = Math.max(...valuesCv);
+
+
+
+    let [minDisplayValue, setMinDisplayValue] = useState(minPropValue ?? 0);
+    let [maxDisplayValue, setMaxDisplayValue] = useState(maxPropValue ?? 100);
+
+    let [currentValueMinState, setCurrentValueMin] = useState(minValue);
+    let [currentValueMaxState, setCurrentValueMax] = useState(maxValue);
+
     useEffect(() => {
-        setMaxDisplayValue(100);
-        setMinDisplayValue(0);
+        setMinDisplayValue(minPropValue ?? 0);
+        setMaxDisplayValue(maxPropValue ?? 100);
     }, [maxValue, minValue])
 
 
@@ -38,6 +49,14 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     }
     const handleMaxValueChange = (event: any) => {
         setMaxDisplayValue(event.target.value)
+    }
+
+
+    const handleCurrentValueMinState = (event: any) => {
+        setCurrentValueMin(event.target.value)
+    }
+    const handleCurrentValueMaxState = (event: any) => {
+        setCurrentValueMax(event.target.value)
     }
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
@@ -130,12 +149,24 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     }
     valuesFromSlider.sort((a, b) => a - b);
 
+    // Функция для нажимания на breakpoint
+    function clickBreakpoint(el: HTMLElement, pos: number) {
+        let breakpointPos = Math.round(pos / widthCanvas * 100);
+        if (breakpointPos >= 50) {
+            setMaxDisplayValue(breakpointPos);
+        } else {
+            setMinDisplayValue(breakpointPos);
+        }
+    }
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
     useEffect(() => {
         const progress = document.querySelector('.sliderr .progres') as HTMLElement;
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
+
         breakpoints.forEach(el => {
+
             let breakpoint_pos = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
+            el.addEventListener('click', () => { clickBreakpoint(el, breakpoint_pos) });
             if (breakpoint_pos > currentPosition && breakpoint_pos < currentPositionMax) { // Активно, если breakpoint больше левого пальца и меньше правого
                 el.classList.add('breakpoint-active')
             } else {
@@ -156,7 +187,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             progress.style.right = 100 - maxDisplayValue + '%';
         }
     })
-
     // Здесь считаются корректные значения ползунка (которые отображаются) 
     let fromKey = 0;
     let toKey = 0;
@@ -246,9 +276,10 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPosition - pixFrom;
 
-        var currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
-        if (minDisplayValue >= 100) {
-            currentValueMin = maxValue;
+        if (minDisplayValue == 100) {
+            var currentValueMin = maxValue;
+        } else {
+            var currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
         }
 
         // MAX
@@ -262,7 +293,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differenceCurrentPixMax = currentPositionMax - pixToMax
 
         var currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
-        if (maxDisplayValue <= 0) {
+        if (maxDisplayValue == 0) {
             currentValueMax = minValue;
         }
     }
@@ -280,7 +311,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
         var currentValueMin = (valFrom - valTo);
         var currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
-        if (minDisplayValue >= 100) {
+        if (minDisplayValue == 100) {
             currentValueMin = maxValue;
         }
 
@@ -297,7 +328,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         let differenceCurrentPixMax = currentPositionMax - pixToMax;
 
         var currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
-        if (maxDisplayValue <= 0) {
+        if (maxDisplayValue == 0) {
             currentValueMax = minValue;
         }
     }
@@ -306,20 +337,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     useEffect(() => {
         onChange(currentValueMin, currentValueMax)
     }, [minDisplayValue, maxDisplayValue])
-    // if (minDisplayValue > maxDisplayValue) {
-    //     let rangeMin = document.querySelector('.range-min');
-    //     let rangeMax = document.querySelector('.range-max');
-    //     console.log(rangeMin?.value)
-    //     console.log(rangeMax?.value)
-    // }
 
-
-    // console.log({ currentPosition, currentPositionMax })
-    // console.log({ valFrom, valTo, pixFrom, currentPosition, pixTo, currentValueMin })  // Поднять выше
-    // console.log({ valFromMax, valToMax, pixFromMax, currentPositionMax, pixToMax, currentValueMax, fromKeyMax, toKeyMax })  // Поднять выше
-    // console.log('Дроблённый массив на разряды', rankValueCv);
-    // console.log('Change Keys', changeKeys);
-    // console.log('rank', rank)
+    currentValueMin = Math.trunc(currentValueMin * 100) / 100;
+    currentValueMax = Math.trunc(currentValueMax * 100) / 100;
 
     return <>
         <div className="my-2">
@@ -333,24 +353,22 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             />
         </div>
 
-        <div style={{ width: widthCanvas }} className="sliderr" >
+        <div style={{ width: widthCanvas, right: '-2px' }} className="sliderr" >
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
-        </div>
-        <div style={{ width: widthCanvas }} className="range-input">
             <input step={0.01} style={{ width: widthCanvas + 7, left: '-2px' }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onChange={handleMinValueChange} />
             <input step={0.01} style={{ width: widthCanvas + 7 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onChange={handleMaxValueChange} />
         </div>
 
-        <div className="mt-3" style={{ width: widthCanvas / 2 + 'px', height: '20px', background: 'gray' }}></div>
-
         <div className="d-flex justify-content-between my-5">
             <div>
                 <p>currentValueMin: {Math.trunc(currentValueMin * 100) / 100}</p>
-                minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} />
+                <p>currentValueMinState <input type="number" onChange={handleCurrentValueMinState} value={currentValueMinState} /></p>
+                <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>
             </div>
             <div>
                 <p>currentValueMax: {Math.trunc(currentValueMax * 100) / 100}</p>
-                maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} />
+                <p>currentValueMaxState <input type="number" onChange={handleCurrentValueMaxState} value={currentValueMaxState} /></p>
+                <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>
             </div>
         </div>
 

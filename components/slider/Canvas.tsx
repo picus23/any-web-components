@@ -39,7 +39,8 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             element.classList.add('breakpoint')
             element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
-            element.style.left = valuesFromSlider[i] - 2 + 'px';
+            element.style.left = valuesFromSlider[i] + 'px';
+            // element.style.left = valuesFromSlider[i] - 2 + 'px';
         }
         for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
