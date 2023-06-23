@@ -896,6 +896,11 @@ input:checked + .slider:before {
   color: #0085FF !important;
 }
 
+.seria-table-row,
+.seria-table-header {
+  vertical-align: middle;
+}
+
 .seria-table-header__navigation {
   position: absolute;
   right: 0;
@@ -920,7 +925,7 @@ input:checked + .slider:before {
 }
 
 .coll-width {
-  min-width: 240px;
+  min-width: 80px;
 }
 
 .footer-text {
