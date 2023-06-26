@@ -6,6 +6,7 @@ interface ButtonProps {
     icon?: ReactNode,
     iconRightContent?: ReactNode
     counter?: number,
+    padding?: number,
     class_name?: string,
     counterNearText?: boolean,
     style?: CSSProperties,
@@ -19,13 +20,22 @@ interface ButtonProps {
 }
 
 
-const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize, counterNearText}) => {
+const Button: FC<ButtonProps> = ({ children, icon, iconRightContent, onClick, counter, style, btn_style, class_name, contentPosition = 'center', counterPosition, htmlType = 'submit', fontSize, counterNearText, padding = 2}) => {
     return <button 
         onClick={onClick}
         type={htmlType}
-        className={btn_style
-            ? 'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn ' + btn_style
-            : 'd-flex justify-content-' + contentPosition + ' ' + class_name + ' position-relative align-items-center btn btn-primary'}
+        className={
+            `
+                d-flex 
+                justify-content-${contentPosition} 
+                ${class_name} 
+                position-relative 
+                align-items-center 
+                btn 
+                ${btn_style ? btn_style : 'btn-primary'}
+                p-${padding}
+            `
+        }
         style={style}>
 
         {icon ?? false}
