@@ -23,8 +23,11 @@ export default function () {
 
 
     const [current, setCurrent] = useState(1)
-    const [values, setValues] = useState<[number, number]>([20, 80])
-    const [valuess, setValuess] = useState<[number, number]>([20, 50])
+    const [values, setValues] = useState<[number, number]>([-187, -7])
+    const [valuess, setValuess] = useState<[number, number]>([-18, 190])
+    
+    // console.log(values);
+    // console.log(valuess);
 
     return <>
 
@@ -48,7 +51,7 @@ export default function () {
             {
                 current % 2 == 1 ?
                     <>
-                        <Slider range value={values} onChange={(val) => setValues(val)} />
+                        {/* <Slider range value={values} onChange={(val) => setValues(val)} /> */}
                         
                         1
                         <ExpoSlider
@@ -59,13 +62,13 @@ export default function () {
 
                             widthCanvas={553}
                             heightCanvas={300}
-                            onChange={(val) => setValues([val,val])}
+                            onChange={(val) => setValues([values[0],values[1]])}
                             lineWidth={4}
                         />
                     </>
                     : <>
                         2
-                        <Slider range value={valuess} onChange={(val) => setValuess(val)} />
+                        {/* <Slider range value={valuess} onChange={(val) => setValuess(val)} /> */}
                         <ExpoSlider
                             data={[values1]}
                             
@@ -74,7 +77,7 @@ export default function () {
 
                             widthCanvas={1000}
                             heightCanvas={300}
-                            onChange={() => { }}
+                            onChange={(val) => setValuess([val,val])}
                         />
                     </>
             }
