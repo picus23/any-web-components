@@ -19,11 +19,14 @@ const values1 = [0.18, 0.63, 0.87, 0.93, 1.2, 1.4, 2.34, 3.62, 5.57, 6.42, 7.2, 
 // const values1 = [120, 140, 210, 220, 340, 450, 560, 943];
 // const values2 = [-120, -140, -210, -220, -340, -450, -560, -943];
 
+const values3 = [1, 2, 3, 4, 5, 10, 100];
+
+
 export default function () {
 
 
     const [current, setCurrent] = useState(1)
-    const [values, setValues] = useState<[number, number]>([-187, -7])
+    const [values, setValues] = useState<[number, number]>([1, 10])
     const [valuess, setValuess] = useState<[number, number]>([0.7, 26])
 
     return <>
@@ -48,11 +51,13 @@ export default function () {
             {
                 current % 2 == 1 ?
                     <>
-                        <Slider range value={values} onChange={(val) => setValues(val)} min={-200} max={8136}/>
+                        {/* <Slider range value={values} step={0.001} onChange={(val) => setValues(val)} min={1} max={100}/> */}
+                        <input step={0.001} style={{width: '100%'}} type="range" min={1} max={100} value={values[0]}/>
+                        <input step={0.001} style={{width: '100%'}} type="range" min={1} max={100} value={values[1]}/>
                         
                         1
                         <ExpoSlider
-                            data={[values2]}
+                            data={[values3]}
 
                             minPropValue={values[0]}
                             maxPropValue={values[1]}

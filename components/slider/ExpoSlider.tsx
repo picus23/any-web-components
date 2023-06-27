@@ -1,6 +1,6 @@
 import { FC, ReactNode, use, useEffect, useState } from "react";
 import Canvas from "./Canvas";
-import { convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax } from '@/components/slider/convert';
+import { convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax } from './convert';
 
 interface ExpoSliderProps {
     data: [],
@@ -23,12 +23,14 @@ interface iChangeKeysEmpty {
 const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, widthCanvas, heightCanvas, onChange, lineWidth = 2 }) => {
     const valuesCv = data.flat(Infinity);
     valuesCv.sort((a, b) => a - b);
+    
+    console.log({valuesCv})
 
     let minValue = Math.min(...valuesCv);
     let maxValue = Math.max(...valuesCv);
 
     let [minDisplayValue, setMinDisplayValue] = useState(0);
-    let [maxDisplayValue, setMaxDisplayValue] = useState(100);
+    let [maxDisplayValue, setMaxDisplayValue] = useState<number>(100);
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
     let comparisonArray = [-1000, -100, -10, -1, 0, 1, 10, 100, 1000, 10000, 100000];
     let countSubArr = 0;
@@ -44,8 +46,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
     // Происходит присвание значений в подмассивы поразрядно
     let rankValueCv = new Array(countSubArr);
-    var lenghtPrevArr, tempLenght = 0;
-    let prev, curr, indexComparisonArray = 0;
+    let lenghtPrevArr = 0;
+    let tempLenght = 0;
+    let prev = 0;
+    let curr = 0;
+    let indexComparisonArray = 0;
 
     for (let i = 0; i < countSubArr; i++) {
         let position = 0;
@@ -187,27 +192,33 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     currentValueMax = Math.trunc(currentValueMax! * 100) / 100;
 
     const handleMinValueChange = (event: any) => {
-        onChange(tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, event.target.value), currentValueMax);
+        const currentMin = tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, event.target.value)
+        // console.log({currentMin})
+        onChange(currentMin, currentValueMax);
         setMinDisplayValue(event.target.value)
     }
     const handleMaxValueChange = (event: any) => {
-        onChange(currentValueMin, tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, event.target.value));
+        const currentMax = tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, event.target.value)
+        // console.log({currentMax})
+        onChange(currentValueMin, currentMax);
         setMaxDisplayValue(event.target.value)
     }
 
-
+// console.log({valuesFromSlider})
+// console.log({valuesCv})
     // В этом useEffect Мой инпут меняет antd инпут 
     // Этот useEffect для того, что бы Canvas (график) перерисовывался при переключении без обновления страницы
     // useEffect(() => {
     //     onChange(currentValueMin, currentValueMax)
-    //     console.log({ currentValueMin, currentValueMax })
-    //     console.log({ minDisplayValue, maxDisplayValue })
+        // console.log({ currentValueMin, currentValueMax })
+        // console.log({ minDisplayValue, maxDisplayValue })
     // }, [minDisplayValue, maxDisplayValue])
 
 
 
 
     return <>
+        ********
         <div className="my-2">
             <Canvas
                 width={widthCanvas}
@@ -221,8 +232,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
         <div style={{ width: widthCanvas, right: '-2px' }} className="sliderr" >
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
-            <input step={0.01} style={{ width: widthCanvas + 7, left: '-2px' }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onChange={handleMinValueChange} />
-            <input step={0.01} style={{ width: widthCanvas + 7 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onChange={handleMaxValueChange} />
+            <input step={0.01} style={{ width: widthCanvas + 7, left: '-2px' }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onInput={handleMinValueChange} />
+            <input step={0.01} style={{ width: widthCanvas + 7 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onInput={handleMaxValueChange} />
         </div>
 
         <div className="d-flex justify-content-between my-5">
