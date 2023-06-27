@@ -6,6 +6,7 @@ export interface IBreadСrumbs {
     url: string,
     children?: IBreadСrumbs[],
     isFolder?: 0 | 1,
+    serias_id?: string, 
 }
 
 
