@@ -24,10 +24,7 @@ export default function () {
 
     const [current, setCurrent] = useState(1)
     const [values, setValues] = useState<[number, number]>([-187, -7])
-    const [valuess, setValuess] = useState<[number, number]>([-18, 190])
-    
-    // console.log(values);
-    // console.log(valuess);
+    const [valuess, setValuess] = useState<[number, number]>([0.7, 26])
 
     return <>
 
@@ -51,7 +48,7 @@ export default function () {
             {
                 current % 2 == 1 ?
                     <>
-                        {/* <Slider range value={values} onChange={(val) => setValues(val)} /> */}
+                        <Slider range value={values} onChange={(val) => setValues(val)} min={-200} max={8136}/>
                         
                         1
                         <ExpoSlider
@@ -60,24 +57,24 @@ export default function () {
                             minPropValue={values[0]}
                             maxPropValue={values[1]}
 
-                            widthCanvas={553}
+                            widthCanvas={1191}
                             heightCanvas={300}
-                            onChange={(val) => setValues([values[0],values[1]])}
+                            onChange={(min, max) => setValues([min, max])}
                             lineWidth={4}
                         />
                     </>
                     : <>
                         2
-                        {/* <Slider range value={valuess} onChange={(val) => setValuess(val)} /> */}
+                        <Slider range value={valuess} onChange={(val) => setValuess(val)} min={0.18} max={30}/>
                         <ExpoSlider
                             data={[values1]}
                             
                             minPropValue={valuess[0]}
                             maxPropValue={valuess[1]}
 
-                            widthCanvas={1000}
+                            widthCanvas={1191}
                             heightCanvas={300}
-                            onChange={(val) => setValuess([val,val])}
+                            onChange={(min, max) => setValuess([min, max])}
                         />
                     </>
             }
