@@ -928,6 +928,58 @@ input:checked + .slider:before {
   min-width: 80px;
 }
 
+.ExplorerItem {
+  display: flex;
+  padding: 10px 12px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0);
+  margin-bottom: 2px;
+}
+.ExplorerItem:active {
+  border: 1px solid #0085FF;
+}
+.ExplorerItem:hover {
+  background: rgba(229, 243, 255, 0.5058823529);
+}
+.ExplorerItem .ExplorerItemCheckbox {
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(5px);
+}
+.ExplorerItem.active {
+  background: #E5F3FF;
+}
+.ExplorerItem.active .ExplorerItemCheckbox {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.ExplorerItem .ExplorerItemTitle {
+  flex: 1 0 0;
+  color: #585757;
+}
+
+.ExplorerItemButton {
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0);
+  padding: 0px 2px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+.ExplorerItemButton:hover {
+  background: rgba(0, 132, 255, 0.1882352941);
+}
+.ExplorerItemButton:active {
+  border: 1px solid #0085FF;
+}
+
 .footer-text {
   width: 360px;
 }

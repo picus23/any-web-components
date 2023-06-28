@@ -1,0 +1,67 @@
+$active: #0085FF;
+
+.ExplorerItem {
+    display: flex;
+    padding: 10px 12px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    transition: all .3s;
+    border: 1px solid #fff0;
+    margin-bottom: 2px;
+
+    &:active {
+        border: 1px solid $active;
+    }
+
+    &:hover {
+        background: #e5f3ff81;
+    }
+
+    .ExplorerItemCheckbox {
+        visibility: hidden;
+        transition: all .3s ease-in-out;
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    &.active {
+        background: #E5F3FF;
+        
+
+        .ExplorerItemCheckbox {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    }
+
+
+
+    .ExplorerItemTitle {
+        flex: 1 0 0;
+        color: #585757;
+    }
+
+}
+
+
+.ExplorerItemButton {
+    transition: all .3s ease-in-out;
+    border: 1px solid #fff0;
+    border-radius: 3px;
+    background: #fff0;
+    padding: 0px 2px;
+    
+    width: 25px;
+    height: 25px;
+    text-align: center;
+
+    &:hover {
+        background: #0084ff30;
+    }
+
+    &:active {
+        border: 1px solid $active;
+    }
+}
