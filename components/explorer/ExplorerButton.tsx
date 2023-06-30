@@ -13,8 +13,8 @@ const ExolorerButton: FC<ExolorerButtonProps> = ({onClick, direction = 'forward'
     }}>
         {
             direction == 'forward' 
-                ?<MdArrowForwardIos size={20} color='#969696' />
-                :<MdArrowBackIosNew size={20} color='#969696'/>
+                ?<MdArrowForwardIos size={18} color='#969696' />
+                :<MdArrowBackIosNew size={18} color='#969696'/>
         }
     </button>;
 }
