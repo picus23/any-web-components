@@ -14,7 +14,7 @@ interface FieldSeriesProps {
 
 function FieldSeries(props: FieldSeriesProps) {
     return (
-        <div className="search-field my-2">
+        <div className="search-field">
             <div className='d-flex align-items-center'>
                 {props.icon ?? <Image width={100} height={100} src="/kit/empty_square.png" alt="" />}
                 <div className="d-flex flex-column mx-2 justify-content-start">
