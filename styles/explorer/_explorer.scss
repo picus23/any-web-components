@@ -1,46 +1,61 @@
 $active: #0085FF;
+$hoverColor: rgb(0 132 255 / 7%);
 
 .ExplorerItem {
     display: flex;
-    padding: 10px 12px;
-    align-items: center;
-    gap: 8px;
+    align-self: stretch;
     align-self: stretch;
     transition: all .3s;
-    border: 1px solid #fff0;
-    margin-bottom: 2px;
+    user-select: none;
 
-    &:active {
-        border: 1px solid $active;
+
+    .ExplorerItemCheckbox {
+        padding: 10px;
+        transition: all .3s ease-in-out;
     }
 
     &:hover {
-        background: #e5f3ff81;
+        background: $hoverColor;
     }
 
-    .ExplorerItemCheckbox {
-        visibility: hidden;
-        transition: all .3s ease-in-out;
-        opacity: 0;
-        transform: translateY(5px);
-    }
-
-    &.active {
-        background: #E5F3FF;
-        
-
-        .ExplorerItemCheckbox {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+    &:hover {
+        .hoverIcon {
+            &:hover {
+                background: $hoverColor;
+            }
         }
+
     }
+
 
 
 
     .ExplorerItemTitle {
-        flex: 1 0 0;
-        color: #585757;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        gap: 10px;
+
+        .title {
+            color: #585757;
+            flex-grow: 1;
+        }
+
+        .folderArrow {
+            color: #969696;
+            margin-top: -1px;
+        }
+
+
+        &.folder:hover {
+            background: $hoverColor;
+            
+            .folderArrow {
+                color: #0085FF;
+            }
+        }
+
     }
 
 }
@@ -52,7 +67,7 @@ $active: #0085FF;
     border-radius: 3px;
     background: #fff0;
     padding: 0px 2px;
-    
+
     width: 25px;
     height: 25px;
     text-align: center;

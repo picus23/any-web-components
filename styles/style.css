@@ -930,37 +930,43 @@ input:checked + .slider:before {
 
 .ExplorerItem {
   display: flex;
-  padding: 10px 12px;
-  align-items: center;
-  gap: 8px;
+  align-self: stretch;
   align-self: stretch;
   transition: all 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0);
-  margin-bottom: 2px;
-}
-.ExplorerItem:active {
-  border: 1px solid #0085FF;
-}
-.ExplorerItem:hover {
-  background: rgba(229, 243, 255, 0.5058823529);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .ExplorerItem .ExplorerItemCheckbox {
-  visibility: hidden;
+  padding: 10px;
   transition: all 0.3s ease-in-out;
-  opacity: 0;
-  transform: translateY(5px);
 }
-.ExplorerItem.active {
-  background: #E5F3FF;
+.ExplorerItem:hover {
+  background: rgba(0, 132, 255, 0.07);
 }
-.ExplorerItem.active .ExplorerItemCheckbox {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.ExplorerItem:hover .hoverIcon:hover {
+  background: rgba(0, 132, 255, 0.07);
 }
 .ExplorerItem .ExplorerItemTitle {
-  flex: 1 0 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 10px;
+}
+.ExplorerItem .ExplorerItemTitle .title {
   color: #585757;
+  flex-grow: 1;
+}
+.ExplorerItem .ExplorerItemTitle .folderArrow {
+  color: #969696;
+  margin-top: -1px;
+}
+.ExplorerItem .ExplorerItemTitle.folder:hover {
+  background: rgba(0, 132, 255, 0.07);
+}
+.ExplorerItem .ExplorerItemTitle.folder:hover .folderArrow {
+  color: #0085FF;
 }
 
 .ExplorerItemButton {
