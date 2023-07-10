@@ -16,7 +16,7 @@ function ButtonShow(props: ButtonShowProps) {
     // const ButtonShow: FC<ButtonShowProps> = ({ children, icon, icon2, counter, btn_style, type_counter, class_name }) => {
     return <button className={'my-btn-' + props.btn_style}>
         <span className={props.text_style}>{props.text}</span>
-        <span className="counter-show">{props.counter ?? 0}</span>
+        {/* <span className="counter-show">{props.counter ?? 0}</span> */}
     </button>
 }
 
