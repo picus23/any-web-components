@@ -15,7 +15,7 @@ const SearchInput: FC<SearchInputProps> = ({ searchPhrase, handleSearch, handleU
     const handleSearchWrapper = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const phrase = searchInput.current?.value === undefined ? '' : searchInput.current.value;
-        handleSearch(phrase, null)
+        handleSearch(phrase, 'search')
     }
 
     const handleUserTypingWrapper = (event: FormEvent<HTMLInputElement>) => {

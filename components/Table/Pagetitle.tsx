@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { MdInfo } from "react-icons/md";
 import { NextUrl } from "../breadСrumbs/interface";
 
 interface PagetitleProps {
-    pagetitle: string,
+    pagetitle: string | ReactNode,
     onClick?: () => void,
     url: NextUrl,
 }
 
 const Pagetitle: FC<PagetitleProps> = ({ pagetitle, onClick, url}) => {
+
 
     return <div className="d-flex" style={{minWidth: 200}}>
         <div className="flex-grow-1 ">
