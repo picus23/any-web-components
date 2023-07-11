@@ -4,25 +4,25 @@ import { MdArrowForward } from 'react-icons/md'
 import ButtonGrayArrow from '../../buttons/ButtonGrayArrow'
 
 interface FieldSeriesProps {
-    title: string,
+    title: ReactNode,
     subtitle?: string,
-    icon?: ReactNode,
+    icon?: string,
     characteristics?: ReactNode[],
     handleArrowClick?: () => void,
 }
 
 
-function FieldSeries(props: FieldSeriesProps) {
+function FieldSeries({ title, subtitle, icon, characteristics, handleArrowClick }: FieldSeriesProps) {
     return (
-        <div className="search-field">
+        <div className="search-field my-1">
             <div className='d-flex align-items-center'>
-                {props.icon ?? <Image width={100} height={100} src="/kit/empty_square.png" alt="" />}
+                {!!icon && <Image width={64} height={64} src={icon} alt="" />}
                 <div className="d-flex flex-column mx-2 justify-content-start">
-                    <span className="font-size-20 fw-500">{props.title}</span>
-                    {props.subtitle ? <span className="font-size-16-gray fw-500">{props.subtitle}</span> : false}
+                    <span className="font-size-20 fw-500">{title}</span>
+                    {!!subtitle && <span className="font-size-16-gray fw-500">{subtitle}</span>}
                 </div>
             </div>
-            <ButtonGrayArrow onClick={props.handleArrowClick} />
+            <ButtonGrayArrow onClick={handleArrowClick} />
         </div>
     )
 }
