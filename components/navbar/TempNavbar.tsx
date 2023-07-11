@@ -23,7 +23,7 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
         <div className="row align-items-center mb-3">
             <div className="col-3">
                 <Link href="/">
-                    <Image width={200} height={70} src="/kit/logo.png" alt="logo" />
+                    <Image width={200} height={70} src="/kit/logo.svg" alt="logo" />
                 </Link>
             </div>
 

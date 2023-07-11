@@ -20,7 +20,7 @@ const Navbar: FC<NavbarProps> = ({ logo, children, type_navbar }) => {
         <div className="navbar-my">
             <div className="row justify-content-between">
                 <div className="col-2">
-                    <Image width={50} height={50} src="/kit/logo.png" alt="" />
+                    <Image width={50} height={50} src="/kit/logo.svg" alt="" />
                 </div>
                 <ul className="navbar col-5">
                     <li className="nav-item-my active"><a className="nav-link" href="">Главная</a></li>
