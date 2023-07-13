@@ -16,7 +16,14 @@ const FilterSuggest: FC<FilterSuggestProps> = ({ title, icon, isSuggest = false,
         <span className="font-size-16-gray text-overflow">{title}</span>
         {
             isSuggest ?
-                <span className="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-primary rounded-circle">
+                <span 
+                    className="position-absolute top-0 start-100 translate-middle rounded-circle highlight" 
+                    style={{
+                        padding: '5px !important', 
+                        marginLeft: -5, 
+                        border: '1px solid rgb(197 165 35)'
+                    }}
+                >
                     <span className="visually-hidden">New alerts</span>
                 </span>
                 : false
