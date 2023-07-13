@@ -87,8 +87,8 @@
 highlight,
 mark,
 .mark {
-  background-color: #FACC15;
-  padding: 3px 0 !important;
+  background-color: #f7f21a;
+  padding: 3px 0;
   border-radius: 3px !important;
 }
 

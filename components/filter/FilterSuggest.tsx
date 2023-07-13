@@ -19,7 +19,7 @@ const FilterSuggest: FC<FilterSuggestProps> = ({ title, icon, isSuggest = false,
                 <span 
                     className="position-absolute top-0 start-100 translate-middle rounded-circle highlight" 
                     style={{
-                        padding: '5px !important', 
+                        padding: 5, 
                         marginLeft: -5, 
                         border: '1px solid rgb(197 165 35)'
                     }}
