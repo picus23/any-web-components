@@ -8,8 +8,6 @@ let fromKeyMax = 0;
 let toKeyMax = 0;
 var minPosAfterRenderUseEffect = 0;
 var maxPosAfterRenderUseEffect = 0;
-let currentPositionMin = 0;
-let currentPositionMax = 0;
 var currentValueMin: number | undefined = 0;
 var currentValueMax: number | undefined = 0;
 
@@ -20,7 +18,10 @@ function convertValueToPercent(
     valuesCv: any,
     minPropValue: number | undefined,
     maxPropValue: number | undefined,
-    widthCanvas: number) {
+    widthCanvas: number,
+    currentPositionMin: number,
+    currentPositionMax: number,
+) {
     // Pos After Render для положительных
     // MIN
     for (let key in valuesCv) {
@@ -69,6 +70,7 @@ function convertValueToPercent(
 
         const valFrom = valuesCv[fromValueMin];
         const valTo = valuesCv[toValueMin];
+
 
         let differencePixMin = pixTo - pixFrom;
         let differcenceValueMin = valTo - valFrom;
@@ -127,18 +129,18 @@ function convertValueToPercent(
     return [minPosAfterRenderUseEffect, maxPosAfterRenderUseEffect];
 }
 
-
 // Конвертер % в значения
 function convertPercentToValue(
     valuesFromSlider: number[],
     reverseValuesFromSlider: number[],
-    valuesCv: any,
-    reverseValuesCv: number[],
     minValue: number | undefined,
     maxValue: number | undefined,
     widthCanvas: number,
     minDisplayValue: number,
     maxDisplayValue: number) {
+
+    var currentPositionMin = 0;
+    var currentPositionMax = 0;
 
     // Расчёт Current Position (зависит от данных, которые отображаются на отрезке (числа)) для положительных / отрицательных значений
     // Если отрицательное и МИН и МАКС
@@ -193,80 +195,12 @@ function convertPercentToValue(
         }
     }
 
-    // Current Value для положительных значений
-    if (minValue! >= 0 && maxValue! >= 0) {
-        // MIN
-        const pixFrom = valuesFromSlider[fromKey];
-        const pixTo = valuesFromSlider[toKey];
-
-        const valFrom = valuesCv[fromKey];
-        const valTo = valuesCv[toKey];
-
-        let differencePix = pixTo - pixFrom;
-        let differenceCurrentPix = currentPositionMin - pixFrom;
-
-        if (minDisplayValue == 100) {
-            currentValueMin = maxValue;
-        } else {
-            currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
-        }
-
-        // MAX
-        const pixToMax = reverseValuesFromSlider[fromKeyMax];
-        const pixFromMax = reverseValuesFromSlider[toKeyMax];
-
-        const valFromMax = reverseValuesCv[fromKeyMax];
-        const valToMax = reverseValuesCv[toKeyMax];
-
-        let differencePixMax = pixFromMax - pixToMax;
-        let differenceCurrentPixMax = currentPositionMax - pixToMax
-
-        if (maxDisplayValue == 0) {
-            currentValueMax = minValue;
-        } else {
-            currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
-        }
-    }
-    // Current Value для отрицательных значений
-    else {
-        // MIN
-        const pixTo = valuesFromSlider[fromKey];
-        const pixFrom = valuesFromSlider[toKey];
-
-        const valTo = valuesCv[fromKey];
-        const valFrom = valuesCv[toKey];
-
-        let differencePix = pixTo - pixFrom;
-        let differenceCurrentPix = currentPositionMin - pixFrom;
-
-        // currentValueMin = (valFrom - valTo);
-        if (minDisplayValue == 100) {
-            currentValueMin = maxValue;
-        } else {
-            currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
-        }
-
-        // MAX
-        const pixFromMax = reverseValuesFromSlider[fromKeyMax];
-        const pixToMax = reverseValuesFromSlider[toKeyMax];
-
-        const valFromMax = reverseValuesCv[fromKeyMax];
-        const valToMax = reverseValuesCv[toKeyMax];
-
-        let differencePixMax = pixFromMax - pixToMax;
-        let differenceCurrentPixMax = currentPositionMax - pixToMax;
-
-        if (maxDisplayValue == 0) {
-            currentValueMax = minValue;
-        } else {
-            currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
-        }
-    }
-
-    return [currentValueMin, currentValueMax, currentPositionMin, currentPositionMax];
+    return [currentPositionMin, currentPositionMax];
 }
 
-function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, valuesCv: any, minDisplayValue: any) {
+// Конвертер МИН % в значения
+function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, valuesCv: any, currentPositionMin: any, minDisplayValue: any) {
+    // Current Value для Положительных значений
     if (minValue! >= 0 && maxValue! >= 0) {
         // MIN
         const pixFrom = valuesFromSlider[fromKey];
@@ -295,16 +229,18 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPositionMin - pixFrom;
 
-        // currentValueMin = (valFrom - valTo);
         if (minDisplayValue == 100) {
             currentValueMin = maxValue;
         } else {
             currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
         }
     }
+
     return currentValueMin;
 }
-function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any, reverseValuesCv: any, maxDisplayValue: any) {
+
+// Конвертер МАКС % в значения
+function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any, reverseValuesCv: any, currentPositionMax: any, maxDisplayValue: any) {
     if (minValue! >= 0 && maxValue! >= 0) {
         // MAX
         const pixToMax = reverseValuesFromSlider[fromKeyMax];
@@ -339,6 +275,8 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
             currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
         }
     }
+    // console.log({ currentValueMin, currentValueMax })
     return currentValueMax;
 }
+
 export { convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax };

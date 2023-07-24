@@ -53,7 +53,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 strValue = xAxisValues![i] + '';
                 lengthStrValue = strValue.length - 2 + '';
                 text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
-
+                xAxisValue.style.top = '20px';
                 xAxisValue.appendChild(text);
                 verticalLine!.appendChild(xAxisValue);
                 verticalLine!.appendChild(breakpoint);
@@ -136,16 +136,16 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         gridV();
 
         // Отрисовка линии на графике
-        var chrt = document.getElementById("chart");
-        chart.moveTo(0, chrt);
-        chart.beginPath();
-        chart.strokeStyle = '#0085FF';
-        chart.lineWidth = lineWidth;
-        for (var i = 0; i < valuesFromSlider.length; i++) {
-            chart.lineTo(valuesFromSlider[i], percent[i]);
-            // chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
-            chart.stroke();
-        }
+        // var chrt = document.getElementById("chart");
+        // chart.moveTo(0, chrt);
+        // chart.beginPath();
+        // chart.strokeStyle = '#0085FF';
+        // chart.lineWidth = lineWidth;
+        // for (var i = 0; i < valuesFromSlider.length; i++) {
+        //     chart.lineTo(valuesFromSlider[i], percent[i]);
+        //     // chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
+        //     chart.stroke();
+        // }
     }
 
     useEffect(() => {

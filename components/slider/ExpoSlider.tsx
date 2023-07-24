@@ -23,8 +23,6 @@ interface iChangeKeysEmpty {
 const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, widthCanvas, heightCanvas, onChange, lineWidth = 2 }) => {
     const valuesCv = data.flat(Infinity);
     valuesCv.sort((a, b) => a - b);
-    
-    console.log({valuesCv})
 
     let minValue = Math.min(...valuesCv);
     let maxValue = Math.max(...valuesCv);
@@ -81,39 +79,25 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     let changeKeys: iChangeKeys = {};
     let changeKeysEmpty: iChangeKeysEmpty = {};
     let rank: number[] = [];
-    let iter = 0;
     let maxRange = 0;
-    let prevValue = 0;
-    rankValueCv.map((array, index) => {
-        let rangeEverySubArray = (widthCanvas / countSubArr) * (index + 1)
-        if (index == 0) {
-            var firstValue = 0;
+    let arrMaxRange = [];
+    let distanceBetweenPointPx = widthCanvas * 2 / valuesCv.length;
+    // Расчитывается значение, но 1 ключ (это для последнего), а последний для первого. 
+    for (let i = 0; i < valuesCv.length; i++) {
+        if (i === 0) {
+            let firstPos = 0;
+            arrMaxRange[firstPos] = i;
         } else {
-            firstValue = 1;
+            maxRange = Math.ceil(distanceBetweenPointPx + maxRange * 0.9);           //Здесь расчёт расстояния между значениями
+            arrMaxRange[maxRange] = i;
         }
-        // Подмассив (разряды до 10,100,1000 и т.д.)
-        array.map((item, index) => {
-            if (firstValue == 0) {
-                changeKeys[firstValue] = item;
-                changeKeysEmpty[firstValue] = ' ';
-                prevValue = firstValue;
-                firstValue = 1;
-            }
-            else if (index == array.length - 1) {
-                prevValue = rangeEverySubArray;
-                changeKeys[rangeEverySubArray] = item;
-                changeKeysEmpty[rangeEverySubArray] = ' ';
-                rank[iter] = item;
-                iter++;
-            }
-            else {
-                maxRange = Math.ceil(((rangeEverySubArray - prevValue) / 6) + prevValue);                   //Здесь расчёт расстояния между значениями
-                prevValue = maxRange;
-                changeKeys[maxRange] = item;
-                changeKeysEmpty[maxRange] = ' ';
-            }
-        })
-    })
+    }
+    let keyChangeKeys = Object.keys(arrMaxRange.reverse());
+    for (let i = 0; i < valuesCv.length; i++) {
+        i === 0 ? changeKeys[0] = valuesCv[i] :
+            changeKeys[+keyChangeKeys[i]] = valuesCv[i];
+    }
+    console.log('changeKeys', changeKeys)
 
     // Здесь создаётся массив с позициями
     let valuesFromSlider: number[] = [];
@@ -161,6 +145,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             progress.style.right = 100 - maxDisplayValue + '%';
         }
     })
+
     // Здесь считаются корректные значения ползунка (которые отображаются) 
     let reverseValuesFromSlider: number[] = [];
     let reverseValuesCv: number[] = [];
@@ -181,42 +166,28 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
     // Конвертирует значения ползунка в %
     useEffect(() => {
-        let [minPosAfterRenderUseEffect, maxPosAfterRenderUseEffect] = convertValueToPercent(valuesFromSlider, reverseValuesFromSlider, valuesCv, minPropValue, maxPropValue, widthCanvas);
+        let [minPosAfterRenderUseEffect, maxPosAfterRenderUseEffect] = convertValueToPercent(valuesFromSlider, reverseValuesFromSlider, valuesCv, minPropValue, maxPropValue, widthCanvas, currentPositionMin, currentPositionMax);
         setMinDisplayValue(minPropValue ? minPosAfterRenderUseEffect : 0);
         setMaxDisplayValue(maxPropValue ? maxPosAfterRenderUseEffect : 100);
     }, [maxPropValue, minPropValue])
 
     // Конвертирует % ползунка в значения 
-    let [currentValueMin, currentValueMax, currentPositionMin, currentPositionMax] = convertPercentToValue(valuesFromSlider, reverseValuesFromSlider, valuesCv, reverseValuesCv, minValue, maxValue, widthCanvas, minDisplayValue, maxDisplayValue);
-    currentValueMin = Math.trunc(currentValueMin! * 100) / 100;
-    currentValueMax = Math.trunc(currentValueMax! * 100) / 100;
+    let [currentPositionMin, currentPositionMax] = convertPercentToValue(valuesFromSlider, reverseValuesFromSlider, minValue, maxValue, widthCanvas, minDisplayValue, maxDisplayValue);
+    let currentValueMin = tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, currentPositionMin, minDisplayValue)
+    let currentValueMax = tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, currentPositionMax, maxDisplayValue)
 
     const handleMinValueChange = (event: any) => {
-        const currentMin = tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, event.target.value)
-        // console.log({currentMin})
-        onChange(currentMin, currentValueMax);
+        const currentMin = tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, currentPositionMin, event.target.value)
+        onChange(currentMin!, currentValueMax!);
         setMinDisplayValue(event.target.value)
     }
     const handleMaxValueChange = (event: any) => {
-        const currentMax = tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, event.target.value)
-        // console.log({currentMax})
-        onChange(currentValueMin, currentMax);
+        const currentMax = tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, currentPositionMax, event.target.value)
+        onChange(currentValueMin!, currentMax!);
         setMaxDisplayValue(event.target.value)
     }
-
-// console.log({valuesFromSlider})
-// console.log({valuesCv})
-    // В этом useEffect Мой инпут меняет antd инпут 
-    // Этот useEffect для того, что бы Canvas (график) перерисовывался при переключении без обновления страницы
-    // useEffect(() => {
-    //     onChange(currentValueMin, currentValueMax)
-        // console.log({ currentValueMin, currentValueMax })
-        // console.log({ minDisplayValue, maxDisplayValue })
-    // }, [minDisplayValue, maxDisplayValue])
-
-
-
-
+    // console.log(valuesFromSlider)
+    // console.log({ valuesCv, changeKeys })
     return <>
         ********
         <div className="my-2">
@@ -232,18 +203,18 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
 
         <div style={{ width: widthCanvas, right: '-2px' }} className="sliderr" >
             <div className='progres'></div> {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
-            <input step={0.01} style={{ width: widthCanvas + 7, left: '-2px' }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onInput={handleMinValueChange} />
-            <input step={0.01} style={{ width: widthCanvas + 7 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onInput={handleMaxValueChange} />
+            <input step={0.01} style={{ width: widthCanvas, left: '-2px' }} type="range" className="range-min cs" min={0} max={100} value={minDisplayValue} onInput={handleMinValueChange} />
+            <input step={0.01} style={{ width: widthCanvas + 8 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onInput={handleMaxValueChange} />
         </div>
 
         <div className="d-flex justify-content-between my-5">
             <div>
-                <p>currentValueMin: {Math.trunc(currentValueMin * 100) / 100}</p>
-                <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>
+                <p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>
+                {/* <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p> */}
             </div>
             <div>
-                <p>currentValueMax: {Math.trunc(currentValueMax * 100) / 100}</p>
-                <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>
+                <p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>
+                {/* <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p> */}
             </div>
         </div>
 
