@@ -987,6 +987,24 @@ input:checked + .slider:before {
   border: 1px solid #0085FF;
 }
 
+.galery-wrapper .galery-controls {
+  opacity: 0;
+  transition: 0.4s;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  aspect-ratio: 1/1;
+  width: 40px;
+  top: 80px;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.0588235294);
+}
+.galery-wrapper .galery-controls:hover {
+  border: 1px solid rgba(0, 0, 0, 0.2039215686);
+}
+.galery-wrapper:hover .galery-controls {
+  opacity: 1;
+}
+
 .footer-text {
   width: 360px;
 }
