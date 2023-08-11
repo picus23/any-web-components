@@ -15,7 +15,7 @@ const Marker: FC<MarkerProps> = ({ title, onClick, onClose }) => {
     return <button
             className={`btn marker ${false ? 'btn-primary' : 'btn-outline-secondary'} d-inline-block me-1 px-3 btn-sm rounded-5 mb-1 bg-info-subtle text-emphasis-info`}
         >
-            <span className="marker-title" onClick={onClick}>
+            <span className="marker-title text-nowrap" onClick={onClick}>
                 {title}
             </span>
 
