@@ -212,11 +212,8 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPositionMin - pixFrom;
 
-        if (minDisplayValue == 100) {
-            currentValueMin = maxValue;
-        } else {
-            currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
-        }
+        minDisplayValue === 100 ? currentValueMin = maxValue : currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
+        minDisplayValue === 0 ? currentValueMin = 0 : currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
     } else {
         // Current Value для отрицательных значений
         // MIN
@@ -257,6 +254,7 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
         } else {
             currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
         }
+        maxDisplayValue === 100 ? currentValueMax = maxValue : currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
     } else {
         // Current Value для отрицательных значений
         // MAX

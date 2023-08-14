@@ -79,10 +79,15 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     let changeKeys: iChangeKeys = {};
     let changeKeysEmpty: iChangeKeysEmpty = {};
     let rank: number[] = [];
+    let valuePos = 0;
+    let valuePosPercent = 0;
+    let generalValue = [];
+    let noEmptyGeneralValue = [];
+    let endpoints = [0, 100, 500, 1300, 2900, 6100, 12500];
     let maxRange = 0;
     let arrMaxRange = [];
     let distanceBetweenPointPx = widthCanvas * 2 / valuesCv.length;
-    // Расчитывается значение, но 1 ключ (это для последнего), а последний для первого. 
+    // Расчитывается позиция, но 1 ключ (должен быть последним), а последний ключ первым (не правильно, приходиться переворачивать массив). 
     for (let i = 0; i < valuesCv.length; i++) {
         if (i === 0) {
             let firstPos = 0;
@@ -95,9 +100,21 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
     let keyChangeKeys = Object.keys(arrMaxRange.reverse());
     for (let i = 0; i < valuesCv.length; i++) {
         i === 0 ? changeKeys[0] = valuesCv[i] :
-            changeKeys[+keyChangeKeys[i]] = valuesCv[i];
+            changeKeys[Number(keyChangeKeys[i])] = valuesCv[i];
     }
-    console.log('changeKeys', changeKeys)
+    // Эндпоинты
+    for (let i = 0; i < endpoints.length; i++) {
+        if (i === endpoints.length - 1) {
+            generalValue[widthCanvas] = endpoints[i];
+        } else {
+            valuePosPercent = endpoints[i] / 10;
+            generalValue[valuePosPercent] = endpoints[i]
+        }
+    }
+    generalValue.forEach(el => {
+        noEmptyGeneralValue.push(el);
+    })
+    console.log('noEmptyGeneralValue',noEmptyGeneralValue);
 
     // Здесь создаётся массив с позициями
     let valuesFromSlider: number[] = [];
@@ -186,7 +203,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
         onChange(currentValueMin!, currentMax!);
         setMaxDisplayValue(event.target.value)
     }
-    // console.log(valuesFromSlider)
     // console.log({ valuesCv, changeKeys })
     return <>
         ********
@@ -196,6 +212,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
                 height={heightCanvas}
                 valuesFromSlider={valuesFromSlider}
                 valuesCv={valuesCv}
+                endpoints={noEmptyGeneralValue}
                 rank={rank}
                 lineWidth={lineWidth}
             />
