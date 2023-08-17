@@ -18,7 +18,7 @@ interface TempNavbarProps {
 const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter, search }) => {
 
 
-    return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom">
+    return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom" style={{top: -80}}>
 
         <div className="row align-items-center mb-3">
             <div className="col-3">

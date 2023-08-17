@@ -18,10 +18,10 @@ interface HeaderCatalogTabsProps {
 
 const HeaderCatalogTabs: FC<HeaderCatalogTabsProps> = ({ active = 0, titles, children, widthColl, onClick}) => {
 
-    return <div className="row h-100 align-items-stretch">
-        <div className={`col-${widthColl}`}>
+    return <div className="row h-100 align-items-stretch ">
+        <div className={`col-${widthColl} h-100` }>
 
-            <ul className="sticky-top list-group list-group-flush py-2 overflow-auto ">
+            <ul className="sticky-top list-group list-group-flush py-2 pe-2 h-100 overflow-auto">
                 {
                     titles.map((item: HeaderItem, index: number) => {
 
