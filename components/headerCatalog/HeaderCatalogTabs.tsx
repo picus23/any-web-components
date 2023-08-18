@@ -39,7 +39,7 @@ const HeaderCatalogTabs: FC<HeaderCatalogTabsProps> = ({ active = 0, titles, chi
             </ul>
 
         </div>
-        <div className="col border-start ">
+        <div className="col border-start h-100 overflow-auto ">
             {
                 children
             }

@@ -14,16 +14,13 @@ interface FieldSeriesProps {
 
 function FieldSeries({ title, subtitle, icon, characteristics, handleArrowClick }: FieldSeriesProps) {
     return (
-        <div className="search-field my-1">
-            <div className='d-flex align-items-center'>
+            <div role='button' onClick={handleArrowClick} className='d-flex align-items-center' >
                 {!!icon && <Image width={64} height={64} src={icon} alt="" />}
                 <div className="d-flex flex-column mx-2 justify-content-start">
                     <span className="font-size-20 fw-500">{title}</span>
                     {!!subtitle && <span className="font-size-16-gray fw-500">{subtitle}</span>}
                 </div>
             </div>
-            <ButtonGrayArrow onClick={handleArrowClick} />
-        </div>
     )
 }
 
