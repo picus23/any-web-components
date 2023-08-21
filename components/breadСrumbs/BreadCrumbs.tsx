@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { IBreadСrumbs, NextUrl } from './interface'
 import Link from "next/link";
+import { IBreadСrumbs, NextUrl } from './interface'
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 
 interface BreadCrumbsProps {
@@ -12,8 +13,8 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, route }) => {
     return <div style={{overflow:'hidden',overflowX:'scroll',whiteSpace:'nowrap'}}>
         {
             list.map(({ title, id, url }, index) => {
-                return <span key={id} style={{color:'#E8E8E8',fontSize:'13px',display:'inline-block'}}>
-                    {index != 0 ? ' / ' : ''}
+                return <span key={url}>
+                    {index != 0 ? <MdKeyboardArrowRight color="#888" size={20}/> : ''}
                     <Link className="text-decoration-none" style={{color:'#585757'}} href={route ? route(url) : url}>{title}</Link>
                 </span>
             })

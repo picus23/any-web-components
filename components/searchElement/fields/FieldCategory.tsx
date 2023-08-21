@@ -12,11 +12,11 @@ function FieldCategory(props: FieldCategoryProps) {
     
     return (
         <div className="search-field p-1">
-            <div className="me-2">
+            <div className="me-2" role='button' onClick={props.handleArrowClick}>
                 <MdSearch size={24} fill={'gray'} />
                 <span className="font-size-20 ms-3 fw-500">{props.title}</span>
             </div>
-            <ButtonGrayArrow onClick={props.handleArrowClick} />
+            {/* <ButtonGrayArrow onClick={props.handleArrowClick} /> */}
         </div>
     )
 }

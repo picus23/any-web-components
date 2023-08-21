@@ -7,13 +7,14 @@ interface CanvasProps {
     tickCount?: number,
     lineWidth: number,
     valuesFromSlider: number[],
+    endpoints: number[],
     rank?: number[],
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth }) => {
+const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, endpoints, lineWidth }) => {
     const canvasRef = useRef(null)
 
-
+    console.log('endpoints inside canvas', endpoints)
     const draw = chart => {
         let xAxisValues = valuesCv;
 
@@ -35,57 +36,69 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         // Отрисовка Значений X (числа(текст) + breakpoints + степени)
         let j = 0;
         let strValue, lengthStrValue, text;
-        function breakpointsStyles(element: any) {
-            element.classList.add('breakpoint')
+        function breakpointsStyles(element: any, i: number) {
             element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
-            element.style.left = valuesFromSlider[i] + 'px';
-            // element.style.left = valuesFromSlider[i] - 2 + 'px';
+            element.style.left = endpoints[i] / 10 + (10 * i) + 'px';
+            // element.style.left = valuesFromSlider[i] + 'px';
+            // element.classList.add('d-none')
         }
-        for (var i = 0; i < xAxisValues!.length; i++) {
+        for (var i = 0; i < endpoints.length; i++) {
+            // for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
             let breakpoint = document.createElement('div');
             let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
             // Отрисовка числа в степени
-            if (xAxisValues![i] >= 10000) {
-                strValue = xAxisValues![i] + '';
-                lengthStrValue = strValue.length - 2 + '';
-                text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
-                xAxisValue.style.top = '20px';
-                xAxisValue.appendChild(text);
-                verticalLine!.appendChild(xAxisValue);
-                verticalLine!.appendChild(breakpoint);
-                breakpointsStyles(breakpoint)
-            }
+            // if (xAxisValues![i] >= 10000) {
+            //     strValue = xAxisValues![i] + '';
+            //     lengthStrValue = strValue.length - 2 + '';
+            //     text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
+            //     xAxisValue.style.top = '20px';
+            //     // xAxisValue.appendChild(text);
+            //     verticalLine!.appendChild(xAxisValue);
+            //     verticalLine!.appendChild(breakpoint);
+            //     breakpointsStyles(breakpoint)
+            // }
             // Отрисовка только разряды
-            else if (xAxisValues[i] === rank![j]) {
-                text = document.createTextNode(xAxisValues[i] + '');
-                xAxisValue.appendChild(text);
-                xAxisValue.style.fontSize = '20px';
-                xAxisValue.style.top = '20px';
-                verticalLine!.appendChild(xAxisValue);
-                verticalLine!.appendChild(breakpoint);
-                breakpointsStyles(breakpoint)
-                j++;
-            }
+            // else if (xAxisValues[i] === rank![j]) {
+            //     text = document.createTextNode(xAxisValues[i] + '');
+            //     xAxisValue.appendChild(text);
+            //     xAxisValue.style.fontSize = '20px';
+            //     xAxisValue.style.top = '20px';
+            //     verticalLine!.appendChild(xAxisValue);
+            //     verticalLine!.appendChild(breakpoint);
+            //     breakpointsStyles(breakpoint)
+            //     j++;
+            // }
             // Отрисовка всяких неровных чисел
-            else {
-                text = document.createTextNode(xAxisValues[i] + '')
-                xAxisValue.appendChild(text);
-                verticalLine!.appendChild(breakpoint);
-                breakpointsStyles(breakpoint)
-                if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
-                    xAxisValue.style.top = '-35px';
-                } else { // Нечётный индекс [i] == 1,3,5 ...
-                    xAxisValue.style.top = '10px';
-                }
+            // else {
+            text = document.createTextNode(endpoints[i] + '')
+            // text = document.createTextNode(xAxisValues[i] + '')
+            xAxisValue.appendChild(text);
+            verticalLine!.appendChild(breakpoint);
+            if (i !== endpoints.length - 1) {
+                breakpointsStyles(breakpoint, i);
+            } else {
+                breakpointsStyles(breakpoint, i)
+                breakpoint.style.left = 1000 - 3 + 'px';
             }
+            if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
+                xAxisValue.style.top = '-35px';
+            } else { // Нечётный индекс [i] == 1,3,5 ...
+                xAxisValue.style.top = '10px';
+            }
+            // }
             xAxisValue.classList.add('prev-canvas-values');
             xAxisValue.style.position = 'absolute';
             xAxisValue.style.fontSize = '14px';
-            xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
+            if (i !== endpoints.length - 1) {
+                xAxisValue.style.left = endpoints[i] / 10 + (10*i) + 'px';
+            } else {
+                xAxisValue.style.left = 1000 + 'px';
+            }
+            // xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
             document.getElementById('xAxisValue')!.appendChild(xAxisValue);
         }
 
@@ -99,25 +112,49 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         let percent = [];
         let k = valuesFromSlider.length - 1;
         // Расчитывает растояние для линий по Y от ширины X (в %)
-        for (let i = 0; i < valuesFromSlider!.length; i++) {
+        // for (let i = 0; i < valuesFromSlider!.length; i++) {
+        //     if (i == 0) {
+        //         percent[i] = ch;
+        //     } else {
+        //         percent[i] = (valuesFromSlider![k] / ch * 100);
+        //     }
+        //     k--;
+        // }
+        let percentTemp = [];
+        let kTemp = endpoints.length - 1;
+        // Расчитывает растояние для линий по Y от ширины X (в %)
+        for (let i = 0; i < endpoints!.length; i++) {
             if (i == 0) {
-                percent[i] = ch;
+                percentTemp[i] = ch;
             } else {
-                percent[i] = (valuesFromSlider![k] / ch * 100);
+                percentTemp[i] = (valuesFromSlider![kTemp] / ch * 100);
             }
-            k--;
+            kTemp--;
         }
+        // console.log('percent',percent);
+        console.log('percentTemp', percentTemp);
 
         // console.log('percent 1', percent);
         // console.log('valuesFromSlider', valuesFromSlider);
 
         // Отрисовка вертикальных линий
+        // function gridV() {
+        //     for (var i = 0; i < valuesFromSlider.length; i++) {
+        //         chart.strokeStyle = '#ccc';
+        //         chart.lineWidth = 1;
+        //         chart.moveTo(valuesFromSlider[i], 0);
+        //         chart.lineTo(valuesFromSlider[i], ch);
+        //     }
+        //     chart.stroke();
+        // }
+
+        // Отрисовка вертикальных линий v.2
         function gridV() {
-            for (var i = 0; i < valuesFromSlider.length; i++) {
+            for (var i = 0; i < endpoints.length; i++) {
                 chart.strokeStyle = '#ccc';
                 chart.lineWidth = 1;
-                chart.moveTo(valuesFromSlider[i], 0);
-                chart.lineTo(valuesFromSlider[i], ch);
+                chart.moveTo(endpoints[i] / 10 + (10*i), 0);
+                chart.lineTo(endpoints[i] / 10 + (10*i), ch);
             }
             chart.stroke();
         }
