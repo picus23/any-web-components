@@ -94,8 +94,7 @@ function convertValueToPercent(
         let differenceCurrentPixMax = (maxPercentDifferenceBetweenMaxPropValFrom / 100 * differencePixMax) + pixFromMax;
 
         maxPosAfterRenderUseEffect = differenceCurrentPixMax / widthCanvas * 100;
-    }
-    else {
+    } else {
         // MIN
         const pixFrom = valuesFromSlider[fromValueMin];
         const pixTo = valuesFromSlider[toValueMin];
@@ -214,9 +213,9 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
 
         if (minDisplayValue == 100) {
             currentValueMin = maxValue;
-        } else {
-            currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
         }
+        minDisplayValue == 0 ? currentValueMin = minValue : currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
+
     } else {
         // Current Value для отрицательных значений
         // MIN
@@ -231,9 +230,8 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
 
         if (minDisplayValue == 100) {
             currentValueMin = maxValue;
-        } else {
-            currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
         }
+        minDisplayValue == 0 ? currentValueMin = minValue : currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
     }
 
     return currentValueMin;
@@ -242,6 +240,7 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
 // Конвертер МАКС % в значения
 function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any, reverseValuesCv: any, currentPositionMax: any, maxDisplayValue: any) {
     if (minValue! >= 0 && maxValue! >= 0) {
+        // Current Value для положительных значений
         // MAX
         const pixToMax = reverseValuesFromSlider[fromKeyMax];
         const pixFromMax = reverseValuesFromSlider[toKeyMax];
@@ -254,9 +253,8 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
 
         if (maxDisplayValue == 0) {
             currentValueMax = minValue;
-        } else {
-            currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
         }
+        maxDisplayValue == 100 ? currentValueMax = maxValue : currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
     } else {
         // Current Value для отрицательных значений
         // MAX
@@ -271,12 +269,11 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
 
         if (maxDisplayValue == 0) {
             currentValueMax = minValue;
-        } else {
-            currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
         }
+        maxDisplayValue == 100 ? currentValueMax = maxValue : currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
     }
     // console.log({ currentValueMin, currentValueMax })
     return currentValueMax;
 }
 
-export { convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax };
+export {convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax};
