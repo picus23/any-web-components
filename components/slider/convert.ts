@@ -254,7 +254,7 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
         if (maxDisplayValue == 0) {
             currentValueMax = minValue;
         }
-        maxDisplayValue == 100 ? currentValueMax = maxValue : currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
+        maxDisplayValue >= 100 ? currentValueMax = maxValue : currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
     } else {
         // Current Value для отрицательных значений
         // MAX
@@ -270,7 +270,7 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
         if (maxDisplayValue == 0) {
             currentValueMax = minValue;
         }
-        maxDisplayValue == 100 ? currentValueMax = maxValue : currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
+        maxDisplayValue >= 100 ? currentValueMax = maxValue : currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
     }
     // console.log({ currentValueMin, currentValueMax })
     return currentValueMax;

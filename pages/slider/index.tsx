@@ -54,7 +54,7 @@ export default function () {
                     minPropValue={values[0]}
                     maxPropValue={values[1]}
 
-                    widthCanvas={1000}
+                    widthCanvas={553}
                     heightCanvas={300}
                     onChange={(min, max) => setValues([min, max])}
                     lineWidth={4}

@@ -105,13 +105,15 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
                 //     iter++;
             // }
             else {
-                maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 4) + prevValue)) * 1.0784;               //Здесь расчёт расстояния между значениями
+                maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 4) + prevValue*1.0792));               //Здесь расчёт расстояния между значениями
+                // maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 4) + prevValue)) * 1.0784;               //Здесь расчёт расстояния между значениями
                 prevValue = maxRange;
                 changeKeys[maxRange] = item;
                 changeKeysEmpty[maxRange] = ' ';
             }
         })
     })
+    // console.log(changeKeys);
 
     // Здесь создаётся массив с позициями
     let valuesFromSlider: number[] = [];
@@ -222,16 +224,16 @@ const ExpoSlider: FC<ExpoSliderProps> = ({ data, minPropValue, maxPropValue, wid
             <input step={0.01} style={{ width: widthCanvas + 8 }} type="range" className="range-max cs" min={0} max={100} value={maxDisplayValue} onInput={handleMaxValueChange} />
         </div>
 
-        <div className="d-flex justify-content-between my-5">
-            <div>
-                <p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>
-                 <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>
-            </div>
-            <div>
-                <p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>
-                 <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>
-            </div>
-        </div>
+        {/*<div className="d-flex justify-content-between my-5">*/}
+        {/*    <div>*/}
+                {/*<p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>*/}
+                {/* <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>*/}
+            {/*</div>*/}
+            {/*<div>*/}
+                {/*<p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>*/}
+                {/* <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>*/}
+            {/*</div>*/}
+        {/*</div>*/}
 
     </>
 }
