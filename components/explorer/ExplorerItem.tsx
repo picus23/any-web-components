@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { MdArrowForwardIos, MdCheck, MdCheckBoxOutlineBlank } from "react-icons/md";
-import ExplorerButton from './ExplorerButton'
+
 
 interface ExplorerItemProps {
     title: string,
     checked?: 0 | 1 | 2,
     isFolder?: boolean,
-    onChange: (status: boolean) => void,
+    onChange: (status: 0 | 1 | 2) => void,
     onOpen: () => void,
 }
 
@@ -15,7 +15,7 @@ const ExplorerItem: FC<ExplorerItemProps> = ({ title, checked, isFolder, onChang
 
     if (isFolder) {
         return <li tabIndex={0} className={`ExplorerItem  ${checked && 'active'}`} >
-            <div className='ExplorerItemCheckbox hoverIcon' onClick={() => onChange(checked != 0 ? false : true)}>
+            <div className='ExplorerItemCheckbox hoverIcon' onClick={() => onChange(checked ?? 0)}>
                 <div className="icon">
                     {
                         checked == 0
@@ -38,7 +38,7 @@ const ExplorerItem: FC<ExplorerItemProps> = ({ title, checked, isFolder, onChang
 
 
 
-    return <li tabIndex={0} className={`ExplorerItem  ${checked && 'active'}`} onClick={() => onChange(checked != 0 ? false : true)}>
+    return <li tabIndex={0} className={`ExplorerItem  ${checked && 'active'}`} onClick={() => onChange(checked ?? 0)}>
         <div className='ExplorerItemCheckbox' >
             <div className="icon">
                 {
