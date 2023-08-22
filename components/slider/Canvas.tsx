@@ -8,9 +8,10 @@ interface CanvasProps {
     lineWidth: number,
     valuesFromSlider: number[],
     rank?: number[],
+    onTransform: (val : number) => number,
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth }) => {
+const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth,onTransform }) => {
     const canvasRef = useRef(null)
 
 
@@ -37,10 +38,8 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         let strValue, lengthStrValue, text;
         function breakpointsStyles(element: any) {
             element.classList.add('breakpoint')
-            element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
             element.style.left = valuesFromSlider[i] + 'px';
-            // element.style.left = valuesFromSlider[i] - 2 + 'px';
         }
         for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
@@ -48,20 +47,23 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
+            let transformVal = onTransform(xAxisValues[i]);
+
             // Отрисовка числа в степени
-            if (xAxisValues![i] >= 10000) {
-                strValue = xAxisValues![i] + '';
-                lengthStrValue = strValue.length - 2 + '';
-                text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
-                xAxisValue.style.top = '20px';
-                xAxisValue.appendChild(text);
-                verticalLine!.appendChild(xAxisValue);
-                verticalLine!.appendChild(breakpoint);
-                breakpointsStyles(breakpoint)
-            }
+            // if (xAxisValues![i] >= 10000) {
+            //     strValue = transformVal + '';
+            //     lengthStrValue = strValue.length - 2 + '';
+            //     text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
+            //     xAxisValue.style.top = '20px';
+            //     xAxisValue.appendChild(text);
+            //     verticalLine!.appendChild(xAxisValue);
+            //     verticalLine!.appendChild(breakpoint);
+            //     breakpointsStyles(breakpoint)
+            // }
             // Отрисовка только разряды
-            else if (xAxisValues[i] === rank![j]) {
-                text = document.createTextNode(xAxisValues[i] + '');
+            // else if (xAxisValues[i] === rank![j]) {
+            if (xAxisValues[i] === rank![j]) {
+                text = document.createTextNode(transformVal + '');
                 xAxisValue.appendChild(text);
                 xAxisValue.style.fontSize = '20px';
                 xAxisValue.style.top = '20px';
@@ -72,7 +74,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             }
             // Отрисовка всяких неровных чисел
             else {
-                text = document.createTextNode(xAxisValues[i] + '')
+                text = document.createTextNode(transformVal + '')
                 xAxisValue.appendChild(text);
                 verticalLine!.appendChild(breakpoint);
                 breakpointsStyles(breakpoint)
@@ -96,6 +98,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         //     value.appendChild(text_value);
         //     document.getElementById('yAxisValues').appendChild(value);
         // }
+
         let percent = [];
         let k = valuesFromSlider.length - 1;
         // Расчитывает растояние для линий по Y от ширины X (в %)
