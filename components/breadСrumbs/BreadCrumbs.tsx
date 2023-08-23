@@ -10,7 +10,7 @@ interface BreadCrumbsProps {
 }
 
 const BreadCrumbs: FC<BreadCrumbsProps> = ({ list, route }) => {
-    return <div style={{overflow:'hidden',overflowX:'scroll',whiteSpace:'nowrap'}}>
+    return <div style={{overflow:'hidden',overflowX:'scroll'}}>
         {
             list.map(({ title, id, url }, index) => {
                 return <span key={url}>
