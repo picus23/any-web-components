@@ -79,7 +79,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 verticalLine!.appendChild(breakpoint);
                 breakpointsStyles(breakpoint)
                 if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
-                    xAxisValue.style.top = '-35px';
+                    xAxisValue.style.top = '-25px';
                 } else { // Нечётный индекс [i] == 1,3,5 ...
                     xAxisValue.style.top = '10px';
                 }
@@ -135,8 +135,8 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             }
             chart.stroke();
         }
-        gridH();
-        gridV();
+        // gridH();
+        // gridV();
 
         // Отрисовка линии на графике
         // var chrt = document.getElementById("chart");
@@ -165,7 +165,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
     return <>
         <div id="chart-wrapper">
             <div id="yAxisValues"></div>
-            <canvas id="chart"
+            <canvas className="d-none" id="chart"
                     ref={canvasRef}
                     width={width} />
             <div id='xAxisValue' />
