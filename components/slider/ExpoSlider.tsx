@@ -11,7 +11,7 @@ interface ExpoSliderProps {
     maxPropValue?: number,
     lineWidth?: number,
     onChange: (min: number, max: number) => void,
-    onTransform: (val: number) => number,
+    onTransform: (val: number) => string,
 }
 
 interface iChangeKeys {
