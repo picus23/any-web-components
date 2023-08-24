@@ -119,15 +119,18 @@
     z-index: 3500 !important;
 }
 
-
-
-.highlight,
-highlight,
-mark {    
+mark {
     background-color: #f7f21a !important;
     padding: 3px 0 !important;
+}
+
+.highlight,
+highlight {
+    background-color: #f7f21a !important;
     border-radius: 3px !important;
 }
+
+
 
 
 html {
