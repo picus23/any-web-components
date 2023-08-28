@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC, ReactNode, RefObject } from "react";
-import { MdFavorite, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
+import { MdFavorite, MdOutlineShoppingBasket, MdPerson, MdShoppingCart, MdUnfoldMore } from "react-icons/md";
 import Button from "../buttons/Button";
 
 
@@ -18,9 +18,9 @@ interface TempNavbarProps {
 const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onFavorite, basketCounter, search }) => {
 
 
-    return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom" style={{top: -80}}>
+    return <div ref={hook} className="p-3 sticky-top zindex-offcanvas bg-white header-shadow border-bottom" style={{ top: 0 }}>
 
-        <div className="row align-items-center mb-3">
+        {/* <div className="row align-items-center mb-3">
             <div className="col-3">
                 <Link href="/">
                     <Image width={200} height={70} src="/kit/logo.svg" alt="logo" />
@@ -78,56 +78,34 @@ const TempNavbar: FC<TempNavbarProps> = ({ catalog, hook, onBasket, onLogin, onF
 
             <div className="col-3 justify-content-end d-flex gap-3 align-items-center">
 
-                <a className="text-decoration-none font-size-16-gray" href="#Какзаказать">+7 (945) 984-41-06</a>
-
-                <button className="btn btn-outline-secondary d-flex gap-2">
-                    <Image width={20} height={20} src="/kit/ru.svg" alt="lang icon"/>
-                    <span className="font-size-16-gray mx-1">RU</span>
-                    <MdUnfoldMore size={23} fill="#969696" />
-                </button>
+   
             </div>
-        </div>
+        </div> 
+    */}
 
+        <div className="d-flex  gap-3 mb-3 align-items-stretch position-relative" >
 
-        <div className="row mb-3 align-items-stretch position-relative" style={{ height: 50 }}>
-            <div className="d-flex align-items-stretch " style={{ maxWidth: '256px' }} id="catalog">
+            <Link href="/">
+                <Image width={100} height={50} src="/kit/logo.svg" alt="logo" />
+            </Link>
+
+            <div className="d-flex align-items-stretch" style={{width: 200}}>
                 {
                     catalog
                 }
             </div>
-            <div className="col d-flex align-items-stretch me-4" id="search">
-                {
-                    search
-                }
-            </div>
-            <div className="col-3 d-flex">
-                <div className="d-flex gap-2 w-100 justify-content-end">
-                    <Button
-                        onClick={onLogin}
-                        style={{ height: '52px' }}
-                        fontSize="20px"
-                        icon={<MdPerson size={24} fill={'#969696'} />}
-                        btn_style="btn-outline-secondary">
-                        Войти
-                    </Button>
-                    <Button
-                        onClick={onFavorite}
-                        style={{ height: '52px' }}
-                        icon={<MdFavorite size={24} fill={'#969696'} />}
-                        btn_style="btn-outline-secondary"
-                    />
-                    <Button
-                        onClick={onBasket}
-                        style={{ height: '52px' }}
-                        fontSize="20px"
-                        counterPosition="right"
-                        icon={<MdShoppingCart size={24} fill={'#969696'} />}
-                        btn_style="btn-outline-secondary"
-                        counter={basketCounter}>
-                        Корзина
-                    </Button>
-                </div>
-            </div>
+            {
+                search
+            }
+            <Button
+                onClick={onBasket}
+                fontSize="20px"
+                counterPosition="right"
+                icon={<MdOutlineShoppingBasket size={24} fill={'#969696'} />}
+                btn_style="btn-outline-secondary"
+                counter={basketCounter}>
+                Корзина
+            </Button>
         </div>
 
     </div >

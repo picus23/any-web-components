@@ -1,5 +1,5 @@
-$active: #0085FF;
-$hoverColor: rgb(0 132 255 / 7%);
+$active: #000000;
+$hoverColor: rgba(255, 0, 0, 0.07);
 
 .ExplorerItem {
     display: flex;
@@ -52,7 +52,7 @@ $hoverColor: rgb(0 132 255 / 7%);
             background: $hoverColor;
             
             .folderArrow {
-                color: #0085FF;
+                color: #ff0000;
             }
         }
 
@@ -73,7 +73,7 @@ $hoverColor: rgb(0 132 255 / 7%);
     text-align: center;
 
     &:hover {
-        background: #0084ff30;
+        background: #ff000030;
     }
 
     &:active {
