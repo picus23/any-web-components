@@ -1,5 +1,6 @@
 import { FC, FormEvent, createRef } from "react";
 import Button from "../buttons/Button";
+import { MdSearch } from "react-icons/md";
 
 interface SearchInputProps {
     searchPhrase?: string,
@@ -37,7 +38,7 @@ const SearchInput: FC<SearchInputProps> = ({ searchPhrase, handleSearch, handleU
                     placeholder="Поиск"
                     aria-label="Search"
                 />
-                <Button btn_style="btn-primary" style={{ borderRadius: '0 8px 8px 0' }}>Найти</Button>
+                <Button btn_style="btn-primary" style={{ borderRadius: '0 8px 8px 0' }}><MdSearch /> Найти</Button>
             </div>
         </form>
     );

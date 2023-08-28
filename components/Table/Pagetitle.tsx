@@ -20,7 +20,7 @@ const Pagetitle: FC<PagetitleProps> = ({ pagetitle, onClick, url}) => {
                 </Link>
             </span>
         </div>
-        <MdInfo size={25} color="var(--bs-blue)" />
+        {/* <MdInfo size={25} color="var(--bs-blue)" /> */}
     </div>
 
 }

@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700,400italic|Play:400,700);
 
 
+
 body {
   padding: 10%;
   background: #fff;
@@ -10,8 +11,15 @@ body {
   font-size: 14px;
 }
 
+
+* {
+  font-family: "Play" !important;
+  font-size: 14px;
+}
+
+
 $theme-colors: (
-  "primary": #0085FF,
+  "primary": #000000,
   "success": #00BA34,
   "light": #F7F7F7,
   "secondary": #969696,

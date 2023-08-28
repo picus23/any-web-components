@@ -6,6 +6,33 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 
+a {
+  color: rgb(155, 0, 0);
+
+  &:hover {
+    color: #f00;
+  }
+}
+
+.form-control:focus {
+  color: #212529;
+  border-color: #000000b5;
+  box-shadow: none;
+}
+
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #000000;
+  border-color: #000000;
+
+  &:hover {
+    &:after {
+      border: 2px solid #3dff16;
+    }
+  }
+}
+
+
 
 
 .btn-primary {
@@ -45,17 +72,17 @@
 }
 z
 .btn-outline-primary {
-  --bs-btn-color: #0085FF;
+  --bs-btn-color: #000000;
   --bs-btn-border-color: none;
-  --bs-btn-hover-color: #2697ff;
+  --bs-btn-hover-color: #000000;
   --bs-btn-hover-bg: none;
   --bs-btn-hover-border-color: none;
   --bs-btn-focus-shadow-rgb: 0, 133, 255;
-  --bs-btn-active-color: #0085FF;
+  --bs-btn-active-color: #424242;
   --bs-btn-active-bg: none;
   --bs-btn-active-border-color: none;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #0085FF;
+  --bs-btn-disabled-color: #7a7a7a;
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: none;
   --bs-gradient: none;
@@ -68,7 +95,7 @@ z
 
 .order.ant-radio-wrapper-checked {
   background: #FFFFFF;
-  border: 2px solid #0085FF;
+  border: 2px solid #484848;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1), 0px 1px 18px rgba(0, 0, 0, 0.06), 0px 6px 10px rgba(0, 0, 0, 0.08);
 }
 
@@ -105,41 +132,6 @@ z
   }
 }
 
-// #xAxisValues>span:before {
-//     content: '';
-//     width: 5px;
-//     height: 5px;
-//     position: absolute;
-//     background-color: #a3a3a3;
-//     border-radius: 50%;
-//     bottom: 20px;
-// }
-
-// #yAxisValues {
-//     position: absolute;
-//     top: 0;
-//     left: -30px;
-//     margin-top: -2px;
-// }
-
-// #yAxisValues>span {
-//     display: block;
-//     color: #a3a3a3;
-//     font-size: 16px;
-//     height: 30px;
-// }
-
-// #yAxisValues>span:after {
-//     content: '';
-//     width: 4px;
-//     height: 4px;
-//     position: absolute;
-//     background-color: #a3a3a3;
-//     border-radius: 50%;
-//     margin-left: 5px;
-// }
-// 
-
 // Labels below slider
 .range-labels {
   display: flex;
@@ -162,7 +154,7 @@ z
       content: "";
       width: 9px;
       height: 9px;
-      border: 2px solid #84c4ff;
+      border: 2px solid #2a3846;
       background: #fff;
       border-radius: 50%;
     }
@@ -180,7 +172,7 @@ z
     background: #c6c6c6;
 
     .progres {
-      background: #64b3fd;
+      background: #223b53;
     }
 
   }
@@ -189,7 +181,7 @@ z
   .progres {
     height: 5px;
     position: absolute;
-    background: #84c4ff;
+    background: #405e7a;
     border-radius: 5px;
   }
 }
@@ -215,7 +207,7 @@ z
   border-radius: 50%;
   appearance: none;
   pointer-events: auto;
-  border: 2px solid #84c4ff;
+  border: 2px solid #2c4257;
   background: #fff;
   appearance: none;
   cursor: pointer;
@@ -225,8 +217,8 @@ z
   &:hover {
     height: 20px;
     width: 20px;
-    box-shadow: 0px 0px 10px #329dff;
-    border: 4px solid #0077e5;
+    box-shadow: 0px 0px 10px #1e3143;
+    border: 4px solid #284867;
   }
 }
 
@@ -246,8 +238,8 @@ z
   &:hover {
     height: 20px;
     width: 20px;
-    box-shadow: 0px 0px 10px #329dff;
-    border: 4px solid #0077e5;
+    box-shadow: 0px 0px 10px #333435;
+    border: 4px solid #3d3d3d;
   }
 }
 
@@ -297,11 +289,11 @@ z
 }
 
 .breakpoint-active {
-  border: 2px solid #84c4ff;
+  border: 2px solid #0f1820;
 
   &:hover {
     height: 12px;
     width: 12px;
-    border: 3px solid #0077e5;
+    border: 3px solid #292f34;
   }
 }
