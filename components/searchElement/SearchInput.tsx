@@ -6,7 +6,7 @@ interface SearchInputProps {
     searchPhrase?: string,
     handleFocus?: (isFocused: boolean) => void,
     handleUserTyping: (phrase: string) => void,
-    handleSearch: (phrase: string, context: string | null) => void,
+    handleSearch: (phrase: string, context?: string, select?: string) => void,
 }
 
 const SearchInput: FC<SearchInputProps> = ({ searchPhrase, handleSearch, handleUserTyping, handleFocus }) => {

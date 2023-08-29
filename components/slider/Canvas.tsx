@@ -8,14 +8,14 @@ interface CanvasProps {
     lineWidth: number,
     valuesFromSlider: number[],
     rank?: number[],
-    onTransform: (val : number) => number,
+    onTransform?: (val: number) => number,
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth,onTransform }) => {
+const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth, onTransform }) => {
     const canvasRef = useRef(null)
 
 
-    const draw = chart => {
+    const draw = (chart: CanvasRenderingContext2D) => {
         let xAxisValues = valuesCv;
 
         chart.canvas.width = width;
@@ -47,7 +47,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
-            let transformVal = onTransform(xAxisValues[i]);
+            let transformVal = onTransform ? onTransform(xAxisValues[i]) : xAxisValues[i];
 
             // Отрисовка числа в степени
             // if (xAxisValues![i] >= 10000) {
@@ -157,17 +157,19 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
                 el.remove()
             }
         })
-        const canvas = canvasRef.current
-        const context = canvas.getContext('2d')
-        draw(context)
+
+        if (canvasRef.current){
+            const canvas = canvasRef.current as HTMLCanvasElement
+            draw(canvas.getContext('2d') as CanvasRenderingContext2D)
+        }
     }, [draw])
 
     return <>
         <div id="chart-wrapper">
             <div id="yAxisValues"></div>
             <canvas className="d-none" id="chart"
-                    ref={canvasRef}
-                    width={width} />
+                ref={canvasRef}
+                width={width} />
             <div id='xAxisValue' />
         </div>
 
