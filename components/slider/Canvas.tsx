@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import {FC, useEffect, useRef} from "react";
 
 interface CanvasProps {
     valuesCv: number[],
@@ -8,14 +8,22 @@ interface CanvasProps {
     lineWidth: number,
     valuesFromSlider: number[],
     rank?: number[],
-    onTransform: (val : number) => number,
+    onTransform: (val: number) => number,
 }
 
-const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, valuesFromSlider, rank, lineWidth,onTransform }) => {
+const Canvas: FC<CanvasProps> = ({
+                                     width,
+                                     height,
+                                     valuesCv,
+                                     tickCount = 4,
+                                     valuesFromSlider,
+                                     rank,
+                                     lineWidth,
+                                     onTransform
+                                 }) => {
     const canvasRef = useRef(null)
 
-
-    const draw = chart => {
+    const draw = (chart: any) => {
         let xAxisValues = valuesCv;
 
         chart.canvas.width = width;
@@ -36,11 +44,13 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         // Отрисовка Значений X (числа(текст) + breakpoints + степени)
         let j = 0;
         let strValue, lengthStrValue, text;
+
         function breakpointsStyles(element: any) {
             element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
             element.style.left = valuesFromSlider[i] + 'px';
         }
+
         for (var i = 0; i < xAxisValues!.length; i++) {
             var xAxisValue = document.createElement('span');
             let breakpoint = document.createElement('div');
@@ -135,6 +145,7 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             }
             chart.stroke();
         }
+
         // gridH();
         // gridV();
 
@@ -151,14 +162,15 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
         // }
     }
 
+
     useEffect(() => {
         document.querySelectorAll('.prev-canvas-values').forEach(el => {
             if (el.classList.contains('prev-canvas-values')) {
                 el.remove()
             }
         })
-        const canvas = canvasRef.current
-        const context = canvas.getContext('2d')
+        const canvas: any = canvasRef.current;
+        const context = canvas.getContext('2d');
         draw(context)
     }, [draw])
 
@@ -167,8 +179,8 @@ const Canvas: FC<CanvasProps> = ({ width, height, valuesCv, tickCount = 4, value
             <div id="yAxisValues"></div>
             <canvas className="d-none" id="chart"
                     ref={canvasRef}
-                    width={width} />
-            <div id='xAxisValue' />
+                    width={width}/>
+            <div id='xAxisValue'/>
         </div>
 
     </>
