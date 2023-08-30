@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ReactNode, FC } from 'react'
 import { MdFacebook } from 'react-icons/md'
 
@@ -16,7 +17,7 @@ const Footer: FC<FooterProps> = () => {
                     <Image width={20} height={20} src="/kit/footer_logo.png" alt="" />
                 </div>
                 <div className='my-3 lh-1'>
-                    <span className='font-size-16-gray'>Компания «Флюид-Лайн» является <br /> изготовителем и эксклюзивным <br /> дистрибьютором продукции A-flow, Hy-Lok, <br /> Drastar и HIFLUX в России и СНГ.</span>
+                    <span className='font-size-16-gray'>Компания «Camozzi» является <br /> изготовителем и эксклюзивным <br /> дистрибьютором продукции #, #, <br /> # и # в СНГ.</span>
                 </div>
                 <div className='d-flex gap-3'>
                     {/* Facebook */}
@@ -28,19 +29,28 @@ const Footer: FC<FooterProps> = () => {
                 </div>
             </div>
             <div className='row flex-grow-1 gap-4'>
-
-                <ul className='col list-unstyled lh-lg'>
-                    <li className='font-size-16-black fw-500'><strong>О Компании</strong></li>
-                    <li className='font-size-16-gray'>Сертификаты</li>
-                    <li className='font-size-16-gray'>Реквизиты</li>
-                    <li className='font-size-16-gray'>Региональные <br />представительства</li>
-                    <li className='font-size-16-gray'>Производители</li>
+            <ul className='col list-unstyled lh-lg'>
+                    <Link href="/about">
+                        <li className='red_hover fw-500' style={{fontSize:16}}><strong>О Компании</strong></li>
+                    </Link>
+                    <Link className='text-decoration-none' href="/certificates">
+                        <li className=''>Сертификаты</li>
+                    </Link>
+                    <Link className='text-decoration-none' href="/requisites">
+                        <li className=''>Реквизиты</li>
+                    </Link>
+                    <Link className='text-decoration-none' href="/regional-representations">
+                        <li className=''>Региональные <br />представительства</li>
+                    </Link>
+                    <Link className='text-decoration-none' href="/manufactures">
+                        <li className=''>Производители</li>
+                    </Link>
                 </ul>
                 <ul className='col list-unstyled lh-lg'>
-                    <li className='font-size-16-black fw-500'><strong>Title</strong></li>
-                    <li className='font-size-16-gray'>First Link</li>
-                    <li className='font-size-16-gray'>Second Link</li>
-                    <li className='font-size-16-gray'>Third Link</li>
+                        <li className='font-size-16-black fw-500'><strong>Title</strong></li>
+                        <li className='font-size-16-gray'>First Link</li>
+                        <li className='font-size-16-gray'>Second Link</li>
+                        <li className='font-size-16-gray'>Third Link</li>
                 </ul>
                 <ul className='col list-unstyled lh-lg'>
                     <li className='font-size-16-black fw-500'><strong>Title</strong></li>
@@ -59,10 +69,9 @@ const Footer: FC<FooterProps> = () => {
 
         <div className='d-flex justify-content-between px-4'>
             <div>
-                <span className='font-size-13'>© ООО Fluid-line (Флюид-Лайн) Все права защищены 2023</span>
+                <span className='font-size-13'>© ООО Camozzi (Камози) Все права защищены 2023</span>
             </div>
             <div>
-                <span className='font-size-13'>Сайт спроектирован Insaim</span>
             </div>
         </div>
 
