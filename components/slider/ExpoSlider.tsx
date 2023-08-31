@@ -1,9 +1,9 @@
-import {FC, ReactNode, use, useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import Canvas from "./Canvas";
 import {convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax} from './convert';
 
 interface ExpoSliderProps {
-    data: [],
+    data: number[],
     dataToWrapper?: (data: any) => void,
     widthCanvas: number,
     heightCanvas: number,
@@ -220,7 +220,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                 valuesCv={valuesCv}
                 rank={rank}
                 lineWidth={lineWidth}
-                onTransform={onTransform}
+                onTransform={ onTransform }
             />
         </div>
 

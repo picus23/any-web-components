@@ -8,7 +8,7 @@ interface CanvasProps {
     lineWidth: number,
     valuesFromSlider: number[],
     rank?: number[],
-    onTransform: (val: number) => number,
+    onTransform?: (val: number) => string,
 }
 
 const Canvas: FC<CanvasProps> = ({
@@ -57,7 +57,7 @@ const Canvas: FC<CanvasProps> = ({
             let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
-            let transformVal = onTransform(xAxisValues[i]);
+            let transformVal = onTransform ? onTransform(xAxisValues[i]) : xAxisValues[i];
 
             // Отрисовка числа в степени
             // if (xAxisValues![i] >= 10000) {
