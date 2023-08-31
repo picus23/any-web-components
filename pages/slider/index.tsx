@@ -38,8 +38,8 @@ export default function () {
                     data={[values1]}
                     minPropValue={values[0]}
                     maxPropValue={values[1]}
-                    onTransform={(val:number) => val * 5}
-                    widthCanvas={553}
+                    onTransform={(val:number) => val * 1}
+                    widthCanvas={1000}
                     heightCanvas={200}
                     onChange={(min, max) => setValues([min, max])}
                     lineWidth={4}

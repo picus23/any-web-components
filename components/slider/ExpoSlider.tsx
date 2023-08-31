@@ -92,36 +92,32 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     let rank: number[] = [];
     let maxRange = 0;
     let prevValue = 0;
-    rankValueCv.map((array, index) => {
-        let rangeEverySubArray = (widthCanvas / countSubArr) * (index + 1)
-        if (index == 0) {
-            var firstValue = 0;
-        } else {
-            firstValue = 1;
-        }
+    let iter = 0;
+    // console.log({rankValueCv})
+
+    for (let i = 0; i < rankValueCv.length; i++) {
+        let rangeEverySubArray = (widthCanvas / countSubArr) * (i + 1)
+        // console.log(rangeEverySubArray)
+
         // Подмассив (разряды до 10,100,1000 и т.д.)
-        array.map((item: any, index: number) => {
-            if (firstValue == 0) {
-                changeKeys[firstValue] = item;
-                changeKeysEmpty[firstValue] = ' ';
-                prevValue = firstValue;
-                firstValue = 1;
+        for (let j = 0; j < rankValueCv[i].length; j++) {
+            if (i == 0) {
+                changeKeys[0] = rankValueCv[i][j];
+                changeKeysEmpty[0] = ' ';
+                prevValue = 0;
+                continue;
             }
-                // else if (index == array.length - 1) {
-                //     prevValue = rangeEverySubArray;
-                //     changeKeys[rangeEverySubArray] = item;
-                //     changeKeysEmpty[rangeEverySubArray] = ' ';
-                //     rank[iter] = item;
-                //     iter++;
-            // }
-            else {
-                maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 4) + prevValue * 1.0792));               //Здесь расчёт расстояния между значениями
-                prevValue = maxRange;
-                changeKeys[maxRange] = item;
-                changeKeysEmpty[maxRange] = ' ';
+            if (i == rankValueCv.length - 1) {
+                changeKeys[widthCanvas] = rankValueCv[i][j];
+                changeKeysEmpty[widthCanvas] = ' ';
+                continue;
             }
-        })
-    })
+            maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 3) + prevValue * 1.07));               //Здесь расчёт расстояния между значениями
+            prevValue = maxRange;
+            changeKeys[maxRange] = rankValueCv[i][j];
+            changeKeysEmpty[maxRange] = ' ';
+        }
+    }
     // console.log(changeKeys);
 
     // Здесь создаётся массив с позициями
@@ -216,8 +212,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
 
 
     return <>
-        ********
-        <div className="my-2">
+        <div className="my-4">
             <Canvas
                 width={widthCanvas}
                 height={heightCanvas}
@@ -225,7 +220,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                 valuesCv={valuesCv}
                 rank={rank}
                 lineWidth={lineWidth}
-                onTransform={ onTransform }
+                onTransform={onTransform}
             />
         </div>
 
@@ -239,14 +234,14 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
         </div>
 
         {/*<div className="d-flex justify-content-between my-5">*/}
-            {/*<div>*/}
-            {/*<p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>*/}
-            {/* <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>*/}
-            {/*</div>*/}
-            {/*<div>*/}
-            {/*<p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>*/}
-            {/* <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>*/}
-            {/*</div>*/}
+        {/*<div>*/}
+        {/*<p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>*/}
+        {/* <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>*/}
+        {/*</div>*/}
+        {/*<div>*/}
+        {/*<p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>*/}
+        {/* <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>*/}
+        {/*</div>*/}
         {/*</div>*/}
 
     </>
