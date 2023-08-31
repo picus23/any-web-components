@@ -23,6 +23,7 @@ const Canvas: FC<CanvasProps> = ({
                                  }) => {
     const canvasRef = useRef(null)
 
+
     const draw = (chart: any) => {
         let xAxisValues = valuesCv;
 

@@ -1,6 +1,9 @@
-import {FC, useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import Canvas from "./Canvas";
 import {convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax} from './convert';
+import rankPos from "@/components/slider/functions/rank";
+import Rank from "@/components/slider/functions/rank";
+import AssigmentToSubArray from "@/components/slider/functions/AssigmentToSubArray";
 
 interface ExpoSliderProps {
     data: number[],
@@ -43,66 +46,25 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
     let comparisonArray = [-1000, -100, -10, -1, 0, 1, 10, 100, 1000, 10000, 100000];
-    let countSubArr = 0;
-    var j = 0;
-    for (let i = 0; i < comparisonArray.length + 1; i++) {
-        if (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1] || valuesCv[j] <= comparisonArray[i] && valuesCv[j] >= comparisonArray[i + 1]) {
-            while (valuesCv[j] >= comparisonArray[i] && valuesCv[j] <= comparisonArray[i + 1] || valuesCv[j] <= comparisonArray[i] && valuesCv[j] >= comparisonArray[i + 1]) {
-                j++;
-            }
-            countSubArr++;
-        }
-    }
+    let [countSubArr, rank] = Rank(valuesCv,comparisonArray);
 
-    // Происходит присвание значений в подмассивы поразрядно
-    let rankValueCv = new Array(countSubArr);
-    let lenghtPrevArr = 0;
-    let tempLenght = 0;
-    let prev = 0;
-    let curr = 0;
-    let indexComparisonArray = 0;
 
-    for (let i = 0; i < countSubArr; i++) {
-        let position = 0;
-        rankValueCv[i] = [];
-        for (let j = tempLenght; j < valuesCv.length; j++) {
-            prev = comparisonArray[indexComparisonArray];
-            curr = comparisonArray[indexComparisonArray + 1];
-
-            if (valuesCv[j] >= prev && valuesCv[j] <= curr || valuesCv[j] <= comparisonArray[i] && valuesCv[j] >= comparisonArray[i + 1]) {
-                rankValueCv[i][position] = valuesCv[j];
-                lenghtPrevArr = position;
-                position++;
-
-            } else if (rankValueCv[i].length === 0) {
-                j--;
-                indexComparisonArray++;
-                continue;
-            } else {
-                tempLenght += ++lenghtPrevArr!;
-                indexComparisonArray++;
-                break;
-            }
-        }
-    }
+    // Происходит присваивание значений в подмассивы поразрядно
+    let [rankValueCv,tempLenght] = AssigmentToSubArray(countSubArr,comparisonArray,valuesCv);
 
     // Здесь высчитывается расстояние между значениями (breakpoint (круглешки),числа, текст и т.д.) на графике
     let changeKeys: iChangeKeys = {};
     let changeKeysEmpty: iChangeKeysEmpty = {};
-    let rank: number[] = [];
     let maxRange = 0;
     let prevValue = 0;
-    let iter = 0;
-    // console.log({rankValueCv})
-
+    let posValue = widthCanvas / tempLenght;
     for (let i = 0; i < rankValueCv.length; i++) {
         let rangeEverySubArray = (widthCanvas / countSubArr) * (i + 1)
-        // console.log(rangeEverySubArray)
 
         // Подмассив (разряды до 10,100,1000 и т.д.)
         for (let j = 0; j < rankValueCv[i].length; j++) {
             if (i == 0) {
-                changeKeys[0] = rankValueCv[i][j];
+                changeKeys[0] = 0;
                 changeKeysEmpty[0] = ' ';
                 prevValue = 0;
                 continue;
@@ -112,10 +74,11 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                 changeKeysEmpty[widthCanvas] = ' ';
                 continue;
             }
-            maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 3) + prevValue * 1.07));               //Здесь расчёт расстояния между значениями
+            // maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 3) + prevValue * 1.07));               //Здесь расчёт расстояния между значениями
+            maxRange = posValue + prevValue;
             prevValue = maxRange;
             changeKeys[maxRange] = rankValueCv[i][j];
-            changeKeysEmpty[maxRange] = ' ';
+            // changeKeysEmpty[maxRange] = ' ';
         }
     }
     // console.log(changeKeys);
@@ -168,6 +131,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
             progress.style.right = 100 - maxDisplayValue + '%';
         }
     })
+    // help();
 
 
     // Переворачивание массивов для расчитывания Позиции отрицательных чисел
@@ -220,11 +184,10 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                 valuesCv={valuesCv}
                 rank={rank}
                 lineWidth={lineWidth}
-                onTransform={ onTransform }
+                onTransform={onTransform}
             />
         </div>
-
-        <div style={{width: widthCanvas, right: '-2px'}} className="sliderr">
+        <div id="sliderr" style={{width: widthCanvas, right: '-2px'}} className="sliderr">
             <div className='progres'></div>
             {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
             <input step={0.01} style={{width: widthCanvas, left: '-2px'}} type="range" className="range-min cs" min={0}
@@ -233,16 +196,16 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                    value={maxDisplayValue} onInput={handleMaxValueChange}/>
         </div>
 
-        {/*<div className="d-flex justify-content-between my-5">*/}
-        {/*<div>*/}
-        {/*<p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>*/}
-        {/* <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue} /></p>*/}
-        {/*</div>*/}
-        {/*<div>*/}
-        {/*<p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>*/}
-        {/* <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue} /></p>*/}
-        {/*</div>*/}
-        {/*</div>*/}
+        <div className="d-flex justify-content-between my-5">
+            <div>
+                <p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>
+                <p>minDisplayValue <input type="number" onChange={handleMinValueChange} value={minDisplayValue}/></p>
+            </div>
+            <div>
+                <p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>
+                <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange} value={maxDisplayValue}/></p>
+            </div>
+        </div>
 
     </>
 }
