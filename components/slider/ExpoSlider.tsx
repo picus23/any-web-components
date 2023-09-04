@@ -1,9 +1,12 @@
 import React, {FC, useEffect, useState} from "react";
 import Canvas from "./Canvas";
 import {convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax} from './convert';
-import rankPos from "@/components/slider/functions/rank";
-import Rank from "@/components/slider/functions/rank";
-import AssigmentToSubArray from "@/components/slider/functions/AssigmentToSubArray";
+import reverseArrays from "./functions/reverseArrays";
+import breakpoints from "./functions/breakpoints/breakpoints";
+import valuesPos from "./functions/valuesPos";
+import assigmentToSubArray from "./functions/assigmentToSubArray";
+import getRanks from "./functions/rank/getRanks";
+import getRanksPos from "./functions/rank/getRanksPos";
 
 interface ExpoSliderProps {
     data: number[],
@@ -17,14 +20,6 @@ interface ExpoSliderProps {
     onTransform: (val: number) => string,
 }
 
-interface iChangeKeys {
-    [key: number]: number,
-}
-
-interface iChangeKeysEmpty {
-    [key: string]: string,
-}
-
 const ExpoSlider: FC<ExpoSliderProps> = ({
                                              data,
                                              minPropValue,
@@ -35,144 +30,66 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                                              onTransform,
                                              lineWidth = 2
                                          }) => {
-    const valuesCv = data.flat(Infinity);
-    valuesCv.sort((a, b) => a - b);
+    const values = data.flat(Infinity);
+    values.sort((a, b) => a - b);
 
-    let minValue = Math.min(...valuesCv);
-    let maxValue = Math.max(...valuesCv);
+    let minValue = Math.min(...values);
+    let maxValue = Math.max(...values);
 
     let [minDisplayValue, setMinDisplayValue] = useState(0);
     let [maxDisplayValue, setMaxDisplayValue] = useState<number>(100);
 
     // Делю массив на разряды десяток | Вычисление кол-ва подмассивов
     let comparisonArray = [-1000, -100, -10, -1, 0, 1, 10, 100, 1000, 10000, 100000];
-    let [countSubArr, rank] = Rank(valuesCv,comparisonArray);
+    let [countSubArr, ranks] = getRanks(values,comparisonArray,widthCanvas);
 
 
     // Происходит присваивание значений в подмассивы поразрядно
-    let [rankValueCv,tempLenght] = AssigmentToSubArray(countSubArr,comparisonArray,valuesCv);
+    let [rankValues,valuesLenght] = assigmentToSubArray(countSubArr,comparisonArray,values);
 
     // Здесь высчитывается расстояние между значениями (breakpoint (круглешки),числа, текст и т.д.) на графике
-    let changeKeys: iChangeKeys = {};
-    let changeKeysEmpty: iChangeKeysEmpty = {};
-    let maxRange = 0;
-    let prevValue = 0;
-    let posValue = widthCanvas / tempLenght;
-    for (let i = 0; i < rankValueCv.length; i++) {
-        let rangeEverySubArray = (widthCanvas / countSubArr) * (i + 1)
+   let [valuesWithPos,valuesWithPosEmpty] = valuesPos(widthCanvas,valuesLenght,rankValues,countSubArr);
+   ranks = getRanksPos(valuesWithPos,ranks);
+   console.log({ranks})
 
-        // Подмассив (разряды до 10,100,1000 и т.д.)
-        for (let j = 0; j < rankValueCv[i].length; j++) {
-            if (i == 0) {
-                changeKeys[0] = 0;
-                changeKeysEmpty[0] = ' ';
-                prevValue = 0;
-                continue;
-            }
-            if (i == rankValueCv.length - 1) {
-                changeKeys[widthCanvas] = rankValueCv[i][j];
-                changeKeysEmpty[widthCanvas] = ' ';
-                continue;
-            }
-            // maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 3) + prevValue * 1.07));               //Здесь расчёт расстояния между значениями
-            maxRange = posValue + prevValue;
-            prevValue = maxRange;
-            changeKeys[maxRange] = rankValueCv[i][j];
-            // changeKeysEmpty[maxRange] = ' ';
-        }
+   // Здесь создаётся массив с позициями
+   let valuesPosition: number[] = [];
+   let arrKeys = Object.keys(valuesWithPos);
+   for (let i = 0; i < arrKeys.length; i++) {
+       valuesPosition[i] = Number(arrKeys[i]);
     }
-    // console.log(changeKeys);
-
-    // Здесь создаётся массив с позициями
-    let valuesFromSlider: number[] = [];
-    let arrKeys = Object.keys(changeKeys);
-    for (let i = 0; i < arrKeys.length; i++) {
-        valuesFromSlider[i] = +arrKeys[i];
-    }
-    valuesFromSlider.sort((a, b) => a - b);
-
-    // Функция для нажимания на breakpoint
-    function clickBreakpoint(el: HTMLElement, pos: number) {
-        // let breakpointPos = Math.round((pos) / widthCanvas * 100);
-        // if (breakpointPos >= 50) {
-        //     setMaxDisplayValue(breakpointPos);
-        // } else {
-        //     setMinDisplayValue(breakpointPos);
-        // }
-    }
-
-    // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
-    useEffect(() => {
-        const progress = document.querySelector('.sliderr .progres') as HTMLElement;
-        const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
-
-        breakpoints.forEach(el => {
-
-            let breakpoint_pos = +el.style.left.slice(0, el.style.left.length - 2); // Убирает из строки px
-            el.addEventListener('click', () => {
-                clickBreakpoint(el, breakpoint_pos)
-            });
-            if (breakpoint_pos > currentPositionMin! && breakpoint_pos < currentPositionMax!) { // Активно, если breakpoint больше левого пальца и меньше правого
-                el.classList.add('breakpoint-active')
-            } else {
-                el.classList.add('breakpoint')
-                el.classList.remove('breakpoint-active')
-            }
-        })
-        // Закрашивание синей полосы
-        if (maxValue < 0) {
-            progress.style.left = Math.abs(((minDisplayValue))) + '%';
-            progress.style.right = Math.abs(100 - maxDisplayValue) + '%';
-        } else if (minValue < 0) {
-            progress.style.left = Math.abs(minDisplayValue) + '%';
-            progress.style.right = 100 - maxDisplayValue + '%';
-        } else {
-            progress.style.left = minDisplayValue + '%';
-            progress.style.right = 100 - maxDisplayValue + '%';
-        }
-    })
-    // help();
+    valuesPosition.sort((a, b) => a - b);
 
 
     // Переворачивание массивов для расчитывания Позиции отрицательных чисел
-    let k = 0;
-    // Переворачивание массива с позициями
-    let reverseValuesFromSlider: number[] = [];
-    for (let i = valuesFromSlider.length - 1; i >= 0; i--) {
-        reverseValuesFromSlider[k] = valuesFromSlider[i];
-        k++;
-    }
-    k = 0;
-    // Переворачивание массива со значениями
-    let reverseValuesCv: number[] = [];
-    for (let i = valuesCv.length - 1; i >= 0; i--) {
-        reverseValuesCv[k] = valuesCv[i];
-        k++;
-    }
+    let [reverseValuesPos,reverseValuesCv] = reverseArrays(valuesPosition,values);
     // Конец переворачивания
 
     // Конвертирует значения ползунка в %
     useEffect(() => {
-        let [minPosAfterRenderUseEffect, maxPosAfterRenderUseEffect] = convertValueToPercent(valuesFromSlider, reverseValuesFromSlider, valuesCv, minPropValue, maxPropValue, widthCanvas, currentPositionMin, currentPositionMax);
+        let [minPosAfterRenderUseEffect, maxPosAfterRenderUseEffect] = convertValueToPercent(valuesPosition, reverseValuesPos, values, minPropValue, maxPropValue, widthCanvas, currentPositionMin, currentPositionMax);
         setMinDisplayValue(minPropValue ? minPosAfterRenderUseEffect : 0);
         setMaxDisplayValue(maxPropValue ? maxPosAfterRenderUseEffect : 100);
     }, [maxPropValue, minPropValue])
 
     // Конвертирует % ползунка в значения
-    let [currentPositionMin, currentPositionMax] = convertPercentToValue(valuesFromSlider, reverseValuesFromSlider, minValue, maxValue, widthCanvas, minDisplayValue, maxDisplayValue);
-    let currentValueMin = tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, currentPositionMin, minDisplayValue)
-    let currentValueMax = tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, currentPositionMax, maxDisplayValue)
+    let [currentPositionMin, currentPositionMax] = convertPercentToValue(valuesPosition, reverseValuesPos, minValue, maxValue, widthCanvas, minDisplayValue, maxDisplayValue);
+    let currentValueMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, minDisplayValue)
+    let currentValueMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, maxDisplayValue)
 
     const handleMinValueChange = (event: any) => {
-        const currentMin = tempConvMin(minValue, maxValue, valuesFromSlider, valuesCv, currentPositionMin, event.target.value)
+        const currentMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, event.target.value)
         onChange(currentMin!, currentValueMax!);
         setMinDisplayValue(event.target.value)
     }
     const handleMaxValueChange = (event: any) => {
-        const currentMax = tempConvMax(minValue, maxValue, reverseValuesFromSlider, reverseValuesCv, currentPositionMax, event.target.value)
+        const currentMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, event.target.value)
         onChange(currentValueMin!, currentMax!);
         setMaxDisplayValue(event.target.value)
     }
+
+    // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
+    breakpoints(currentPositionMin,minDisplayValue,minValue,currentPositionMax,maxDisplayValue,maxValue);
 
 
     return <>
@@ -180,9 +97,9 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
             <Canvas
                 width={widthCanvas}
                 height={heightCanvas}
-                valuesFromSlider={valuesFromSlider}
-                valuesCv={valuesCv}
-                rank={rank}
+                valuesPosition={valuesPosition}
+                values={values}
+                ranks={ranks}
                 lineWidth={lineWidth}
                 onTransform={onTransform}
             />

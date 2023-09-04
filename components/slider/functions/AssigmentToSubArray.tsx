@@ -1,7 +1,7 @@
 export default function AssigmentToSubArray(countSubArr: number, comparisonArray: number[], valuesCv: number[]) {
     let rankValueCv = new Array(countSubArr);
     let lenghtPrevArr = 0;
-    let tempLenght = 0;
+    let valuesLenght = 0;
     let prev = 0;
     let curr = 0;
     let indexComparisonArray = 0;
@@ -9,7 +9,7 @@ export default function AssigmentToSubArray(countSubArr: number, comparisonArray
     for (let i = 0; i < countSubArr; i++) {
         let position = 0;
         rankValueCv[i] = [];
-        for (let j = tempLenght; j < valuesCv.length; j++) {
+        for (let j = valuesLenght; j < valuesCv.length; j++) {
             prev = comparisonArray[indexComparisonArray];
             curr = comparisonArray[indexComparisonArray + 1];
 
@@ -23,11 +23,11 @@ export default function AssigmentToSubArray(countSubArr: number, comparisonArray
                 indexComparisonArray++;
                 continue;
             } else {
-                tempLenght += ++lenghtPrevArr!;
+                valuesLenght += ++lenghtPrevArr!;
                 indexComparisonArray++;
                 break;
             }
         }
     }
-    return [rankValueCv, tempLenght];
+    return [rankValueCv, valuesLenght];
 }

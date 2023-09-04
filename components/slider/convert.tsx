@@ -13,8 +13,8 @@ var currentValueMax: number | undefined = 0;
 
 // Конвертер значений в %
 function convertValueToPercent(
-    valuesFromSlider: number[],
-    reverseValuesFromSlider: number[],
+    valuesPosition: number[],
+    reverseValuesPosition: number[],
     valuesCv: any,
     minPropValue: number | undefined,
     maxPropValue: number | undefined,
@@ -46,16 +46,16 @@ function convertValueToPercent(
 
     // Pos After Render для отрицательных
     // Позиция для MIN
-    for (let key in reverseValuesFromSlider) {
-        if (currentPositionMin < valuesFromSlider[key]) {
+    for (let key in reverseValuesPosition) {
+        if (currentPositionMin < valuesPosition[key]) {
             fromKey = Number(key)
             toKey = Number(key) - 1
             break;
         }
     }
     // Позиция для MAX
-    for (let key in valuesFromSlider) {
-        if (currentPositionMax > reverseValuesFromSlider[key]) {
+    for (let key in valuesPosition) {
+        if (currentPositionMax > reverseValuesPosition[key]) {
             fromKeyMax = Number(key) - 1
             toKeyMax = Number(key)
             break;
@@ -65,8 +65,8 @@ function convertValueToPercent(
     // Конвертирование
     if (minPropValue! >= 0 && maxPropValue! >= 0) {
         // MIN
-        const pixFrom = valuesFromSlider[fromValueMin];
-        const pixTo = valuesFromSlider[toValueMin];
+        const pixFrom = valuesPosition[fromValueMin];
+        const pixTo = valuesPosition[toValueMin];
 
         const valFrom = valuesCv[fromValueMin];
         const valTo = valuesCv[toValueMin];
@@ -81,8 +81,8 @@ function convertValueToPercent(
         minPosAfterRenderUseEffect = differenceCurrentPixMin / widthCanvas * 100;
 
         // MAX
-        const pixToMax = valuesFromSlider[fromValueMax];
-        const pixFromMax = valuesFromSlider[toValueMax];
+        const pixToMax = valuesPosition[fromValueMax];
+        const pixFromMax = valuesPosition[toValueMax];
 
         const valFromMax = valuesCv[fromValueMax];
         const valToMax = valuesCv[toValueMax];
@@ -96,8 +96,8 @@ function convertValueToPercent(
         maxPosAfterRenderUseEffect = differenceCurrentPixMax / widthCanvas * 100;
     } else {
         // MIN
-        const pixFrom = valuesFromSlider[fromValueMin];
-        const pixTo = valuesFromSlider[toValueMin];
+        const pixFrom = valuesPosition[fromValueMin];
+        const pixTo = valuesPosition[toValueMin];
 
         const valFrom = valuesCv[fromValueMin];
         const valTo = valuesCv[toValueMin];
@@ -111,8 +111,8 @@ function convertValueToPercent(
         minPosAfterRenderUseEffect = differenceCurrentPixMin / widthCanvas * 100;
 
         // MAX
-        const pixToMax = valuesFromSlider[fromValueMax];
-        const pixFromMax = valuesFromSlider[toValueMax];
+        const pixToMax = valuesPosition[fromValueMax];
+        const pixFromMax = valuesPosition[toValueMax];
 
         const valFromMax = valuesCv[fromValueMax];
         const valToMax = valuesCv[toValueMax];
@@ -130,8 +130,8 @@ function convertValueToPercent(
 
 // Конвертер % в значения
 function convertPercentToValue(
-    valuesFromSlider: number[],
-    reverseValuesFromSlider: number[],
+    valuesPosition: number[],
+    reverseValuesPosition: number[],
     minValue: number | undefined,
     maxValue: number | undefined,
     widthCanvas: number,
@@ -160,16 +160,16 @@ function convertPercentToValue(
 
     // Отрезок между левым и правым значением Для положительных значений
     // Позиция для MIN
-    for (let key in valuesFromSlider) {
-        if (currentPositionMin < valuesFromSlider[key]) {
+    for (let key in valuesPosition) {
+        if (currentPositionMin < valuesPosition[key]) {
             fromKey = Number(key) - 1
             toKey = Number(key)
             break;
         }
     }
     // Позиция для MAX
-    for (let key in reverseValuesFromSlider) {
-        if (currentPositionMax > reverseValuesFromSlider[key]) {
+    for (let key in reverseValuesPosition) {
+        if (currentPositionMax > reverseValuesPosition[key]) {
             fromKeyMax = Number(key)
             toKeyMax = Number(key) - 1
             break;
@@ -178,16 +178,16 @@ function convertPercentToValue(
 
     // Отрезок между левым и правым значением Для отрицательных значений
     // Позиция для MIN
-    for (let key in reverseValuesFromSlider) {
-        if (currentPositionMin < valuesFromSlider[key]) {
+    for (let key in reverseValuesPosition) {
+        if (currentPositionMin < valuesPosition[key]) {
             fromKey = Number(key)
             toKey = Number(key) - 1
             break;
         }
     }
     // Позиция для MAX
-    for (let key in valuesFromSlider) {
-        if (currentPositionMax > reverseValuesFromSlider[key]) {
+    for (let key in valuesPosition) {
+        if (currentPositionMax > reverseValuesPosition[key]) {
             fromKeyMax = Number(key) - 1
             toKeyMax = Number(key)
             break;
@@ -198,12 +198,12 @@ function convertPercentToValue(
 }
 
 // Конвертер МИН % в значения
-function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, valuesCv: any, currentPositionMin: any, minDisplayValue: any) {
+function tempConvMin(minValue: any, maxValue: any, valuesPosition: any, valuesCv: any, currentPositionMin: any, minDisplayValue: any) {
     // Current Value для Положительных значений
     if (minValue! >= 0 && maxValue! >= 0) {
         // MIN
-        const pixFrom = valuesFromSlider[fromKey];
-        const pixTo = valuesFromSlider[toKey];
+        const pixFrom = valuesPosition[fromKey];
+        const pixTo = valuesPosition[toKey];
 
         const valFrom = valuesCv[fromKey];
         const valTo = valuesCv[toKey];
@@ -219,8 +219,8 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
     } else {
         // Current Value для отрицательных значений
         // MIN
-        const pixTo = valuesFromSlider[fromKey];
-        const pixFrom = valuesFromSlider[toKey];
+        const pixTo = valuesPosition[fromKey];
+        const pixFrom = valuesPosition[toKey];
 
         const valTo = valuesCv[fromKey];
         const valFrom = valuesCv[toKey];
@@ -238,12 +238,12 @@ function tempConvMin(minValue: any, maxValue: any, valuesFromSlider: any, values
 }
 
 // Конвертер МАКС % в значения
-function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any, reverseValuesCv: any, currentPositionMax: any, maxDisplayValue: any) {
+function tempConvMax(minValue: any, maxValue: any, reverseValuesPosition: any, reverseValuesCv: any, currentPositionMax: any, maxDisplayValue: any) {
     if (minValue! >= 0 && maxValue! >= 0) {
         // Current Value для положительных значений
         // MAX
-        const pixToMax = reverseValuesFromSlider[fromKeyMax];
-        const pixFromMax = reverseValuesFromSlider[toKeyMax];
+        const pixToMax = reverseValuesPosition[fromKeyMax];
+        const pixFromMax = reverseValuesPosition[toKeyMax];
 
         const valFromMax = reverseValuesCv[fromKeyMax];
         const valToMax = reverseValuesCv[toKeyMax];
@@ -258,8 +258,8 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesFromSlider: any,
     } else {
         // Current Value для отрицательных значений
         // MAX
-        const pixFromMax = reverseValuesFromSlider[fromKeyMax];
-        const pixToMax = reverseValuesFromSlider[toKeyMax];
+        const pixFromMax = reverseValuesPosition[fromKeyMax];
+        const pixToMax = reverseValuesPosition[toKeyMax];
 
         const valFromMax = reverseValuesCv[fromKeyMax];
         const valToMax = reverseValuesCv[toKeyMax];

@@ -1,23 +1,23 @@
 import {FC, useEffect, useRef} from "react";
 
 interface CanvasProps {
-    valuesCv: number[],
+    values: number[],
     width: number,
     height: number,
     tickCount?: number,
     lineWidth: number,
-    valuesFromSlider: number[],
-    rank?: number[],
+    valuesPosition: number[],
+    ranks?: number[],
     onTransform?: (val: number) => string,
 }
 
 const Canvas: FC<CanvasProps> = ({
                                      width,
                                      height,
-                                     valuesCv,
+                                     values,
                                      tickCount = 4,
-                                     valuesFromSlider,
-                                     rank,
+                                     valuesPosition,
+                                     ranks,
                                      lineWidth,
                                      onTransform
                                  }) => {
@@ -25,7 +25,7 @@ const Canvas: FC<CanvasProps> = ({
 
 
     const draw = (chart: any) => {
-        let xAxisValues = valuesCv;
+        let xAxisValues = values;
 
         chart.canvas.width = width;
         chart.canvas.height = height;
@@ -49,7 +49,7 @@ const Canvas: FC<CanvasProps> = ({
         function breakpointsStyles(element: any) {
             element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
-            element.style.left = valuesFromSlider[i] + 'px';
+            element.style.left = valuesPosition[i] + 'px';
         }
 
         for (var i = 0; i < xAxisValues!.length; i++) {
@@ -73,7 +73,7 @@ const Canvas: FC<CanvasProps> = ({
             // }
             // Отрисовка только разряды
             // else if (xAxisValues[i] === rank![j]) {
-            if (xAxisValues[i] === rank![j]) {
+            if (xAxisValues[i] === ranks![j]) {
                 text = document.createTextNode(transformVal + '');
                 xAxisValue.appendChild(text);
                 xAxisValue.style.fontSize = '20px';
@@ -98,7 +98,7 @@ const Canvas: FC<CanvasProps> = ({
             xAxisValue.classList.add('prev-canvas-values');
             xAxisValue.style.position = 'absolute';
             xAxisValue.style.fontSize = '14px';
-            xAxisValue.style.left = valuesFromSlider[i] - 2 + 'px';
+            xAxisValue.style.left = valuesPosition[i] - 2 + 'px';
             document.getElementById('xAxisValue')!.appendChild(xAxisValue);
         }
 
@@ -111,27 +111,27 @@ const Canvas: FC<CanvasProps> = ({
         // }
 
         let percent = [];
-        let k = valuesFromSlider.length - 1;
+        let k = valuesPosition.length - 1;
         // Расчитывает растояние для линий по Y от ширины X (в %)
-        for (let i = 0; i < valuesFromSlider!.length; i++) {
+        for (let i = 0; i < valuesPosition!.length; i++) {
             if (i == 0) {
                 percent[i] = ch;
             } else {
-                percent[i] = (valuesFromSlider![k] / ch * 100);
+                percent[i] = (valuesPosition![k] / ch * 100);
             }
             k--;
         }
 
         // console.log('percent 1', percent);
-        // console.log('valuesFromSlider', valuesFromSlider);
+        // console.log('valuesPosition', valuesPosition);
 
         // Отрисовка вертикальных линий
         function gridV() {
-            for (var i = 0; i < valuesFromSlider.length; i++) {
+            for (var i = 0; i < valuesPosition.length; i++) {
                 chart.strokeStyle = '#ccc';
                 chart.lineWidth = 1;
-                chart.moveTo(valuesFromSlider[i], 0);
-                chart.lineTo(valuesFromSlider[i], ch);
+                chart.moveTo(valuesPosition[i], 0);
+                chart.lineTo(valuesPosition[i], ch);
             }
             chart.stroke();
         }
@@ -156,9 +156,9 @@ const Canvas: FC<CanvasProps> = ({
         // chart.beginPath();
         // chart.strokeStyle = '#0085FF';
         // chart.lineWidth = lineWidth;
-        // for (var i = 0; i < valuesFromSlider.length; i++) {
-        //     chart.lineTo(valuesFromSlider[i], percent[i]);
-        //     // chart.lineTo(valuesFromSlider[i], ch - (percent[i] / 100 * ch));
+        // for (var i = 0; i < valuesPosition.length; i++) {
+        //     chart.lineTo(valuesPosition[i], percent[i]);
+        //     // chart.lineTo(valuesPosition[i], ch - (percent[i] / 100 * ch));
         //     chart.stroke();
         // }
     }
