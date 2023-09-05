@@ -1,8 +1,8 @@
-import React, {FC, useEffect, useState} from "react";
-import clickBreakpoint from "./ClickBreakpoint";
+import React, {useEffect} from "react";
+import clickBreakpoint from "@/components/slider/ExpoSliderFunctions/breakpoints/clickBreakpoint";
 // Функция для нажимания на breakpoint
-    // Здесь логика движения пальцев у слайдера и закрашивание breakpoints
-    export default function breakpoints(currentPositionMin,minDisplayValue,minValue,currentPositionMax,maxDisplayValue,maxValue) {
+// Здесь логика движения пальцев у слайдера и закрашивание breakpoints
+export default function breakpoints(currentPositionMin: number, minDisplayValue: number, minValue: number, currentPositionMax: number, maxDisplayValue: number, maxValue: number) {
     useEffect(() => {
         const progress = document.querySelector('.sliderr .progres') as HTMLElement;
         const breakpoints = document.querySelectorAll<HTMLElement>('.breakpoint');
@@ -33,4 +33,4 @@ import clickBreakpoint from "./ClickBreakpoint";
         }
     })
 }
-    // help();
+// help();

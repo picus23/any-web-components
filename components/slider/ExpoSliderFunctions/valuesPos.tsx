@@ -6,7 +6,8 @@ interface iValuesWithPosEmpty {
     [key: string]: string,
 }
 
-export default function valuesPos (widthCanvas:number,valuesLenght:any,rankValues:any,countSubArr:number) {
+export default function valuesPos(widthCanvas: number, valuesLenght: any, rankValues: any, countSubArr: number) {
+    widthCanvas = widthCanvas - (widthCanvas / 10)
     let valuesWithPos: iValuesWithPos = {};
     let valuesWithPosEmpty: iValuesWithPosEmpty = {};
     let maxRange = 0;
@@ -28,12 +29,11 @@ export default function valuesPos (widthCanvas:number,valuesLenght:any,rankValue
                 valuesWithPosEmpty[widthCanvas] = ' ';
                 continue;
             }
-            // maxRange = Math.ceil((((rangeEverySubArray - prevValue) / 3) + prevValue * 1.07));               //Здесь расчёт расстояния между значениями
-            maxRange = posValue + prevValue;
+            maxRange = posValue + prevValue;  //Здесь расчёт расстояния между значениями
             prevValue = maxRange;
             valuesWithPos[maxRange] = rankValues[i][j];
             valuesWithPosEmpty[maxRange] = ' ';
         }
     }
-    return [valuesWithPos,valuesWithPosEmpty]
+    return [valuesWithPos, valuesWithPosEmpty]
 }

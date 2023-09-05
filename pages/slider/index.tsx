@@ -11,7 +11,7 @@ const values2 = [-20, -7, 0, 1, 10, 50, 100];
 export default function () {
 
     const [current, setCurrent] = useState(1);
-    const [values, setValues] = useState<[number, number]>([31, 10341]);
+    const [values, setValues] = useState<[number, number]>([31, 10342]);
     const [valuess, setValuess] = useState<[number, number]>([0.7, 26]);
 
     return <>

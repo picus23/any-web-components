@@ -7,6 +7,7 @@ interface CanvasProps {
     tickCount?: number,
     lineWidth: number,
     valuesPosition: number[],
+    ranksPos?: number[],
     ranks?: number[],
     onTransform?: (val: number) => string,
 }
@@ -17,6 +18,7 @@ const Canvas: FC<CanvasProps> = ({
                                      values,
                                      tickCount = 4,
                                      valuesPosition,
+                                     ranksPos,
                                      ranks,
                                      lineWidth,
                                      onTransform
@@ -25,7 +27,6 @@ const Canvas: FC<CanvasProps> = ({
 
 
     const draw = (chart: any) => {
-        let xAxisValues = values;
 
         chart.canvas.width = width;
         chart.canvas.height = height;
@@ -43,63 +44,39 @@ const Canvas: FC<CanvasProps> = ({
         }
 
         // Отрисовка Значений X (числа(текст) + breakpoints + степени)
-        let j = 0;
-        let strValue, lengthStrValue, text;
+        let i = 0;
+        let text;
 
-        function breakpointsStyles(element: any) {
+        function breakpointsStyles(element: any,key:any) {
             element.classList.add('breakpoint')
             element.classList.add('prev-canvas-values')
-            element.style.left = valuesPosition[i] + 'px';
+            element.style.left = key - 2 + 'px';
         }
 
-        for (var i = 0; i < xAxisValues!.length; i++) {
-            var xAxisValue = document.createElement('span');
+        for (let key in ranksPos) {
+        // for (var i = 0; i < xAxisValues!.length; i++) {
+            var xAxisValue = document.createElement('i');
             let breakpoint = document.createElement('div');
             let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
-            let transformVal = onTransform ? onTransform(xAxisValues[i]) : xAxisValues[i];
+            let transformVal = onTransform ? onTransform(ranksPos[key]) : ranksPos[key];
 
-            // Отрисовка числа в степени
-            // if (xAxisValues![i] >= 10000) {
-            //     strValue = transformVal + '';
-            //     lengthStrValue = strValue.length - 2 + '';
-            //     text = document.createTextNode(strValue.slice(0, 2) + `e+${lengthStrValue}`);
-            //     xAxisValue.style.top = '20px';
-            //     xAxisValue.appendChild(text);
-            //     verticalLine!.appendChild(xAxisValue);
-            //     verticalLine!.appendChild(breakpoint);
-            //     breakpointsStyles(breakpoint)
-            // }
-            // Отрисовка только разряды
-            // else if (xAxisValues[i] === rank![j]) {
-            if (xAxisValues[i] === ranks![j]) {
-                text = document.createTextNode(transformVal + '');
-                xAxisValue.appendChild(text);
-                xAxisValue.style.fontSize = '20px';
-                xAxisValue.style.top = '20px';
-                verticalLine!.appendChild(xAxisValue);
-                verticalLine!.appendChild(breakpoint);
-                breakpointsStyles(breakpoint)
-                j++;
-            }
-            // Отрисовка всяких неровных чисел
-            else {
-                text = document.createTextNode(transformVal + '')
-                xAxisValue.appendChild(text);
-                verticalLine!.appendChild(breakpoint);
-                breakpointsStyles(breakpoint)
-                if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
-                    xAxisValue.style.top = '-25px';
-                } else { // Нечётный индекс [i] == 1,3,5 ...
-                    xAxisValue.style.top = '10px';
-                }
+            text = document.createTextNode(transformVal + '')
+            xAxisValue.appendChild(text);
+            verticalLine!.appendChild(breakpoint);
+            breakpointsStyles(breakpoint,key)
+            if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
+                xAxisValue.style.top = '-25px';
+            } else { // Нечётный индекс [i] == 1,3,5 ...
+                xAxisValue.style.top = '10px';
             }
             xAxisValue.classList.add('prev-canvas-values');
             xAxisValue.style.position = 'absolute';
             xAxisValue.style.fontSize = '14px';
-            xAxisValue.style.left = valuesPosition[i] - 2 + 'px';
+            xAxisValue.style.left = key + 'px';
             document.getElementById('xAxisValue')!.appendChild(xAxisValue);
+            i++;
         }
 
         // Отрисовка Значений Y
@@ -122,8 +99,6 @@ const Canvas: FC<CanvasProps> = ({
             k--;
         }
 
-        // console.log('percent 1', percent);
-        // console.log('valuesPosition', valuesPosition);
 
         // Отрисовка вертикальных линий
         function gridV() {
@@ -188,14 +163,3 @@ const Canvas: FC<CanvasProps> = ({
 }
 
 export default Canvas;
-
-// var yAxisValues = [100, 200, 300, 400, 500];
-// Расстояние вертикальных полос
-// let w = [];
-// for (let i = 0; i < xAxisValues.length; i++) {
-//     if (i == 0) {
-//         w[i] = 0
-//         i++;
-//     }
-//     w[i] = Math.round(i * (cw / xAxisValues.length))
-// }
