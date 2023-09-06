@@ -7,7 +7,6 @@ import valuesPos from "./ExpoSliderFunctions/valuesPos";
 import assigmentToSubArray from "./ExpoSliderFunctions/assigmentToSubArray";
 import getRanks from "./ExpoSliderFunctions/rank/getRanks";
 import getRanksPos from "./ExpoSliderFunctions/rank/getRanksPos";
-import slider from "@/pages/slider";
 
 interface ExpoSliderProps {
     data: number[],
@@ -31,10 +30,6 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
                                              onTransform,
                                              lineWidth = 2
                                          }) => {
-    // let widthCanvasCut = widthCanvas
-    let widthCanvasCut = widthCanvas - (widthCanvas / 5)
-    let minValueInput = 0
-    let maxValueInput = 100
 
     const values = data.flat(Infinity);
     values.sort((a, b) => a - b);
@@ -42,8 +37,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     let minValue = Math.min(...values);
     let maxValue = Math.max(...values);
 
-    let [minDisplayValue, setMinDisplayValue] = useState(minValueInput);
-    let [maxDisplayValue, setMaxDisplayValue] = useState<number>(maxValueInput);
+    let [minDisplayValue, setMinDisplayValue] = useState(0);
+    let [maxDisplayValue, setMaxDisplayValue] = useState<number>(90);
 
     // Делю массив на разряды | Вычисление кол-ва подмассивов
     let [countSubArr, ranks, comparisonArray, onlyViewRanks] = getRanks(values);
@@ -52,7 +47,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     let [rankValues, valuesLenght] = assigmentToSubArray(countSubArr, comparisonArray, values);
 
     // Здесь высчитывается расстояние между значениями (breakpoint (круглешки),числа, текст и т.д.) на графике
-    let [valuesWithPos, valuesWithPosEmpty] = valuesPos(widthCanvasCut, valuesLenght, rankValues, countSubArr);
+    let [valuesWithPos, valuesWithPosEmpty] = valuesPos(widthCanvas, valuesLenght, rankValues, countSubArr);
 
 
     // Здесь создаётся массив с позициями значений и разрядов
@@ -73,22 +68,22 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     // Конвертирует значения ползунка в %
     useEffect(() => {
         let [minPosAfterRenderUseEffect, maxPosAfterRenderUseEffect] = convertValueToPercent(valuesPosition, reverseValuesPos, values, minPropValue, maxPropValue, widthCanvas, currentPositionMin, currentPositionMax);
-        setMinDisplayValue(minPropValue ? minPosAfterRenderUseEffect : minValueInput);
-        setMaxDisplayValue(maxPropValue ? maxPosAfterRenderUseEffect : maxValueInput);
+        setMinDisplayValue(minPropValue ? minPosAfterRenderUseEffect : 0);
+        setMaxDisplayValue(maxPropValue ? maxPosAfterRenderUseEffect : 100);
     }, [maxPropValue, minPropValue])
 
     // Конвертирует % ползунка в значения
     let [currentPositionMin, currentPositionMax] = convertPercentToValue(valuesPosition, reverseValuesPos, minValue, maxValue, widthCanvas, minDisplayValue, maxDisplayValue);
-    let currentValueMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, minDisplayValue, minValueInput, maxValueInput)
-    let currentValueMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, maxDisplayValue, minValueInput, maxValueInput)
+    let currentValueMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, minDisplayValue)
+    let currentValueMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, maxDisplayValue)
 
     const handleMinValueChange = (event: any) => {
-        const currentMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, event.target.value, minValueInput, maxValueInput)
+        const currentMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, event.target.value)
         onChange(currentMin!, currentValueMax!);
         setMinDisplayValue(event.target.value)
     }
     const handleMaxValueChange = (event: any) => {
-        const currentMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, event.target.value, minValueInput, maxValueInput)
+        const currentMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, event.target.value)
         onChange(currentValueMin!, currentMax!);
         setMaxDisplayValue(event.target.value)
     }
@@ -97,54 +92,54 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     breakpoints(currentPositionMin, minDisplayValue, minValue, currentPositionMax, maxDisplayValue, maxValue);
 
     // ************************************************************************************************************************************
-    useEffect(() => {
-        var sliderr = document.getElementById('sliderr')
-        console.log(sliderr)
-
-
-        // Отрисовка Значений X (числа(текст) + breakpoints + степени)
-        let i = 0;
-        let text;
-
-        function breakpointsStyles(element: any, key: any) {
-            element.classList.add('breakpoint')
-            element.classList.add('prev-canvas-values')
-            element.style.left = key - 2 + 'px';
-        }
-
-        for (let key in ranksPos) {
-            var xAxisValue = document.createElement('i');
-            let breakpoint = document.createElement('div');
-            let verticalLine = document.getElementById('xAxisValue');
-            verticalLine?.classList.add('position-relative');
-
-            let transformVal = onTransform ? onTransform(ranksPos[key]) : ranksPos[key];
-
-            text = document.createTextNode(transformVal + '')
-            xAxisValue.appendChild(text);
-            // verticalLine!.appendChild(breakpoint);
-            breakpointsStyles(breakpoint, key)
-            if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
-                xAxisValue.style.top = '-25px';
-            } else { // Нечётный индекс [i] == 1,3,5 ...
-                xAxisValue.style.top = '10px';
-            }
-            xAxisValue.classList.add('prev-canvas-values');
-            xAxisValue.style.position = 'absolute';
-            xAxisValue.style.fontSize = '14px';
-            xAxisValue.style.left = key + 'px';
-            // document.getElementById('xAxisValue')!.appendChild(xAxisValue);
-            i++;
-        }
-
-    }, []);
-// useEffect(() => {
-//     document.querySelectorAll('.prev-canvas-values').forEach(el => {
-//         if (el.classList.contains('prev-canvas-values')) {
-//             el.remove()
-//         }
-//     })
-// }, [])
+    // useEffect(() => {
+    //     var sliderr = document.getElementById('sliderr')
+    //     console.log(sliderr)
+    //
+    //
+    //     // Отрисовка Значений X (числа(текст) + breakpoints + степени)
+    //     let i = 0;
+    //     let text;
+    //
+    //     function breakpointsStyles(element: any, key: any) {
+    //         element.classList.add('breakpoint')
+    //         element.classList.add('prev-canvas-values')
+    //         element.style.left = key - 2 + 'px';
+    //     }
+    //
+    //     for (let key in ranksPos) {
+    //         var xAxisValue = document.createElement('i');
+    //         let breakpoint = document.createElement('div');
+    //         let verticalLine = document.getElementById('xAxisValue');
+    //         verticalLine?.classList.add('position-relative');
+    //
+    //         let transformVal = onTransform ? onTransform(ranksPos[key]) : ranksPos[key];
+    //
+    //         text = document.createTextNode(transformVal + '')
+    //         xAxisValue.appendChild(text);
+    //         // verticalLine!.appendChild(breakpoint);
+    //         breakpointsStyles(breakpoint, key)
+    //         if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...
+    //             xAxisValue.style.top = '-25px';
+    //         } else { // Нечётный индекс [i] == 1,3,5 ...
+    //             xAxisValue.style.top = '10px';
+    //         }
+    //         xAxisValue.classList.add('prev-canvas-values');
+    //         xAxisValue.style.position = 'absolute';
+    //         xAxisValue.style.fontSize = '14px';
+    //         xAxisValue.style.left = key + 'px';
+    //         // document.getElementById('xAxisValue')!.appendChild(xAxisValue);
+    //         i++;
+    //     }
+    //
+    // }, []);
+    // useEffect(() => {
+    //     document.querySelectorAll('.prev-canvas-values').forEach(el => {
+    //         if (el.classList.contains('prev-canvas-values')) {
+    //             el.remove()
+    //         }
+    //     })
+    // }, [])
 // ************************************************************************************************************************************
     return <>
         {/*<div className="my-4">*/}
@@ -159,19 +154,14 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
         {/*        onTransform={onTransform}*/}
         {/*    />*/}
         {/*</div>*/}
-        <div className="d-flex justify-content-center bg-black" style={{width: widthCanvas}}>
-            <div id="sliderr" style={{width: widthCanvasCut}} className="sliderr">
-                <div className='progres'></div>
-                {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
-                <input step={0.01} style={{width: widthCanvasCut}} type="range" className="range-min cs"
-                       min={minValueInput}
-                       max={maxValueInput} value={minDisplayValue} onInput={handleMinValueChange}/>
+        <div id="sliderr" style={{width: widthCanvas, right: '-2px'}} className="sliderr">
+            <div className='progres'></div>
+            {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
+            <input step={0.01} style={{width: widthCanvas, left: '-2px'}} type="range" className="range-min cs" min={0}
+                   max={100} value={minDisplayValue} onInput={handleMinValueChange}/>
 
-                <input step={0.01} style={{width: widthCanvasCut + 8}} type="range" className="range-max cs"
-                       min={minValueInput}
-                       max={maxValueInput}
-                       value={Math.ceil(maxDisplayValue)} onInput={handleMaxValueChange}/>
-            </div>
+            <input step={0.01} style={{width: widthCanvas + 8}} type="range" className="range-max cs" min={0} max={100}
+                   value={maxDisplayValue} onInput={handleMaxValueChange}/>
         </div>
 
         <div className="d-flex justify-content-between my-5">

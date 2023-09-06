@@ -198,9 +198,7 @@ function convertPercentToValue(
 }
 
 // Конвертер МИН % в значения
-function tempConvMin(minValue: any, maxValue: any, valuesPosition: any, valuesCv: any, currentPositionMin: any, minDisplayValue: any,
-                     minValueInput: number,
-                     maxValueInput: number) {
+function tempConvMin(minValue: any, maxValue: any, valuesPosition: any, valuesCv: any, currentPositionMin: any, minDisplayValue: any) {
     // Current Value для Положительных значений
     if (minValue! >= 0 && maxValue! >= 0) {
         // MIN
@@ -212,10 +210,11 @@ function tempConvMin(minValue: any, maxValue: any, valuesPosition: any, valuesCv
 
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPositionMin - pixFrom;
-        if (Math.ceil(minDisplayValue) == maxValueInput) {
+
+        if (minDisplayValue == 100) {
             currentValueMin = maxValue;
         }
-        minDisplayValue >= minValueInput ? currentValueMin = minValue : currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
+        minDisplayValue == 0 ? currentValueMin = minValue : currentValueMin = (valTo - valFrom) * (differenceCurrentPix / differencePix) + valFrom;
 
     } else {
         // Current Value для отрицательных значений
@@ -229,19 +228,17 @@ function tempConvMin(minValue: any, maxValue: any, valuesPosition: any, valuesCv
         let differencePix = pixTo - pixFrom;
         let differenceCurrentPix = currentPositionMin - pixFrom;
 
-        if (Math.ceil(minDisplayValue) == maxValueInput) {
+        if (minDisplayValue == 100) {
             currentValueMin = maxValue;
         }
-        minDisplayValue >= minValueInput ? currentValueMin = minValue : currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
+        minDisplayValue == 0 ? currentValueMin = minValue : currentValueMin = valFrom - (valFrom - valTo) * (differenceCurrentPix / differencePix);
     }
 
     return currentValueMin;
 }
 
 // Конвертер МАКС % в значения
-function tempConvMax(minValue: any, maxValue: any, reverseValuesPosition: any, reverseValuesCv: any, currentPositionMax: any, maxDisplayValue: any,
-                     minValueInput: number,
-                     maxValueInput: number) {
+function tempConvMax(minValue: any, maxValue: any, reverseValuesPosition: any, reverseValuesCv: any, currentPositionMax: any, maxDisplayValue: any) {
     if (minValue! >= 0 && maxValue! >= 0) {
         // Current Value для положительных значений
         // MAX
@@ -254,15 +251,10 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesPosition: any, r
         let differencePixMax = pixFromMax - pixToMax;
         let differenceCurrentPixMax = currentPositionMax - pixToMax
 
-
-        if (Math.ceil(maxDisplayValue) == minValueInput) {
+        if (maxDisplayValue == 0) {
             currentValueMax = minValue;
         }
-        if (maxDisplayValue >= Math.ceil(maxValueInput)) {
-            currentValueMax = maxValue;
-        } else {
-            currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
-        }
+        maxDisplayValue >= 100 ? currentValueMax = maxValue : currentValueMax = (valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax) + valFromMax;
     } else {
         // Current Value для отрицательных значений
         // MAX
@@ -275,12 +267,12 @@ function tempConvMax(minValue: any, maxValue: any, reverseValuesPosition: any, r
         let differencePixMax = pixFromMax - pixToMax;
         let differenceCurrentPixMax = currentPositionMax - pixToMax;
 
-        if (Math.ceil(maxDisplayValue) == minValueInput) {
+        if (maxDisplayValue == 0) {
             currentValueMax = minValue;
         }
-        maxDisplayValue >= Math.ceil(maxDisplayValue) ? currentValueMax = maxValue : currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
+        maxDisplayValue >= 100 ? currentValueMax = maxValue : currentValueMax = valToMax - ((valToMax - valFromMax) * (differenceCurrentPixMax / differencePixMax));
     }
-
+    // console.log({ currentValueMin, currentValueMax })
     return currentValueMax;
 }
 

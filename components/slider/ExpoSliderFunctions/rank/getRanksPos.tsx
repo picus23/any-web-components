@@ -1,19 +1,20 @@
-export default function getRanksPos(valuesWithPosObj: {}, ranks: number[]) {
+export default function getRanksPos(valuesWithPosObj: {[key: string]: any}, ranks: number[]) {
     let fromKey: number[] = [];
     let toKey: number[] = [];
     let ranksPos: number[] = [];
-    let valuesWithPosArr: number[] = [];
+    let valuesWithPosArr:any[] = [];
     let i = 0;
 
     for (let key in valuesWithPosObj) {
-        valuesWithPosArr.push([key, valuesWithPosObj[key]]);
+        valuesWithPosArr.push(key,valuesWithPosObj[key]);
+
     }
 
     valuesWithPosArr.sort((a, b) => {
         return a[1] - b[1];
     });
 
-    valuesWithPosArr.forEach(([key, value], index) => {
+    valuesWithPosArr.forEach((value, index) => {
         if (ranks[i] < value) {
             fromKey.push(valuesWithPosArr[index - 1][0])
             toKey.push(valuesWithPosArr[index][0])
