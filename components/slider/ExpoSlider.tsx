@@ -7,17 +7,18 @@ import valuesPos from "./ExpoSliderFunctions/valuesPos";
 import assigmentToSubArray from "./ExpoSliderFunctions/assigmentToSubArray";
 import getRanks from "./ExpoSliderFunctions/rank/getRanks";
 import getRanksPos from "./ExpoSliderFunctions/rank/getRanksPos";
+import {Slider} from "antd";
 
 interface ExpoSliderProps {
     data: number[],
     dataToWrapper?: (data: any) => void,
     widthCanvas: number,
-    heightCanvas: number,
+    heightCanvas?: number,
     minPropValue?: number,
     maxPropValue?: number,
     lineWidth?: number,
-    onChange: (min: number, max: number) => void,
-    onTransform: (val: number) => string,
+    onChange?: (min: number, max: number) => void,
+    onTransform?: (val: number) => string,
 }
 
 const ExpoSlider: FC<ExpoSliderProps> = ({
@@ -47,8 +48,8 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     let [rankValues, valuesLenght] = assigmentToSubArray(countSubArr, comparisonArray, values);
 
     // Здесь высчитывается расстояние между значениями (breakpoint (круглешки),числа, текст и т.д.) на графике
-    let [valuesWithPos, valuesWithPosEmpty] = valuesPos(widthCanvas, valuesLenght, rankValues, countSubArr);
-
+    let [valuesWithPos, valuesWithPosEmpty] = valuesPos(maxValue, valuesLenght, rankValues, countSubArr);
+console.log(valuesWithPos)
 
     // Здесь создаётся массив с позициями значений и разрядов
     let valuesPosition: number[] = [];
@@ -89,7 +90,7 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     }
 
     // Здесь логика движения пальцев у слайдера и закрашивание breakpoints и полосы
-    breakpoints(currentPositionMin, minDisplayValue, minValue, currentPositionMax, maxDisplayValue, maxValue);
+    // breakpoints(currentPositionMin, minDisplayValue, minValue, currentPositionMax, maxDisplayValue, maxValue);
 
     // ************************************************************************************************************************************
     // useEffect(() => {
@@ -142,6 +143,14 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
     // }, [])
 // ************************************************************************************************************************************
     return <>
+
+        <Slider
+            range={{draggableTrack: true}}
+            defaultValue={[minValue, maxValue]}
+            min={minPropValue}
+            max={maxPropValue}
+            marks={valuesWithPos}
+        />
         {/*<div className="my-4">*/}
         {/*    <Canvas*/}
         {/*        width={widthCanvas}*/}
@@ -154,28 +163,29 @@ const ExpoSlider: FC<ExpoSliderProps> = ({
         {/*        onTransform={onTransform}*/}
         {/*    />*/}
         {/*</div>*/}
-        <div id="sliderr" style={{width: widthCanvas, right: '-2px'}} className="sliderr">
-            <div className='progres'></div>
-            {/* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right */}
-            <input step={0.01} style={{width: widthCanvas, left: '-2px'}} type="range" className="range-min cs" min={0}
-                   max={100} value={minDisplayValue} onInput={handleMinValueChange}/>
 
-            <input step={0.01} style={{width: widthCanvas + 8}} type="range" className="range-max cs" min={0} max={100}
-                   value={maxDisplayValue} onInput={handleMaxValueChange}/>
-        </div>
+        {/*<div id="sliderr" style={{width: widthCanvas, right: '-2px'}} className="sliderr">*/}
+        {/*    <div className='progres'></div>*/}
+        {/*    /!* // Заполнение цветной полосы (СТИЛИ) задаётся в style.scss -> .progres left | right *!/*/}
+        {/*    <input step={0.01} style={{width: widthCanvas, left: '-2px'}} type="range" className="range-min cs" min={0}*/}
+        {/*           max={100} value={minDisplayValue} onInput={handleMinValueChange}/>*/}
 
-        <div className="d-flex justify-content-between my-5">
-            <div>
-                <p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>
-                <p>minDisplayValue <input type="number" onChange={handleMinValueChange}
-                                          value={Math.ceil(minDisplayValue)}/></p>
-            </div>
-            <div>
-                <p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>
-                <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange}
-                                          value={Math.ceil(maxDisplayValue)}/></p>
-            </div>
-        </div>
+        {/*    <input step={0.01} style={{width: widthCanvas + 8}} type="range" className="range-max cs" min={0} max={100}*/}
+        {/*           value={maxDisplayValue} onInput={handleMaxValueChange}/>*/}
+        {/*</div>*/}
+
+        {/*<div className="d-flex justify-content-between my-5">*/}
+        {/*    <div>*/}
+        {/*        <p>currentValueMin: {Math.trunc(currentValueMin! * 100) / 100}</p>*/}
+        {/*        <p>minDisplayValue <input type="number" onChange={handleMinValueChange}*/}
+        {/*                                  value={Math.ceil(minDisplayValue)}/></p>*/}
+        {/*    </div>*/}
+        {/*    <div>*/}
+        {/*        <p>currentValueMax: {Math.trunc(currentValueMax! * 100) / 100}</p>*/}
+        {/*        <p>maxDisplayValue <input type="number" onChange={handleMaxValueChange}*/}
+        {/*                                  value={Math.ceil(maxDisplayValue)}/></p>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
 
     </>
 }

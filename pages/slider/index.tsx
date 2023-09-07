@@ -2,17 +2,17 @@ import reference from "./ref.png";
 import Link from "next/link";
 import Image from "next/image";
 import ExpoSlider from "@/components/slider/ExpoSlider";
-import {useState} from "react";
+import React, {useState} from "react";
+import {Slider} from "antd";
+import {SliderMarks} from "antd/es/slider";
 
 
-const values1 = [31, 138, 206, 275, 345, 414, 420, 500, 690, 792, 1034, 1379, 2068, 4137, 6895, 10342];
-const values2 = [-20, -7, 0, 1, 10, 50, 100];
+const values1 = [0, 0.35, 0.37, 0.52, 0.73, 0.86, 2, 2.2, 3, 4.2, 4.3, 4.8, 5, 6, 6.3, 6.4, 7.1, 8, 9.5, 10, 10.3, 12, 12.7, 15, 15.8, 18, 19, 20, 25, 32, 40, 50, 65, 80];
+// const values2 = [-20, -7, 0, 1, 10, 50, 100];
 
 export default function () {
 
-    const [current, setCurrent] = useState(1);
-    const [values, setValues] = useState<[number, number]>([31, 10341]);
-    const [valuess, setValuess] = useState<[number, number]>([0.7, 26]);
+    const [values, setValues] = useState<[number, number]>([0, 80]);
 
     return <>
 
@@ -22,65 +22,26 @@ export default function () {
         <Link href='/'>Back</Link>
         <hr/>
 
-        <h1>ОБРАЗЕЦ</h1>
-        <div className="container-xxl p-0" style={{outline: '1px solid #000'}}>
-            <Image src={reference} alt=""/>
-        </div>
-
-
         <h1>МОЙ</h1>
         <div className="container-xxl p-0 p-4" style={{outline: '1px solid #000'}}>
 
             <div>Подопытный</div>
             <>
 
-                <ExpoSlider
-                    data={[values1]}
-                    minPropValue={values[0]}
-                    maxPropValue={values[1]}
-                    onTransform={(val:number) => `${val}`}
-                    widthCanvas={1000}
-                    heightCanvas={200}
-                    onChange={(min, max) => setValues([min, max])}
-                    lineWidth={4}
-                />
+
+                {/*<ExpoSlider*/}
+                {/*    data={[values1]}*/}
+                {/*    minPropValue={values[0]}*/}
+                {/*    maxPropValue={values[1]}*/}
+                {/*    onTransform={(val: number) => `${val}`}*/}
+                {/*    widthCanvas={1000}*/}
+                {/*    heightCanvas={200}*/}
+                {/*    onChange={(min, max) => setValues([min, max])}*/}
+                {/*    lineWidth={4}*/}
+                {/*/>*/}
 
             </>
 
-            {/*<button onClick={() => setCurrent(current + 1)}>click</button>*/}
-            {/*{*/}
-            {/*    current % 2 == 1 ?*/}
-            {/*        <>*/}
-            {/*            /!*<Slider range value={values} onChange={(val) => setValues(val)} min={-200} max={8136}/>*!/*/}
-            {/*            */}
-            {/*            1*/}
-            {/*            <ExpoSlider*/}
-            {/*                data={[values1]}*/}
-
-            {/*                minPropValue={values[0]}*/}
-            {/*                maxPropValue={values[1]}*/}
-
-            {/*                widthCanvas={1191}*/}
-            {/*                heightCanvas={300}*/}
-            {/*                onChange={(min, max) => setValues([min, max])}*/}
-            {/*                lineWidth={4}*/}
-            {/*            />*/}
-            {/*        </>*/}
-            {/*        : <>*/}
-            {/*            2*/}
-            {/*            <Slider range value={valuess} onChange={(val) => setValuess(val)} min={0.18} max={30}/>*/}
-            {/*            <ExpoSlider*/}
-            {/*                data={[values2]}*/}
-            {/*                */}
-            {/*                minPropValue={valuess[0]}*/}
-            {/*                maxPropValue={valuess[1]}*/}
-
-            {/*                widthCanvas={1191}*/}
-            {/*                heightCanvas={300}*/}
-            {/*                onChange={(min, max) => setValuess([min, max])}*/}
-            {/*            />*/}
-            {/*        </>*/}
-            {/*}*/}
 
         </div>
 

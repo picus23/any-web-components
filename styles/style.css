@@ -1004,6 +1004,33 @@ input:checked + .slider:before {
   opacity: 1;
 }
 
+.waiting {
+  animation-name: loader;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes loader {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 150px;
+  }
+}
+.graph-scale {
+  background: #c6c6c6;
+}
+
+.graph-scale.active {
+  background: #84c4ff;
+}
+
+.graph-delimeter {
+  background: black;
+}
+
 .footer-text {
   width: 360px;
 }
