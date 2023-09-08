@@ -1,9 +1,9 @@
 import {FC, ReactNode, useEffect, useRef, useState} from "react";
-import getValuesPos from "@/components/graph/functions/getValuesPos";
-import getRanks from "@/components/graph/functions/getRanks";
-import GraphDelimeter from "@/components/graph/GraphDelimeter";
-import GraphScale from "@/components/graph/GraphScale";
-import sortObject from "@/components/graph/functions/sortObject";
+import getValuesPos from "../../components/graph/functions/getValuesPos";
+import getRanks from "../../components/graph/functions/getRanks";
+import GraphDelimeter from "../../components/graph/GraphDelimeter";
+import GraphScale from "../../components/graph/GraphScale";
+import sortObject from "../../components/graph/functions/sortObject";
 import {Slider} from "antd";
 import {rank} from "d3-array";
 

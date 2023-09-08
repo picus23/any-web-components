@@ -1,5 +1,5 @@
 import {FC, ReactNode, useEffect} from "react";
-import calculateHeight from "@/components/graph/functions/calculateHeight";
+import calculateHeight from "../../components/graph/functions/calculateHeight";
 
 
 interface GraphScaleProps {
