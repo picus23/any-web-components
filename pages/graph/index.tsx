@@ -50,9 +50,8 @@ export default function () {
         console.log({valueMin, valueMax})
     }
 
-    return <div className="p-5" style={{width: 500}}>
+    return <div className="p-5" style={{width: 1800}}>
         <Graph
-            width={300}
             data={values1}
             valuesFromSlider={[valueMin,valueMax]}
             isWaiting={false}

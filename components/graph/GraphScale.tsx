@@ -8,11 +8,11 @@ interface GraphScaleProps {
     width?: number,
     height: number,
     count: number,
-    widthScale: number,
+    // widthScale: number,
     value: number,
     biggestCount: number,
     index: number,
-    position?: number,
+    // position?: number,
     valuesFromSlider: number[],
 }
 
@@ -22,10 +22,10 @@ const GraphScale: FC<GraphScaleProps> = ({
                                              width,
                                              count,
                                              biggestCount,
-                                             position,
+                                             // position,
                                              height,
                                              value,
-                                             widthScale,
+                                             // widthScale,
                                              index,
                                              valuesFromSlider
                                          }) => {
@@ -36,7 +36,7 @@ const GraphScale: FC<GraphScaleProps> = ({
     return <>
         <div className="d-flex flex-column align-items-center justify-content-end">
             <div className={`graph-scale-${index} graph-scale ` + (isActive && 'active')}
-                 style={{height: calculatedHeight, width: widthScale, left: position}}/>
+                 style={{height: calculatedHeight,width:width}}/>
         </div>
     </>
 }

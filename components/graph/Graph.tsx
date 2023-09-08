@@ -1,4 +1,4 @@
-import {FC, ReactNode, useEffect} from "react";
+import {FC, ReactNode, useEffect, useRef, useState} from "react";
 import getValuesPos from "@/components/graph/functions/getValuesPos";
 import getRanks from "@/components/graph/functions/getRanks";
 import GraphDelimeter from "@/components/graph/GraphDelimeter";
@@ -20,29 +20,33 @@ const getCurrentDelimitr = (value: number): number => {
         const after = comparisonArray[key]
 
         if (pre <= value && value < after)
-            return key
+            return Number(key)
     }
 
     return false
 }
 
 interface GraphProps {
-    children?: ReactNode,
     data: { [key: string]: number },
     valuesFromSlider: number[],
-    width: number,
+    // width: number,
     isWaiting: boolean,
 }
 
 const Graph: FC<GraphProps> = ({
                                    data,
-                                   children,
                                    valuesFromSlider,
                                    isWaiting,
-                                   width
                                }) => {
     let [ranks, maxValue] = getRanks(data);
-    // let sortedObj = sortObject(data);
+    // let [widthGraphWrapper,setWidthGraphWrapper] = useState(document.querySelector('.graph-wrapper')!.clientWidth)
+    const widthGraphWrapper = useRef<number>(0)
+    const widthCalculated = useRef<number>(0)
+
+    useEffect(() => {
+        widthGraphWrapper.current = document.querySelector('.graph-wrapper')!.clientWidth;
+        widthCalculated.current = widthGraphWrapper.current / (Object.keys(data).length + Object.keys(ranks).length - 1)
+    }, [])
 
     if (isWaiting) {
         useEffect(() => {
@@ -62,9 +66,9 @@ const Graph: FC<GraphProps> = ({
 
     data = sortObject(data)
     let last = getCurrentDelimitr(Number(Object.keys(data)[0].substring(1)))
-    let widthScale = width / (Object.keys(data).length + Object.keys(ranks).length);
+
     return <>
-        <div className="d-flex justify-content-between align-items-end">
+        <div className="d-flex justify-content-between align-items-end graph-wrapper">
             {
                 Object.keys(data).map((value, index) => {
                     const count = data[value]
@@ -79,13 +83,15 @@ const Graph: FC<GraphProps> = ({
                         showDelimiter = true
                     }
 
+                    // {console.log({widthGraphWrapper,widthCalculated})}
                     return <div key={value} className='d-flex'>
 
                         {showDelimiter && <GraphDelimeter height={100} rank={comparisonArray[currentDelimetrId - 1]}/>}
                         <GraphScale
-                            widthScale={widthScale}
+                            // widthScale={widthScale}
                             index={index}
                             height={150}
+                            width={widthCalculated['current']}
                             count={Number(count)}
                             value={numberValue}
                             isWaiting={isWaiting}
