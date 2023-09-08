@@ -14,7 +14,7 @@ const GraphDelimeter: FC<GraphDelimeterProps> = ({width, height, rank, position}
         // style={{left: position}}
     >
         <div className="graph-delimeter position-relative" style={{width: 1, height: height}}>
-        <b><span className="text-decoration-underline position-absolute d-flex justify-content-center" style={{width:10,top:'-20px',right:'-5px'}}>{rank}</span></b>
+        <span className="d-flex justify-content-center px-3">{rank}</span>
         </div>
     </div>
 }

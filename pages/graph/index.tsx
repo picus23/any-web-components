@@ -47,12 +47,12 @@ export default function () {
     let getValues = () => {
         setValueMin(Number(document.querySelector('.ant-slider-handle-1')!.getAttribute('aria-valuenow')));
         setValueMax(Number(document.querySelector('.ant-slider-handle-2')!.getAttribute('aria-valuenow')));
-        console.log({valueMin, valueMax})
     }
 
     return <div className="p-5" style={{width: 1800}}>
         <Graph
             data={values1}
+            height={150}
             valuesFromSlider={[valueMin,valueMax]}
             isWaiting={false}
         />

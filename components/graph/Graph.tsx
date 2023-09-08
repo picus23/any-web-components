@@ -31,22 +31,16 @@ interface GraphProps {
     valuesFromSlider: number[],
     // width: number,
     isWaiting: boolean,
+    height: number,
 }
 
 const Graph: FC<GraphProps> = ({
                                    data,
                                    valuesFromSlider,
                                    isWaiting,
+                                   height,
                                }) => {
     let [ranks, maxValue] = getRanks(data);
-    // let [widthGraphWrapper,setWidthGraphWrapper] = useState(document.querySelector('.graph-wrapper')!.clientWidth)
-    const widthGraphWrapper = useRef<number>(0)
-    const widthCalculated = useRef<number>(0)
-
-    useEffect(() => {
-        widthGraphWrapper.current = document.querySelector('.graph-wrapper')!.clientWidth;
-        widthCalculated.current = widthGraphWrapper.current / (Object.keys(data).length + Object.keys(ranks).length - 1)
-    }, [])
 
     if (isWaiting) {
         useEffect(() => {
@@ -60,15 +54,13 @@ const Graph: FC<GraphProps> = ({
                     clearInterval(intervalId);
                 }
             }, 50)
-        }, [])
+        }, [data])
     }
-
-
     data = sortObject(data)
     let last = getCurrentDelimitr(Number(Object.keys(data)[0].substring(1)))
 
     return <>
-        <div className="d-flex justify-content-between align-items-end graph-wrapper">
+        <div className="d-flex justify-content-between align-items-end graph-wrapper" style={{columnGap: 5}}>
             {
                 Object.keys(data).map((value, index) => {
                     const count = data[value]
@@ -83,15 +75,14 @@ const Graph: FC<GraphProps> = ({
                         showDelimiter = true
                     }
 
-                    // {console.log({widthGraphWrapper,widthCalculated})}
-                    return <div key={value} className='d-flex'>
+                    return <>
+                        {/*<div key={value} className='d-flex' style={{flex: 1}}>*/}
 
-                        {showDelimiter && <GraphDelimeter height={100} rank={comparisonArray[currentDelimetrId - 1]}/>}
+                        {showDelimiter &&
+                            <GraphDelimeter height={100} rank={comparisonArray[currentDelimetrId - 1]}/>}
                         <GraphScale
-                            // widthScale={widthScale}
                             index={index}
-                            height={150}
-                            width={widthCalculated['current']}
+                            height={height}
                             count={Number(count)}
                             value={numberValue}
                             isWaiting={isWaiting}
@@ -99,8 +90,8 @@ const Graph: FC<GraphProps> = ({
                             valuesFromSlider={valuesFromSlider}
                         />
 
-                    </div>
-
+                        {/*</div>*/}
+                    </>
                 })
             }
         </div>
