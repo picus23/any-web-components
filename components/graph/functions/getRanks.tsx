@@ -27,5 +27,5 @@ export default function getRanks(data: {}) {
         dataValueArr[index] = Number(value);
     })
 
-    return [ranks,Math.max(...dataValueArr)];
+    return [ranks,Number(Math.max(...dataValueArr))];
 }

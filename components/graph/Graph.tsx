@@ -7,23 +7,32 @@ import sortObject from "../../components/graph/functions/sortObject";
 import {Slider} from "antd";
 import {rank} from "d3-array";
 
-
 const comparisonArray = [-200, -10, -1, 0, 1, 10, 100, 1000, 10000];
-
+let i:number = 0;
 const getCurrentDelimitr = (value: number): number => {
+    for (let i = 0; i < comparisonArray.length; i++) {
+            if (i == 0) continue
+
+            const pre = comparisonArray[i - 1]
+            const after = comparisonArray[i]
+
+            if (pre <= value && value < after)
+                return i
+        }
 
 
-    for (const key in comparisonArray) {
-        if (key == '0') continue
 
-        const pre = comparisonArray[key - 1]
-        const after = comparisonArray[key]
+    // for (let key in comparisonArray) {
+    //     if (key == '0') continue
+    //
+    //     const pre = comparisonArray[key - 1]
+    //     const after = comparisonArray[key]
+    //
+    //     if (pre <= value && value < after)
+    //         return Number(key)
+    // }
 
-        if (pre <= value && value < after)
-            return Number(key)
-    }
-
-    return false
+    return 0
 }
 
 interface GraphProps {

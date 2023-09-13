@@ -9,7 +9,7 @@ interface GraphScaleProps {
     count: number,
     // widthScale: number,
     value: number,
-    biggestCount: number,
+    biggestCount: number|number[],
     index: number,
     // position?: number,
     valuesFromSlider: number[],
