@@ -17,10 +17,10 @@ const CatalogMenu: FC<CatalogMenuProps> = ({children, icon, img_path, series, ti
     return <div className="catalog-menu-item mx-auto">
         <div className="w-100">
             <SearchSeries title={'Фитинги для труб'} subtitle={'45 серия'}
-                          icon={<Image width={100} height={100} src="/kit/empty_square.png" alt=""/>}
-            >
+                          // icon={<Image width={100} height={100} src="/kit/empty_square.png" alt=""/>}
+            />
 
-            </SearchSeries>
+            {/*</SearchSeries>*/}
         </div>
 
         <div className="catalog-menu-categories-list">

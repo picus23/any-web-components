@@ -60,10 +60,10 @@ const Canvas: FC<CanvasProps> = ({
             let verticalLine = document.getElementById('xAxisValue');
             verticalLine?.classList.add('position-relative');
 
-            let transformVal = onTransform ? onTransform(ranksPos[key]) : ranksPos[key];
-
-            text = document.createTextNode(transformVal + '')
-            xAxisValue.appendChild(text);
+            // let transformVal = onTransform ? onTransform(ranksPos[key]) : ranksPos[key];
+            //
+            // text = document.createTextNode(transformVal + '')
+            // xAxisValue.appendChild(text);
             verticalLine!.appendChild(breakpoint);
             breakpointsStyles(breakpoint,key)
             if (i % 2 === 0) { // Чётный индекс [i] == 0,2,4 ...

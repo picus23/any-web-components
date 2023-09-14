@@ -2,7 +2,6 @@ import React, {FC, useEffect, useRef, useState} from "react";
 import Canvas from "./Canvas";
 import {convertValueToPercent, convertPercentToValue, tempConvMin, tempConvMax} from './convert';
 import reverseArrays from "./ExpoSliderFunctions/reverseArrays";
-import breakpoints from "./ExpoSliderFunctions/breakpoints/breakpoints";
 import valuesPos from "./ExpoSliderFunctions/valuesPos";
 import assigmentToSubArray from "./ExpoSliderFunctions/assigmentToSubArray";
 import getRanks from "./ExpoSliderFunctions/rank/getRanks";
@@ -80,12 +79,12 @@ console.log(valuesWithPos)
 
     const handleMinValueChange = (event: any) => {
         const currentMin = tempConvMin(minValue, maxValue, valuesPosition, values, currentPositionMin, event.target.value)
-        onChange(currentMin!, currentValueMax!);
+        // onChange(currentMin!, currentValueMax!);
         setMinDisplayValue(event.target.value)
     }
     const handleMaxValueChange = (event: any) => {
         const currentMax = tempConvMax(minValue, maxValue, reverseValuesPos, reverseValuesCv, currentPositionMax, event.target.value)
-        onChange(currentValueMin!, currentMax!);
+        // onChange(currentValueMin!, currentMax!);
         setMaxDisplayValue(event.target.value)
     }
 
@@ -149,7 +148,7 @@ console.log(valuesWithPos)
             defaultValue={[minValue, maxValue]}
             min={minPropValue}
             max={maxPropValue}
-            marks={valuesWithPos}
+            // marks={valuesWithPos}
         />
         {/*<div className="my-4">*/}
         {/*    <Canvas*/}
