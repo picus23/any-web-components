@@ -15,23 +15,27 @@ const ExplorerItem: FC<ExplorerItemProps> = ({ title, checked, isFolder, onChang
 
     if (isFolder) {
         return <li tabIndex={0} className={`ExplorerItem  ${checked && 'active'}`} >
-            <div className='ExplorerItemCheckbox hoverIcon' onClick={() => onChange(checked ?? 0)}>
-                <div className="icon">
-                    {
-                        checked == 0
-                            ? <MdCheckBoxOutlineBlank size={22} color="#96969660" />
-                            : <MdCheck size={22} color={checked == 2 ? '#0085FF' : '#969696'} />
-                    }
-                </div>
-            </div>
-            <div className={`ExplorerItemTitle folder`} onClick={() => { isFolder && onOpen() }}>
+            <div className={`ExplorerItemTitle folder`} onClick={() => { onChange(checked ?? 0) }}>
                 <div className="title">
                     {title}
                 </div>
-                <div className="folderArrow">
+                {/* <div className="folderArrow">
                     <MdArrowForwardIos size={18} />
+                </div> */}
+            </div>
+            
+            <div className='ExplorerItemCheckbox hoverIcon' onClick={() => isFolder && onOpen() }>
+                <div className="icon">
+                    {
+                    <MdArrowForwardIos size={18} color="#969696"/>
+                    /* {
+                        checked == 0
+                            ? <MdCheckBoxOutlineBlank size={22} color="#96969660" />
+                            : <MdCheck size={22} color={checked == 2 ? '#0085FF' : '#969696'} />
+                    } */}
                 </div>
             </div>
+            
 
         </li>
     }
@@ -39,7 +43,7 @@ const ExplorerItem: FC<ExplorerItemProps> = ({ title, checked, isFolder, onChang
 
 
     return <li tabIndex={0} className={`ExplorerItem  ${checked && 'active'}`} onClick={() => onChange(checked ?? 0)}>
-        <div className='ExplorerItemCheckbox' >
+        {/* <div className='ExplorerItemCheckbox' >
             <div className="icon">
                 {
                     checked == 0
@@ -47,7 +51,7 @@ const ExplorerItem: FC<ExplorerItemProps> = ({ title, checked, isFolder, onChang
                         : <MdCheck size={22} color={checked == 2 ? '#0085FF' : '#969696'} />
                 }
             </div>
-        </div>
+        </div> */}
         <div className="ExplorerItemTitle">
             <div className="title">
                 {title}

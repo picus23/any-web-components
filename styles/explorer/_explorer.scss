@@ -8,6 +8,9 @@ $hoverColor: rgb(0 132 255 / 7%);
     transition: all .3s;
     user-select: none;
 
+    &.active {
+        background-color: #E5F3FF;
+    }
 
     .ExplorerItemCheckbox {
         padding: 10px;
@@ -78,5 +81,6 @@ $hoverColor: rgb(0 132 255 / 7%);
 
     &:active {
         border: 1px solid $active;
+        // background: #f00;
     }
 }
