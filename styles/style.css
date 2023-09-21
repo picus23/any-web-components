@@ -1027,6 +1027,7 @@ input:checked + .slider:before {
 }
 .graph-scale {
   background: #c6c6c6;
+  cursor: pointer;
 }
 
 .graph-scale.active {

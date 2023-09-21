@@ -1,14 +1,10 @@
-import {FC, ReactNode, useEffect, useRef, useState} from "react";
-import getValuesPos from "../../components/graph/functions/getValuesPos";
+import {FC, useEffect} from "react";
 import getRanks from "../../components/graph/functions/getRanks";
 import GraphDelimeter from "../../components/graph/GraphDelimeter";
 import GraphScale from "../../components/graph/GraphScale";
 import sortObject from "../../components/graph/functions/sortObject";
-import {Slider} from "antd";
-import {rank} from "d3-array";
 
 const comparisonArray = [-200, -10, -1, 0, 1, 10, 100, 1000, 10000];
-let i:number = 0;
 const getCurrentDelimitr = (value: number): number => {
     for (let i = 0; i < comparisonArray.length; i++) {
             if (i == 0) continue
@@ -20,25 +16,12 @@ const getCurrentDelimitr = (value: number): number => {
                 return i
         }
 
-
-
-    // for (let key in comparisonArray) {
-    //     if (key == '0') continue
-    //
-    //     const pre = comparisonArray[key - 1]
-    //     const after = comparisonArray[key]
-    //
-    //     if (pre <= value && value < after)
-    //         return Number(key)
-    // }
-
     return 0
 }
 
 interface GraphProps {
     data: { [key: string]: number },
     valuesFromSlider: number[],
-    // width: number,
     isWaiting: boolean,
     height: number,
 }
@@ -49,7 +32,7 @@ const Graph: FC<GraphProps> = ({
                                    isWaiting,
                                    height,
                                }) => {
-    let [ranks, maxValue] = getRanks(data);
+    let [maxValue] = getRanks(data);
 
     if (isWaiting) {
         useEffect(() => {
@@ -85,10 +68,8 @@ const Graph: FC<GraphProps> = ({
                     }
 
                     return <>
-                        {/*<div key={value} className='d-flex' style={{flex: 1}}>*/}
-
                         {showDelimiter &&
-                            <GraphDelimeter height={100} rank={comparisonArray[currentDelimetrId - 1]}/>}
+                            <GraphDelimeter height={height + 20} rank={comparisonArray[currentDelimetrId - 1]}/>}
                         <GraphScale
                             index={index}
                             height={height}
@@ -99,7 +80,6 @@ const Graph: FC<GraphProps> = ({
                             valuesFromSlider={valuesFromSlider}
                         />
 
-                        {/*</div>*/}
                     </>
                 })
             }

@@ -1,17 +1,16 @@
 import {FC, ReactNode, useEffect} from "react";
 import calculateHeight from "../../components/graph/functions/calculateHeight";
+import { Tooltip } from "react-tooltip";
 
 
 interface GraphScaleProps {
     isActive?: boolean,
-    isWaiting: boolean,
+    isWaiting?: boolean,
     height: number,
     count: number,
-    // widthScale: number,
     value: number,
     biggestCount: number|number[],
     index: number,
-    // position?: number,
     valuesFromSlider: number[],
 }
 
@@ -29,11 +28,22 @@ const GraphScale: FC<GraphScaleProps> = ({
     value >= valuesFromSlider[0] && value <= valuesFromSlider[1] ?
         isActive = true :
         isActive = false
+        let tooltipString = `В наличии ${count} шт.`;
+
     return <>
-        <div className="d-flex flex-column align-items-center justify-content-end" style={{width: '100%',height: calculatedHeight}}>
-            <div className={`graph-scale-${index} graph-scale ` + (isActive && 'active')}
-                 style={{height: calculatedHeight,width:'100%'}}/>
+    {!isWaiting && 
+        <Tooltip
+        id={`graph-scale-${index}`}
+        place="top-end"
+      >
+        <div className="d-flex flex-column gap-2">
+            <span>Значение - {value}</span>
+            <span>{tooltipString}</span>
         </div>
+      </Tooltip>
+    }
+            <div data-tooltip-id={`graph-scale-${index}`} className={`pe-auto graph-scale ` + (isActive && 'active')}
+                 style={{height: calculatedHeight,width:'100%'}}/>
     </>
 }
 

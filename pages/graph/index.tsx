@@ -6,14 +6,6 @@ import {Slider} from "antd";
 
 
 const values1: { [key: string]: number } =
-    // {
-    //     '0': 1,
-    //     '5':1,
-    //     '9': 1,
-    //     '12': 1,
-    //     '50': 1,
-    // }
-
     {
     '0': 2,
     '0.35': 13,

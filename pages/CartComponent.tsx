@@ -12,7 +12,7 @@ interface LinkProps {
 
 
 const CartComponent: FC<LinkProps> = ({ link, title, description }) => {
-    const image = require(`.${link}/ref.png`);
+    const image = require(`.${link}/ref.png`) ?? '';
 
     return <div className="card mb-5" >
         <div className="p-5 d-flex justify-content-center           " style={{background: '#eee'}}>
