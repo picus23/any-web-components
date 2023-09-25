@@ -51,7 +51,7 @@ const FilterField: FC<FilterFieldProps> = ({ links, title, onClick, imgUrl, isAc
 
 
             // isActive && !!links && !!links.length && 
-            links && !!links.length && <ol className="list-unstyled ms-4" style={{ height: isActive ? links.length * 22 : 0, transition: 'all .3s', overflow: 'hidden' }}>
+            links && !!links.length && <ol className="list-unstyled ms-4" style={{ height: isActive ? links.length * 25 : 0, transition: 'all .3s', overflow: 'hidden' }}>
 
                 {
 

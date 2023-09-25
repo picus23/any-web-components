@@ -52,7 +52,7 @@ const Graph: FC<GraphProps> = ({
     let last = getCurrentDelimitr(Number(Object.keys(data)[0].substring(1)))
 
     return <>
-        <div className="d-flex justify-content-between align-items-end graph-wrapper" style={{columnGap: 5}}>
+        <div className="d-flex justify-content-between align-items-end graph-wrapper" style={{columnGap: 5, marginTop: 35}}>
             {
                 Object.keys(data).map((value, index) => {
                     const count = data[value]
