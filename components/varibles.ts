@@ -1,7 +1,7 @@
 
 
-export const filterHeight = 300
-export const filterWindowHeight = 410
+export const filterHeight = 390
+export const filterWindowHeight = 500
 
 export const markerWrapperHeight = 220
 export const defaultDialogWidth = 500
